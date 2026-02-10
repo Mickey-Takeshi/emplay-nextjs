@@ -1,0 +1,39 @@
+# robots.txt for https://emplay.jp
+
+User-agent: *
+Allow: /
+
+# Disallow contact and form pages (noindex)
+Disallow: /contact
+Disallow: /contact/
+
+# Disallow careers application form (noindex)
+Disallow: /careers
+Disallow: /careers/
+
+# Disallow 404 pages
+Disallow: /404
+
+# Crawl-delay for polite crawling
+Crawl-delay: 1
+
+# Sitemap location
+Sitemap: https://emplay.jp/sitemap.xml
+
+# Google
+User-agent: Googlebot
+Allow: /
+Disallow: /contact
+Disallow: /careers
+
+# Bing
+User-agent: Bingbot
+Allow: /
+Disallow: /contact
+Disallow: /careers
+
+# Yahoo
+User-agent: Slurp
+Allow: /
+Disallow: /contact
+Disallow: /careers

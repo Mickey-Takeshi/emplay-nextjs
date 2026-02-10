@@ -1,0 +1,1136 @@
+/* ServiceTraining Page Styles - Modern LP Design */
+
+/* セクションラベル・タイトル共通 */
+.training-section-label {
+  font-family: var(--font-en);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  color: var(--color-primary);
+  text-align: center;
+  margin-bottom: 12px;
+}
+
+.training-section-label.light {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.training-section-title {
+  font-size: 2rem;
+  font-weight: 800;
+  text-align: center;
+  color: var(--color-text);
+  margin-bottom: 48px;
+  letter-spacing: -0.02em;
+}
+
+.training-section-title.light {
+  color: #fff;
+}
+
+.training-section-subtitle {
+  text-align: center;
+  font-size: 1rem;
+  color: var(--color-text-light);
+  margin-top: -32px;
+  margin-bottom: 48px;
+}
+
+/* ヒーローセクション */
+.training-hero {
+  position: relative;
+  min-height: 85vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.training-hero-background {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.training-hero-gradient {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 50%, #3b82f6 100%);
+}
+
+.training-hero-gradient::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 20% 80%, rgba(59, 130, 246, 0.3) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(139, 92, 246, 0.2) 0%, transparent 50%);
+}
+
+.training-hero-content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  color: #fff;
+  padding: 0 var(--spacing-md);
+  max-width: 900px;
+}
+
+.training-hero-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 24px;
+}
+
+.training-hero-label-dot {
+  width: 8px;
+  height: 8px;
+  background: #60a5fa;
+  border-radius: 50%;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(1.2); }
+}
+
+.training-hero-title {
+  font-size: 3rem;
+  font-weight: 800;
+  line-height: 1.4;
+  margin-bottom: 16px;
+  letter-spacing: -0.02em;
+}
+
+.training-hero-title-accent {
+  background: linear-gradient(90deg, #60a5fa, #a78bfa);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.training-hero-subtitle {
+  font-size: 1.25rem;
+  opacity: 0.95;
+  margin-bottom: 32px;
+}
+
+.training-hero-badges {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 40px;
+}
+
+.training-hero-badge {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 10px 24px;
+  border-radius: 24px;
+  font-size: 0.9375rem;
+  font-weight: 600;
+}
+
+.training-hero-cta {
+  font-size: 1rem;
+  padding: 16px 40px;
+}
+
+/* 課題セクション */
+.training-problems {
+  padding: 100px 0;
+  background: #fff;
+}
+
+.training-problems-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.training-problem-card {
+  background: #f8fafc;
+  border-radius: 16px;
+  padding: 28px;
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+}
+
+.training-problem-card:hover {
+  border-color: var(--color-primary);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(59, 130, 246, 0.12);
+}
+
+.training-problem-icon {
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #eff6ff, #dbeafe);
+  border-radius: 12px;
+}
+
+.training-problem-icon svg {
+  width: 24px;
+  height: 24px;
+  stroke: var(--color-primary);
+}
+
+.training-problem-content {
+  flex: 1;
+}
+
+.training-problem-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--color-text);
+  margin-bottom: 4px;
+}
+
+.training-problem-text {
+  font-size: 0.875rem;
+  color: var(--color-text-light);
+  margin: 0;
+  line-height: 1.6;
+}
+
+/* なぜ今研修投資が必要か */
+.training-why-now {
+  padding: 100px 0;
+  background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 100%);
+  color: #fff;
+}
+
+.training-why-now-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-bottom: 48px;
+}
+
+.training-why-now-card {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 20px;
+  padding: 40px 32px;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.training-why-now-card:hover {
+  background: rgba(255, 255, 255, 0.12);
+  transform: translateY(-4px);
+}
+
+.training-why-now-stat {
+  font-family: var(--font-en);
+  font-size: 4rem;
+  font-weight: 800;
+  color: #60a5fa;
+  line-height: 1;
+  margin-bottom: 16px;
+}
+
+.training-why-now-stat span {
+  font-size: 1.5rem;
+}
+
+.training-why-now-text {
+  font-size: 0.9375rem;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.9);
+  margin: 0;
+}
+
+.training-why-now-conclusion {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 24px 32px;
+  text-align: center;
+}
+
+.training-why-now-conclusion p {
+  font-size: 1.125rem;
+  margin: 0;
+}
+
+.training-why-now-conclusion strong {
+  color: #60a5fa;
+}
+
+/* サービス概要 */
+.training-service-overview {
+  padding: 100px 0;
+  background: #fff;
+}
+
+.training-features-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-bottom: 48px;
+}
+
+.training-feature-card {
+  background: #fff;
+  border: 2px solid #e2e8f0;
+  border-radius: 20px;
+  padding: 32px;
+  transition: all 0.3s ease;
+}
+
+.training-feature-card:hover {
+  border-color: var(--color-primary);
+  box-shadow: 0 12px 32px rgba(59, 130, 246, 0.12);
+}
+
+.training-feature-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.training-feature-number {
+  font-family: var(--font-en);
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--color-primary);
+}
+
+.training-feature-title {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--color-text);
+  margin: 0;
+}
+
+.training-feature-text {
+  font-size: 0.9375rem;
+  line-height: 1.8;
+  color: var(--color-text-light);
+  margin: 0;
+}
+
+.training-flow-visual {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  background: #f8fafc;
+  border-radius: 16px;
+  padding: 32px;
+}
+
+.training-flow-step {
+  background: #fff;
+  border: 2px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 20px 28px;
+  text-align: center;
+  min-width: 120px;
+}
+
+.training-flow-step.highlight {
+  background: linear-gradient(135deg, #eff6ff, #f0f7ff);
+  border-color: var(--color-primary);
+}
+
+.training-flow-number {
+  display: block;
+  font-family: var(--font-en);
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  margin-bottom: 8px;
+}
+
+.training-flow-step h4 {
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: var(--color-text);
+  margin: 0;
+}
+
+.training-flow-arrow {
+  flex-shrink: 0;
+}
+
+.training-flow-arrow svg {
+  width: 20px;
+  height: 20px;
+  stroke: var(--color-primary);
+}
+
+/* 研修プログラム一覧 */
+.training-programs {
+  padding: 100px 0;
+  background: #f8fafc;
+}
+
+.training-programs-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+.training-program-card {
+  background: #fff;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+  transition: all 0.3s ease;
+}
+
+.training-program-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.1);
+}
+
+.training-program-header {
+  background: linear-gradient(135deg, var(--color-primary), #4f46e5);
+  padding: 24px 28px;
+}
+
+.training-program-icon {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  margin-bottom: 16px;
+}
+
+.training-program-icon svg {
+  width: 24px;
+  height: 24px;
+  stroke: #fff;
+}
+
+.training-program-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 4px;
+}
+
+.training-program-target {
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.8);
+  margin: 0;
+}
+
+.training-program-body {
+  padding: 28px;
+}
+
+.training-program-challenge {
+  font-size: 0.875rem;
+  color: var(--color-text-light);
+  background: #f8fafc;
+  padding: 12px 16px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.training-program-curriculum {
+  margin-bottom: 20px;
+}
+
+.training-curriculum-month {
+  display: flex;
+  gap: 12px;
+  padding: 12px 0;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.training-curriculum-month:last-child {
+  border-bottom: none;
+}
+
+.training-curriculum-label {
+  flex-shrink: 0;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  background: #eff6ff;
+  padding: 4px 10px;
+  border-radius: 12px;
+}
+
+.training-curriculum-content {
+  font-size: 0.875rem;
+  color: var(--color-text);
+  margin: 0;
+  line-height: 1.6;
+}
+
+.training-program-results {
+  background: linear-gradient(135deg, #f0fdf4, #ecfdf5);
+  border: 1px solid #22c55e;
+  border-radius: 12px;
+  padding: 16px;
+}
+
+.training-results-label {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #16a34a;
+  margin-bottom: 4px;
+}
+
+.training-program-results p {
+  font-size: 0.875rem;
+  color: var(--color-text);
+  margin: 0;
+}
+
+/* 助成金制度 */
+.training-subsidy {
+  padding: 100px 0;
+  background: #fff;
+}
+
+.training-subsidy-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  margin-bottom: 24px;
+}
+
+.training-subsidy-card {
+  background: #fff;
+  border: 2px solid #e2e8f0;
+  border-radius: 20px;
+  padding: 32px;
+  position: relative;
+}
+
+.training-subsidy-badge {
+  position: absolute;
+  top: -12px;
+  left: 24px;
+  background: var(--color-primary);
+  color: #fff;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  padding: 6px 14px;
+  border-radius: 20px;
+}
+
+.training-subsidy-badge.tokyo {
+  background: linear-gradient(135deg, #22c55e, #16a34a);
+}
+
+.training-subsidy-name {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--color-text);
+  margin-bottom: 4px;
+  margin-top: 8px;
+}
+
+.training-subsidy-subname {
+  font-size: 0.875rem;
+  color: var(--color-text-light);
+  margin-bottom: 24px;
+}
+
+.training-subsidy-rates {
+  display: flex;
+  gap: 24px;
+}
+
+.training-subsidy-rate {
+  flex: 1;
+  background: #f8fafc;
+  border-radius: 12px;
+  padding: 16px;
+  text-align: center;
+}
+
+.training-subsidy-rate-value {
+  display: block;
+  font-family: var(--font-en);
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--color-primary);
+  line-height: 1.2;
+}
+
+.training-subsidy-rate-value small {
+  font-size: 0.875rem;
+  font-weight: 400;
+}
+
+.training-subsidy-rate-label {
+  font-size: 0.75rem;
+  color: var(--color-text-light);
+}
+
+.training-subsidy-note {
+  text-align: center;
+  font-size: 0.875rem;
+  color: var(--color-text-light);
+}
+
+/* 料金プラン */
+.training-pricing {
+  padding: 100px 0;
+  background: #f8fafc;
+}
+
+.training-pricing-comparison {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+  background: #fff;
+  border-radius: 20px;
+  padding: 40px;
+  margin-bottom: 32px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+}
+
+.training-pricing-before,
+.training-pricing-after {
+  text-align: center;
+}
+
+.training-pricing-label {
+  display: block;
+  font-size: 0.875rem;
+  color: var(--color-text-light);
+  margin-bottom: 8px;
+}
+
+.training-pricing-value {
+  display: block;
+  font-family: var(--font-en);
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--color-text);
+  margin-bottom: 4px;
+}
+
+.training-pricing-value.highlight {
+  font-size: 2.5rem;
+  color: var(--color-primary);
+}
+
+.training-pricing-value small {
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+.training-pricing-condition {
+  font-size: 0.75rem;
+  color: var(--color-text-light);
+}
+
+.training-pricing-arrow {
+  flex-shrink: 0;
+}
+
+.training-pricing-arrow svg {
+  width: 32px;
+  height: 32px;
+  stroke: var(--color-primary);
+}
+
+.training-pricing-example {
+  background: #fff;
+  border-radius: 20px;
+  padding: 32px;
+  max-width: 500px;
+  margin: 0 auto;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+}
+
+.training-pricing-example-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--color-text);
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.training-pricing-example-content {
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.training-pricing-example-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 16px 20px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.training-pricing-example-row:last-child {
+  border-bottom: none;
+}
+
+.training-pricing-example-row.total {
+  background: #f8fafc;
+}
+
+.training-pricing-example-label {
+  font-size: 0.9375rem;
+  color: var(--color-text);
+}
+
+.training-pricing-example-value {
+  font-family: var(--font-en);
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.training-pricing-example-value.highlight {
+  color: #22c55e;
+}
+
+/* 競合比較 */
+.training-comparison {
+  padding: 100px 0;
+  background: #fff;
+}
+
+.training-comparison-table {
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.training-comparison-header,
+.training-comparison-row {
+  display: grid;
+  grid-template-columns: 140px repeat(3, 1fr);
+}
+
+.training-comparison-header {
+  background: #f8fafc;
+}
+
+.training-comparison-header .training-comparison-cell {
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.training-comparison-cell {
+  padding: 16px 20px;
+  border-bottom: 1px solid #e2e8f0;
+  font-size: 0.875rem;
+  color: var(--color-text-light);
+}
+
+.training-comparison-cell.label {
+  background: #f8fafc;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.training-comparison-cell.highlight {
+  background: linear-gradient(135deg, #eff6ff, #f0f7ff);
+  color: var(--color-primary);
+  font-weight: 600;
+}
+
+.training-comparison-row:last-child .training-comparison-cell {
+  border-bottom: none;
+}
+
+/* 導入の流れ */
+.training-flow {
+  padding: 100px 0;
+  background: #f8fafc;
+}
+
+.training-flow-timeline {
+  max-width: 700px;
+  margin: 0 auto 48px;
+  position: relative;
+}
+
+.training-flow-timeline::before {
+  content: '';
+  position: absolute;
+  left: 45px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(180deg, var(--color-primary) 0%, #a78bfa 100%);
+}
+
+.training-flow-item {
+  display: flex;
+  gap: 24px;
+  padding-bottom: 32px;
+  position: relative;
+}
+
+.training-flow-item:last-child {
+  padding-bottom: 0;
+}
+
+.training-flow-marker {
+  flex-shrink: 0;
+  width: 90px;
+  position: relative;
+  z-index: 1;
+}
+
+.training-flow-marker span {
+  display: block;
+  background: var(--color-primary);
+  color: #fff;
+  font-family: var(--font-en);
+  font-size: 0.625rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  padding: 8px 12px;
+  border-radius: 20px;
+  text-align: center;
+}
+
+.training-flow-content {
+  flex: 1;
+  background: #fff;
+  border-radius: 16px;
+  padding: 24px 28px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+}
+
+.training-flow-content h3 {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--color-text);
+  margin-bottom: 8px;
+}
+
+.training-flow-period {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  background: #eff6ff;
+  padding: 4px 12px;
+  border-radius: 12px;
+  margin-bottom: 12px;
+}
+
+.training-flow-content p {
+  font-size: 0.875rem;
+  line-height: 1.7;
+  color: var(--color-text-light);
+  margin: 0;
+}
+
+.training-flow-notice {
+  background: #fff;
+  border: 2px solid #f59e0b;
+  border-radius: 12px;
+  padding: 20px 24px;
+  text-align: center;
+}
+
+.training-flow-notice p {
+  font-size: 0.875rem;
+  color: var(--color-text);
+  margin: 0;
+}
+
+/* FAQ */
+.training-faq {
+  padding: 100px 0;
+  background: #fff;
+}
+
+.training-faq-list {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.training-faq-item {
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.training-faq-question {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  padding: 24px 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+}
+
+.training-faq-question-text {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-text);
+  flex: 1;
+}
+
+.training-faq-toggle {
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f8fafc;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.training-faq-toggle svg {
+  width: 16px;
+  height: 16px;
+  stroke: var(--color-text-light);
+}
+
+.training-faq-item.open .training-faq-toggle {
+  background: var(--color-primary);
+}
+
+.training-faq-item.open .training-faq-toggle svg {
+  stroke: #fff;
+}
+
+.training-faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+
+.training-faq-item.open .training-faq-answer {
+  max-height: 300px;
+}
+
+.training-faq-answer p {
+  font-size: 0.9375rem;
+  line-height: 1.8;
+  color: var(--color-text-light);
+  padding-bottom: 24px;
+  margin: 0;
+}
+
+/* CTA */
+.training-cta {
+  padding: 100px 0;
+  background: linear-gradient(135deg, var(--color-primary), #4f46e5);
+  position: relative;
+  overflow: hidden;
+}
+
+.training-cta::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 0% 100%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 100% 0%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+}
+
+.training-cta-content {
+  position: relative;
+  text-align: center;
+  color: #fff;
+}
+
+.training-cta-title {
+  font-size: 2.25rem;
+  font-weight: 800;
+  margin-bottom: 20px;
+}
+
+.training-cta-text {
+  font-size: 1rem;
+  line-height: 1.9;
+  opacity: 0.95;
+  margin-bottom: 32px;
+}
+
+.training-cta-button {
+  background: #fff !important;
+  color: var(--color-primary) !important;
+  font-size: 1rem;
+  padding: 16px 48px;
+}
+
+.training-cta-button:hover {
+  background: #f8fafc !important;
+  transform: translateY(-2px);
+}
+
+/* レスポンシブ */
+@media (max-width: 1024px) {
+  .training-problems-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .training-why-now-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .training-features-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .training-programs-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .training-subsidy-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .training-comparison-header,
+  .training-comparison-row {
+    grid-template-columns: 100px repeat(3, 1fr);
+  }
+
+  .training-comparison-cell {
+    font-size: 0.75rem;
+    padding: 12px;
+  }
+}
+
+@media (max-width: 840px) {
+  .training-hero-title {
+    font-size: 2.25rem;
+  }
+
+  .training-section-title {
+    font-size: 1.625rem;
+  }
+
+  .training-flow-visual {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .training-flow-arrow {
+    transform: rotate(90deg);
+  }
+
+  .training-pricing-comparison {
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .training-pricing-arrow {
+    transform: rotate(90deg);
+  }
+}
+
+@media (max-width: 540px) {
+  .training-hero {
+    min-height: 75vh;
+  }
+
+  .training-hero-title {
+    font-size: 1.75rem;
+  }
+
+  .training-hero-subtitle {
+    font-size: 1rem;
+  }
+
+  .training-hero-badges {
+    gap: 8px;
+  }
+
+  .training-hero-badge {
+    font-size: 0.8125rem;
+    padding: 8px 16px;
+  }
+
+  .training-problems,
+  .training-why-now,
+  .training-service-overview,
+  .training-programs,
+  .training-subsidy,
+  .training-pricing,
+  .training-comparison,
+  .training-flow,
+  .training-faq,
+  .training-cta {
+    padding: 64px 0;
+  }
+
+  .training-section-title {
+    font-size: 1.5rem;
+    margin-bottom: 32px;
+  }
+
+  .training-why-now-stat {
+    font-size: 3rem;
+  }
+
+  .training-flow-timeline::before {
+    display: none;
+  }
+
+  .training-flow-item {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .training-cta-title {
+    font-size: 1.625rem;
+  }
+
+  .training-comparison-header,
+  .training-comparison-row {
+    grid-template-columns: 1fr;
+  }
+
+  .training-comparison-cell.label {
+    border-top: 2px solid #e2e8f0;
+    margin-top: 8px;
+    padding-top: 12px;
+  }
+
+  .training-subsidy-rates {
+    flex-direction: column;
+    gap: 12px;
+  }
+}
+
+/* PC専用改行 */
+.pc-only {
+  display: inline;
+}
+
+@media (max-width: 840px) {
+  .pc-only {
+    display: none;
+  }
+}

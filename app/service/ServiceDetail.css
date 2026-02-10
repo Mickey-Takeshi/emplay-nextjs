@@ -1,0 +1,1041 @@
+/* Service Detail LP Styles */
+
+/* ヒーローセクション */
+.lp-hero {
+  position: relative;
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.lp-hero-background {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.lp-hero-bg-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.lp-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(15, 23, 42, 0.9), rgba(30, 41, 59, 0.8));
+}
+
+.lp-hero-content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  color: #fff;
+  padding: 0 var(--spacing-md);
+  max-width: 900px;
+}
+
+.lp-hero-label {
+  font-family: var(--font-en);
+  font-size: 0.875rem;
+  letter-spacing: 0.2em;
+  margin-bottom: var(--spacing-md);
+  display: block;
+  opacity: 0.9;
+}
+
+.lp-hero-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  line-height: 1.5;
+  margin-bottom: var(--spacing-lg);
+  letter-spacing: -0.02em;
+}
+
+.lp-hero-text {
+  font-size: 1rem;
+  line-height: 2;
+  opacity: 0.9;
+  margin-bottom: var(--spacing-xl);
+}
+
+/* セクション共通 */
+.lp-section-title {
+  font-size: 1.75rem;
+  font-weight: 800;
+  text-align: center;
+  margin-bottom: 24px;
+  color: var(--color-text);
+}
+
+.lp-section-lead {
+  text-align: center;
+  font-size: 1rem;
+  line-height: 2;
+  color: var(--color-text-light);
+  margin-bottom: 48px;
+}
+
+.lp-section-lead strong {
+  color: var(--color-primary);
+}
+
+/* 課題セクション */
+.lp-problems {
+  padding: 80px 0;
+  background: #f8fafc;
+}
+
+.problems-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.problem-item {
+  background: #fff;
+  border-radius: 12px;
+  padding: 28px 24px;
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+}
+
+.problem-icon {
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+  color: #e11d48;
+}
+
+.problem-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.problem-item p {
+  font-size: 0.9375rem;
+  line-height: 1.7;
+  color: var(--color-text);
+  margin: 0;
+}
+
+/* 解決策セクション */
+.lp-solution {
+  padding: 80px 0;
+  background: #fff;
+}
+
+.solution-points {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px;
+}
+
+.solution-point {
+  background: #f8fafc;
+  border-radius: 16px;
+  padding: 36px 32px;
+}
+
+.solution-point-num {
+  font-family: var(--font-en);
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  display: block;
+  margin-bottom: 12px;
+}
+
+.solution-point-title {
+  font-size: 1.125rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: var(--color-text);
+}
+
+.solution-point-text {
+  font-size: 0.9375rem;
+  line-height: 1.9;
+  color: var(--color-text-light);
+}
+
+/* サービス内容セクション */
+.lp-services {
+  padding: 80px 0;
+  background: #f8fafc;
+}
+
+.lp-services-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.lp-service-card {
+  background: #fff;
+  border-radius: 16px;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.lp-service-image {
+  height: 100%;
+  min-height: 240px;
+}
+
+.lp-service-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.lp-service-content {
+  padding: 32px;
+}
+
+.lp-service-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: var(--color-text);
+}
+
+.lp-service-text {
+  font-size: 0.9375rem;
+  line-height: 1.9;
+  color: var(--color-text-light);
+  margin-bottom: 20px;
+}
+
+.lp-service-features {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.lp-service-features li {
+  background: #f1f5f9;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.8125rem;
+  color: var(--color-text);
+}
+
+/* 広告媒体グリッド */
+.lp-media-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.lp-media-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 28px 24px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+}
+
+.lp-media-name {
+  font-size: 1.125rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: var(--color-text);
+}
+
+.lp-media-desc {
+  font-size: 0.875rem;
+  line-height: 1.8;
+  color: var(--color-text-light);
+  margin-bottom: 16px;
+}
+
+.lp-media-types {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.lp-media-types li {
+  background: var(--color-primary);
+  color: #fff;
+  padding: 4px 12px;
+  border-radius: 16px;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+/* 運用内容グリッド */
+.lp-operation {
+  padding: 80px 0;
+  background: #fff;
+}
+
+.lp-operation-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 20px;
+}
+
+.lp-operation-item {
+  text-align: center;
+  padding: 24px 16px;
+  background: #f8fafc;
+  border-radius: 12px;
+}
+
+.lp-operation-icon {
+  width: 48px;
+  height: 48px;
+  margin: 0 auto 16px;
+  color: var(--color-primary);
+}
+
+.lp-operation-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.lp-operation-title {
+  font-size: 0.9375rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: var(--color-text);
+}
+
+.lp-operation-text {
+  font-size: 0.8125rem;
+  line-height: 1.7;
+  color: var(--color-text-light);
+}
+
+/* CRMサービス */
+.lp-crm-services {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.lp-crm-service {
+  background: #fff;
+  border-radius: 12px;
+  padding: 32px 28px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.lp-crm-service-header {
+  border-bottom: 2px solid var(--color-primary);
+  padding-bottom: 16px;
+  margin-bottom: 16px;
+}
+
+.lp-crm-service-title {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.lp-crm-service-text {
+  font-size: 0.875rem;
+  line-height: 1.8;
+  color: var(--color-text-light);
+  margin-bottom: 20px;
+}
+
+.lp-crm-service-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.lp-crm-service-list li {
+  position: relative;
+  padding-left: 20px;
+  font-size: 0.875rem;
+  line-height: 1.8;
+  color: var(--color-text);
+}
+
+.lp-crm-service-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 10px;
+  width: 6px;
+  height: 6px;
+  background: var(--color-primary);
+  border-radius: 50%;
+}
+
+/* 研修メニュー */
+.lp-training-menu {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.lp-training-item {
+  background: #fff;
+  border-radius: 12px;
+  padding: 32px 28px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  position: relative;
+}
+
+.lp-training-badge {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: var(--color-primary);
+  color: #fff;
+  padding: 4px 12px;
+  border-radius: 16px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.lp-training-title {
+  font-size: 1.125rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: var(--color-text);
+}
+
+.lp-training-time {
+  font-size: 0.8125rem;
+  color: var(--color-primary);
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.lp-training-text {
+  font-size: 0.875rem;
+  line-height: 1.8;
+  color: var(--color-text-light);
+  margin-bottom: 16px;
+}
+
+.lp-training-topics {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.lp-training-topics li {
+  position: relative;
+  padding-left: 20px;
+  font-size: 0.8125rem;
+  line-height: 1.8;
+  color: var(--color-text-light);
+}
+
+.lp-training-topics li::before {
+  content: '\2713';
+  position: absolute;
+  left: 0;
+  color: var(--color-primary);
+  font-weight: 700;
+}
+
+/* 補助金セクション */
+.lp-subsidy {
+  padding: 80px 0;
+  background: #fff;
+}
+
+.lp-subsidy-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  margin-bottom: 24px;
+}
+
+.lp-subsidy-card {
+  background: linear-gradient(135deg, #f8fafc, #f1f5f9);
+  border-radius: 12px;
+  padding: 28px 24px;
+  border: 1px solid #e2e8f0;
+}
+
+.lp-subsidy-name {
+  font-size: 1.0625rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: var(--color-text);
+}
+
+.lp-subsidy-rate {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--color-primary);
+  margin-bottom: 12px;
+}
+
+.lp-subsidy-text {
+  font-size: 0.875rem;
+  line-height: 1.8;
+  color: var(--color-text-light);
+}
+
+.lp-subsidy-note {
+  text-align: center;
+  font-size: 0.8125rem;
+  color: var(--color-text-muted);
+}
+
+/* フローセクション */
+.lp-flow {
+  padding: 80px 0;
+  background: #f8fafc;
+}
+
+.lp-flow-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.lp-flow-step {
+  background: #fff;
+  border-radius: 12px;
+  padding: 28px 32px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+}
+
+.lp-flow-step-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 12px;
+}
+
+.lp-flow-step-num {
+  font-family: var(--font-en);
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #fff;
+  background: var(--color-primary);
+  padding: 6px 12px;
+  border-radius: 20px;
+}
+
+.lp-flow-step-title {
+  font-size: 1.0625rem;
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.lp-flow-step-text {
+  font-size: 0.9375rem;
+  line-height: 1.9;
+  color: var(--color-text-light);
+  padding-left: 0;
+}
+
+/* 料金セクション */
+.lp-pricing {
+  padding: 80px 0;
+  background: #fff;
+}
+
+.pricing-table {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.pricing-item {
+  background: #f8fafc;
+  border-radius: 12px;
+  padding: 28px 24px;
+  text-align: center;
+  border: 1px solid #e2e8f0;
+}
+
+.pricing-name {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  margin-bottom: 12px;
+  color: var(--color-text);
+}
+
+.pricing-price {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--color-primary);
+  margin-bottom: 8px;
+}
+
+.pricing-note {
+  font-size: 0.8125rem;
+  color: var(--color-text-muted);
+}
+
+/* FAQセクション */
+.lp-faq {
+  padding: 80px 0;
+  background: #f8fafc;
+}
+
+.lp-faq-list {
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.lp-faq-item {
+  background: #fff;
+  border-radius: 12px;
+  padding: 24px 28px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+}
+
+.lp-faq-question {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: var(--color-text);
+  position: relative;
+  padding-left: 32px;
+}
+
+.lp-faq-question::before {
+  content: 'Q';
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-family: var(--font-en);
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+.lp-faq-answer {
+  font-size: 0.9375rem;
+  line-height: 1.9;
+  color: var(--color-text-light);
+  padding-left: 32px;
+  position: relative;
+}
+
+.lp-faq-answer::before {
+  content: 'A';
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-family: var(--font-en);
+  font-weight: 700;
+  color: #e11d48;
+}
+
+/* CTAセクション */
+.lp-cta {
+  padding: 80px 0;
+  background: linear-gradient(135deg, var(--color-primary), #1d4ed8);
+}
+
+.lp-cta-content {
+  text-align: center;
+  color: #fff;
+}
+
+.lp-cta-title {
+  font-size: 1.75rem;
+  font-weight: 800;
+  margin-bottom: 16px;
+}
+
+.lp-cta-text {
+  font-size: 1rem;
+  line-height: 2;
+  opacity: 0.9;
+  margin-bottom: 32px;
+}
+
+.lp-cta-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+}
+
+.btn-outline-white {
+  background: transparent;
+  border: 2px solid #fff;
+  color: #fff;
+}
+
+.btn-outline-white:hover {
+  background: #fff;
+  color: var(--color-primary);
+}
+
+/* レスポンシブ */
+@media (max-width: 1024px) {
+  .problems-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .lp-media-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .lp-operation-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .lp-crm-services {
+    grid-template-columns: 1fr;
+  }
+
+  .lp-training-menu {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .pricing-table {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .lp-hero {
+    min-height: 70vh;
+  }
+
+  .lp-hero-title {
+    font-size: 1.75rem;
+  }
+
+  .lp-section-title {
+    font-size: 1.5rem;
+  }
+
+  .problems-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .solution-points {
+    grid-template-columns: 1fr;
+  }
+
+  .lp-service-card {
+    grid-template-columns: 1fr;
+  }
+
+  .lp-service-image {
+    height: 200px;
+  }
+
+  .lp-media-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .lp-operation-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .lp-training-menu {
+    grid-template-columns: 1fr;
+  }
+
+  .lp-subsidy-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .pricing-table {
+    grid-template-columns: 1fr;
+  }
+
+  .lp-cta-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+@media (max-width: 540px) {
+  .lp-hero {
+    min-height: 60vh;
+  }
+
+  .lp-hero-content {
+    padding: 0 var(--spacing-sm);
+  }
+
+  .lp-hero-label {
+    font-size: 0.75rem;
+  }
+
+  .lp-hero-title {
+    font-size: 1.375rem;
+    line-height: 1.6;
+    margin-bottom: var(--spacing-md);
+  }
+
+  .lp-hero-text {
+    font-size: 0.8125rem;
+    line-height: 1.8;
+    margin-bottom: var(--spacing-lg);
+  }
+
+  .lp-section-title {
+    font-size: 1.25rem;
+    margin-bottom: 16px;
+  }
+
+  .lp-section-lead {
+    font-size: 0.875rem;
+    margin-bottom: 32px;
+  }
+
+  .lp-problems,
+  .lp-solution,
+  .lp-services,
+  .lp-operation,
+  .lp-subsidy,
+  .lp-flow,
+  .lp-pricing,
+  .lp-faq,
+  .lp-cta {
+    padding: 48px 0;
+  }
+
+  .problem-item {
+    padding: 16px;
+    gap: 12px;
+  }
+
+  .problem-icon {
+    width: 24px;
+    height: 24px;
+  }
+
+  .problem-item p {
+    font-size: 0.8125rem;
+  }
+
+  .solution-point {
+    padding: 24px 20px;
+  }
+
+  .solution-point-title {
+    font-size: 1rem;
+  }
+
+  .solution-point-text {
+    font-size: 0.8125rem;
+  }
+
+  .lp-services-grid {
+    gap: 20px;
+  }
+
+  .lp-service-image {
+    height: 160px;
+    min-height: auto;
+  }
+
+  .lp-service-content {
+    padding: 20px 16px;
+  }
+
+  .lp-service-title {
+    font-size: 1.0625rem;
+  }
+
+  .lp-service-text {
+    font-size: 0.8125rem;
+    margin-bottom: 16px;
+  }
+
+  .lp-service-features li {
+    font-size: 0.75rem;
+    padding: 4px 10px;
+  }
+
+  .lp-media-card {
+    padding: 20px 16px;
+  }
+
+  .lp-media-name {
+    font-size: 1rem;
+  }
+
+  .lp-media-desc {
+    font-size: 0.8125rem;
+  }
+
+  .lp-media-types li {
+    font-size: 0.6875rem;
+    padding: 3px 10px;
+  }
+
+  .lp-operation-item {
+    padding: 20px 16px;
+  }
+
+  .lp-operation-icon {
+    width: 40px;
+    height: 40px;
+    margin-bottom: 12px;
+  }
+
+  .lp-operation-title {
+    font-size: 0.875rem;
+  }
+
+  .lp-operation-text {
+    font-size: 0.75rem;
+  }
+
+  .lp-crm-service {
+    padding: 24px 20px;
+  }
+
+  .lp-crm-service-title {
+    font-size: 1rem;
+  }
+
+  .lp-crm-service-text {
+    font-size: 0.8125rem;
+  }
+
+  .lp-crm-service-list li {
+    font-size: 0.8125rem;
+  }
+
+  .lp-training-item {
+    padding: 24px 20px;
+  }
+
+  .lp-training-badge {
+    font-size: 0.6875rem;
+    padding: 3px 10px;
+  }
+
+  .lp-training-title {
+    font-size: 1rem;
+  }
+
+  .lp-training-time {
+    font-size: 0.75rem;
+  }
+
+  .lp-training-text {
+    font-size: 0.8125rem;
+  }
+
+  .lp-training-topics li {
+    font-size: 0.75rem;
+  }
+
+  .lp-subsidy-card {
+    padding: 20px 16px;
+  }
+
+  .lp-subsidy-name {
+    font-size: 0.9375rem;
+  }
+
+  .lp-subsidy-rate {
+    font-size: 1.0625rem;
+  }
+
+  .lp-subsidy-text {
+    font-size: 0.8125rem;
+  }
+
+  .lp-subsidy-note {
+    font-size: 0.75rem;
+  }
+
+  .lp-flow-steps {
+    gap: 16px;
+  }
+
+  .lp-flow-step {
+    padding: 20px 16px;
+  }
+
+  .lp-flow-step-header {
+    gap: 12px;
+    margin-bottom: 8px;
+  }
+
+  .lp-flow-step-num {
+    font-size: 0.6875rem;
+    padding: 4px 10px;
+  }
+
+  .lp-flow-step-title {
+    font-size: 0.9375rem;
+  }
+
+  .lp-flow-step-text {
+    font-size: 0.8125rem;
+  }
+
+  .pricing-item {
+    padding: 20px 16px;
+  }
+
+  .pricing-name {
+    font-size: 0.875rem;
+  }
+
+  .pricing-price {
+    font-size: 1.25rem;
+  }
+
+  .pricing-note {
+    font-size: 0.75rem;
+  }
+
+  .lp-faq-list {
+    gap: 12px;
+  }
+
+  .lp-faq-item {
+    padding: 20px 16px;
+  }
+
+  .lp-faq-question {
+    font-size: 0.9375rem;
+    padding-left: 28px;
+  }
+
+  .lp-faq-answer {
+    font-size: 0.8125rem;
+    padding-left: 28px;
+  }
+
+  .lp-cta-title {
+    font-size: 1.25rem;
+  }
+
+  .lp-cta-text {
+    font-size: 0.875rem;
+    margin-bottom: 24px;
+  }
+
+  .lp-cta-buttons {
+    gap: 12px;
+  }
+
+  .lp-cta-buttons .btn {
+    width: 100%;
+    max-width: 280px;
+  }
+}

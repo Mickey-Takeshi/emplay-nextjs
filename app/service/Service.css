@@ -1,0 +1,1411 @@
+/* Service Page Styles */
+
+/* ヒーローセクション */
+.service-hero {
+  position: relative;
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.service-hero-background {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.service-hero-bg-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.service-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(15, 23, 42, 0.85), rgba(30, 41, 59, 0.75));
+}
+
+.service-hero-content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  color: #fff;
+  padding: 0 var(--spacing-md);
+  max-width: 900px;
+}
+
+.service-hero-label {
+  font-family: var(--font-en);
+  font-size: 0.875rem;
+  letter-spacing: 0.2em;
+  margin-bottom: var(--spacing-md);
+  opacity: 0.9;
+}
+
+.service-hero-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  line-height: 1.5;
+  margin-bottom: var(--spacing-lg);
+  letter-spacing: -0.02em;
+}
+
+.service-hero-text {
+  font-size: 1rem;
+  line-height: 2;
+  opacity: 0.9;
+}
+
+/* 3つの課題セクション */
+.service-challenges {
+  padding: 80px 0;
+  background: #fff;
+}
+
+.challenges-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  margin-top: 48px;
+}
+
+.challenge-card {
+  background: #f8fafc;
+  border-radius: 16px;
+  padding: 40px 32px;
+  position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.challenge-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
+}
+
+.challenge-number {
+  font-family: var(--font-en);
+  font-size: 3rem;
+  font-weight: 800;
+  color: var(--color-primary);
+  opacity: 0.15;
+  position: absolute;
+  top: 16px;
+  right: 24px;
+}
+
+.challenge-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 16px;
+  color: var(--color-text);
+}
+
+.challenge-text {
+  font-size: 0.875rem;
+  line-height: 1.9;
+  color: var(--color-text-light);
+}
+
+/* サービス詳細セクション */
+.service-detail {
+  padding: 100px 0;
+  background: #fff;
+}
+
+.service-detail-alt {
+  background: #f8fafc;
+}
+
+.service-detail-header {
+  text-align: center;
+  margin-bottom: 64px;
+}
+
+.service-detail-number {
+  font-family: var(--font-en);
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  letter-spacing: 0.1em;
+  display: block;
+  margin-bottom: 16px;
+}
+
+.service-detail-title {
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: 20px;
+  color: var(--color-text);
+}
+
+.service-detail-catch {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--color-text);
+  margin-bottom: 24px;
+}
+
+.service-detail-desc {
+  font-size: 0.9375rem;
+  line-height: 2;
+  color: var(--color-text-light);
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* サービスアイテム */
+.service-items {
+  margin-bottom: 64px;
+}
+
+.service-items-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 32px;
+  color: var(--color-text);
+  position: relative;
+}
+
+.service-items-title::after {
+  content: '';
+  display: block;
+  width: 40px;
+  height: 3px;
+  background: var(--color-primary);
+  margin: 16px auto 0;
+}
+
+.service-items-intro {
+  text-align: center;
+  font-size: 0.9375rem;
+  color: var(--color-text-light);
+  margin-bottom: 32px;
+  line-height: 1.8;
+}
+
+.service-items-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.service-item {
+  background: #fff;
+  border-radius: 12px;
+  padding: 24px 20px;
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.06);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.service-detail-alt .service-item {
+  background: #fff;
+}
+
+.service-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+}
+
+.service-item-icon {
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+  color: var(--color-primary);
+}
+
+.service-item-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.service-item-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.service-item-title {
+  font-size: 1.0625rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: var(--color-text);
+  line-height: 1.4;
+}
+
+.service-item-text {
+  font-size: 0.9375rem;
+  line-height: 1.8;
+  color: var(--color-text-light);
+}
+
+/* サービス詳細CTA */
+.service-detail-cta {
+  margin-top: 56px;
+  text-align: center;
+}
+
+.btn-outline {
+  background: transparent;
+  border: 2px solid var(--color-primary);
+  color: var(--color-primary);
+}
+
+.btn-outline:hover {
+  background: var(--color-primary);
+  color: #fff;
+}
+
+/* フローステップ */
+.service-flow {
+  margin-top: 64px;
+}
+
+.service-flow-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 40px;
+  color: var(--color-text);
+}
+
+.service-flow-title::after {
+  content: '';
+  display: block;
+  width: 40px;
+  height: 3px;
+  background: var(--color-primary);
+  margin: 16px auto 0;
+}
+
+.service-flow-steps {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 16px;
+}
+
+.service-flow-steps-4 {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.flow-step {
+  background: #fff;
+  border-radius: 12px;
+  padding: 24px 20px;
+  text-align: center;
+  position: relative;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+}
+
+.service-detail-alt .flow-step {
+  background: #fff;
+}
+
+.flow-step::after {
+  content: '';
+  position: absolute;
+  right: -12px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0;
+  height: 0;
+  border-left: 8px solid var(--color-primary);
+  border-top: 6px solid transparent;
+  border-bottom: 6px solid transparent;
+  opacity: 0.5;
+}
+
+.flow-step:last-child::after {
+  display: none;
+}
+
+.flow-step-num {
+  font-family: var(--font-en);
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  display: block;
+  margin-bottom: 12px;
+}
+
+.flow-step-title {
+  font-size: 0.9375rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: var(--color-text);
+}
+
+.flow-step-text {
+  font-size: 0.75rem;
+  line-height: 1.7;
+  color: var(--color-text-light);
+}
+
+/* メディアグリッド（広告媒体） */
+.media-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.media-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 28px 24px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+}
+
+.media-name {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: var(--color-text);
+}
+
+.media-desc {
+  font-size: 0.8125rem;
+  line-height: 1.8;
+  color: var(--color-text-light);
+}
+
+/* 運用グリッド */
+.operation-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 16px;
+}
+
+.operation-item {
+  background: #fff;
+  border-radius: 12px;
+  padding: 24px 20px;
+  text-align: center;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+}
+
+.operation-title {
+  font-size: 0.9375rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: var(--color-text);
+}
+
+.operation-text {
+  font-size: 0.75rem;
+  line-height: 1.7;
+  color: var(--color-text-light);
+}
+
+/* 成果指標セクション */
+.metrics-section {
+  margin-top: 48px;
+}
+
+.metrics-intro {
+  text-align: center;
+  font-size: 0.875rem;
+  color: var(--color-text-light);
+  margin-bottom: 24px;
+}
+
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 16px;
+}
+
+.metric-item {
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px 16px;
+  text-align: center;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+}
+
+.metric-name {
+  font-family: var(--font-en);
+  font-size: 1.125rem;
+  font-weight: 800;
+  color: var(--color-primary);
+  display: block;
+  margin-bottom: 8px;
+}
+
+.metric-desc {
+  font-size: 0.6875rem;
+  color: var(--color-text-light);
+  line-height: 1.5;
+}
+
+/* CRM Benefits */
+.crm-benefits {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.crm-benefit {
+  background: #f8fafc;
+  border-radius: 12px;
+  padding: 32px 24px;
+  transition: transform 0.3s ease;
+}
+
+.crm-benefit:hover {
+  transform: translateY(-2px);
+}
+
+.crm-benefit-icon {
+  width: 40px;
+  height: 40px;
+  color: var(--color-primary);
+  margin-bottom: 16px;
+}
+
+.crm-benefit-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.crm-benefit-title {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: var(--color-text);
+}
+
+.crm-benefit-text {
+  font-size: 0.8125rem;
+  line-height: 1.8;
+  color: var(--color-text-light);
+}
+
+/* 配信グリッド */
+.delivery-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+.delivery-card {
+  background: #f8fafc;
+  border-radius: 12px;
+  padding: 32px;
+}
+
+.delivery-title {
+  font-size: 1.125rem;
+  font-weight: 700;
+  margin-bottom: 16px;
+  color: var(--color-text);
+}
+
+.delivery-text {
+  font-size: 0.875rem;
+  line-height: 1.9;
+  color: var(--color-text-light);
+}
+
+/* 研修の特長 */
+.training-features {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 16px;
+}
+
+.training-feature {
+  background: #fff;
+  border-radius: 12px;
+  padding: 28px 20px;
+  text-align: center;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+}
+
+.training-feature-num {
+  font-family: var(--font-en);
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--color-primary);
+  opacity: 0.2;
+  display: block;
+  margin-bottom: 12px;
+}
+
+.training-feature-title {
+  font-size: 0.9375rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: var(--color-text);
+  line-height: 1.5;
+}
+
+.training-feature-text {
+  font-size: 0.75rem;
+  line-height: 1.7;
+  color: var(--color-text-light);
+}
+
+/* 補助金グリッド */
+.subsidy-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.subsidy-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 28px 24px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+}
+
+.subsidy-name {
+  font-size: 0.9375rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: var(--color-text);
+}
+
+.subsidy-desc {
+  font-size: 0.8125rem;
+  line-height: 1.8;
+  color: var(--color-text-light);
+}
+
+.subsidy-note {
+  text-align: center;
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+  margin-top: 24px;
+}
+
+/* 研修メニュー */
+.training-menu {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.training-menu-item {
+  background: #fff;
+  border-radius: 12px;
+  padding: 28px 24px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+  border-left: 4px solid var(--color-primary);
+}
+
+.training-menu-title {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: var(--color-text);
+}
+
+.training-menu-desc {
+  font-size: 0.8125rem;
+  line-height: 1.8;
+  color: var(--color-text-light);
+}
+
+/* ソリューションセクション */
+.solutions-section {
+  padding: 100px 0;
+  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+}
+
+.solutions-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 48px;
+}
+
+.solution-card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 32px 28px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.solution-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+}
+
+.solution-title {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 16px;
+  color: var(--color-text);
+}
+
+.solution-text {
+  font-size: 0.8125rem;
+  line-height: 1.8;
+  color: var(--color-text-light);
+  margin-bottom: 20px;
+}
+
+.solution-services {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  background: rgba(37, 99, 235, 0.1);
+  padding: 8px 16px;
+  border-radius: 20px;
+}
+
+/* CTA セクション */
+.service-cta {
+  padding: 100px 0;
+  background: linear-gradient(135deg, var(--color-primary) 0%, #1e40af 100%);
+}
+
+.service-cta-content {
+  text-align: center;
+  color: #fff;
+}
+
+.service-cta-title {
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: 24px;
+}
+
+.service-cta-text {
+  font-size: 1rem;
+  line-height: 2;
+  margin-bottom: 40px;
+  opacity: 0.9;
+}
+
+.service-cta .btn-primary {
+  background: #fff;
+  color: var(--color-primary);
+  padding: 18px 48px;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.service-cta .btn-primary:hover {
+  background: #f1f5f9;
+  transform: translateY(-2px);
+}
+
+/* 研修料金セクション */
+.training-pricing-simple {
+  background: linear-gradient(135deg, #f0f7ff, #eff6ff);
+  border: 2px solid var(--color-primary);
+  border-radius: 16px;
+  padding: 32px;
+  text-align: center;
+}
+
+.pricing-comparison {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  margin-bottom: 16px;
+}
+
+.pricing-before,
+.pricing-after {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.pricing-label {
+  font-size: 0.8125rem;
+  color: var(--color-text-light);
+}
+
+.pricing-value {
+  font-family: var(--font-en);
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--color-text);
+}
+
+.pricing-value.highlight {
+  font-size: 2rem;
+  color: var(--color-primary);
+}
+
+.pricing-value small {
+  font-size: 0.875rem;
+  font-weight: 400;
+}
+
+.pricing-arrow {
+  font-size: 1.5rem;
+  color: var(--color-primary);
+  font-weight: 700;
+}
+
+.pricing-note {
+  font-size: 0.8125rem;
+  color: var(--color-text-light);
+  margin: 0;
+}
+
+@media (max-width: 540px) {
+  .pricing-comparison {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .pricing-arrow {
+    transform: rotate(90deg);
+  }
+}
+
+/* FAQ セクション */
+.faq-section {
+  padding: 100px 0;
+  background: #fff;
+}
+
+.faq-list {
+  max-width: 800px;
+  margin: 48px auto 0;
+}
+
+.faq-item {
+  border-bottom: 1px solid var(--color-border);
+}
+
+.faq-question {
+  width: 100%;
+  padding: 24px 0;
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  font-size: 1rem;
+}
+
+.faq-q {
+  font-family: var(--font-en);
+  font-weight: 700;
+  color: var(--color-primary);
+  flex-shrink: 0;
+}
+
+.faq-question-text {
+  flex: 1;
+  font-weight: 600;
+  color: var(--color-text);
+  line-height: 1.6;
+}
+
+.faq-toggle {
+  font-size: 1.25rem;
+  color: var(--color-text-muted);
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+}
+
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease, padding 0.3s ease;
+}
+
+.faq-item.open .faq-answer {
+  max-height: 300px;
+  padding-bottom: 24px;
+}
+
+.faq-answer p {
+  padding-left: 32px;
+  font-size: 0.9375rem;
+  line-height: 1.9;
+  color: var(--color-text-light);
+}
+
+/* レスポンシブ */
+@media (max-width: 1024px) {
+  .challenges-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .service-items-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .service-flow-steps {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .service-flow-steps-4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .media-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .operation-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .metrics-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .crm-benefits {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .training-features {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .subsidy-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .training-menu {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .solutions-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .service-hero {
+    min-height: 60vh;
+  }
+
+  .service-hero-title {
+    font-size: 1.75rem;
+  }
+
+  .service-hero-text {
+    font-size: 0.875rem;
+  }
+
+  .service-challenges {
+    padding: 60px 0;
+  }
+
+  .service-detail {
+    padding: 60px 0;
+  }
+
+  .service-detail-title {
+    font-size: 1.5rem;
+  }
+
+  .service-items-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .service-flow-steps {
+    grid-template-columns: 1fr;
+  }
+
+  .service-flow-steps-4 {
+    grid-template-columns: 1fr;
+  }
+
+  .flow-step::after {
+    display: none;
+  }
+
+  .media-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .operation-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .metrics-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .crm-benefits {
+    grid-template-columns: 1fr;
+  }
+
+  .delivery-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .training-features {
+    grid-template-columns: 1fr;
+  }
+
+  .subsidy-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .training-menu {
+    grid-template-columns: 1fr;
+  }
+
+  .solutions-section {
+    padding: 60px 0;
+  }
+
+  .solutions-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .service-cta {
+    padding: 60px 0;
+  }
+
+  .service-cta-title {
+    font-size: 1.5rem;
+  }
+
+  .faq-section {
+    padding: 60px 0;
+  }
+
+  .faq-question {
+    padding: 20px 0;
+    font-size: 0.9375rem;
+  }
+}
+
+@media (max-width: 540px) {
+  .service-hero {
+    min-height: 50vh;
+  }
+
+  .service-hero-title {
+    font-size: 1.375rem;
+    line-height: 1.6;
+  }
+
+  .service-hero-text {
+    font-size: 0.8125rem;
+    line-height: 1.8;
+  }
+
+  .service-challenges {
+    padding: 48px 0;
+  }
+
+  .challenges-grid {
+    margin-top: 32px;
+    gap: 16px;
+  }
+
+  .challenge-card {
+    padding: 24px 20px;
+  }
+
+  .challenge-number {
+    font-size: 1.75rem;
+    top: 12px;
+    right: 16px;
+  }
+
+  .challenge-title {
+    font-size: 1.0625rem;
+  }
+
+  .challenge-text {
+    font-size: 0.8125rem;
+  }
+
+  .service-detail {
+    padding: 48px 0;
+  }
+
+  .service-detail-header {
+    margin-bottom: 40px;
+  }
+
+  .service-detail-title {
+    font-size: 1.25rem;
+  }
+
+  .service-detail-catch {
+    font-size: 1rem;
+  }
+
+  .service-detail-desc {
+    font-size: 0.8125rem;
+  }
+
+  .service-items {
+    margin-bottom: 40px;
+  }
+
+  .service-items-title {
+    font-size: 1.0625rem;
+  }
+
+  .service-items-grid {
+    gap: 12px;
+  }
+
+  .service-item {
+    padding: 16px;
+    gap: 12px;
+  }
+
+  .service-item-icon {
+    width: 32px;
+    height: 32px;
+  }
+
+  .service-item-title {
+    font-size: 0.9375rem;
+    margin-bottom: 6px;
+  }
+
+  .service-item-text {
+    font-size: 0.8125rem;
+    line-height: 1.7;
+  }
+
+  .service-flow {
+    margin-top: 40px;
+  }
+
+  .service-flow-title {
+    font-size: 1.0625rem;
+    margin-bottom: 24px;
+  }
+
+  .flow-step {
+    padding: 20px 16px;
+  }
+
+  .flow-step-num {
+    font-size: 0.6875rem;
+  }
+
+  .flow-step-title {
+    font-size: 0.875rem;
+  }
+
+  .flow-step-text {
+    font-size: 0.6875rem;
+  }
+
+  .service-detail-cta {
+    margin-top: 40px;
+  }
+
+  .media-card {
+    padding: 20px 16px;
+  }
+
+  .media-name {
+    font-size: 0.9375rem;
+  }
+
+  .media-desc {
+    font-size: 0.75rem;
+  }
+
+  .operation-item {
+    padding: 20px 16px;
+  }
+
+  .operation-title {
+    font-size: 0.875rem;
+  }
+
+  .operation-text {
+    font-size: 0.6875rem;
+  }
+
+  .metrics-section {
+    margin-top: 32px;
+  }
+
+  .metrics-intro {
+    font-size: 0.75rem;
+  }
+
+  .metrics-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  .metric-item {
+    padding: 16px 12px;
+  }
+
+  .metric-name {
+    font-size: 1rem;
+  }
+
+  .metric-desc {
+    font-size: 0.625rem;
+  }
+
+  .crm-benefit {
+    padding: 24px 20px;
+  }
+
+  .crm-benefit-icon {
+    width: 32px;
+    height: 32px;
+  }
+
+  .crm-benefit-title {
+    font-size: 0.9375rem;
+  }
+
+  .crm-benefit-text {
+    font-size: 0.75rem;
+  }
+
+  .delivery-card {
+    padding: 24px 20px;
+  }
+
+  .delivery-title {
+    font-size: 1rem;
+  }
+
+  .delivery-text {
+    font-size: 0.8125rem;
+  }
+
+  .training-feature {
+    padding: 20px 16px;
+  }
+
+  .training-feature-num {
+    font-size: 1.25rem;
+  }
+
+  .training-feature-title {
+    font-size: 0.875rem;
+  }
+
+  .training-feature-text {
+    font-size: 0.6875rem;
+  }
+
+  .subsidy-card {
+    padding: 20px 16px;
+  }
+
+  .subsidy-name {
+    font-size: 0.875rem;
+  }
+
+  .subsidy-desc {
+    font-size: 0.75rem;
+  }
+
+  .training-menu-item {
+    padding: 20px 16px;
+  }
+
+  .training-menu-title {
+    font-size: 0.9375rem;
+  }
+
+  .training-menu-desc {
+    font-size: 0.75rem;
+  }
+
+  .solutions-section {
+    padding: 48px 0;
+  }
+
+  .solutions-grid {
+    margin-top: 32px;
+    gap: 16px;
+  }
+
+  .solution-card {
+    padding: 24px 20px;
+  }
+
+  .solution-title {
+    font-size: 0.9375rem;
+  }
+
+  .solution-text {
+    font-size: 0.75rem;
+  }
+
+  .solution-services {
+    font-size: 0.6875rem;
+    padding: 6px 12px;
+  }
+
+  .service-cta {
+    padding: 48px 0;
+  }
+
+  .service-cta-title {
+    font-size: 1.25rem;
+  }
+
+  .service-cta-text {
+    font-size: 0.875rem;
+    margin-bottom: 24px;
+  }
+
+  .faq-section {
+    padding: 48px 0;
+  }
+
+  .faq-list {
+    margin-top: 32px;
+  }
+
+  .faq-question {
+    padding: 16px 0;
+    font-size: 0.875rem;
+    gap: 12px;
+  }
+
+  .faq-question-text {
+    font-size: 0.875rem;
+  }
+
+  .faq-answer p {
+    padding-left: 0;
+    font-size: 0.8125rem;
+  }
+}
+
+/* ========================================
+   HP制作サービス（NEW）
+   ======================================== */
+.service-detail-featured {
+  background: linear-gradient(135deg, #f0f7ff 0%, #e8f4fd 100%);
+  border-bottom: 3px solid var(--color-primary);
+}
+
+.service-new-badge {
+  background: linear-gradient(135deg, var(--color-primary), #4f46e5);
+  color: #fff !important;
+  padding: 8px 20px;
+  border-radius: 30px;
+  font-size: 0.75rem !important;
+  display: inline-block !important;
+}
+
+.hp-reasons {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 32px;
+}
+
+.hp-reason-card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 32px 24px;
+  text-align: center;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+  transition: transform 0.3s ease;
+}
+
+.hp-reason-card:hover {
+  transform: translateY(-4px);
+}
+
+.hp-reason-stat {
+  font-family: var(--font-en);
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--color-primary);
+  margin-bottom: 12px;
+}
+
+.hp-reason-text {
+  font-size: 0.875rem;
+  line-height: 1.7;
+  color: var(--color-text-light);
+}
+
+.hp-features {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 32px;
+}
+
+.hp-feature {
+  background: #fff;
+  border-radius: 16px;
+  padding: 32px 28px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hp-feature:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+}
+
+.hp-feature-num {
+  font-family: var(--font-en);
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  letter-spacing: 0.1em;
+  display: block;
+  margin-bottom: 12px;
+}
+
+.hp-feature-title {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--color-text);
+  margin-bottom: 12px;
+}
+
+.hp-feature-text {
+  font-size: 0.875rem;
+  line-height: 1.8;
+  color: var(--color-text-light);
+}
+
+/* HP制作サービス レスポンシブ */
+@media (max-width: 840px) {
+  .hp-reasons {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .hp-reason-card {
+    padding: 24px 20px;
+  }
+
+  .hp-reason-stat {
+    font-size: 2rem;
+  }
+
+  .hp-features {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .hp-feature {
+    padding: 24px 20px;
+  }
+}
