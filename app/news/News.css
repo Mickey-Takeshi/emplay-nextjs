@@ -36,32 +36,26 @@
   opacity: 1;
 }
 
+.news-date {
+  font-family: var(--font-en);
+  font-size: 0.875rem;
+  color: var(--color-text-light);
+  flex-shrink: 0;
+  width: 100px;
+}
+
 .news-title {
   flex: 1;
   font-size: 1rem;
-  font-weight: 500;
+  font-weight: 400;
   color: var(--color-text);
-  line-height: 1.7;
-  margin: 0;
+  line-height: 1.6;
 }
 
 h2.news-title {
   font-size: 1rem;
-  font-weight: 500;
+  font-weight: 400;
   margin: 0;
-}
-
-/* 日付バッジスタイル */
-.news-date {
-  font-family: var(--font-en);
-  font-size: 0.8rem;
-  font-weight: 500;
-  color: var(--color-primary);
-  background: linear-gradient(135deg, rgba(37, 99, 235, 0.1), rgba(37, 99, 235, 0.05));
-  padding: 6px 14px;
-  border-radius: 20px;
-  flex-shrink: 0;
-  width: auto;
 }
 
 .news-arrow {
