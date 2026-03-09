@@ -277,7 +277,7 @@ export default function ServiceHpClient() {
                 <div className="pricing-amounts">
                   <div className="pricing-amount-row">
                     <span className="pricing-amount-label">初期費用</span>
-                    <span className="pricing-amount-value">¥200,000</span>
+                    <span className="pricing-amount-value">¥300,000</span>
                   </div>
                   <div className="pricing-amount-row main">
                     <span className="pricing-amount-label">月額</span>
@@ -302,7 +302,7 @@ export default function ServiceHpClient() {
                 <div className="pricing-amounts">
                   <div className="pricing-amount-row">
                     <span className="pricing-amount-label">初期費用</span>
-                    <span className="pricing-amount-value">¥200,000</span>
+                    <span className="pricing-amount-value">¥300,000</span>
                   </div>
                   <div className="pricing-amount-row main">
                     <span className="pricing-amount-label">月額</span>
