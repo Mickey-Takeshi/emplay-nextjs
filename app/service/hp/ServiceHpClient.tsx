@@ -34,8 +34,8 @@ export default function ServiceHpClient() {
       a: '制作したサイトのデータ一式を納品いたします（別途30万円）。サイトは継続してご利用いただけます。'
     },
     {
-      q: '助成金は活用できますか？',
-      a: 'HP制作研修プランでは、人材開発支援助成金（最大75%助成）を活用いただける場合があります。詳細はお問い合わせください。'
+      q: '自社でHP運用したい場合は？',
+      a: 'HP制作研修プランをご用意しています。SEO/AIO知識やコンテンツ作成スキルを習得し、自社で運用できる人材を育成します。'
     }
   ]
 
@@ -277,11 +277,11 @@ export default function ServiceHpClient() {
                 <div className="pricing-amounts">
                   <div className="pricing-amount-row">
                     <span className="pricing-amount-label">初期費用</span>
-                    <span className="pricing-amount-value">¥300,000</span>
+                    <span className="pricing-amount-value">&yen;300,000</span>
                   </div>
                   <div className="pricing-amount-row main">
                     <span className="pricing-amount-label">月額</span>
-                    <span className="pricing-amount-value">¥10,000</span>
+                    <span className="pricing-amount-value">&yen;10,000</span>
                   </div>
                 </div>
                 <ul className="pricing-features-new">
@@ -302,11 +302,11 @@ export default function ServiceHpClient() {
                 <div className="pricing-amounts">
                   <div className="pricing-amount-row">
                     <span className="pricing-amount-label">初期費用</span>
-                    <span className="pricing-amount-value">¥300,000</span>
+                    <span className="pricing-amount-value">&yen;300,000</span>
                   </div>
                   <div className="pricing-amount-row main">
                     <span className="pricing-amount-label">月額</span>
-                    <span className="pricing-amount-value">¥50,000〜</span>
+                    <span className="pricing-amount-value">&yen;50,000〜</span>
                   </div>
                 </div>
                 <ul className="pricing-features-new">
@@ -329,11 +329,11 @@ export default function ServiceHpClient() {
                 <div className="pricing-amounts">
                   <div className="pricing-amount-row">
                     <span className="pricing-amount-label">初期費用</span>
-                    <span className="pricing-amount-value">¥300,000</span>
+                    <span className="pricing-amount-value">&yen;300,000</span>
                   </div>
                   <div className="pricing-amount-row main">
                     <span className="pricing-amount-label">月額</span>
-                    <span className="pricing-amount-value">¥100,000〜</span>
+                    <span className="pricing-amount-value">&yen;100,000〜</span>
                   </div>
                 </div>
                 <ul className="pricing-features-new">
@@ -357,11 +357,8 @@ export default function ServiceHpClient() {
                 <div className="pricing-amounts">
                   <div className="pricing-amount-row main">
                     <span className="pricing-amount-label">費用</span>
-                    <span className="pricing-amount-value">¥300,000<small>/月</small></span>
+                    <span className="pricing-amount-value">&yen;300,000<small>/月</small></span>
                   </div>
-                </div>
-                <div className="pricing-subsidy-badge">
-                  <span>最大75%助成金対応</span>
                 </div>
                 <ul className="pricing-features-new">
                   <li>HP制作スキル習得</li>
@@ -369,6 +366,7 @@ export default function ServiceHpClient() {
                   <li>コンテンツ作成研修</li>
                   <li>実践ワークショップ</li>
                 </ul>
+                <Link href="/service/training" className="pricing-training-link">研修サービスの詳細はこちら →</Link>
               </div>
             </div>
           </div>
@@ -475,7 +473,7 @@ export default function ServiceHpClient() {
           <div className="cta-content-new">
             <h2 className="cta-title-new">まずは無料相談から</h2>
             <p className="cta-text-new">
-              HPリニューアル、SEO/AIO対策、他社比較、助成金活用など<br className="pc-only" />
+              HPリニューアル、SEO/AIO対策、他社比較など<br className="pc-only" />
               お気軽にご相談ください。
             </p>
             <Link href="/contact" className="btn btn-primary btn-large cta-button-new">無料相談を申し込む</Link>

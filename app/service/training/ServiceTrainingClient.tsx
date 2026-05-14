@@ -14,14 +14,6 @@ export default function ServiceTrainingClient() {
 
   const faqs = [
     {
-      q: '助成金は本当にもらえますか？',
-      a: '要件を満たせばほぼ確実に受給できます。雇用保険適用事業所で、対象者が雇用保険被保険者であれば、基本的に申請可能です。EMPLAYが要件確認から申請までサポートします。'
-    },
-    {
-      q: '申請は難しくないですか？',
-      a: 'EMPLAYが計画届から支給申請まで追加料金なしでフルサポートします。必要書類の作成、申請代行、労働局とのやり取りもお任せください。'
-    },
-    {
       q: '実際に成果は出ますか？',
       a: '研修＋事業支援一体型なので、学んだ内容を即実務に活かせます。AI/DX研修では業務時間20〜40%削減、採用研修では採用単価30〜50%削減などの成果が期待できます。'
     },
@@ -35,7 +27,15 @@ export default function ServiceTrainingClient() {
     },
     {
       q: '研修開始までどのくらいかかりますか？',
-      a: '助成金を活用する場合、研修開始1ヶ月前までに計画届の提出が必要です。約2ヶ月のリードタイムを見込んでください。お急ぎの場合は助成金なしで即開始も可能です。'
+      a: 'ヒアリング・プログラム設計に約2〜3週間いただいています。お急ぎの場合はご相談ください。'
+    },
+    {
+      q: 'カリキュラムのカスタマイズは可能ですか？',
+      a: 'はい、御社の業種・課題に合わせてプログラム内容をカスタマイズいたします。ヒアリング時に詳しくお伺いします。'
+    },
+    {
+      q: 'EMPLAY AI ACADEMYとの違いは何ですか？',
+      a: 'EMPLAY AI ACADEMYはAI活用・Web制作・業務自動化に特化したオンライン完結型のプログラムです。本研修サービスは採用マーケティングやSNS攻略を含む幅広いテーマに対面でも対応できます。'
     }
   ]
 
@@ -52,15 +52,15 @@ export default function ServiceTrainingClient() {
             研修サービス
           </div>
           <h1 className="training-hero-title">
-            <span className="training-hero-title-accent">助成金を活用した</span>
+            <span className="training-hero-title-accent">企業向け</span>
             <br />
             研修サービス
           </h1>
           <p className="training-hero-subtitle">研修だけで終わらせない。売上向上まで伴走します。</p>
           <div className="training-hero-badges">
-            <span className="training-hero-badge">最大75%助成</span>
-            <span className="training-hero-badge">実質月2.5万円/人〜</span>
             <span className="training-hero-badge">研修×事業支援一体型</span>
+            <span className="training-hero-badge">成果にコミット</span>
+            <span className="training-hero-badge">対面・オンライン対応</span>
           </div>
           <Link href="/contact" className="btn btn-primary btn-large training-hero-cta">無料相談を申し込む</Link>
         </div>
@@ -133,10 +133,6 @@ export default function ServiceTrainingClient() {
           <h2 className="training-section-title light">なぜ今、研修投資が必要なのか</h2>
           <div className="training-why-now-grid">
             <div className="training-why-now-card">
-              <div className="training-why-now-stat">65<span>%</span></div>
-              <p className="training-why-now-text">DX推進の障壁に<br />「費用面」を挙げる企業</p>
-            </div>
-            <div className="training-why-now-card">
               <div className="training-why-now-stat">79<span>万人</span></div>
               <p className="training-why-now-text">2030年に不足すると<br />予測されるIT人材</p>
             </div>
@@ -144,9 +140,13 @@ export default function ServiceTrainingClient() {
               <div className="training-why-now-stat">20<span>%未満</span></div>
               <p className="training-why-now-text">生成AIを導入<br />している企業の割合</p>
             </div>
+            <div className="training-why-now-card">
+              <div className="training-why-now-stat">3<span>倍</span></div>
+              <p className="training-why-now-text">AI活用企業の<br />生産性向上効果</p>
+            </div>
           </div>
           <div className="training-why-now-conclusion">
-            <p><strong>助成金で最大75%</strong>のコスト削減が可能。今が研修投資のチャンスです。</p>
+            <p><strong>社内人材の育成</strong>が、DX推進と競争力強化の最短ルートです。</p>
           </div>
         </div>
       </section>
@@ -176,9 +176,9 @@ export default function ServiceTrainingClient() {
             <div className="training-feature-card">
               <div className="training-feature-header">
                 <span className="training-feature-number">03</span>
-                <h3 className="training-feature-title">助成金申請サポート込み</h3>
+                <h3 className="training-feature-title">カスタマイズ対応</h3>
               </div>
-              <p className="training-feature-text">最大75%の助成金申請を追加料金なしでフルサポート。面倒な書類作成もお任せください。</p>
+              <p className="training-feature-text">御社の業種・課題に合わせてプログラムをカスタマイズ。対面・オンラインどちらにも対応します。</p>
             </div>
           </div>
 
@@ -361,45 +361,19 @@ export default function ServiceTrainingClient() {
         </div>
       </section>
 
-      {/* 助成金制度 */}
-      <section className="training-subsidy">
+      {/* EMPLAY AI ACADEMY 誘導 */}
+      <section className="training-academy-banner">
         <div className="container">
-          <p className="training-section-label">SUBSIDY</p>
-          <h2 className="training-section-title">活用できる助成金制度</h2>
-
-          <div className="training-subsidy-grid">
-            <div className="training-subsidy-card">
-              <div className="training-subsidy-badge">国の制度</div>
-              <h3 className="training-subsidy-name">人材開発支援助成金</h3>
-              <p className="training-subsidy-subname">事業展開等リスキリング支援コース</p>
-              <div className="training-subsidy-rates">
-                <div className="training-subsidy-rate">
-                  <span className="training-subsidy-rate-value">75<small>%</small></span>
-                  <span className="training-subsidy-rate-label">経費助成</span>
-                </div>
-                <div className="training-subsidy-rate">
-                  <span className="training-subsidy-rate-value">1,000<small>円/時</small></span>
-                  <span className="training-subsidy-rate-label">賃金助成</span>
-                </div>
-              </div>
-            </div>
-            <div className="training-subsidy-card">
-              <div className="training-subsidy-badge tokyo">東京都の制度</div>
-              <h3 className="training-subsidy-name">東京都DXリスキリング助成金</h3>
-              <p className="training-subsidy-subname">都内中小企業向け</p>
-              <div className="training-subsidy-rates">
-                <div className="training-subsidy-rate">
-                  <span className="training-subsidy-rate-value">3/4</span>
-                  <span className="training-subsidy-rate-label">助成率</span>
-                </div>
-                <div className="training-subsidy-rate">
-                  <span className="training-subsidy-rate-value">100<small>万円</small></span>
-                  <span className="training-subsidy-rate-label">年間上限</span>
-                </div>
-              </div>
+          <div className="training-academy-content">
+            <div className="training-academy-text">
+              <span className="training-academy-badge">NEW</span>
+              <h2 className="training-academy-title">EMPLAY AI ACADEMY</h2>
+              <p className="training-academy-desc">
+                AI活用・Web制作・業務自動化に特化した、オンライン完結型の実践研修プログラム。全10プログラムから自社の課題に合わせて選べます。
+              </p>
+              <a href="https://academy.emplay.jp/" className="btn btn-primary btn-large" target="_blank" rel="noopener noreferrer">EMPLAY AI ACADEMYを見る →</a>
             </div>
           </div>
-          <p className="training-subsidy-note">※国と都は併用不可。EMPLAYが御社に最適なプランを提案します。</p>
         </div>
       </section>
 
@@ -410,38 +384,21 @@ export default function ServiceTrainingClient() {
           <h2 className="training-section-title">料金プラン</h2>
 
           <div className="training-pricing-comparison">
-            <div className="training-pricing-before">
-              <span className="training-pricing-label">通常価格</span>
-              <span className="training-pricing-value">月10万円<small>/人</small></span>
-              <span className="training-pricing-condition">（5名〜、3ヶ月〜）</span>
-            </div>
-            <div className="training-pricing-arrow">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <path d="M5 12h14M12 5l7 7-7 7"/>
-              </svg>
-            </div>
             <div className="training-pricing-after">
-              <span className="training-pricing-label">助成金適用後</span>
-              <span className="training-pricing-value highlight">月2.5万円〜<small>/人</small></span>
-              <span className="training-pricing-condition">（最大75%助成＋賃金助成8,000円/人・月）</span>
+              <span className="training-pricing-value highlight">要お問い合わせ</span>
+              <span className="training-pricing-condition">研修内容・受講人数・期間に応じてお見積もりいたします</span>
             </div>
           </div>
 
-          <div className="training-pricing-example">
-            <h3 className="training-pricing-example-title">計算例（5名×3ヶ月の場合）</h3>
-            <div className="training-pricing-example-content">
-              <div className="training-pricing-example-row">
-                <span className="training-pricing-example-label">研修費用（総額）</span>
-                <span className="training-pricing-example-value">150万円</span>
-              </div>
-              <div className="training-pricing-example-row">
-                <span className="training-pricing-example-label">助成金受給額</span>
-                <span className="training-pricing-example-value highlight">-112.5万円</span>
-              </div>
-              <div className="training-pricing-example-row total">
-                <span className="training-pricing-example-label">実質負担</span>
-                <span className="training-pricing-example-value">37.5万円</span>
-              </div>
+          <div className="training-pricing-includes">
+            <h3 className="training-pricing-includes-title">料金に含まれるもの</h3>
+            <div className="training-pricing-includes-grid">
+              <span>研修プログラム（月8時間×3ヶ月）</span>
+              <span>実務適用サポート</span>
+              <span>事業支援・伴走</span>
+              <span>効果測定・レポート</span>
+              <span>カリキュラムカスタマイズ</span>
+              <span>対面・オンライン対応</span>
             </div>
           </div>
         </div>
@@ -473,10 +430,10 @@ export default function ServiceTrainingClient() {
               <div className="training-comparison-cell highlight">込み</div>
             </div>
             <div className="training-comparison-row">
-              <div className="training-comparison-cell label">助成金サポート</div>
-              <div className="training-comparison-cell">なし</div>
-              <div className="training-comparison-cell">別料金</div>
-              <div className="training-comparison-cell highlight">込み</div>
+              <div className="training-comparison-cell label">カスタマイズ</div>
+              <div className="training-comparison-cell">テンプレート型</div>
+              <div className="training-comparison-cell">一部対応</div>
+              <div className="training-comparison-cell highlight">フルカスタマイズ</div>
             </div>
             <div className="training-comparison-row">
               <div className="training-comparison-cell label">成果コミット</div>
@@ -502,22 +459,12 @@ export default function ServiceTrainingClient() {
               <div className="training-flow-content">
                 <h3>無料相談・ヒアリング</h3>
                 <span className="training-flow-period">1週間</span>
-                <p>現状の課題や目標をヒアリングし、最適なプログラムと助成金をご提案します。</p>
+                <p>現状の課題や目標をヒアリングし、最適なプログラムをご提案します。</p>
               </div>
             </div>
             <div className="training-flow-item">
               <div className="training-flow-marker">
                 <span>STEP 2</span>
-              </div>
-              <div className="training-flow-content">
-                <h3>助成金申請サポート</h3>
-                <span className="training-flow-period">2〜4週間</span>
-                <p>計画届の作成から提出まで、助成金申請をフルサポートします。</p>
-              </div>
-            </div>
-            <div className="training-flow-item">
-              <div className="training-flow-marker">
-                <span>STEP 3</span>
               </div>
               <div className="training-flow-content">
                 <h3>研修プログラム設計</h3>
@@ -527,7 +474,7 @@ export default function ServiceTrainingClient() {
             </div>
             <div className="training-flow-item">
               <div className="training-flow-marker">
-                <span>STEP 4</span>
+                <span>STEP 3</span>
               </div>
               <div className="training-flow-content">
                 <h3>研修実施＋事業支援</h3>
@@ -537,17 +484,13 @@ export default function ServiceTrainingClient() {
             </div>
             <div className="training-flow-item">
               <div className="training-flow-marker">
-                <span>STEP 5</span>
+                <span>STEP 4</span>
               </div>
               <div className="training-flow-content">
                 <h3>効果測定・報告</h3>
                 <p>研修終了後、成果をレポートにまとめ、今後の改善提案を行います。</p>
               </div>
             </div>
-          </div>
-
-          <div className="training-flow-notice">
-            <p>※助成金を活用する場合、研修開始1ヶ月前までに計画届の提出が必要です。<br />約2ヶ月のリードタイムを見込んでください。</p>
           </div>
         </div>
       </section>
@@ -591,7 +534,7 @@ export default function ServiceTrainingClient() {
           <div className="training-cta-content">
             <h2 className="training-cta-title">まずは無料相談から</h2>
             <p className="training-cta-text">
-              「どの研修が合うか分からない」「助成金を使えるか知りたい」など、<br className="pc-only" />
+              「どの研修が合うか分からない」「まずは話を聞いてみたい」など、<br className="pc-only" />
               お気軽にご相談ください。御社に最適なプランをご提案します。
             </p>
             <Link href="/contact" className="btn btn-primary btn-large training-cta-button">無料相談を申し込む</Link>

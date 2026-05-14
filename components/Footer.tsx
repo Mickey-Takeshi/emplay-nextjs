@@ -23,6 +23,7 @@ export default function Footer() {
               <li><Link href="/">HOME</Link></li>
               <li><Link href="/company">COMPANY</Link></li>
               <li><Link href="/service">SERVICE</Link></li>
+              <li><a href="https://academy.emplay.jp/" target="_blank" rel="noopener noreferrer">ACADEMY</a></li>
               <li><Link href="/news">NEWS</Link></li>
               <li><Link href="/contact">CONTACT</Link></li>
               <li><Link href="/careers">CAREERS</Link></li>

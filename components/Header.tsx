@@ -9,10 +9,11 @@ export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const pathname = usePathname()
 
-  const navItems = [
+  const navItems: { path: string; label: string; external?: boolean }[] = [
     { path: '/', label: 'HOME' },
     { path: '/company', label: 'COMPANY' },
     { path: '/service', label: 'SERVICE' },
+    { path: 'https://academy.emplay.jp/', label: 'ACADEMY', external: true },
     { path: '/blog', label: 'BLOG' },
     { path: '/news', label: 'NEWS' },
     { path: '/careers', label: 'CAREERS' },
@@ -52,13 +53,25 @@ export default function Header() {
           <ul className="nav-list">
             {navItems.map((item) => (
               <li key={item.path} className="nav-item">
-                <Link
-                  href={item.path}
-                  className={`nav-link ${pathname === item.path ? 'active' : ''}`}
-                  onClick={closeMenu}
-                >
-                  {item.label}
-                </Link>
+                {item.external ? (
+                  <a
+                    href={item.path}
+                    className="nav-link"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={closeMenu}
+                  >
+                    {item.label}
+                  </a>
+                ) : (
+                  <Link
+                    href={item.path}
+                    className={`nav-link ${pathname === item.path ? 'active' : ''}`}
+                    onClick={closeMenu}
+                  >
+                    {item.label}
+                  </Link>
+                )}
               </li>
             ))}
           </ul>

@@ -34,14 +34,6 @@ export default function ServiceClient() {
       a: '可能です。既存の顧客リストをお預かりし、配信代行のみのご依頼も承ります。'
     },
     {
-      q: '研修に使える補助金があるか知りたいのですが？',
-      a: 'お問い合わせ時に御社の情報をお伺いし、活用可能な補助金・助成金をご案内いたします。補助金診断は無料で行っておりますので、お気軽にご相談ください。'
-    },
-    {
-      q: '補助金の申請は自社で行う必要がありますか？',
-      a: '申請自体は御社名義で行っていただきますが、事業計画書や申請書類の作成、手続きのアドバイスなど、採択に向けたサポートを行います。'
-    },
-    {
       q: '地方の企業ですが対応できますか？',
       a: 'オンラインでの打ち合わせ・納品が可能ですので、全国どこからでもご依頼いただけます。'
     },
@@ -538,15 +530,15 @@ export default function ServiceClient() {
         </div>
       </section>
 
-      {/* サービス04: 助成金活用研修 */}
+      {/* サービス04: 研修サービス */}
       <section className="service-detail service-detail-alt" id="training" aria-labelledby="training-heading">
         <div className="container">
           <div className="service-detail-header">
             <span className="service-detail-number">SERVICE 04</span>
-            <h2 id="training-heading" className="service-detail-title">助成金を活用した研修サービス</h2>
+            <h2 id="training-heading" className="service-detail-title">企業向け研修サービス</h2>
             <p className="service-detail-catch">研修だけで終わらせない。売上向上まで伴走します。</p>
             <p className="service-detail-desc">
-              最大75%助成で実質月2.5万円/人〜。研修×事業支援一体型のサービスです。「研修だけ」で終わらせず、事業成果まで伴走します。
+              研修×事業支援一体型のサービスです。「研修だけ」で終わらせず、研修中から実際の業務課題に取り組み、事業成果まで伴走します。
             </p>
           </div>
 
@@ -565,8 +557,8 @@ export default function ServiceClient() {
               </div>
               <div className="training-feature">
                 <span className="training-feature-num">03</span>
-                <h4 className="training-feature-title">助成金申請サポート込み</h4>
-                <p className="training-feature-text">最大75%の助成金申請を追加料金なしでフルサポート。面倒な書類作成もお任せください。</p>
+                <h4 className="training-feature-title">カスタマイズ対応</h4>
+                <p className="training-feature-text">御社の業種・課題に合わせてプログラムをカスタマイズ。対面・オンラインどちらにも対応します。</p>
               </div>
             </div>
           </div>
@@ -595,40 +587,76 @@ export default function ServiceClient() {
           </div>
 
           <div className="service-items">
-            <h3 className="service-items-title">活用できる助成金制度</h3>
-            <div className="subsidy-grid">
-              <div className="subsidy-card">
-                <h4 className="subsidy-name">人材開発支援助成金</h4>
-                <p className="subsidy-desc">経費75%＋賃金1,000円/時が助成。事業展開等リスキリング支援コースが対象です。</p>
-              </div>
-              <div className="subsidy-card">
-                <h4 className="subsidy-name">東京都DXリスキリング助成金</h4>
-                <p className="subsidy-desc">3/4助成、年間上限100万円。都内中小企業が対象です。</p>
-              </div>
-            </div>
-            <p className="subsidy-note">※国と都は併用不可。EMPLAYが最適プランを提案します。</p>
-          </div>
-
-          <div className="service-items">
             <h3 className="service-items-title">料金</h3>
             <div className="training-pricing-simple">
               <div className="pricing-comparison">
-                <div className="pricing-before">
-                  <span className="pricing-label">通常価格</span>
-                  <span className="pricing-value">月10万円<small>/人</small></span>
-                </div>
-                <span className="pricing-arrow">→</span>
                 <div className="pricing-after">
-                  <span className="pricing-label">助成金適用後</span>
-                  <span className="pricing-value highlight">月2.5万円〜<small>/人</small></span>
+                  <span className="pricing-value highlight">要お問い合わせ</span>
                 </div>
               </div>
-              <p className="pricing-note">※5名〜、3ヶ月〜 / 最大75%助成＋賃金助成8,000円/人・月</p>
+              <p className="pricing-note">研修内容・受講人数・期間に応じてお見積もりいたします</p>
             </div>
           </div>
 
           <div className="service-detail-cta">
-            <Link href="/service/training" className="btn btn-outline btn-large">研修サービスの詳細を見る</Link>
+            <a href="https://academy.emplay.jp/" className="btn btn-outline btn-large" target="_blank" rel="noopener noreferrer">研修サービスの詳細を見る</a>
+          </div>
+        </div>
+      </section>
+
+      {/* EMPLAY AI ACADEMY */}
+      <section className="service-detail service-detail-featured" id="academy" aria-labelledby="academy-heading">
+        <div className="container">
+          <div className="service-detail-header">
+            <span className="service-detail-number service-new-badge">NEW SERVICE</span>
+            <h2 id="academy-heading" className="service-detail-title">EMPLAY AI ACADEMY</h2>
+            <p className="service-detail-catch">AIを&quot;使う人&quot;から、&quot;使いこなす組織&quot;へ。</p>
+            <p className="service-detail-desc">
+              生成AIで「自走できる」DX中核人材を育てる、企業向けオンライン実践研修プログラムです。AI活用・Web制作・業務自動化ほか全10プログラムをオンライン完結で提供。単なるツール操作ではなく、業務プロセスそのものを変革します。
+            </p>
+          </div>
+
+          <div className="service-items">
+            <h3 className="service-items-title">主力3プログラム</h3>
+            <div className="hp-features">
+              <div className="hp-feature">
+                <span className="hp-feature-num">01</span>
+                <h4 className="hp-feature-title">AI活用編</h4>
+                <p className="hp-feature-text">生成AIの基礎からプロンプト設計、AIガバナンスまで。業務生産性を最大化するAI活用スキルを実践的に習得します。</p>
+              </div>
+              <div className="hp-feature">
+                <span className="hp-feature-num">02</span>
+                <h4 className="hp-feature-title">ホームページ制作編</h4>
+                <p className="hp-feature-text">Claude CodeなどのAIツールを活用した現代のWeb制作スキルを習得。修了時にはオリジナルのLP・HPを制作・公開できます。</p>
+              </div>
+              <div className="hp-feature">
+                <span className="hp-feature-num">03</span>
+                <h4 className="hp-feature-title">業務改善編</h4>
+                <p className="hp-feature-text">ノーコード/AIで業務を自動化。n8nによるワークフロー自動化やSaaS開発入門まで、社内業務を体系的に効率化します。</p>
+              </div>
+            </div>
+          </div>
+
+          <div className="service-items">
+            <h3 className="service-items-title">選ばれる理由</h3>
+            <div className="hp-reasons">
+              <div className="hp-reason-card">
+                <div className="hp-reason-stat">全10</div>
+                <p className="hp-reason-text">AI活用からセキュリティまで、目的別の全10プログラム</p>
+              </div>
+              <div className="hp-reason-card">
+                <div className="hp-reason-stat">Online</div>
+                <p className="hp-reason-text">集合研修もeラーニングもオンライン完結。全国対応</p>
+              </div>
+              <div className="hp-reason-card">
+                <div className="hp-reason-stat">成果物</div>
+                <p className="hp-reason-text">研修の最終課題で、自社で実際に使えるアウトプットを制作</p>
+              </div>
+            </div>
+          </div>
+
+          <div className="service-detail-cta">
+            <a href="https://academy.emplay.jp/" className="btn btn-primary btn-large" target="_blank" rel="noopener noreferrer">EMPLAY AI ACADEMYの詳細を見る</a>
           </div>
         </div>
       </section>
@@ -660,8 +688,8 @@ export default function ServiceClient() {
             </div>
             <div className="solution-card">
               <h3 className="solution-title">「社内でAIを活用したい」</h3>
-              <p className="solution-text">まずは基礎研修でAIリテラシーを向上。その後、実践研修で自社業務への適用方法を具体化します。補助金を活用すれば費用負担を抑えて導入できます。</p>
-              <span className="solution-services">AI/DX研修（補助金活用サポート付き）</span>
+              <p className="solution-text">まずは基礎研修でAIリテラシーを向上。その後、実践研修で自社業務への適用方法を具体化。即実務に活かせるスキルを習得できます。</p>
+              <span className="solution-services">AI/DX研修</span>
             </div>
             <div className="solution-card">
               <h3 className="solution-title">「DX推進を本格的に進めたい」</h3>

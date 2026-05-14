@@ -7,11 +7,17 @@ import Breadcrumb from '@/components/Breadcrumb'
 import '../../Blog.css'
 
 // SSG: ビルド時にすべてのカテゴリページのパスを生成
+export const dynamicParams = false
+
 export async function generateStaticParams() {
-  const categories = await getBlogCategories()
-  return categories.map((category) => ({
-    category: getCategorySlug(category)
-  }))
+  try {
+    const categories = await getBlogCategories()
+    return categories.map((category) => ({
+      category: getCategorySlug(category)
+    }))
+  } catch {
+    return []
+  }
 }
 
 // 動的メタデータ生成

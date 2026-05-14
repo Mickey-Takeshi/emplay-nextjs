@@ -197,6 +197,25 @@ export default function HomeClient({ news }: HomeClientProps) {
                 />
               </figure>
             </article>
+
+            {/* EMPLAY AI ACADEMY */}
+            <article className="service-item animate-on-scroll">
+              <figure className="service-item-image">
+                <img
+                  src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=600&q=80"
+                  alt="EMPLAY AI ACADEMY - 企業向け生成AI実践研修"
+                />
+              </figure>
+              <div className="service-item-content">
+                <span className="service-item-badge">NEW</span>
+                <h3 className="service-item-title">EMPLAY AI ACADEMY</h3>
+                <p className="service-item-text">
+                  全10プログラム、オンライン完結。<br />
+                  生成AIで「自走できる」DX中核人材を育てる実践研修。
+                </p>
+                <a href="https://academy.emplay.jp/" className="btn btn-dark" target="_blank" rel="noopener noreferrer" aria-label="EMPLAY AI ACADEMYの詳細を見る">詳しく見る →</a>
+              </div>
+            </article>
           </div>
         </div>
       </section>

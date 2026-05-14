@@ -293,6 +293,18 @@
   padding: var(--spacing-md);
 }
 
+.service-item-badge {
+  display: inline-block;
+  background: #1a1a2e;
+  color: #fff;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  padding: 4px 12px;
+  border-radius: 2px;
+  margin-bottom: var(--spacing-sm);
+}
+
 .service-item-title {
   font-size: 1.5rem;
   font-weight: 600;

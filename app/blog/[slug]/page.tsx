@@ -9,9 +9,15 @@ import Breadcrumb from '@/components/Breadcrumb'
 import './BlogDetail.css'
 
 // SSG: ビルド時にすべてのブログ記事のパスを生成
+export const dynamicParams = false
+
 export async function generateStaticParams() {
-  const slugs = await getAllBlogSlugs()
-  return slugs.map((slug) => ({ slug }))
+  try {
+    const slugs = await getAllBlogSlugs()
+    return slugs.map((slug) => ({ slug }))
+  } catch {
+    return []
+  }
 }
 
 // 動的メタデータ生成
