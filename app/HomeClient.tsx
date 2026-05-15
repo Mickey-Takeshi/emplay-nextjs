@@ -181,25 +181,8 @@ export default function HomeClient({ news }: HomeClientProps) {
               </div>
             </article>
 
-            <article className="service-item service-item-reverse animate-on-scroll">
-              <div className="service-item-content">
-                <h3 className="service-item-title">AI/DX研修</h3>
-                <p className="service-item-text">
-                  ChatGPTや生成AIの活用方法、業務効率化ツールの<br />
-                  使い方を実践形式で学べる研修を提供します。
-                </p>
-                <Link href="/service#training" className="btn btn-dark" aria-label="AI/DX研修の詳細を見る">詳しく見る →</Link>
-              </div>
-              <figure className="service-item-image">
-                <img
-                  src="https://images.unsplash.com/photo-1531482615713-2afd69097998?w=600&q=80"
-                  alt="AI・DX研修・セミナーのイメージ"
-                />
-              </figure>
-            </article>
-
             {/* EMPLAY AI ACADEMY */}
-            <article className="service-item animate-on-scroll">
+            <article className="service-item service-item-reverse animate-on-scroll">
               <figure className="service-item-image">
                 <img
                   src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=600&q=80"
