@@ -185,7 +185,7 @@ export default function HomeClient({ news }: HomeClientProps) {
             <article className="service-item service-item-reverse animate-on-scroll">
               <figure className="service-item-image">
                 <img
-                  src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=600&q=80"
+                  src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=600&q=80"
                   alt="EMPLAY AI ACADEMY - 企業向け生成AI実践研修"
                 />
               </figure>
