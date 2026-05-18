@@ -1,23 +1,29 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import './Header.css'
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [isScrolled, setIsScrolled] = useState(false)
   const pathname = usePathname()
 
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 80)
+    }
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    handleScroll()
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
   const navItems: { path: string; label: string; external?: boolean }[] = [
-    { path: '/', label: 'HOME' },
-    { path: '/company', label: 'COMPANY' },
     { path: '/service', label: 'SERVICE' },
-    { path: 'https://academy.emplay.jp/', label: 'ACADEMY', external: true },
+    { path: '/company', label: 'COMPANY' },
     { path: '/blog', label: 'BLOG' },
     { path: '/news', label: 'NEWS' },
-    { path: '/careers', label: 'CAREERS' },
-    { path: '/contact', label: 'CONTACT' },
   ]
 
   const toggleMenu = () => {
@@ -28,8 +34,10 @@ export default function Header() {
     setIsMenuOpen(false)
   }
 
+  const isHome = pathname === '/'
+
   return (
-    <header className="header">
+    <header className={`header ${isScrolled || !isHome ? 'header-scrolled' : 'header-transparent'} ${isMenuOpen ? 'header-menu-open' : ''}`}>
       <div className="header-inner">
         <Link href="/" className="logo" onClick={closeMenu}>
           <svg className="logo-icon" viewBox="0 0 24 24" fill="currentColor">
@@ -66,7 +74,7 @@ export default function Header() {
                 ) : (
                   <Link
                     href={item.path}
-                    className={`nav-link ${pathname === item.path ? 'active' : ''}`}
+                    className={`nav-link ${pathname === item.path || (item.path !== '/' && pathname.startsWith(item.path)) ? 'active' : ''}`}
                     onClick={closeMenu}
                   >
                     {item.label}
@@ -74,6 +82,15 @@ export default function Header() {
                 )}
               </li>
             ))}
+            <li className="nav-item nav-item-cta">
+              <Link
+                href="/contact"
+                className="nav-cta-btn"
+                onClick={closeMenu}
+              >
+                お問い合わせ
+              </Link>
+            </li>
           </ul>
         </nav>
       </div>

@@ -3,10 +3,66 @@
   top: 0;
   left: 0;
   width: 100%;
-  background-color: rgba(255, 255, 255, 0.98);
-  backdrop-filter: blur(10px);
   z-index: 1000;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  transition: background-color 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+/* 透明状態（トップページ上部） */
+.header-transparent {
+  background-color: transparent;
+  border-bottom: 1px solid transparent;
+}
+
+.header-transparent .logo-icon,
+.header-transparent .logo-text,
+.header-transparent .nav-link {
+  color: #fff;
+}
+
+.header-transparent .menu-toggle span {
+  background-color: #fff;
+}
+
+.header-transparent .nav-link::after {
+  background-color: #fff;
+}
+
+.header-transparent .nav-cta-btn {
+  background-color: #fff;
+  color: var(--color-primary);
+}
+
+.header-transparent .nav-cta-btn:hover {
+  background-color: rgba(255, 255, 255, 0.9);
+}
+
+/* スクロール後 / 非トップページ */
+.header-scrolled,
+.header-menu-open {
+  background-color: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.04);
+}
+
+.header-scrolled .logo-icon {
+  color: var(--color-primary);
+}
+
+.header-scrolled .logo-text {
+  color: var(--color-text);
+}
+
+.header-scrolled .nav-link {
+  color: var(--color-text);
+}
+
+.header-scrolled .nav-link:hover {
+  color: var(--color-primary);
+}
+
+.header-scrolled .menu-toggle span {
+  background-color: var(--color-text);
 }
 
 .header-inner {
@@ -16,28 +72,28 @@
   max-width: var(--container-width);
   margin: 0 auto;
   padding: 0 var(--spacing-md);
-  height: 70px;
+  height: 72px;
 }
 
 .logo {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
   text-decoration: none;
 }
 
 .logo-icon {
-  width: 24px;
-  height: 24px;
-  color: var(--color-primary);
+  width: 26px;
+  height: 26px;
+  transition: color 0.4s ease;
 }
 
 .logo-text {
   font-family: var(--font-en);
   font-size: 1.25rem;
-  font-weight: 700;
-  color: var(--color-text);
-  letter-spacing: 0.1em;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  transition: color 0.4s ease;
 }
 
 .logo:hover {
@@ -53,14 +109,14 @@
 .nav-link {
   font-family: var(--font-en);
   font-size: 0.8125rem;
-  font-weight: 500;
-  color: var(--color-text);
-  letter-spacing: 0.08em;
+  font-weight: 600;
+  letter-spacing: 0.06em;
   position: relative;
   padding: 8px 0;
   display: flex;
   align-items: center;
   gap: 4px;
+  transition: color 0.3s ease;
 }
 
 .nav-link::after {
@@ -81,23 +137,34 @@
 
 .nav-link:hover {
   opacity: 1;
-  color: var(--color-primary);
 }
 
 .nav-link.active {
   color: var(--color-primary);
 }
 
-.nav-link-external {
-  display: flex;
+/* CTAボタン型のお問い合わせ */
+.nav-cta-btn {
+  display: inline-flex;
   align-items: center;
-  gap: 4px;
+  justify-content: center;
+  padding: 10px 24px;
+  font-family: var(--font-ja);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: #fff;
+  background-color: var(--color-primary);
+  border-radius: 8px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  white-space: nowrap;
 }
 
-.external-icon {
-  width: 14px;
-  height: 14px;
-  stroke-width: 2;
+.nav-cta-btn:hover {
+  background-color: var(--color-primary-dark);
+  opacity: 1;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(30, 64, 175, 0.3);
 }
 
 /* ハンバーガーメニュー */
@@ -114,9 +181,8 @@
 
 .menu-toggle span {
   display: block;
-  width: 24px;
+  width: 22px;
   height: 2px;
-  background-color: var(--color-text);
   transition: all var(--transition);
   margin: 3px 0;
 }
@@ -142,11 +208,16 @@
   .nav-link {
     font-size: 0.75rem;
   }
+
+  .nav-cta-btn {
+    padding: 8px 18px;
+    font-size: 0.75rem;
+  }
 }
 
 @media (max-width: 768px) {
   .header-inner {
-    height: 56px;
+    height: 60px;
     padding: 0 var(--spacing-sm);
   }
 
@@ -183,5 +254,22 @@
 
   .nav-link {
     font-size: 1rem;
+    color: var(--color-text) !important;
+  }
+
+  .nav-link:hover {
+    color: var(--color-primary) !important;
+  }
+
+  .nav-cta-btn {
+    padding: 14px 40px;
+    font-size: 0.9375rem;
+    background-color: var(--color-primary) !important;
+    color: #fff !important;
+    margin-top: 8px;
+  }
+
+  .menu-toggle span {
+    background-color: var(--color-text) !important;
   }
 }

@@ -1,27 +1,20 @@
 import type { Metadata } from 'next'
-import { Montserrat, Noto_Sans_JP, Lato } from 'next/font/google'
+import { Inter, Noto_Sans_JP } from 'next/font/google'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import ScrollToTop from '@/components/ScrollToTop'
 import './globals.css'
 
-const montserrat = Montserrat({
+const inter = Inter({
   subsets: ['latin'],
-  weight: ['400', '500', '600', '700'],
-  variable: '--font-montserrat',
-  display: 'swap',
-})
-
-const lato = Lato({
-  subsets: ['latin'],
-  weight: ['400', '700'],
-  variable: '--font-lato',
+  weight: ['400', '500', '600', '700', '800'],
+  variable: '--font-inter',
   display: 'swap',
 })
 
 const notoSansJP = Noto_Sans_JP({
   subsets: ['latin'],
-  weight: ['400', '500', '700'],
+  weight: ['400', '500', '600', '700'],
   variable: '--font-noto-sans-jp',
   display: 'swap',
 })
@@ -90,7 +83,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="ja" className={`${montserrat.variable} ${lato.variable} ${notoSansJP.variable}`}>
+    <html lang="ja" className={`${inter.variable} ${notoSansJP.variable}`}>
       <head>
         {/* Google Tag Manager */}
         <script
@@ -120,7 +113,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         </noscript>
         <ScrollToTop />
         <Header />
-        <div style={{ paddingTop: '70px' }}>{children}</div>
+        <div style={{ paddingTop: '72px' }}>{children}</div>
         <Footer />
       </body>
     </html>

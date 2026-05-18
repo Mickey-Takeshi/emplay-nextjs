@@ -8,20 +8,24 @@
 }
 
 :root {
-  /* カラーパレット - 統一 */
-  --color-primary: #2563eb;
-  --color-primary-dark: #1d4ed8;
-  --color-accent: #f84f65;
-  --color-text: #1a1a2e;
-  --color-text-light: #6b7280;
-  --color-text-muted: #9ca3af;
+  /* カラーパレット */
+  --color-primary: #1E40AF;
+  --color-primary-dark: #1E3A8A;
+  --color-primary-light: #3B82F6;
+  --color-primary-subtle: #EFF6FF;
+  --color-accent: #0D9488;
+  --color-accent-light: #CCFBF1;
+  --color-text: #111827;
+  --color-text-light: #4B5563;
+  --color-text-muted: #9CA3AF;
   --color-bg: #ffffff;
-  --color-bg-gray: #f8f9fa;
-  --color-bg-dark: #1a1a2e;
-  --color-border: #e5e7eb;
+  --color-bg-gray: #F9FAFB;
+  --color-bg-warm: #FAFAF9;
+  --color-bg-dark: #0F172A;
+  --color-border: #E5E7EB;
 
   /* フォント */
-  --font-en: 'Montserrat', 'Lato', sans-serif;
+  --font-en: 'Inter', sans-serif;
   --font-ja: 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', sans-serif;
 
   /* スペーシング */
@@ -131,32 +135,34 @@ select {
   justify-content: center;
   padding: 12px 32px;
   font-size: 0.875rem;
-  font-weight: 500;
-  border-radius: 2px;
+  font-weight: 600;
+  border-radius: 8px;
   transition: all var(--transition);
   text-decoration: none;
 }
 
 .btn-primary {
-  background-color: var(--color-bg-dark);
+  background-color: var(--color-primary);
   color: #fff;
   border: none;
 }
 
 .btn-primary:hover {
-  background-color: #2a2a4e;
+  background-color: var(--color-primary-dark);
   color: #fff;
   opacity: 1;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(30, 64, 175, 0.3);
 }
 
 .btn-outline {
-  border: 2px solid var(--color-text);
-  color: var(--color-text);
+  border: 2px solid var(--color-primary);
+  color: var(--color-primary);
   background: transparent;
 }
 
 .btn-outline:hover {
-  background-color: var(--color-text);
+  background-color: var(--color-primary);
   color: #fff;
   opacity: 1;
 }
@@ -168,24 +174,25 @@ select {
   padding: 12px 28px;
   font-size: 0.8125rem;
   text-decoration: none;
-  border-radius: 2px;
-  transition: background var(--transition);
+  border-radius: 8px;
+  transition: all var(--transition);
 }
 
 .btn-dark:hover {
-  background: #2a2a4e;
+  background: #1E293B;
   opacity: 1;
+  transform: translateY(-1px);
 }
 
 .btn-outline-white {
   display: inline-block;
   background: transparent;
   color: #fff;
-  border: 1px solid rgba(255, 255, 255, 0.8);
+  border: 2px solid rgba(255, 255, 255, 0.8);
   padding: 12px 32px;
   font-size: 0.8125rem;
   text-decoration: none;
-  border-radius: 2px;
+  border-radius: 8px;
   transition: all var(--transition);
 }
 
