@@ -51,15 +51,7 @@ export default function CareersClient() {
     <main className="careers-page">
       {/* ページヘッダー */}
       <header className="page-header-hero" aria-label="ページヘッダー">
-        <div className="page-header-background" aria-hidden="true">
-          <img
-            src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1920&q=80"
-            alt=""
-            className="page-header-bg-image"
-            loading="eager"
-          />
-          <div className="page-header-overlay"></div>
-        </div>
+        <div className="page-header-bg" aria-hidden="true"></div>
         <div className="page-header-content">
           <h1 className="page-title-hero">CAREERS</h1>
           <p className="page-title-ja-hero">採用情報</p>

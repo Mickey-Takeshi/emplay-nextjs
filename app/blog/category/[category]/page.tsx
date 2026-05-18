@@ -59,14 +59,7 @@ export default async function BlogCategoryPage({ params }: { params: Promise<{ c
     <main className="blog-page">
       {/* ページヘッダー */}
       <header className="page-header-hero" aria-label="ページヘッダー">
-        <div className="page-header-background" aria-hidden="true">
-          <img
-            src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=1920&q=80"
-            alt=""
-            className="page-header-bg-image"
-          />
-          <div className="page-header-overlay"></div>
-        </div>
+        <div className="page-header-bg" aria-hidden="true"></div>
         <div className="page-header-content">
           <h1 className="page-title-hero">BLOG</h1>
           <p className="page-title-ja-hero">{categoryName}</p>

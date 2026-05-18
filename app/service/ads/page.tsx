@@ -23,14 +23,7 @@ export default function ServiceAdsPage() {
 
       {/* ヒーローセクション */}
       <section className="lp-hero">
-        <div className="lp-hero-background">
-          <img
-            src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1920&q=80"
-            alt=""
-            className="lp-hero-bg-image"
-          />
-          <div className="lp-hero-overlay"></div>
-        </div>
+        <div className="page-header-bg"></div>
         <div className="lp-hero-content">
           <span className="lp-hero-label">WEB ADVERTISING</span>
           <h1 className="lp-hero-title">

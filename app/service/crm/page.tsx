@@ -23,14 +23,7 @@ export default function ServiceCrmPage() {
 
       {/* ヒーローセクション */}
       <section className="lp-hero">
-        <div className="lp-hero-background">
-          <img
-            src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=1920&q=80"
-            alt=""
-            className="lp-hero-bg-image"
-          />
-          <div className="lp-hero-overlay"></div>
-        </div>
+        <div className="page-header-bg"></div>
         <div className="lp-hero-content">
           <span className="lp-hero-label">CRM IMPLEMENTATION</span>
           <h1 className="lp-hero-title">

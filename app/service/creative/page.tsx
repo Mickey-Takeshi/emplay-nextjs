@@ -23,14 +23,7 @@ export default function ServiceCreativePage() {
 
       {/* ヒーローセクション */}
       <section className="lp-hero">
-        <div className="lp-hero-background">
-          <img
-            src="https://images.unsplash.com/photo-1561070791-2526d30994b5?w=1920&q=80"
-            alt=""
-            className="lp-hero-bg-image"
-          />
-          <div className="lp-hero-overlay"></div>
-        </div>
+        <div className="page-header-bg"></div>
         <div className="lp-hero-content">
           <span className="lp-hero-label">CREATIVE PRODUCTION</span>
           <h1 className="lp-hero-title">
@@ -156,7 +149,9 @@ export default function ServiceCreativePage() {
           <div className="lp-services-grid">
             <div className="lp-service-card">
               <div className="lp-service-image">
-                <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&q=80" alt="ホームページ制作" />
+                <div className="service-icon-placeholder">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><rect x="3" y="3" width="18" height="18" rx="2" /><path d="M3 9h18" /><path d="M9 21V9" /></svg>
+                </div>
               </div>
               <div className="lp-service-content">
                 <h3 className="lp-service-title">ホームページ（コーポレートサイト）</h3>
@@ -173,7 +168,9 @@ export default function ServiceCreativePage() {
             </div>
             <div className="lp-service-card">
               <div className="lp-service-image">
-                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&q=80" alt="LP制作" />
+                <div className="service-icon-placeholder">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M4 4h16v16H4z" /><path d="M4 9h16" /><circle cx="8" cy="14" r="2" /></svg>
+                </div>
               </div>
               <div className="lp-service-content">
                 <h3 className="lp-service-title">ランディングページ（LP）</h3>
@@ -190,7 +187,9 @@ export default function ServiceCreativePage() {
             </div>
             <div className="lp-service-card">
               <div className="lp-service-image">
-                <img src="https://images.unsplash.com/photo-1586281380349-632531db7ed4?w=600&q=80" alt="記事LP制作" />
+                <div className="service-icon-placeholder">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" /><path d="M14 2v6h6" /><path d="M16 13H8" /><path d="M16 17H8" /></svg>
+                </div>
               </div>
               <div className="lp-service-content">
                 <h3 className="lp-service-title">記事LP</h3>
@@ -206,7 +205,9 @@ export default function ServiceCreativePage() {
             </div>
             <div className="lp-service-card">
               <div className="lp-service-image">
-                <img src="https://images.unsplash.com/photo-1626785774625-ddcddc3445e9?w=600&q=80" alt="バナー制作" />
+                <div className="service-icon-placeholder">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><rect x="3" y="3" width="18" height="18" rx="2" /><circle cx="8.5" cy="8.5" r="1.5" /><path d="M21 15l-5-5L5 21" /></svg>
+                </div>
               </div>
               <div className="lp-service-content">
                 <h3 className="lp-service-title">バナー制作</h3>
@@ -222,7 +223,9 @@ export default function ServiceCreativePage() {
             </div>
             <div className="lp-service-card">
               <div className="lp-service-image">
-                <img src="https://images.unsplash.com/photo-1492724441997-5dc865305da7?w=600&q=80" alt="動画制作" />
+                <div className="service-icon-placeholder">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><polygon points="23 7 16 12 23 17 23 7" /><rect x="1" y="5" width="15" height="14" rx="2" /></svg>
+                </div>
               </div>
               <div className="lp-service-content">
                 <h3 className="lp-service-title">動画制作</h3>

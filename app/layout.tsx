@@ -25,8 +25,8 @@ export const metadata: Metadata = {
     default: '株式会社EMPLAY | DX推進・ウェブマーケティング・コンテンツ制作',
     template: '%s | 株式会社EMPLAY',
   },
-  description: '株式会社EMPLAYは「社会にもっとわくわくを創り続ける」をミッションに、DXコンサルティング、ウェブマーケティング、コンテンツ制作を提供する東京のIT企業です。',
-  keywords: 'EMPLAY,DX,デジタルトランスフォーメーション,ウェブマーケティング,コンテンツ制作,IT企業,東京',
+  description: '株式会社EMPLAYは中小企業のWeb集客からDX推進までワンストップで支援。HP制作・広告運用・CRM導入・AI研修を、戦略設計から実行まで一貫して伴走します。',
+  keywords: 'EMPLAY,Web制作,広告運用,CRM導入,AI研修,DX推進,中小企業,デジタルマーケティング,東京',
   authors: [{ name: '株式会社EMPLAY' }],
   openGraph: {
     type: 'website',
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     url: 'https://emplay.jp',
     siteName: '株式会社EMPLAY',
     title: '株式会社EMPLAY | DX推進・ウェブマーケティング・コンテンツ制作',
-    description: '株式会社EMPLAYは「社会にもっとわくわくを創り続ける」をミッションに、DXコンサルティング、ウェブマーケティング、コンテンツ制作を提供する東京のIT企業です。',
+    description: '株式会社EMPLAYは中小企業のWeb集客からDX推進までワンストップで支援。HP制作・広告運用・CRM導入・AI研修を、戦略設計から実行まで一貫して伴走します。',
     images: [
       {
         url: '/og-image.jpg',
@@ -47,7 +47,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: '株式会社EMPLAY | DX推進・ウェブマーケティング・コンテンツ制作',
-    description: '株式会社EMPLAYは「社会にもっとわくわくを創り続ける」をミッションに、DXコンサルティング、ウェブマーケティング、コンテンツ制作を提供する東京のIT企業です。',
+    description: '株式会社EMPLAYは中小企業のWeb集客からDX推進までワンストップで支援。HP制作・広告運用・CRM導入・AI研修を、戦略設計から実行まで一貫して伴走します。',
     images: ['/og-image.jpg'],
   },
   robots: {
@@ -68,7 +68,7 @@ const organizationSchema = {
   name: '株式会社EMPLAY',
   url: 'https://emplay.jp',
   logo: 'https://emplay.jp/favicon.svg',
-  description: '株式会社EMPLAYは「社会にもっとわくわくを創り続ける」をミッションに、DXコンサルティング、ウェブマーケティング、コンテンツ制作を提供する東京のIT企業です。',
+  description: '株式会社EMPLAYは中小企業のWeb集客からDX推進までワンストップで支援。HP制作・広告運用・CRM導入・AI研修を、戦略設計から実行まで一貫して伴走します。',
   address: {
     '@type': 'PostalAddress',
     addressLocality: '東京都',
