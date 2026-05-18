@@ -47,15 +47,7 @@ export default function ServiceClient() {
     <main className="service-page">
       {/* ヒーローセクション */}
       <header className="service-hero" aria-label="ページヘッダー">
-        <div className="service-hero-background" aria-hidden="true">
-          <img
-            src="https://images.unsplash.com/photo-1553877522-43269d4ea984?w=1920&q=80"
-            alt=""
-            className="service-hero-bg-image"
-            loading="eager"
-          />
-          <div className="service-hero-overlay"></div>
-        </div>
+        <div className="service-hero-bg" aria-hidden="true"></div>
         <div className="service-hero-content">
           <p className="service-hero-label">SERVICE</p>
           <h1 className="service-hero-title">

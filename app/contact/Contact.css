@@ -1,68 +1,162 @@
-/* Contact Page Specific Styles */
-
-/* お問い合わせセクション */
-.contact-page .contact-section {
-  max-width: 640px;
-  margin: 0 auto;
-  padding: 60px var(--spacing-md);
-}
-
-.contact-intro {
+/* ========================================
+   Contact Hero
+   ======================================== */
+.contact-hero {
+  position: relative;
+  padding: 80px 0 60px;
+  margin-top: -72px;
+  padding-top: 152px;
+  background: var(--color-bg-dark);
   text-align: center;
-  margin-bottom: var(--spacing-lg);
 }
 
-.contact-intro p {
+.contact-hero-bg {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, #0F172A 0%, #1E3A8A 100%);
+}
+
+.contact-hero-content {
+  position: relative;
+  z-index: 1;
+}
+
+.contact-hero-label {
+  font-family: var(--font-en);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  color: rgba(255, 255, 255, 0.5);
+  margin-bottom: 12px;
+}
+
+.contact-hero-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 0.05em;
+}
+
+/* ========================================
+   2カラムレイアウト
+   ======================================== */
+.contact-main {
+  padding: 80px 0;
+  background: var(--color-bg-warm);
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 64px;
+  align-items: start;
+}
+
+/* 左カラム：情報 */
+.contact-info-heading {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-text);
+  margin-bottom: 12px;
+}
+
+.contact-info-text {
+  font-size: 0.9375rem;
   color: var(--color-text-light);
   line-height: 1.8;
+  margin-bottom: 40px;
 }
 
-.contact-note {
-  margin-top: var(--spacing-sm);
+.contact-info-items {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.contact-info-item {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.contact-info-icon {
+  width: 40px;
+  height: 40px;
+  background: var(--color-primary-subtle);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.contact-info-icon svg {
+  width: 20px;
+  height: 20px;
+  stroke: var(--color-primary);
+}
+
+.contact-info-item h3 {
   font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--color-text);
+  margin-bottom: 2px;
+}
+
+.contact-info-item p {
+  font-size: 0.8125rem;
+  color: var(--color-text-light);
+}
+
+/* 右カラム：フォーム */
+.contact-form-wrapper {
+  background: #fff;
+  border-radius: 16px;
+  padding: 40px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+}
+
+.form-note {
+  font-size: 0.8125rem;
+  color: var(--color-text-muted);
+  margin-bottom: 24px;
 }
 
 .required-mark {
-  color: var(--color-accent);
-  margin-left: 4px;
-}
-
-/* フォーム */
-.contact-form {
-  background: #fff;
-  padding: var(--spacing-lg);
-  border-radius: 8px;
-  box-shadow: var(--shadow-md);
+  color: #EF4444;
+  margin-left: 2px;
 }
 
 .form-group {
-  margin-bottom: var(--spacing-md);
+  margin-bottom: 20px;
 }
 
 .form-label {
   display: block;
-  font-size: 0.875rem;
+  font-size: 0.8125rem;
   font-weight: 600;
-  margin-bottom: 8px;
+  margin-bottom: 6px;
   color: var(--color-text);
 }
 
 .form-input,
-.form-textarea {
+.form-textarea,
+.form-select {
   width: 100%;
   padding: 12px 16px;
-  font-size: 1rem;
+  font-size: 0.9375rem;
   border: 1px solid var(--color-border);
-  border-radius: 4px;
+  border-radius: 8px;
   background-color: #fff;
-  transition: border-color var(--transition), box-shadow var(--transition);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .form-input:focus,
-.form-textarea:focus {
+.form-textarea:focus,
+.form-select:focus {
   outline: none;
   border-color: var(--color-primary);
-  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+  box-shadow: 0 0 0 3px rgba(30, 64, 175, 0.1);
 }
 
 .form-input::placeholder,
@@ -72,47 +166,60 @@
 
 .form-textarea {
   resize: vertical;
-  min-height: 150px;
+  min-height: 120px;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
 }
 
 .form-error {
-  background-color: rgba(248, 79, 101, 0.1);
-  border: 1px solid var(--color-accent);
-  border-radius: 4px;
-  padding: var(--spacing-sm);
-  margin-bottom: var(--spacing-md);
+  background-color: #FEF2F2;
+  border: 1px solid #FCA5A5;
+  border-radius: 8px;
+  padding: 12px 16px;
+  margin-bottom: 20px;
 }
 
 .form-error p {
-  color: var(--color-accent);
-  font-size: 0.875rem;
+  color: #DC2626;
+  font-size: 0.8125rem;
   margin: 0;
 }
 
 .form-actions {
   text-align: center;
-  margin-top: var(--spacing-lg);
+  margin-top: 8px;
+}
+
+.form-actions-note {
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+  margin-bottom: 12px;
+}
+
+.form-submit-btn {
+  width: 100%;
 }
 
 .btn:disabled {
-  opacity: 0.6;
+  opacity: 0.5;
   cursor: not-allowed;
 }
 
 /* 送信完了 */
 .submit-success {
   text-align: center;
-  background: #fff;
-  padding: var(--spacing-xl);
-  border-radius: 8px;
-  box-shadow: var(--shadow-md);
+  padding: 40px 20px;
 }
 
 .success-icon {
-  width: 64px;
-  height: 64px;
-  margin: 0 auto var(--spacing-md);
-  color: var(--color-primary);
+  width: 56px;
+  height: 56px;
+  margin: 0 auto 20px;
+  color: var(--color-accent);
 }
 
 .success-icon svg {
@@ -123,7 +230,7 @@
 .submit-success h2 {
   font-size: 1.5rem;
   font-weight: 700;
-  margin-bottom: var(--spacing-sm);
+  margin-bottom: 12px;
   color: var(--color-text);
 }
 
@@ -132,21 +239,50 @@
   line-height: 1.8;
 }
 
-.pc-only {
-  display: inline;
+/* ========================================
+   レスポンシブ
+   ======================================== */
+@media (max-width: 840px) {
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .contact-info-items {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .contact-info-item {
+    flex: 1;
+    min-width: 140px;
+  }
 }
 
-/* レスポンシブ */
 @media (max-width: 540px) {
-  .contact-page .contact-section {
-    padding: 40px var(--spacing-sm);
+  .contact-main {
+    padding: 40px 0;
   }
 
-  .contact-form {
-    padding: var(--spacing-md);
+  .contact-form-wrapper {
+    padding: 24px;
+    border-radius: 12px;
   }
 
-  .pc-only {
-    display: none;
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-hero-title {
+    font-size: 1.5rem;
+  }
+
+  .contact-info-heading {
+    font-size: 1.25rem;
+  }
+
+  .contact-info-items {
+    flex-direction: column;
   }
 }
