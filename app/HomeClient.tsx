@@ -12,19 +12,11 @@ export default function HomeClient({ news }: HomeClientProps) {
   const [heroLoaded, setHeroLoaded] = useState(false)
 
   useEffect(() => {
-    // ヒーローアニメーション開始
     const timer = setTimeout(() => setHeroLoaded(true), 100)
     return () => clearTimeout(timer)
   }, [])
 
-  // スクロールアニメーション用のIntersection Observer
   useEffect(() => {
-    const observerOptions = {
-      root: null,
-      rootMargin: '0px',
-      threshold: 0.1
-    }
-
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
@@ -32,173 +24,161 @@ export default function HomeClient({ news }: HomeClientProps) {
           observer.unobserve(entry.target)
         }
       })
-    }, observerOptions)
+    }, { threshold: 0.1 })
 
-    const animateElements = document.querySelectorAll('.animate-on-scroll')
-    animateElements.forEach((el) => observer.observe(el))
-
+    const elements = document.querySelectorAll('.animate-on-scroll')
+    elements.forEach((el) => observer.observe(el))
     return () => observer.disconnect()
-  }, [])
-
-  // パララックス効果
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrollY = window.scrollY
-      const heroBackground = document.querySelector('.hero-background') as HTMLElement
-      const missionBackground = document.querySelector('.mission-background') as HTMLElement
-
-      if (heroBackground) {
-        const heroMove = Math.min(scrollY * 0.3, window.innerHeight * 0.3)
-        heroBackground.style.transform = `translateY(${heroMove}px)`
-      }
-
-      if (missionBackground) {
-        const missionSection = document.querySelector('.mission-section') as HTMLElement
-        if (missionSection) {
-          const rect = missionSection.getBoundingClientRect()
-          const offsetY = (rect.top + rect.height / 2 - window.innerHeight / 2) * 0.2
-          const clampedOffset = Math.max(-100, Math.min(100, offsetY))
-          missionBackground.style.transform = `translateY(${clampedOffset}px)`
-        }
-      }
-    }
-
-    window.addEventListener('scroll', handleScroll, { passive: true })
-    return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
   return (
     <>
       {/* ヒーローセクション */}
-      <section className="hero" aria-label="メインビジュアル">
-        <div className="hero-background" aria-hidden="true">
-          <img
-            src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1920&q=80"
-            alt=""
-            className="hero-bg-image"
-          />
-          <div className="hero-overlay"></div>
+      <section className="hero" aria-label="メインビジュアル" style={{ marginTop: '-72px' }}>
+        <div className="hero-bg" aria-hidden="true">
+          <div className="hero-grid-pattern"></div>
         </div>
         <div className={`hero-content ${heroLoaded ? 'hero-loaded' : ''}`}>
-          <h1 className="hero-title hero-animate hero-animate-1">
-            EMPLAY<br />EVERYTHING
-          </h1>
-          <p className="hero-mission hero-animate hero-animate-2">OUR MISSION</p>
-          <p className="hero-tagline hero-animate hero-animate-3">社会にもっとわくわくを創り続ける</p>
-          <p className="hero-description hero-animate hero-animate-4">
-            わくわくの源泉は選択を超える可能性だ。<br />
-            期待を果たし続けて、洗練された解決策を追いかけ続ける。
+          <p className="hero-label hero-animate hero-animate-1">
+            Web集客からDX推進まで、ワンストップで支援
           </p>
-          <div className="hero-actions hero-animate hero-animate-5">
-            <Link href="/company" className="btn btn-primary" aria-label="会社概要ページへ">
-              わたしたちについて
+          <h1 className="hero-title hero-animate hero-animate-2">
+            中小企業の成長を<br />テクノロジーで加速する
+          </h1>
+          <p className="hero-description hero-animate hero-animate-3">
+            Web制作・広告運用・CRM導入・AI研修。<br className="pc-only" />
+            戦略設計から実行・運用まで、一貫して伴走します。
+          </p>
+          <div className="hero-actions hero-animate hero-animate-4">
+            <Link href="/service" className="btn btn-primary btn-large">
+              サービスを見る
+            </Link>
+            <Link href="/contact" className="btn btn-outline-white btn-large">
+              無料相談する
             </Link>
           </div>
-        </div>
-        <div className="hero-scroll" aria-hidden="true">SCROLL</div>
-      </section>
-
-      {/* ミッションセクション */}
-      <section className="mission-section" aria-label="ミッション">
-        <div className="mission-background" aria-hidden="true">
-          <img
-            src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=1920&q=80"
-            alt=""
-            className="mission-bg-image"
-          />
-          <div className="mission-overlay"></div>
-        </div>
-        <div className="mission-content animate-on-scroll">
-          <h2 className="mission-title">想定外を企てる</h2>
-          <p className="mission-text">
-            理想の先にとどまらず、組み合わせて、積み合わせる。<br />
-            新たな可能性を追い求め、繰り返し続ける。
-          </p>
-          <p className="mission-text">
-            変化の激しい社会に勝利の正解は無い。<br />
-            常に変化して、想定外を武てることが、未来の一手を生き継ぎする。
-          </p>
+          <div className="hero-services hero-animate hero-animate-5">
+            <span className="hero-service-tag">HP制作</span>
+            <span className="hero-service-tag">Web広告</span>
+            <span className="hero-service-tag">CRM導入</span>
+            <span className="hero-service-tag">AI研修</span>
+          </div>
         </div>
       </section>
 
       {/* サービスセクション */}
       <section className="section service-section" aria-labelledby="service-heading">
         <div className="container">
-          <header className="section-header">
-            <h2 id="service-heading" className="section-title-large">SERVICE</h2>
-            <Link href="/service" className="view-more" aria-label="サービス一覧を見る">VIEW MORE →</Link>
-          </header>
+          <div className="section-header-center animate-on-scroll">
+            <p className="section-label">SERVICE</p>
+            <h2 id="service-heading" className="section-heading">
+              ビジネスの課題を<br className="sp-only" />解決するサービス
+            </h2>
+            <p className="section-desc">
+              Web集客から社内DXまで、必要なサービスを選んでご利用いただけます。
+            </p>
+          </div>
 
-          <div className="service-items">
-            <article className="service-item animate-on-scroll">
-              <figure className="service-item-image">
-                <img
-                  src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=600&q=80"
-                  alt="Webサイト制作・デザインのイメージ"
-                />
-              </figure>
-              <div className="service-item-content">
-                <h3 className="service-item-title">クリエイティブ制作</h3>
-                <p className="service-item-text">
-                  Webサイト、LP、バナー、動画など、<br />
-                  成果につながるクリエイティブを制作します。
-                </p>
-                <Link href="/service#creative" className="btn btn-dark" aria-label="クリエイティブ制作の詳細を見る">詳しく見る →</Link>
+          <div className="service-cards">
+            {/* HP制作 - フィーチャーカード */}
+            <div className="service-card service-card-featured animate-on-scroll">
+              <div className="service-card-badge">NEW</div>
+              <div className="service-card-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                  <rect x="3" y="3" width="18" height="18" rx="2" />
+                  <path d="M3 9h18" />
+                  <path d="M9 21V9" />
+                </svg>
               </div>
-            </article>
+              <h3 className="service-card-title">HP制作サービス</h3>
+              <p className="service-card-text">
+                SEO + AIO対応で「3年後も検索されるHP」を制作。月10本〜の記事作成代行と効果測定で、問い合わせ獲得まで伴走します。
+              </p>
+              <Link href="/service/hp" className="service-card-link">
+                詳しく見る
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="16" height="16"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </Link>
+            </div>
 
-            <article className="service-item service-item-reverse animate-on-scroll">
-              <div className="service-item-content">
-                <h3 className="service-item-title">Web広告運用代行</h3>
-                <p className="service-item-text">
-                  Google・Yahoo!・SNS広告の運用を代行。<br />
-                  データ分析に基づく改善で費用対効果を最大化します。
-                </p>
-                <Link href="/service#ads" className="btn btn-dark" aria-label="Web広告運用代行の詳細を見る">詳しく見る →</Link>
+            {/* クリエイティブ制作 */}
+            <div className="service-card animate-on-scroll">
+              <div className="service-card-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                  <rect x="3" y="3" width="18" height="18" rx="2" />
+                  <circle cx="8.5" cy="8.5" r="1.5" />
+                  <path d="M21 15l-5-5L5 21" />
+                </svg>
               </div>
-              <figure className="service-item-image">
-                <img
-                  src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&q=80"
-                  alt="Web広告の分析・運用のイメージ"
-                />
-              </figure>
-            </article>
+              <h3 className="service-card-title">クリエイティブ制作</h3>
+              <p className="service-card-text">
+                Webサイト、LP、バナー、動画など、成果につながるクリエイティブを制作します。
+              </p>
+              <Link href="/service/creative" className="service-card-link">
+                詳しく見る
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="16" height="16"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </Link>
+            </div>
 
-            <article className="service-item animate-on-scroll">
-              <figure className="service-item-image">
-                <img
-                  src="https://images.unsplash.com/photo-1553877522-43269d4ea984?w=600&q=80"
-                  alt="CRMツール導入・顧客管理のイメージ"
-                />
-              </figure>
-              <div className="service-item-content">
-                <h3 className="service-item-title">CRM導入支援</h3>
-                <p className="service-item-text">
-                  LINE公式アカウントやメール配信ツールの導入から<br />
-                  運用まで、顧客との関係構築をサポートします。
-                </p>
-                <Link href="/service#crm" className="btn btn-dark" aria-label="CRM導入支援の詳細を見る">詳しく見る →</Link>
+            {/* Web広告運用 */}
+            <div className="service-card animate-on-scroll">
+              <div className="service-card-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                  <path d="M18 20V10" /><path d="M12 20V4" /><path d="M6 20v-6" />
+                </svg>
               </div>
-            </article>
+              <h3 className="service-card-title">Web広告運用代行</h3>
+              <p className="service-card-text">
+                Google・Yahoo!・SNS広告の運用を代行。データ分析に基づく改善で費用対効果を最大化します。
+              </p>
+              <Link href="/service/ads" className="service-card-link">
+                詳しく見る
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="16" height="16"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </Link>
+            </div>
+
+            {/* CRM導入支援 */}
+            <div className="service-card animate-on-scroll">
+              <div className="service-card-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                  <circle cx="9" cy="7" r="4" />
+                  <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                  <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                </svg>
+              </div>
+              <h3 className="service-card-title">CRM導入支援</h3>
+              <p className="service-card-text">
+                顧客情報の一元管理からメルマガ・LINE配信まで、顧客との関係構築をサポートします。
+              </p>
+              <Link href="/service/crm" className="service-card-link">
+                詳しく見る
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="16" height="16"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </Link>
+            </div>
 
             {/* EMPLAY AI ACADEMY */}
-            <article className="service-item service-item-reverse animate-on-scroll">
-              <figure className="service-item-image">
-                <img
-                  src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=600&q=80"
-                  alt="EMPLAY AI ACADEMY - 企業向け生成AI実践研修"
-                />
-              </figure>
-              <div className="service-item-content">
-                <span className="service-item-badge">NEW</span>
-                <h3 className="service-item-title">EMPLAY AI ACADEMY</h3>
-                <p className="service-item-text">
-                  全10プログラム、オンライン完結。<br />
-                  生成AIで「自走できる」DX中核人材を育てる実践研修。
-                </p>
-                <a href="https://academy.emplay.jp/" className="btn btn-dark" target="_blank" rel="noopener noreferrer" aria-label="EMPLAY AI ACADEMYの詳細を見る">詳しく見る →</a>
+            <div className="service-card animate-on-scroll">
+              <div className="service-card-badge">NEW</div>
+              <div className="service-card-icon service-card-icon-accent">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                  <path d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                </svg>
               </div>
-            </article>
+              <h3 className="service-card-title">EMPLAY AI ACADEMY</h3>
+              <p className="service-card-text">
+                全10プログラム、オンライン完結。生成AIで「自走できる」DX中核人材を育てる実践研修。
+              </p>
+              <a href="https://academy.emplay.jp/" className="service-card-link" target="_blank" rel="noopener noreferrer">
+                詳しく見る
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="16" height="16"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </a>
+            </div>
+          </div>
+
+          <div className="service-more animate-on-scroll">
+            <Link href="/service" className="btn btn-outline">
+              サービス一覧を見る
+            </Link>
           </div>
         </div>
       </section>
@@ -206,19 +186,30 @@ export default function HomeClient({ news }: HomeClientProps) {
       {/* CTAバナー */}
       <section className="cta-banner" aria-label="お問い合わせへの導線">
         <div className="cta-banner-content animate-on-scroll">
-          <h2 className="cta-banner-title">テクノロジーを活用して事業を推進していきます</h2>
-          <p className="cta-banner-text">サービスに関するお問い合わせや、無料のご相談もこちらから承っております</p>
-          <Link href="/contact" className="btn btn-outline-white" aria-label="お問い合わせページへ">お問い合わせはこちら →</Link>
+          <p className="cta-banner-label">CONTACT</p>
+          <h2 className="cta-banner-title">まずはお気軽にご相談ください</h2>
+          <p className="cta-banner-text">
+            「何から始めればいいか分からない」という段階でも大丈夫です。<br className="pc-only" />
+            御社の現状と課題をお伺いした上で、最適なソリューションをご提案します。
+          </p>
+          <div className="cta-banner-actions">
+            <Link href="/contact" className="btn btn-primary btn-large cta-banner-btn">
+              無料相談を申し込む
+            </Link>
+          </div>
         </div>
       </section>
 
       {/* ニュースセクション */}
       <section className="section news-section" aria-labelledby="news-heading">
         <div className="container">
-          <header className="section-header">
-            <h2 id="news-heading" className="section-title-large">NEWS</h2>
+          <div className="section-header-row">
+            <div>
+              <p className="section-label">NEWS</p>
+              <h2 id="news-heading" className="section-heading">お知らせ</h2>
+            </div>
             <Link href="/news" className="view-more" aria-label="お知らせ一覧を見る">VIEW MORE →</Link>
-          </header>
+          </div>
           <div className="news-list-home" role="list">
             {news.length > 0 ? (
               news.map((article) => (
@@ -234,18 +225,31 @@ export default function HomeClient({ news }: HomeClientProps) {
         </div>
       </section>
 
-      {/* コンタクトセクション */}
-      <section className="contact-section-home" aria-label="お問い合わせ">
-        <div className="container">
-          <Link href="/contact" className="contact-box animate-on-scroll" aria-label="お問い合わせページへ移動">
-            <div className="contact-box-content">
-              <h2 className="contact-box-title">CONTACT</h2>
-              <p className="contact-box-text">お問い合わせはこちらから</p>
-            </div>
-            <span className="contact-box-arrow" aria-hidden="true">→</span>
-          </Link>
-        </div>
-      </section>
+      {/* フローティングCTA */}
+      <FloatingCTA />
     </>
+  )
+}
+
+function FloatingCTA() {
+  const [visible, setVisible] = useState(false)
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setVisible(window.scrollY > 600)
+    }
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
+  return (
+    <div className={`floating-cta ${visible ? 'floating-cta-visible' : ''}`}>
+      <Link href="/contact" className="floating-cta-btn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="20" height="20">
+          <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+        </svg>
+        <span>無料相談</span>
+      </Link>
+    </div>
   )
 }
