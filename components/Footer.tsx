@@ -11,9 +11,9 @@ export default function Footer() {
           {/* ブランド情報 */}
           <div className="footer-brand-col">
             <Link href="/" className="footer-logo">
-              <svg className="footer-logo-icon" viewBox="0 0 24 24" fill="currentColor">
-                <polygon points="8,5 19,12 8,19" />
-                <polygon points="3,5 8,8 8,16 3,19" />
+              <svg className="footer-logo-icon" viewBox="0 0 48 48" fill="currentColor" stroke="currentColor" strokeWidth="1.4" strokeLinejoin="round" strokeLinecap="round">
+                <polygon points="11.7,13.4 25.833,24 11.7,34.6" />
+                <polygon points="22.7,13.4 36.833,24 22.7,34.6" />
               </svg>
               <span className="footer-logo-text">EMPLAY</span>
             </Link>
