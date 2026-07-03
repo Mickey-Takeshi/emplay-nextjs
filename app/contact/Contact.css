@@ -13,7 +13,9 @@
 .contact-hero-bg {
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, #0F172A 0%, #1E3A8A 100%);
+  background:
+    linear-gradient(135deg, rgba(15, 23, 42, 0.88) 0%, rgba(30, 58, 138, 0.82) 100%),
+    url('/images/hero-contact.webp') center / cover no-repeat;
 }
 
 .contact-hero-content {

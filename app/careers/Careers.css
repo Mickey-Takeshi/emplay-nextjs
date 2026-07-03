@@ -269,3 +269,11 @@
     padding: 14px 24px;
   }
 }
+
+
+/* 採用ヘッダー背景画像 */
+.careers-page .page-header-bg {
+  background:
+    linear-gradient(135deg, rgba(15, 23, 42, 0.88) 0%, rgba(30, 58, 138, 0.82) 100%),
+    url('/images/hero-careers.webp') center / cover no-repeat;
+}

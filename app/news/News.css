@@ -100,3 +100,11 @@ h2.news-title {
     display: none;
   }
 }
+
+
+/* ニュースヘッダー背景画像 */
+.news-page .page-header-bg {
+  background:
+    linear-gradient(135deg, rgba(15, 23, 42, 0.88) 0%, rgba(30, 58, 138, 0.82) 100%),
+    url('/images/hero-news.webp') center / cover no-repeat;
+}

@@ -36,7 +36,7 @@ const faqs = [
 
 export default function ServiceCreativePage() {
   return (
-    <main className="service-lp">
+    <main className="service-lp service-lp--creative">
       <FaqJsonLd faqs={faqs} />
       {/* パンくずリスト */}
       <Breadcrumb items={[

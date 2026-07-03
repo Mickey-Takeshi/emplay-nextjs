@@ -36,7 +36,7 @@ const faqs = [
 
 export default function ServiceAdsPage() {
   return (
-    <main className="service-lp">
+    <main className="service-lp service-lp--ads">
       <FaqJsonLd faqs={faqs} />
       {/* パンくずリスト */}
       <Breadcrumb items={[

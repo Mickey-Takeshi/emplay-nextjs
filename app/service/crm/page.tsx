@@ -36,7 +36,7 @@ const faqs = [
 
 export default function ServiceCrmPage() {
   return (
-    <main className="service-lp">
+    <main className="service-lp service-lp--crm">
       <FaqJsonLd faqs={faqs} />
       {/* パンくずリスト */}
       <Breadcrumb items={[

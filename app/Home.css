@@ -13,7 +13,9 @@
 .hero-bg {
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, #0F172A 0%, #1E3A8A 50%, #1E40AF 100%);
+  background:
+    linear-gradient(135deg, rgba(15, 23, 42, 0.9) 0%, rgba(30, 58, 138, 0.82) 50%, rgba(30, 64, 175, 0.72) 100%),
+    url('/images/hero-home.webp') center / cover no-repeat;
 }
 
 .hero-grid-pattern {
@@ -315,7 +317,9 @@
    CTAバナー
    ======================================== */
 .cta-banner {
-  background: linear-gradient(135deg, #1E40AF 0%, #0D9488 100%);
+  background:
+    linear-gradient(135deg, rgba(30, 64, 175, 0.92) 0%, rgba(13, 148, 136, 0.86) 100%),
+    url('/images/mission-bg.webp') center / cover no-repeat;
   padding: 80px var(--spacing-md);
 }
 
