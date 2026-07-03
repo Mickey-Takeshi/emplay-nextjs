@@ -26,7 +26,6 @@ export const metadata: Metadata = {
     template: '%s | 株式会社EMPLAY',
   },
   description: '株式会社EMPLAYは中小企業のWeb集客からDX推進までワンストップで支援。HP制作・広告運用・CRM導入・AI研修を、戦略設計から実行まで一貫して伴走します。',
-  keywords: 'EMPLAY,Web制作,広告運用,CRM導入,AI研修,DX推進,中小企業,デジタルマーケティング,東京',
   authors: [{ name: '株式会社EMPLAY' }],
   openGraph: {
     type: 'website',
@@ -66,14 +65,27 @@ const organizationSchema = {
   '@context': 'https://schema.org',
   '@type': 'Organization',
   name: '株式会社EMPLAY',
+  alternateName: 'EMPLAY Inc.',
   url: 'https://emplay.jp',
-  logo: 'https://emplay.jp/favicon.svg',
+  logo: 'https://emplay.jp/logo.png',
+  image: 'https://emplay.jp/og-image.jpg',
   description: '株式会社EMPLAYは中小企業のWeb集客からDX推進までワンストップで支援。HP制作・広告運用・CRM導入・AI研修を、戦略設計から実行まで一貫して伴走します。',
+  foundingDate: '2023-12',
   address: {
     '@type': 'PostalAddress',
-    addressLocality: '東京都',
+    postalCode: '150-0001',
+    addressRegion: '東京都',
+    addressLocality: '渋谷区',
+    streetAddress: '神宮前6丁目23番4号 桑野ビル2階',
     addressCountry: 'JP',
   },
+  contactPoint: {
+    '@type': 'ContactPoint',
+    contactType: 'customer support',
+    url: 'https://emplay.jp/contact',
+    availableLanguage: ['Japanese'],
+  },
+  knowsAbout: ['HP制作', 'Web広告運用', 'クリエイティブ制作', 'CRM導入支援', '生成AI研修', 'DXコンサルティング'],
   sameAs: [],
 }
 

@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import Breadcrumb from '@/components/Breadcrumb'
+import FaqJsonLd from '@/components/FaqJsonLd'
 import '../ServiceDetail.css'
 
 export const metadata: Metadata = {
@@ -12,9 +13,31 @@ export const metadata: Metadata = {
   },
 }
 
+
+// FAQ構造化データ用(表示中のFAQと一致させること)
+const faqs = [
+  {
+    q: '最低契約期間はありますか？',
+    a: '3ヶ月からのご契約をお願いしています。広告運用は効果測定と改善を繰り返すことで成果が出るため、一定期間の継続が必要です。',
+  },
+  {
+    q: '少額の予算でも対応してもらえますか？',
+    a: '月額広告費10万円程度から対応可能です。予算に応じて、最も効果が見込める媒体に集中投下する戦略をご提案します。',
+  },
+  {
+    q: '広告アカウントは誰のものになりますか？',
+    a: '御社名義のアカウントを作成するため、契約終了後もアカウントは御社のものとしてお使いいただけます。',
+  },
+  {
+    q: '他社で運用中のアカウントを引き継げますか？',
+    a: 'はい、可能です。現状の広告パフォーマンスを分析した上で、改善提案を行いながら運用を引き継ぎます。',
+  },
+]
+
 export default function ServiceAdsPage() {
   return (
     <main className="service-lp">
+      <FaqJsonLd faqs={faqs} />
       {/* パンくずリスト */}
       <Breadcrumb items={[
         { label: 'SERVICE', path: '/service' },

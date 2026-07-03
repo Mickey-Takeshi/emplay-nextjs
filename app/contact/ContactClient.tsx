@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, FormEvent } from 'react'
+import Link from 'next/link'
 import { submitContact, ContactFormData } from '@/lib/supabase'
 import Breadcrumb from '@/components/Breadcrumb'
 import './Contact.css'
@@ -41,16 +42,10 @@ export default function ContactClient() {
       setFormData({ name: '', email: '', company: '', phone: '', message: '' })
     } catch (error) {
       setSubmitStatus('error')
-      if (error instanceof Error) {
-        if (error.message.includes('No API key') || error.message.includes('URL')) {
-          setSubmitStatus('success')
-          setFormData({ name: '', email: '', company: '', phone: '', message: '' })
-        } else {
-          setErrorMessage(error.message)
-        }
-      } else {
-        setErrorMessage('送信中にエラーが発生しました。')
-      }
+      console.error('Contact form submission failed:', error)
+      setErrorMessage(
+        '送信に失敗しました。時間をおいて再度お試しいただくか、解決しない場合はお手数ですがメールにてご連絡ください。'
+      )
     } finally {
       setIsSubmitting(false)
     }
@@ -182,6 +177,10 @@ export default function ContactClient() {
                   )}
 
                   <div className="form-actions">
+                    <p className="form-consent">
+                      <Link href="/privacy">プライバシーポリシー</Link>
+                      に同意の上、送信してください。
+                    </p>
                     <p className="form-actions-note">通常1営業日以内に返信いたします</p>
                     <button type="submit" className="btn btn-primary btn-large form-submit-btn" disabled={isSubmitting}>
                       {isSubmitting ? '送信中...' : '送信する'}

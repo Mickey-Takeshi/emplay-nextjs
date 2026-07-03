@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import Breadcrumb from '@/components/Breadcrumb'
+import FaqJsonLd from '@/components/FaqJsonLd'
 import './ServiceHp.css'
 
 export default function ServiceHpClient() {
@@ -41,6 +42,7 @@ export default function ServiceHpClient() {
 
   return (
     <main className="service-hp-page">
+      <FaqJsonLd faqs={faqs} />
       {/* ヒーローセクション */}
       <header className="hp-hero">
         <div className="hp-hero-background">

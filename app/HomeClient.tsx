@@ -2,13 +2,40 @@
 
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
-import { NewsArticle } from '@/lib/supabase'
+import { NewsArticle, BlogPost } from '@/lib/supabase'
+import FaqJsonLd from '@/components/FaqJsonLd'
 
 interface HomeClientProps {
   news: NewsArticle[]
+  latestPosts: BlogPost[]
 }
 
-export default function HomeClient({ news }: HomeClientProps) {
+const homeFaqs = [
+  {
+    q: '相談だけでも大丈夫ですか？',
+    a: 'はい、もちろんです。現状の課題整理からで構いません。無料相談で御社に最適な施策をご提案します。',
+  },
+  {
+    q: 'どのようなサービスを依頼できますか？',
+    a: 'HP制作、Web広告運用、クリエイティブ制作、CRM導入支援、生成AI研修（EMPLAY AI ACADEMY）まで、Webとテクノロジー活用をワンストップでご依頼いただけます。',
+  },
+  {
+    q: '地方の会社でも対応してもらえますか？',
+    a: 'はい。オンラインでのお打ち合わせが可能ですので、全国からご相談いただけます。',
+  },
+  {
+    q: '小規模な会社でも依頼できますか？',
+    a: 'はい。中小企業の支援を得意としています。ご予算に応じて、優先度の高い施策からご提案します。',
+  },
+]
+
+function formatDate(dateString: string) {
+  return new Date(dateString)
+    .toLocaleDateString('ja-JP', { year: 'numeric', month: '2-digit', day: '2-digit' })
+    .replace(/\//g, '.')
+}
+
+export default function HomeClient({ news, latestPosts }: HomeClientProps) {
   const [heroLoaded, setHeroLoaded] = useState(false)
 
   useEffect(() => {
@@ -33,6 +60,7 @@ export default function HomeClient({ news }: HomeClientProps) {
 
   return (
     <>
+      <FaqJsonLd faqs={homeFaqs} />
       {/* ヒーローセクション */}
       <section className="hero" aria-label="メインビジュアル" style={{ marginTop: '-72px' }}>
         <div className="hero-bg" aria-hidden="true">
@@ -183,6 +211,58 @@ export default function HomeClient({ news }: HomeClientProps) {
         </div>
       </section>
 
+      {/* 強みセクション */}
+      <section className="section strengths-section" aria-labelledby="strengths-heading">
+        <div className="container">
+          <div className="section-header-center animate-on-scroll">
+            <p className="section-label">STRENGTHS</p>
+            <h2 id="strengths-heading" className="section-heading">EMPLAYの3つの強み</h2>
+          </div>
+          <div className="strengths-grid">
+            <div className="strength-card animate-on-scroll">
+              <div className="strength-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                  <circle cx="12" cy="12" r="9" />
+                  <path d="M12 3v18M3 12h18" />
+                </svg>
+              </div>
+              <h3 className="strength-title">ワンストップ対応</h3>
+              <p className="strength-text">
+                戦略設計からHP制作、広告運用、CRM導入、AI研修まで一気通貫。
+                複数の会社に依頼する手間と調整コストをなくします。
+              </p>
+            </div>
+            <div className="strength-card animate-on-scroll">
+              <div className="strength-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                  <circle cx="9" cy="7" r="4" />
+                  <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" />
+                </svg>
+              </div>
+              <h3 className="strength-title">中小企業に伴走</h3>
+              <p className="strength-text">
+                「作って終わり」「導入して終わり」にしません。
+                成果が出るまで効果測定と改善を繰り返す伴走型の支援です。
+              </p>
+            </div>
+            <div className="strength-card animate-on-scroll">
+              <div className="strength-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                  <path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a2 2 0 0 1-2 2h-4a2 2 0 0 1-2-2v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7z" />
+                  <path d="M9 21h6" />
+                </svg>
+              </div>
+              <h3 className="strength-title">AI活用の実践知</h3>
+              <p className="strength-text">
+                生成AIを自社業務で使い倒す実践知を、支援と研修（EMPLAY AI
+                ACADEMY）の両方に還元。最新技術を現場で使える形で届けます。
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* CTAバナー */}
       <section className="cta-banner" aria-label="お問い合わせへの導線">
         <div className="cta-banner-content animate-on-scroll">
@@ -196,6 +276,60 @@ export default function HomeClient({ news }: HomeClientProps) {
             <Link href="/contact" className="btn btn-primary btn-large cta-banner-btn">
               無料相談を申し込む
             </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* 最新の知見（ブログ）セクション */}
+      {latestPosts.length > 0 && (
+        <section className="section insights-section" aria-labelledby="insights-heading">
+          <div className="container">
+            <div className="section-header-row">
+              <div>
+                <p className="section-label">INSIGHTS</p>
+                <h2 id="insights-heading" className="section-heading">最新の知見</h2>
+              </div>
+              <Link href="/blog" className="view-more" aria-label="ブログ一覧を見る">VIEW MORE →</Link>
+            </div>
+            <p className="insights-lead">
+              Webマーケティング・AI活用の実践知を、現場のコンサルタントが発信しています。
+            </p>
+            <div className="insights-grid">
+              {latestPosts.map((post) => (
+                <Link key={post.id} href={`/blog/${post.slug}`} className="insight-card animate-on-scroll">
+                  <figure className="insight-thumbnail">
+                    <img src={post.thumbnail} alt="" width="800" height="450" loading="lazy" />
+                  </figure>
+                  <div className="insight-content">
+                    <div className="insight-meta">
+                      <span className="insight-category">{post.category}</span>
+                      <time className="insight-date" dateTime={post.published_at}>
+                        {formatDate(post.published_at)}
+                      </time>
+                    </div>
+                    <h3 className="insight-title">{post.title}</h3>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* FAQセクション */}
+      <section className="section home-faq-section" aria-labelledby="faq-heading">
+        <div className="container">
+          <div className="section-header-center animate-on-scroll">
+            <p className="section-label">FAQ</p>
+            <h2 id="faq-heading" className="section-heading">よくあるご質問</h2>
+          </div>
+          <div className="home-faq-list">
+            {homeFaqs.map((faq, index) => (
+              <div key={index} className="home-faq-item animate-on-scroll">
+                <h3 className="home-faq-question">{faq.q}</h3>
+                <p className="home-faq-answer">{faq.a}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>

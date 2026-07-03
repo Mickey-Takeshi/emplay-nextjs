@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import Breadcrumb from '@/components/Breadcrumb'
+import FaqJsonLd from '@/components/FaqJsonLd'
 import './ServiceTraining.css'
 
 export default function ServiceTrainingClient() {
@@ -41,6 +42,7 @@ export default function ServiceTrainingClient() {
 
   return (
     <main className="training-page">
+      <FaqJsonLd faqs={faqs} />
       {/* ヒーローセクション */}
       <header className="training-hero">
         <div className="training-hero-background">
@@ -421,7 +423,7 @@ export default function ServiceTrainingClient() {
               <div className="training-comparison-cell label">料金</div>
               <div className="training-comparison-cell">15〜30万円/人・月</div>
               <div className="training-comparison-cell">20〜50万円/人・月</div>
-              <div className="training-comparison-cell highlight">10万円/人・月</div>
+              <div className="training-comparison-cell highlight">個別お見積り</div>
             </div>
             <div className="training-comparison-row">
               <div className="training-comparison-cell label">事業支援</div>

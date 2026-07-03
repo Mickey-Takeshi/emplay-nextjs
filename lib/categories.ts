@@ -12,6 +12,9 @@ export const CATEGORY_MAP: Record<string, string> = {
   '補助金・助成金': 'subsidy',
   'データ分析': 'data-analytics',
   'セキュリティ': 'security',
+  // 表記ゆれの防御的マッピング(DB正規化マイグレーション適用までのフォールバック)
+  'EC・通販': 'ec',
+  'SEO': 'marketing',
 }
 
 // スラッグから日本語名への逆マッピング

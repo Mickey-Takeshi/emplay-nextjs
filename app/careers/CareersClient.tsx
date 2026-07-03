@@ -15,6 +15,7 @@ export default function CareersClient() {
     experience: '',
     message: '',
   })
+  const [honeypot, setHoneypot] = useState('')
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle')
 
@@ -29,6 +30,12 @@ export default function CareersClient() {
     setSubmitStatus('idle')
 
     try {
+      // ハニーポットチェック（ボットが入力した場合は静かに成功を返す）
+      if (honeypot) {
+        setSubmitStatus('success')
+        return
+      }
+
       await submitJobApplication(formData)
       setSubmitStatus('success')
       setFormData({
@@ -270,6 +277,20 @@ export default function CareersClient() {
                 />
               </div>
 
+              {/* ハニーポット（ボット対策） - 人間には見えない */}
+              <div style={{ position: 'absolute', left: '-9999px', opacity: 0, height: 0, overflow: 'hidden' }} aria-hidden="true">
+                <label htmlFor="website">Website</label>
+                <input
+                  type="text"
+                  id="website"
+                  name="website"
+                  value={honeypot}
+                  onChange={(e) => setHoneypot(e.target.value)}
+                  tabIndex={-1}
+                  autoComplete="off"
+                />
+              </div>
+
               {submitStatus === 'error' && (
                 <div className="form-error">
                   送信に失敗しました。時間をおいて再度お試しください。
@@ -277,6 +298,10 @@ export default function CareersClient() {
               )}
 
               <div className="form-submit">
+                <p className="form-consent">
+                  <Link href="/privacy">プライバシーポリシー</Link>
+                  に同意の上、送信してください。
+                </p>
                 <button
                   type="submit"
                   className="btn btn-primary btn-large"

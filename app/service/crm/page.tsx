@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import Breadcrumb from '@/components/Breadcrumb'
+import FaqJsonLd from '@/components/FaqJsonLd'
 import '../ServiceDetail.css'
 
 export const metadata: Metadata = {
@@ -12,9 +13,31 @@ export const metadata: Metadata = {
   },
 }
 
+
+// FAQ構造化データ用(表示中のFAQと一致させること)
+const faqs = [
+  {
+    q: 'どのCRMツールを使いますか？',
+    a: '主にHubSpotをお勧めしていますが、御社の規模や予算、既存ツールとの連携要件に応じて最適なツールをご提案します。',
+  },
+  {
+    q: '既存のエクセルデータは移行できますか？',
+    a: 'はい、可能です。既存のエクセルやCSVデータを整理・クレンジングした上で、CRMに取り込みます。',
+  },
+  {
+    q: '社員がITに詳しくなくても使えますか？',
+    a: 'はい、操作研修とマニュアル作成を行いますので、ITに詳しくない方でも安心してご利用いただけます。導入後のサポートも継続します。',
+  },
+  {
+    q: '少人数の会社でも導入メリットはありますか？',
+    a: 'むしろ少人数だからこそ、一人ひとりの業務効率化の効果が大きく出ます。「忙しくてフォローが後回しになる」という課題を解消できます。',
+  },
+]
+
 export default function ServiceCrmPage() {
   return (
     <main className="service-lp">
+      <FaqJsonLd faqs={faqs} />
       {/* パンくずリスト */}
       <Breadcrumb items={[
         { label: 'SERVICE', path: '/service' },

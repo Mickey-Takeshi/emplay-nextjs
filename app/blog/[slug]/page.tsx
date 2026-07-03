@@ -88,7 +88,7 @@ export default async function BlogDetailPage({ params }: { params: Promise<{ slu
       name: '株式会社EMPLAY',
       logo: {
         '@type': 'ImageObject',
-        url: 'https://emplay.jp/favicon.svg'
+        url: 'https://emplay.jp/logo.png'
       }
     },
     mainEntityOfPage: {
@@ -97,46 +97,12 @@ export default async function BlogDetailPage({ params }: { params: Promise<{ slu
     }
   }
 
-  const breadcrumbData = {
-    '@context': 'https://schema.org',
-    '@type': 'BreadcrumbList',
-    itemListElement: [
-      {
-        '@type': 'ListItem',
-        position: 1,
-        name: 'ホーム',
-        item: 'https://emplay.jp'
-      },
-      {
-        '@type': 'ListItem',
-        position: 2,
-        name: 'ブログ',
-        item: 'https://emplay.jp/blog'
-      },
-      {
-        '@type': 'ListItem',
-        position: 3,
-        name: post.category,
-        item: `https://emplay.jp/blog/category/${getCategorySlug(post.category)}`
-      },
-      {
-        '@type': 'ListItem',
-        position: 4,
-        name: post.title
-      }
-    ]
-  }
-
   return (
     <main className="blog-detail-page">
-      {/* 構造化データ */}
+      {/* 構造化データ（BreadcrumbListはBreadcrumbコンポーネントが出力） */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbData) }}
       />
 
       {/* パンくずリスト */}

@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import Breadcrumb from '@/components/Breadcrumb'
+import FaqJsonLd from '@/components/FaqJsonLd'
 import '../ServiceDetail.css'
 
 export const metadata: Metadata = {
@@ -12,9 +13,31 @@ export const metadata: Metadata = {
   },
 }
 
+
+// FAQ構造化データ用(表示中のFAQと一致させること)
+const faqs = [
+  {
+    q: '制作期間はどれくらいですか？',
+    a: 'ホームページで1.5〜2ヶ月、LPで2〜4週間が目安です。スケジュールはご要望に応じて調整可能ですので、お急ぎの場合もご相談ください。',
+  },
+  {
+    q: '原稿や写真は用意する必要がありますか？',
+    a: '原稿の作成代行、写真撮影、素材手配も承ります。「何を用意すればいいか分からない」という場合も、ヒアリングを通じてサポートしますのでご安心ください。',
+  },
+  {
+    q: '公開後の修正や更新は対応してもらえますか？',
+    a: 'はい、対応しています。軽微な修正から、コンテンツの追加、運用保守まで、ご要望に応じてサポートプランをご用意しています。',
+  },
+  {
+    q: '既存サイトのリニューアルも可能ですか？',
+    a: 'もちろん可能です。既存サイトの課題分析を行った上で、改善のご提案をさせていただきます。',
+  },
+]
+
 export default function ServiceCreativePage() {
   return (
     <main className="service-lp">
+      <FaqJsonLd faqs={faqs} />
       {/* パンくずリスト */}
       <Breadcrumb items={[
         { label: 'SERVICE', path: '/service' },

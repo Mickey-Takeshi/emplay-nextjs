@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import Breadcrumb from '@/components/Breadcrumb'
+import FaqJsonLd from '@/components/FaqJsonLd'
 import './Service.css'
 
 export default function ServiceClient() {
@@ -45,6 +46,7 @@ export default function ServiceClient() {
 
   return (
     <main className="service-page">
+      <FaqJsonLd faqs={faqs} />
       {/* ヒーローセクション */}
       <header className="service-hero" aria-label="ページヘッダー">
         <div className="service-hero-bg" aria-hidden="true"></div>

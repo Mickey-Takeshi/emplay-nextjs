@@ -42,6 +42,7 @@ export default function Footer() {
                 <li><Link href="/news">ニュース</Link></li>
                 <li><Link href="/blog">ブログ</Link></li>
                 <li><Link href="/careers">採用情報</Link></li>
+                <li><Link href="/privacy">プライバシーポリシー</Link></li>
               </ul>
             </div>
           </div>

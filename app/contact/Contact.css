@@ -194,9 +194,21 @@
   margin-top: 8px;
 }
 
+.form-consent {
+  font-size: 0.8125rem;
+  color: var(--color-text-light);
+  margin-bottom: 8px;
+}
+
+.form-consent a {
+  color: var(--color-primary);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
 .form-actions-note {
   font-size: 0.75rem;
-  color: var(--color-text-muted);
+  color: var(--color-text-light);
   margin-bottom: 12px;
 }
 

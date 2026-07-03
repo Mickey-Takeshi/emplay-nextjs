@@ -170,6 +170,18 @@
   margin-top: 32px;
 }
 
+.form-submit .form-consent {
+  font-size: 0.8125rem;
+  color: var(--color-text-light);
+  margin-bottom: var(--spacing-sm);
+}
+
+.form-submit .form-consent a {
+  color: var(--color-primary);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
 .btn-large {
   padding: 16px 48px;
   font-size: 1rem;
