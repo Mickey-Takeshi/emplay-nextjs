@@ -20,7 +20,7 @@
   font-weight: 800;
   text-align: center;
   color: var(--color-text);
-  margin-bottom: 48px;
+  margin-bottom: 40px;
   letter-spacing: -0.02em;
 }
 
@@ -149,7 +149,7 @@
 
 /* 課題セクション */
 .hp-problems {
-  padding: 100px 0;
+  padding: 72px 0;
   background: #fff;
 }
 
@@ -219,7 +219,7 @@
 
 /* なぜ今HP刷新が必要か */
 .hp-why-now {
-  padding: 100px 0;
+  padding: 72px 0;
   background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 100%);
   color: #fff;
 }
@@ -306,7 +306,7 @@
 
 /* サービス概要 */
 .hp-service-overview {
-  padding: 100px 0;
+  padding: 72px 0;
   background: #fff;
 }
 
@@ -400,7 +400,7 @@
 
 /* 選ばれる3つの理由 */
 .hp-reasons-section {
-  padding: 100px 0;
+  padding: 72px 0;
   background: #f8fafc;
 }
 
@@ -548,7 +548,7 @@
 
 /* 料金プラン */
 .hp-pricing {
-  padding: 100px 0;
+  padding: 72px 0;
   background: #fff;
 }
 
@@ -721,7 +721,7 @@
 
 /* 導入の流れ */
 .hp-flow {
-  padding: 100px 0;
+  padding: 72px 0;
   background: #f8fafc;
 }
 
@@ -865,7 +865,7 @@
 
 /* FAQ */
 .hp-faq {
-  padding: 100px 0;
+  padding: 72px 0;
   background: #fff;
 }
 
@@ -944,7 +944,7 @@
 
 /* CTA */
 .hp-cta {
-  padding: 100px 0;
+  padding: 72px 0;
   background: linear-gradient(135deg, var(--color-primary), #4f46e5);
   position: relative;
   overflow: hidden;
@@ -1176,7 +1176,7 @@
 
 /* ===== AI検索対策セクション ===== */
 .hp-aisearch {
-  padding: 96px 0;
+  padding: 72px 0;
   background: var(--color-bg-gray);
 }
 
