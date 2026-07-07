@@ -22,18 +22,18 @@ const notoSansJP = Noto_Sans_JP({
 export const metadata: Metadata = {
   metadataBase: new URL('https://emplay.jp'),
   title: {
-    default: '株式会社EMPLAY | DX推進・ウェブマーケティング・コンテンツ制作',
+    default: 'ホームページ制作・Web広告・AI活用支援｜株式会社EMPLAY(東京)',
     template: '%s | 株式会社EMPLAY',
   },
-  description: '株式会社EMPLAYは中小企業のWeb集客からDX推進までワンストップで支援。HP制作・広告運用・CRM導入・AI研修を、戦略設計から実行まで一貫して伴走します。',
+  description: '東京のホームページ制作・Web広告運用・AI活用支援。株式会社EMPLAYは中小企業の集客からDX推進までワンストップで伴走します。SEO＋AI検索対策(AIO)対応のホームページ制作、広告運用、CRM導入、生成AI研修まで。',
   authors: [{ name: '株式会社EMPLAY' }],
   openGraph: {
     type: 'website',
     locale: 'ja_JP',
     url: 'https://emplay.jp',
     siteName: '株式会社EMPLAY',
-    title: '株式会社EMPLAY | DX推進・ウェブマーケティング・コンテンツ制作',
-    description: '株式会社EMPLAYは中小企業のWeb集客からDX推進までワンストップで支援。HP制作・広告運用・CRM導入・AI研修を、戦略設計から実行まで一貫して伴走します。',
+    title: 'ホームページ制作・Web広告・AI活用支援｜株式会社EMPLAY(東京)',
+    description: '東京のホームページ制作・Web広告運用・AI活用支援。株式会社EMPLAYは中小企業の集客からDX推進までワンストップで伴走します。SEO＋AI検索対策(AIO)対応のホームページ制作、広告運用、CRM導入、生成AI研修まで。',
     images: [
       {
         url: '/og-image.jpg',
@@ -45,8 +45,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: '株式会社EMPLAY | DX推進・ウェブマーケティング・コンテンツ制作',
-    description: '株式会社EMPLAYは中小企業のWeb集客からDX推進までワンストップで支援。HP制作・広告運用・CRM導入・AI研修を、戦略設計から実行まで一貫して伴走します。',
+    title: 'ホームページ制作・Web広告・AI活用支援｜株式会社EMPLAY(東京)',
+    description: '東京のホームページ制作・Web広告運用・AI活用支援。株式会社EMPLAYは中小企業の集客からDX推進までワンストップで伴走します。SEO＋AI検索対策(AIO)対応のホームページ制作、広告運用、CRM導入、生成AI研修まで。',
     images: ['/og-image.jpg'],
   },
   robots: {

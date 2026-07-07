@@ -5,7 +5,7 @@ import FaqJsonLd from '@/components/FaqJsonLd'
 import '../ServiceDetail.css'
 
 export const metadata: Metadata = {
-  title: 'クリエイティブ制作 | 株式会社EMPLAY',
+  title: 'クリエイティブ制作｜LP・バナー・動画制作',
   description: 'ホームページ、LP、バナー、動画制作。成果につながるWebクリエイティブをワンストップで提供します。',
   openGraph: {
     title: 'クリエイティブ制作 | 株式会社EMPLAY',

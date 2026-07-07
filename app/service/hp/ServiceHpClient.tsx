@@ -54,17 +54,17 @@ export default function ServiceHpClient() {
             HP制作サービス
           </div>
           <h1 className="hp-hero-title">
-            <span className="hp-hero-title-accent">成果が出るまで</span>
+            <span className="hp-hero-title-accent">成果が出るまで伴走する</span>
             <br />
-            伴走するHP制作
+            ホームページ制作
           </h1>
           <p className="hp-hero-text">
-            SEO＋AIO対応で、3年後も検索されるサイトを。<br />
-            月10本〜の記事作成と効果測定で、問い合わせ獲得まで支援します。
+            SEO＋AI検索対策(AIO/LLMO)対応で、3年後も検索・AIに見つかるサイトを。<br />
+            月10本〜の記事作成と効果測定で、中小企業の問い合わせ獲得まで伴走するホームページ制作会社です。
           </p>
           <div className="hp-hero-features">
             <span className="hp-hero-feature">SEO対策</span>
-            <span className="hp-hero-feature">AIO対策</span>
+            <span className="hp-hero-feature">AI検索対策(AIO)</span>
             <span className="hp-hero-feature">記事代行</span>
             <span className="hp-hero-feature">効果測定</span>
           </div>
@@ -261,6 +261,47 @@ export default function ServiceHpClient() {
               </div>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* AI検索対策セクション */}
+      <section className="hp-aisearch">
+        <div className="container">
+          <p className="hp-section-label">AI SEARCH</p>
+          <h2 className="hp-section-title">AI検索時代のホームページ制作｜SEO＋AI検索対策(AIO/LLMO)</h2>
+          <p className="hp-aisearch-lead">
+            検索の主役は「キーワードの上位表示」から「AIが答えに引用するサイト」へ移りつつあります。
+            ChatGPTやGeminiなどのAI検索(生成AI検索)で自社が引用されるには、
+            従来のSEOに加えてAIに理解・信頼されるサイト設計が欠かせません。
+            EMPLAYのホームページ制作は、次の4つの検索最適化を目的に合わせて組み合わせます。
+          </p>
+          <div className="hp-aisearch-grid">
+            <div className="hp-aisearch-card">
+              <span className="hp-aisearch-tag">SEO</span>
+              <h3 className="hp-aisearch-title">検索エンジン最適化</h3>
+              <p className="hp-aisearch-text">Google・Yahoo!の自然検索で上位表示を狙う土台。キーワード設計・内部対策・表示速度・モバイル対応まで整えます。</p>
+            </div>
+            <div className="hp-aisearch-card">
+              <span className="hp-aisearch-tag">AEO / GEO</span>
+              <h3 className="hp-aisearch-title">回答・生成エンジン最適化</h3>
+              <p className="hp-aisearch-text">AIの回答に「引用される」ための最適化。結論ファーストの構成とFAQ、一次情報でAIが答えに使いやすい形にします。</p>
+            </div>
+            <div className="hp-aisearch-card">
+              <span className="hp-aisearch-tag">AIO</span>
+              <h3 className="hp-aisearch-title">AI検索最適化</h3>
+              <p className="hp-aisearch-text">ChatGPT・Perplexity・Gemini・Google AI Overviewsなど複数のAI検索を横断的に想定した設計と構造化データを実装します。</p>
+            </div>
+            <div className="hp-aisearch-card">
+              <span className="hp-aisearch-tag">LLMO</span>
+              <h3 className="hp-aisearch-title">大規模言語モデル最適化</h3>
+              <p className="hp-aisearch-text">LLMが企業・サービスを正しく認識するためのエンティティ整理とE-E-A-T強化。指名検索・ブランド認知にもつながります。</p>
+            </div>
+          </div>
+          <p className="hp-aisearch-note">
+            ※ 特別なファイルや小手先の対策ではなく、Googleが推奨する「一次情報・良質なコンテンツ・技術的な健全性」が土台です。EMPLAYはSEOとAI検索対策(AIO)の両輪で、
+            <Link href="/blog/aio-llmo-seo-guide">AI検索時代のSEO</Link>
+            にも対応したホームページ制作を行います。
+          </p>
         </div>
       </section>
 

@@ -5,7 +5,7 @@ import FaqJsonLd from '@/components/FaqJsonLd'
 import '../ServiceDetail.css'
 
 export const metadata: Metadata = {
-  title: 'CRM導入支援 | 株式会社EMPLAY',
+  title: 'CRM導入支援｜顧客管理の効率化・売上向上',
   description: '顧客管理の効率化、営業の見える化、メルマガ・LINE配信まで。CRM導入から活用までをワンストップでサポートします。',
   openGraph: {
     title: 'CRM導入支援 | 株式会社EMPLAY',
