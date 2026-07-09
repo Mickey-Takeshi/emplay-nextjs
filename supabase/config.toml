@@ -1,0 +1,6 @@
+project_id = "emplay-nextjs"
+
+[api]
+enabled = true
+schemas = ["emplay_hp", "public", "graphql_public"]
+extra_search_path = ["emplay_hp", "public", "extensions"]
