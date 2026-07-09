@@ -18,6 +18,7 @@ export interface BlogPost {
   category: string
   published_at: string
   created_at: string
+  updated_at: string
 }
 
 // ニュース記事の型

@@ -8,9 +8,13 @@ import './Blog.css'
 export const metadata: Metadata = {
   title: 'ブログ',
   description: '株式会社EMPLAYのブログです。DX、ウェブマーケティング、コンテンツ制作に関する情報を発信しています。',
+  alternates: {
+    canonical: '/blog',
+  },
   openGraph: {
     title: 'ブログ | 株式会社EMPLAY',
     description: '株式会社EMPLAYのブログです。DX、ウェブマーケティング、コンテンツ制作に関する情報を発信しています。',
+    url: '/blog',
   },
 }
 

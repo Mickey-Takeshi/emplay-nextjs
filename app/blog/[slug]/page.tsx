@@ -34,11 +34,16 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   return {
     title: post.title,
     description: post.excerpt,
+    alternates: {
+      canonical: `/blog/${post.slug}`,
+    },
     openGraph: {
       title: `${post.title} | 株式会社EMPLAY`,
       description: post.excerpt,
       type: 'article',
+      url: `/blog/${post.slug}`,
       publishedTime: post.published_at,
+      modifiedTime: post.updated_at,
       images: [post.thumbnail],
     },
     twitter: {
@@ -77,7 +82,7 @@ export default async function BlogDetailPage({ params }: { params: Promise<{ slu
     description: post.excerpt,
     image: post.thumbnail,
     datePublished: post.published_at,
-    dateModified: post.published_at,
+    dateModified: post.updated_at,
     author: {
       '@type': 'Organization',
       name: '株式会社EMPLAY',

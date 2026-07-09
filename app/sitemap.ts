@@ -36,7 +36,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     .map((cat) => {
       const latest = posts
         .filter((p) => p.category === cat)
-        .map((p) => p.published_at)
+        .map((p) => p.updated_at || p.published_at)
         .sort()
         .pop()
       return {
@@ -50,7 +50,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // ブログ記事
   const blogPages: MetadataRoute.Sitemap = posts.map((post) => ({
     url: `${BASE_URL}/blog/${post.slug}`,
-    lastModified: new Date(post.published_at),
+    lastModified: new Date(post.updated_at || post.published_at),
     changeFrequency: 'monthly' as const,
     priority: 0.6,
   }))

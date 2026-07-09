@@ -30,9 +30,13 @@ export async function generateMetadata({ params }: { params: Promise<{ category:
   return {
     title: `${categoryName}の記事一覧`,
     description,
+    alternates: {
+      canonical: `/blog/category/${categorySlug}`,
+    },
     openGraph: {
       title: `${categoryName}の記事一覧 | 株式会社EMPLAY`,
       description,
+      url: `/blog/category/${categorySlug}`,
     },
   }
 }
