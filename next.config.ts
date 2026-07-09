@@ -1,6 +1,6 @@
 import type { NextConfig } from 'next'
 
-// 旧Vite版のsitemapに存在した旧カテゴリslug → 現行slugへの301（恒久）リダイレクト。
+// 旧Vite版のsitemapに存在した旧カテゴリslug → 現行slugへの恒久リダイレクト。
 // Search Consoleで「404」として検出される旧URLのクロール資産を現行ページへ引き継ぐ。
 const OLD_CATEGORY_REDIRECTS = [
   { from: 'web-ads', to: 'marketing' },         // Web広告 → マーケティング
