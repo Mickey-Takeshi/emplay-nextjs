@@ -98,3 +98,23 @@ Search Consoleでクロール対象外として確認されたURLを中心に、
 - `smb-cyber-security-guide`
 
 補助金、個人情報、セキュリティの記事は制度・法令の最新確認を伴うため、一般記事とは分けて更新する。
+
+## 第2バッチ（サイト全体監査から追加）
+
+重点URL以外にも、平文比率が低くカタログ型になっていた13記事を追加で補強した。
+
+- `twitter-x-ads-guide`
+- `zoom-business-guide`
+- `freee-accounting-guide`
+- `instagram-ads-guide`
+- `sme-security-basics-guide`
+- `youtube-ads-guide`
+- `webinar-guide`
+- `email-marketing-guide`
+- `sme-ai-introduction-guide`
+- `ga4-analytics-guide`
+- `website-development-cost-guide`
+- `ai-tools-complete-guide`
+- `marketing-automation-guide`
+
+広告記事には媒体機能の説明だけでなく、目的設計と効果測定の考え方を追加した。業務ツール・AI記事には、導入前の業務整理、組織利用時の管理、検証方法を追加した。ホームページ制作費用の記事はタイトルから古い年表記を削除した。
