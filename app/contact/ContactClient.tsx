@@ -1,8 +1,9 @@
 'use client'
 
-import { useState, FormEvent } from 'react'
+import { useState, useEffect, useRef, FormEvent } from 'react'
 import Link from 'next/link'
 import { submitContact, ContactFormData } from '@/lib/supabase'
+import { trackEvent } from '@/lib/analytics'
 import Breadcrumb from '@/components/Breadcrumb'
 import './Contact.css'
 
@@ -18,9 +19,20 @@ export default function ContactClient() {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle')
   const [errorMessage, setErrorMessage] = useState('')
+  const startedRef = useRef(false)
+
+  // フォーム表示イベント（ファネル計測の起点）
+  useEffect(() => {
+    trackEvent('form_view', { form: 'contact' })
+  }, [])
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target
+    // 最初の入力時に1回だけ form_start を送る
+    if (!startedRef.current) {
+      startedRef.current = true
+      trackEvent('form_start', { form: 'contact' })
+    }
     setFormData((prev) => ({ ...prev, [name]: value }))
   }
 
@@ -39,9 +51,11 @@ export default function ContactClient() {
 
       await submitContact(formData)
       setSubmitStatus('success')
+      trackEvent('form_submit', { form: 'contact' })
       setFormData({ name: '', email: '', company: '', phone: '', message: '' })
     } catch (error) {
       setSubmitStatus('error')
+      trackEvent('form_error', { form: 'contact' })
       console.error('Contact form submission failed:', error)
       setErrorMessage(
         '送信に失敗しました。時間をおいて再度お試しいただくか、解決しない場合はお手数ですがメールにてご連絡ください。'
@@ -110,6 +124,25 @@ export default function ContactClient() {
                   </div>
                 </div>
               </div>
+
+              {/* お問い合わせ後の流れ */}
+              <div className="contact-flow">
+                <h3 className="contact-flow-title">お問い合わせ後の流れ</h3>
+                <ol className="contact-flow-steps">
+                  <li>
+                    <span className="contact-flow-num">1</span>
+                    <span className="contact-flow-text"><strong>ご返信</strong>／担当者が内容を確認し、1営業日以内にご連絡します</span>
+                  </li>
+                  <li>
+                    <span className="contact-flow-num">2</span>
+                    <span className="contact-flow-text"><strong>ヒアリング</strong>／オンライン等で課題・ご要望をお伺いします</span>
+                  </li>
+                  <li>
+                    <span className="contact-flow-num">3</span>
+                    <span className="contact-flow-text"><strong>ご提案</strong>／最適なプランとお見積りをご提示します</span>
+                  </li>
+                </ol>
+              </div>
             </div>
 
             {/* 右カラム：フォーム */}
@@ -122,11 +155,17 @@ export default function ContactClient() {
                       <polyline points="22 4 12 14.01 9 11.01" />
                     </svg>
                   </div>
-                  <h2>送信完了</h2>
+                  <h2>送信が完了しました</h2>
                   <p>
                     お問い合わせありがとうございます。<br />
-                    内容を確認次第、担当者よりご連絡いたします。
+                    内容を確認のうえ、<strong>通常1営業日以内</strong>に担当者よりご連絡いたします。
                   </p>
+                  <p className="submit-success-sub">ご返信までの間、こちらもご覧ください。</p>
+                  <div className="submit-success-links">
+                    <Link href="/service">サービス一覧を見る</Link>
+                    <Link href="/blog">お役立ち記事を読む</Link>
+                    <Link href="/company">会社概要を見る</Link>
+                  </div>
                 </div>
               ) : (
                 <form className="contact-form" onSubmit={handleSubmit}>
@@ -181,9 +220,9 @@ export default function ContactClient() {
                       <Link href="/privacy">プライバシーポリシー</Link>
                       に同意の上、送信してください。
                     </p>
-                    <p className="form-actions-note">通常1営業日以内に返信いたします</p>
+                    <p className="form-actions-note">初回相談は無料・通常1営業日以内に返信／無理な営業はいたしません</p>
                     <button type="submit" className="btn btn-primary btn-large form-submit-btn" disabled={isSubmitting}>
-                      {isSubmitting ? '送信中...' : '送信する'}
+                      {isSubmitting ? '送信中...' : '無料相談を送信する'}
                     </button>
                   </div>
                 </form>

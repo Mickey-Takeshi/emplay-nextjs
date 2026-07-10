@@ -548,3 +548,67 @@
     -webkit-line-clamp: 2;
   }
 }
+
+/* ===== 目次(TOC) ===== */
+.blog-toc {
+  max-width: 760px;
+  margin: 0 auto 40px;
+  background: var(--color-bg-gray, #f8fafc);
+  border: 1px solid var(--color-border, #e5e7eb);
+  border-radius: 12px;
+  padding: 24px 28px;
+}
+.blog-toc-title {
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: var(--color-text, #1a1a2e);
+  margin-bottom: 12px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--color-border, #e5e7eb);
+}
+.blog-toc-list { list-style: none; margin: 0; padding: 0; }
+.blog-toc-item { margin: 6px 0; line-height: 1.6; }
+.blog-toc-item a {
+  color: var(--color-text-light, #4b5563);
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: color 0.2s ease;
+}
+.blog-toc-item a:hover { color: var(--color-primary, #2563eb); text-decoration: underline; opacity: 1; }
+.blog-toc-l3 { padding-left: 18px; }
+.blog-toc-l3 a { font-size: 0.85rem; color: var(--color-text-muted, #6b7280); }
+
+/* 見出しへのアンカー時、固定ヘッダーに隠れないようオフセット */
+.blog-body h2, .blog-body h3 { scroll-margin-top: 90px; }
+
+/* ===== 著者・監修ブロック ===== */
+.blog-author {
+  max-width: 760px;
+  margin: 48px auto 0;
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  padding: 24px;
+  background: var(--color-bg-gray, #f8fafc);
+  border-radius: 12px;
+}
+.blog-author-avatar {
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--color-bg-dark, #1a1a2e);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.blog-author-avatar svg { width: 22px; height: 22px; }
+.blog-author-name { font-weight: 700; font-size: 0.95rem; margin-bottom: 4px; color: var(--color-text, #1a1a2e); }
+.blog-author-desc { font-size: 0.85rem; line-height: 1.8; color: var(--color-text-light, #4b5563); }
+.blog-author-desc a { color: var(--color-primary, #2563eb); text-decoration: underline; margin-left: 4px; }
+
+@media (max-width: 540px) {
+  .blog-toc { padding: 20px; border-radius: 10px; }
+  .blog-author { padding: 20px; }
+}

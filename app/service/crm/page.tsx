@@ -2,14 +2,15 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import Breadcrumb from '@/components/Breadcrumb'
 import FaqJsonLd from '@/components/FaqJsonLd'
+import StickyMobileCTA from '@/components/StickyMobileCTA'
 import '../ServiceDetail.css'
 
 export const metadata: Metadata = {
   title: 'CRM導入支援｜顧客管理の効率化・売上向上',
-  description: '顧客管理の効率化、営業の見える化、メルマガ・LINE配信まで。CRM導入から活用までをワンストップでサポートします。',
+  description: '顧客管理の効率化、営業の見える化、メルマガ・LINE配信まで。CRM導入から活用までワンストップでサポート。導入費用のご相談は無料です。',
   openGraph: {
     title: 'CRM導入支援 | 株式会社EMPLAY',
-    description: '顧客管理の効率化、営業の見える化、メルマガ・LINE配信まで。CRM導入から活用までをワンストップでサポートします。',
+    description: '顧客管理の効率化、営業の見える化、メルマガ・LINE配信まで。CRM導入から活用までワンストップでサポート。導入費用のご相談は無料です。',
   },
 }
 
@@ -345,6 +346,7 @@ export default function ServiceCrmPage() {
           </div>
         </div>
       </section>
+      <StickyMobileCTA location="service_crm" />
     </main>
   )
 }

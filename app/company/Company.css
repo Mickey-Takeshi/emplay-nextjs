@@ -313,3 +313,12 @@
   .company-cta-section { padding: 48px 0; }
   .company-cta-title { font-size: 1.25rem; }
 }
+
+/* モバイルLCP: 軽量なヒーロー画像に出し分け */
+@media (max-width: 768px) {
+  .company-hero-bg {
+    background:
+      linear-gradient(135deg, rgba(15, 23, 42, 0.9) 0%, rgba(30, 58, 138, 0.84) 60%, rgba(13, 148, 136, 0.75) 100%),
+      url('/images/hero-company-sm.webp') center / cover no-repeat;
+  }
+}

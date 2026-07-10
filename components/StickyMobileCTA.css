@@ -1,0 +1,64 @@
+.sticky-mobile-cta {
+  display: none;
+}
+
+/* バーがあるページだけ、下部にバー分の余白を確保（フッターが隠れないように） */
+@media (max-width: 768px) {
+  body:has(.sticky-mobile-cta) {
+    padding-bottom: 72px;
+  }
+}
+
+@media (max-width: 768px) {
+  .sticky-mobile-cta {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 90;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 10px 16px calc(10px + env(safe-area-inset-bottom, 0px));
+    background: rgba(255, 255, 255, 0.96);
+    backdrop-filter: blur(8px);
+    border-top: 1px solid var(--color-border, #e5e7eb);
+    box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.08);
+  }
+
+  .sticky-mobile-cta-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.3;
+    min-width: 0;
+  }
+
+  .sticky-mobile-cta-lead {
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: var(--color-text, #1a1a2e);
+  }
+
+  .sticky-mobile-cta-sub {
+    font-size: 0.6875rem;
+    color: var(--color-text-light, #6b7280);
+  }
+
+  .sticky-mobile-cta-btn {
+    flex-shrink: 0;
+    background: #f84f65;
+    color: #fff;
+    font-weight: 700;
+    font-size: 0.9375rem;
+    padding: 12px 24px;
+    border-radius: 8px;
+    text-decoration: none;
+    box-shadow: 0 4px 12px rgba(248, 79, 101, 0.35);
+  }
+
+  .sticky-mobile-cta-btn:hover {
+    color: #fff;
+    opacity: 1;
+  }
+}

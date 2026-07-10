@@ -1,0 +1,114 @@
+.article-cta {
+  max-width: 760px;
+  margin: 56px auto 0;
+  padding: 0 var(--spacing-md);
+}
+
+.article-cta-inner {
+  background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);
+  border-radius: 16px;
+  padding: 40px 36px;
+  color: #fff;
+  text-align: center;
+}
+
+.article-cta-eyebrow {
+  font-family: var(--font-en);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: #7dd3fc;
+  margin-bottom: 12px;
+}
+
+.article-cta-heading {
+  font-size: 1.5rem;
+  font-weight: 800;
+  line-height: 1.4;
+  margin-bottom: 16px;
+  letter-spacing: 0.01em;
+}
+
+.article-cta-text {
+  font-size: 0.9375rem;
+  line-height: 1.9;
+  color: rgba(255, 255, 255, 0.85);
+  margin-bottom: 28px;
+}
+
+.article-cta-text strong {
+  color: #fff;
+  font-weight: 700;
+}
+
+.article-cta-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.article-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 32px;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  border-radius: 8px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+  text-decoration: none;
+}
+
+.article-cta-btn-primary {
+  background: #f84f65;
+  color: #fff;
+  box-shadow: 0 6px 18px rgba(248, 79, 101, 0.35);
+}
+
+.article-cta-btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(248, 79, 101, 0.45);
+  color: #fff;
+  opacity: 1;
+}
+
+.article-cta-btn-secondary {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.article-cta-btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.2);
+  color: #fff;
+  opacity: 1;
+}
+
+.article-cta-note {
+  margin-top: 18px;
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.65);
+}
+
+.sp-only {
+  display: none;
+}
+
+@media (max-width: 540px) {
+  .article-cta-inner {
+    padding: 32px 22px;
+  }
+  .article-cta-heading {
+    font-size: 1.25rem;
+  }
+  .article-cta-actions {
+    flex-direction: column;
+  }
+  .article-cta-btn {
+    width: 100%;
+  }
+  .sp-only {
+    display: inline;
+  }
+}

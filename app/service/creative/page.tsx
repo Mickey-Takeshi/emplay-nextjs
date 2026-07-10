@@ -2,14 +2,15 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import Breadcrumb from '@/components/Breadcrumb'
 import FaqJsonLd from '@/components/FaqJsonLd'
+import StickyMobileCTA from '@/components/StickyMobileCTA'
 import '../ServiceDetail.css'
 
 export const metadata: Metadata = {
   title: 'クリエイティブ制作｜LP・バナー・動画制作',
-  description: 'ホームページ、LP、バナー、動画制作。成果につながるWebクリエイティブをワンストップで提供します。',
+  description: 'ホームページ、LP、バナー、動画制作。成果につながるWebクリエイティブをワンストップで提供。お見積り・ご相談は無料です。',
   openGraph: {
     title: 'クリエイティブ制作 | 株式会社EMPLAY',
-    description: 'ホームページ、LP、バナー、動画制作。成果につながるWebクリエイティブをワンストップで提供します。',
+    description: 'ホームページ、LP、バナー、動画制作。成果につながるWebクリエイティブをワンストップで提供。お見積り・ご相談は無料です。',
   },
 }
 
@@ -401,6 +402,7 @@ export default function ServiceCreativePage() {
           </div>
         </div>
       </section>
+      <StickyMobileCTA location="service_creative" />
     </main>
   )
 }

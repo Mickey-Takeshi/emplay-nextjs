@@ -5,8 +5,21 @@ import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 import { getBlogPost, getRelatedPosts, getAllBlogSlugs } from '@/lib/supabase'
 import { getCategorySlug } from '@/lib/categories'
+import { extractToc, slugifyHeading } from '@/lib/toc'
 import Breadcrumb from '@/components/Breadcrumb'
+import ArticleServiceCTA from '@/components/ArticleServiceCTA'
+import StickyMobileCTA from '@/components/StickyMobileCTA'
 import './BlogDetail.css'
+
+// ReactMarkdownの見出しノードからテキストを取り出す(アンカーID生成用)
+function nodeText(node: unknown): string {
+  if (typeof node === 'string') return node
+  if (Array.isArray(node)) return node.map(nodeText).join('')
+  if (node && typeof node === 'object' && 'props' in (node as { props?: { children?: unknown } })) {
+    return nodeText((node as { props: { children?: unknown } }).props.children)
+  }
+  return ''
+}
 
 // SSG: ビルド時にすべてのブログ記事のパスを生成
 export const dynamicParams = false
@@ -73,6 +86,7 @@ export default async function BlogDetailPage({ params }: { params: Promise<{ slu
   }
 
   const relatedPosts = await getRelatedPosts(slug, post.category, 4)
+  const toc = extractToc(post.content)
 
   // 構造化データ（Article + BreadcrumbList）
   const structuredData = {
@@ -138,13 +152,53 @@ export default async function BlogDetailPage({ params }: { params: Promise<{ slu
       {/* 記事本文 */}
       <article className="blog-content">
         <div className="container">
+          {/* 目次（見出しが3つ以上のとき） */}
+          {toc.length >= 3 && (
+            <nav className="blog-toc" aria-label="目次">
+              <p className="blog-toc-title">目次</p>
+              <ul className="blog-toc-list">
+                {toc.map((item, i) => (
+                  <li key={i} className={`blog-toc-item blog-toc-l${item.level}`}>
+                    <a href={`#${item.id}`}>{item.text}</a>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+          )}
+
           <div className="blog-body">
-            <ReactMarkdown remarkPlugins={[remarkGfm]}>
+            <ReactMarkdown
+              remarkPlugins={[remarkGfm]}
+              components={{
+                h2: ({ children }) => <h2 id={slugifyHeading(nodeText(children))}>{children}</h2>,
+                h3: ({ children }) => <h3 id={slugifyHeading(nodeText(children))}>{children}</h3>,
+              }}
+            >
               {post.content}
             </ReactMarkdown>
           </div>
+
+          {/* 著者・監修（E-E-A-T） */}
+          <div className="blog-author">
+            <div className="blog-author-avatar" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <polygon points="8,5 19,12 8,19" />
+                <polygon points="3,5 8,8 8,16 3,19" />
+              </svg>
+            </div>
+            <div className="blog-author-body">
+              <p className="blog-author-name">株式会社EMPLAY 編集部</p>
+              <p className="blog-author-desc">
+                中小企業のWeb集客・DX推進を支援するEMPLAYが、現場で得た実践知をもとに執筆・監修しています。
+                <Link href="/company">運営会社について</Link>
+              </p>
+            </div>
+          </div>
         </div>
       </article>
+
+      {/* 記事→サービスCTA（カテゴリ連動） */}
+      <ArticleServiceCTA category={post.category} />
 
       {/* 関連記事セクション */}
       {relatedPosts.length > 0 && (
@@ -172,18 +226,7 @@ export default async function BlogDetailPage({ params }: { params: Promise<{ slu
         </section>
       )}
 
-      {/* お問い合わせCTA */}
-      <section className="contact-section-page" aria-label="お問い合わせ">
-        <div className="container">
-          <Link href="/contact" className="contact-box" aria-label="お問い合わせページへ移動">
-            <div className="contact-box-content">
-              <h2 className="contact-box-title">CONTACT</h2>
-              <p className="contact-box-text">お問い合わせはこちらから</p>
-            </div>
-            <span className="contact-box-arrow" aria-hidden="true">&gt;</span>
-          </Link>
-        </div>
-      </section>
+      <StickyMobileCTA location="blog_article" />
     </main>
   )
 }
