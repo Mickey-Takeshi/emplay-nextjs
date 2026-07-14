@@ -31,7 +31,7 @@ const homeFaqs = [
 
 function formatDate(dateString: string) {
   return new Date(dateString)
-    .toLocaleDateString('ja-JP', { year: 'numeric', month: '2-digit', day: '2-digit' })
+    .toLocaleDateString('ja-JP', { year: 'numeric', month: '2-digit', day: '2-digit', timeZone: 'Asia/Tokyo' })
     .replace(/\//g, '.')
 }
 
@@ -348,7 +348,7 @@ export default function HomeClient({ news, latestPosts }: HomeClientProps) {
             {news.length > 0 ? (
               news.map((article) => (
                 <Link key={article.id} href={`/news/${article.slug}`} className="news-item-home" role="listitem">
-                  <time className="news-date" dateTime={article.published_at}>{new Date(article.published_at).toLocaleDateString('ja-JP')}</time>
+                  <time className="news-date" dateTime={article.published_at}>{new Date(article.published_at).toLocaleDateString('ja-JP', { timeZone: 'Asia/Tokyo' })}</time>
                   <span className="news-title-home">{article.title}</span>
                 </Link>
               ))
