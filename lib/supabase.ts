@@ -21,6 +21,16 @@ export interface BlogPost {
   updated_at: string
 }
 
+export type BlogPostSummary = Omit<BlogPost, 'content'>
+
+export interface PaginatedBlogPosts {
+  posts: BlogPostSummary[]
+  totalCount: number
+  totalPages: number
+}
+
+const BLOG_LIST_COLUMNS = 'id,title,slug,excerpt,thumbnail,category,published_at,created_at,updated_at'
+
 // ニュース記事の型
 export interface NewsArticle {
   id: number
@@ -50,6 +60,32 @@ export async function getBlogPosts(limit?: number): Promise<BlogPost[]> {
   }
 
   return data as BlogPost[]
+}
+
+// ブログ一覧用に本文を除外し、必要なページだけを取得
+export async function getPaginatedBlogPosts(page: number, pageSize: number): Promise<PaginatedBlogPosts> {
+  const safePage = Math.max(1, Math.floor(page))
+  const safePageSize = Math.max(1, Math.floor(pageSize))
+  const from = (safePage - 1) * safePageSize
+  const to = from + safePageSize - 1
+
+  const { data, error, count } = await supabase
+    .from('blog_posts')
+    .select(BLOG_LIST_COLUMNS, { count: 'exact' })
+    .order('published_at', { ascending: false })
+    .range(from, to)
+
+  if (error) {
+    console.error('Error fetching paginated blog posts:', error)
+    return { posts: [], totalCount: 0, totalPages: 0 }
+  }
+
+  const totalCount = count ?? 0
+  return {
+    posts: data as BlogPostSummary[],
+    totalCount,
+    totalPages: Math.ceil(totalCount / safePageSize),
+  }
 }
 
 // 単一のブログ記事を取得
@@ -102,6 +138,37 @@ export async function getBlogPostsByCategory(category: string, limit?: number): 
   }
 
   return data as BlogPost[]
+}
+
+// カテゴリ一覧用に本文を除外し、必要なページだけを取得
+export async function getPaginatedBlogPostsByCategory(
+  category: string,
+  page: number,
+  pageSize: number
+): Promise<PaginatedBlogPosts> {
+  const safePage = Math.max(1, Math.floor(page))
+  const safePageSize = Math.max(1, Math.floor(pageSize))
+  const from = (safePage - 1) * safePageSize
+  const to = from + safePageSize - 1
+
+  const { data, error, count } = await supabase
+    .from('blog_posts')
+    .select(BLOG_LIST_COLUMNS, { count: 'exact' })
+    .eq('category', category)
+    .order('published_at', { ascending: false })
+    .range(from, to)
+
+  if (error) {
+    console.error('Error fetching paginated blog posts by category:', error)
+    return { posts: [], totalCount: 0, totalPages: 0 }
+  }
+
+  const totalCount = count ?? 0
+  return {
+    posts: data as BlogPostSummary[],
+    totalCount,
+    totalPages: Math.ceil(totalCount / safePageSize),
+  }
 }
 
 // ブログカテゴリ一覧を取得

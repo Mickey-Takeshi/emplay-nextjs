@@ -191,7 +191,7 @@
 .blog-body img {
   max-width: 100%;
   height: auto;
-  border-radius: 12px;
+  border-radius: var(--radius-md);
   margin: 40px 0;
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
 }
@@ -237,12 +237,15 @@
 
 /* テーブル */
 .blog-body table {
+  display: block;
   width: 100%;
+  max-width: 100%;
   border-collapse: collapse;
   margin: 32px 0;
   font-size: 0.95rem;
-  border-radius: 12px;
-  overflow: hidden;
+  border-radius: var(--radius-md);
+  overflow-x: auto;
+  overflow-y: hidden;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
 }
 
@@ -426,6 +429,7 @@
 
   .blog-body table {
     font-size: 0.875rem;
+    white-space: nowrap;
   }
 
   .blog-body th,
@@ -555,7 +559,7 @@
   margin: 0 auto 40px;
   background: var(--color-bg-gray, #f8fafc);
   border: 1px solid var(--color-border, #e5e7eb);
-  border-radius: 12px;
+  border-radius: var(--radius-md);
   padding: 24px 28px;
 }
 .blog-toc-title {

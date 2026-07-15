@@ -1,9 +1,12 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import { getBlogPostsByCategory, getBlogCategories } from '@/lib/supabase'
+import { notFound } from 'next/navigation'
+import { getPaginatedBlogPostsByCategory, getBlogCategories } from '@/lib/supabase'
 import { getCategorySlug, getCategoryName } from '@/lib/categories'
 import { getCategoryDescription } from '@/lib/categoryDescriptions'
+import { BLOG_PAGE_SIZE, parsePageParam } from '@/lib/pagination'
 import Breadcrumb from '@/components/Breadcrumb'
+import BlogPagination from '@/components/BlogPagination'
 import '../../Blog.css'
 
 // SSG: ビルド時にすべてのカテゴリページのパスを生成
@@ -21,22 +24,32 @@ export async function generateStaticParams() {
 }
 
 // 動的メタデータ生成
-export async function generateMetadata({ params }: { params: Promise<{ category: string }> }): Promise<Metadata> {
+interface BlogCategoryPageProps {
+  params: Promise<{ category: string }>
+  searchParams: Promise<{ page?: string | string[] }>
+}
+
+export async function generateMetadata({ params, searchParams }: BlogCategoryPageProps): Promise<Metadata> {
   const { category: categorySlug } = await params
+  const { page: pageParam } = await searchParams
+  const page = parsePageParam(pageParam)
   const categoryName = getCategoryName(categorySlug)
   const categoryDesc = getCategoryDescription(categoryName)
   const description = categoryDesc?.summary || `${categoryName}に関するブログ記事の一覧です。`
+  const canonical = page === 1
+    ? `/blog/category/${categorySlug}`
+    : `/blog/category/${categorySlug}?page=${page}`
 
   return {
-    title: `${categoryName}の記事一覧`,
+    title: page === 1 ? `${categoryName}の記事一覧` : `${categoryName}の記事一覧 - ${page}ページ目`,
     description,
-    alternates: {
-      canonical: `/blog/category/${categorySlug}`,
-    },
+    alternates: { canonical },
     openGraph: {
-      title: `${categoryName}の記事一覧 | 株式会社EMPLAY`,
+      title: page === 1
+        ? `${categoryName}の記事一覧 | 株式会社EMPLAY`
+        : `${categoryName}の記事一覧 - ${page}ページ目 | 株式会社EMPLAY`,
       description,
-      url: `/blog/category/${categorySlug}`,
+      url: canonical,
     },
   }
 }
@@ -51,14 +64,19 @@ function formatDate(dateString: string) {
   }).replace(/\//g, '.')
 }
 
-export default async function BlogCategoryPage({ params }: { params: Promise<{ category: string }> }) {
+export default async function BlogCategoryPage({ params, searchParams }: BlogCategoryPageProps) {
   const { category: categorySlug } = await params
+  const { page: pageParam } = await searchParams
+  const currentPage = parsePageParam(pageParam)
   const categoryName = getCategoryName(categorySlug)
-  const [posts, categories] = await Promise.all([
-    getBlogPostsByCategory(categoryName),
+  const [paginatedPosts, categories] = await Promise.all([
+    getPaginatedBlogPostsByCategory(categoryName, currentPage, BLOG_PAGE_SIZE),
     getBlogCategories()
   ])
+  const { posts, totalCount, totalPages } = paginatedPosts
   const categoryDescription = getCategoryDescription(categoryName)
+
+  if (totalPages > 0 && currentPage > totalPages) notFound()
 
   return (
     <main className="blog-page">
@@ -121,14 +139,22 @@ export default async function BlogCategoryPage({ params }: { params: Promise<{ c
               <p>このカテゴリの記事はまだありません。</p>
             </div>
           ) : (
-            <div className="blog-grid">
-              {posts.map((post) => (
+            <>
+              <p className="blog-results-summary">
+                全{totalCount}件中 {(currentPage - 1) * BLOG_PAGE_SIZE + 1}〜
+                {Math.min(currentPage * BLOG_PAGE_SIZE, totalCount)}件を表示
+              </p>
+              <div className="blog-grid">
+              {posts.map((post, index) => (
                 <article key={post.id} className="blog-card">
                   <Link href={`/blog/${post.slug}`} className="blog-card-link">
                     <figure className="blog-card-image">
                       <img
                         src={post.thumbnail}
                         alt={post.title}
+                        loading={index < 3 ? 'eager' : 'lazy'}
+                        fetchPriority={index === 0 ? 'high' : undefined}
+                        decoding="async"
                       />
                     </figure>
                     <div className="blog-card-content">
@@ -142,7 +168,13 @@ export default async function BlogCategoryPage({ params }: { params: Promise<{ c
                   </Link>
                 </article>
               ))}
-            </div>
+              </div>
+              <BlogPagination
+                basePath={`/blog/category/${categorySlug}`}
+                currentPage={currentPage}
+                totalPages={totalPages}
+              />
+            </>
           )}
         </div>
       </section>

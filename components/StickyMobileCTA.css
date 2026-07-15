@@ -47,17 +47,18 @@
 
   .sticky-mobile-cta-btn {
     flex-shrink: 0;
-    background: #f84f65;
+    background: var(--color-cta);
     color: #fff;
     font-weight: 700;
     font-size: 0.9375rem;
     padding: 12px 24px;
     border-radius: 8px;
     text-decoration: none;
-    box-shadow: 0 4px 12px rgba(248, 79, 101, 0.35);
+    box-shadow: 0 4px 12px rgba(190, 18, 60, 0.24);
   }
 
   .sticky-mobile-cta-btn:hover {
+    background: var(--color-cta-hover);
     color: #fff;
     opacity: 1;
   }

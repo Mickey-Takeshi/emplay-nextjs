@@ -19,6 +19,23 @@ export default function Header() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
+  useEffect(() => {
+    if (!isMenuOpen) return
+
+    const previousOverflow = document.body.style.overflow
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') setIsMenuOpen(false)
+    }
+
+    document.body.style.overflow = 'hidden'
+    document.addEventListener('keydown', handleKeyDown)
+
+    return () => {
+      document.body.style.overflow = previousOverflow
+      document.removeEventListener('keydown', handleKeyDown)
+    }
+  }, [isMenuOpen])
+
   const navItems: { path: string; label: string; external?: boolean }[] = [
     { path: '/service', label: 'SERVICE' },
     { path: '/company', label: 'COMPANY' },
@@ -50,14 +67,16 @@ export default function Header() {
         <button
           className={`menu-toggle ${isMenuOpen ? 'active' : ''}`}
           onClick={toggleMenu}
-          aria-label="メニューを開く"
+          aria-label={isMenuOpen ? 'メニューを閉じる' : 'メニューを開く'}
+          aria-expanded={isMenuOpen}
+          aria-controls="global-navigation"
         >
           <span></span>
           <span></span>
           <span></span>
         </button>
 
-        <nav className={`nav ${isMenuOpen ? 'open' : ''}`}>
+        <nav id="global-navigation" className={`nav ${isMenuOpen ? 'open' : ''}`} aria-label="メインナビゲーション">
           <ul className="nav-list">
             {navItems.map((item) => (
               <li key={item.path} className="nav-item">
@@ -75,6 +94,7 @@ export default function Header() {
                   <Link
                     href={item.path}
                     className={`nav-link ${pathname === item.path || (item.path !== '/' && pathname.startsWith(item.path)) ? 'active' : ''}`}
+                    aria-current={pathname === item.path || (item.path !== '/' && pathname.startsWith(item.path)) ? 'page' : undefined}
                     onClick={closeMenu}
                   >
                     {item.label}

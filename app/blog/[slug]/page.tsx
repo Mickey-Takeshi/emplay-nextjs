@@ -87,7 +87,7 @@ export default async function BlogDetailPage({ params }: { params: Promise<{ slu
   }
 
   const relatedPosts = await getRelatedPosts(slug, post.category, 4)
-  const toc = extractToc(post.content)
+  const toc = extractToc(post.content).filter((item) => item.level === 2)
 
   // 構造化データ（Article + BreadcrumbList）
   const structuredData = {
@@ -147,7 +147,7 @@ export default async function BlogDetailPage({ params }: { params: Promise<{ slu
 
       {/* サムネイル画像 */}
       <figure className="blog-thumbnail">
-        <img src={post.thumbnail} alt={post.title} />
+        <img src={post.thumbnail} alt={post.title} fetchPriority="high" decoding="async" />
       </figure>
 
       {/* 記事本文 */}
@@ -205,7 +205,7 @@ export default async function BlogDetailPage({ params }: { params: Promise<{ slu
       {relatedPosts.length > 0 && (
         <section className="related-posts-section" aria-label="関連記事">
           <div className="container">
-            <h2 className="related-posts-title">関連記事</h2>
+            <h2 className="related-posts-title">あわせて読みたい</h2>
             <div className="related-posts-grid">
               {relatedPosts.map((relatedPost) => (
                 <Link
@@ -214,7 +214,7 @@ export default async function BlogDetailPage({ params }: { params: Promise<{ slu
                   className="related-post-card"
                 >
                   <div className="related-post-thumbnail">
-                    <img src={relatedPost.thumbnail} alt={relatedPost.title} />
+                    <img src={relatedPost.thumbnail} alt={relatedPost.title} loading="lazy" decoding="async" />
                   </div>
                   <div className="related-post-content">
                     <span className="related-post-category">{relatedPost.category}</span>

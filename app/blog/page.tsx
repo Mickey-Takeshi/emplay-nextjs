@@ -1,21 +1,34 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import { getBlogPosts, getBlogCategories } from '@/lib/supabase'
+import { notFound } from 'next/navigation'
+import { getPaginatedBlogPosts, getBlogCategories } from '@/lib/supabase'
 import { getCategorySlug } from '@/lib/categories'
+import { BLOG_PAGE_SIZE, parsePageParam } from '@/lib/pagination'
 import Breadcrumb from '@/components/Breadcrumb'
+import BlogPagination from '@/components/BlogPagination'
 import './Blog.css'
 
-export const metadata: Metadata = {
-  title: 'ブログ',
-  description: '株式会社EMPLAYのブログです。DX、ウェブマーケティング、コンテンツ制作に関する情報を発信しています。',
-  alternates: {
-    canonical: '/blog',
-  },
-  openGraph: {
-    title: 'ブログ | 株式会社EMPLAY',
-    description: '株式会社EMPLAYのブログです。DX、ウェブマーケティング、コンテンツ制作に関する情報を発信しています。',
-    url: '/blog',
-  },
+interface BlogPageProps {
+  searchParams: Promise<{ page?: string | string[] }>
+}
+
+const BLOG_DESCRIPTION = '株式会社EMPLAYのブログです。DX、ウェブマーケティング、コンテンツ制作に関する情報を発信しています。'
+
+export async function generateMetadata({ searchParams }: BlogPageProps): Promise<Metadata> {
+  const { page: pageParam } = await searchParams
+  const page = parsePageParam(pageParam)
+  const canonical = page === 1 ? '/blog' : `/blog?page=${page}`
+
+  return {
+    title: page === 1 ? 'ブログ' : `ブログ - ${page}ページ目`,
+    description: BLOG_DESCRIPTION,
+    alternates: { canonical },
+    openGraph: {
+      title: page === 1 ? 'ブログ | 株式会社EMPLAY' : `ブログ - ${page}ページ目 | 株式会社EMPLAY`,
+      description: BLOG_DESCRIPTION,
+      url: canonical,
+    },
+  }
 }
 
 function formatDate(dateString: string) {
@@ -28,11 +41,16 @@ function formatDate(dateString: string) {
   }).replace(/\//g, '.')
 }
 
-export default async function BlogPage() {
-  const [posts, categories] = await Promise.all([
-    getBlogPosts(),
+export default async function BlogPage({ searchParams }: BlogPageProps) {
+  const { page: pageParam } = await searchParams
+  const currentPage = parsePageParam(pageParam)
+  const [paginatedPosts, categories] = await Promise.all([
+    getPaginatedBlogPosts(currentPage, BLOG_PAGE_SIZE),
     getBlogCategories()
   ])
+  const { posts, totalCount, totalPages } = paginatedPosts
+
+  if (totalPages > 0 && currentPage > totalPages) notFound()
 
   return (
     <main className="blog-page">
@@ -80,14 +98,22 @@ export default async function BlogPage() {
               <p>ブログ記事はまだありません。</p>
             </div>
           ) : (
-            <div className="blog-grid">
-              {posts.map((post) => (
+            <>
+              <p className="blog-results-summary">
+                全{totalCount}件中 {(currentPage - 1) * BLOG_PAGE_SIZE + 1}〜
+                {Math.min(currentPage * BLOG_PAGE_SIZE, totalCount)}件を表示
+              </p>
+              <div className="blog-grid">
+              {posts.map((post, index) => (
                 <article key={post.id} className="blog-card">
                   <Link href={`/blog/${post.slug}`} className="blog-card-link">
                     <figure className="blog-card-image">
                       <img
                         src={post.thumbnail}
                         alt={post.title}
+                        loading={index < 3 ? 'eager' : 'lazy'}
+                        fetchPriority={index === 0 ? 'high' : undefined}
+                        decoding="async"
                       />
                     </figure>
                     <div className="blog-card-content">
@@ -101,7 +127,9 @@ export default async function BlogPage() {
                   </Link>
                 </article>
               ))}
-            </div>
+              </div>
+              <BlogPagination basePath="/blog" currentPage={currentPage} totalPages={totalPages} />
+            </>
           )}
         </div>
       </section>

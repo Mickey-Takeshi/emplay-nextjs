@@ -56,10 +56,76 @@
   gap: 32px;
 }
 
+.blog-results-summary {
+  margin: 0 0 20px;
+  color: var(--color-text-light);
+  font-size: 0.8125rem;
+  text-align: right;
+}
+
+.blog-pagination {
+  display: grid;
+  grid-template-columns: minmax(92px, auto) 1fr minmax(92px, auto);
+  align-items: center;
+  gap: 16px;
+  margin-top: 56px;
+}
+
+.blog-pagination-pages {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+
+.blog-pagination-link,
+.blog-pagination-ellipsis {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  height: 44px;
+  border-radius: 8px;
+  font-size: 0.875rem;
+}
+
+.blog-pagination-link {
+  border: 1px solid var(--color-border);
+  color: var(--color-text);
+  font-weight: 600;
+  text-decoration: none;
+  transition: border-color 0.2s ease, background-color 0.2s ease, color 0.2s ease;
+}
+
+.blog-pagination-link:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+  opacity: 1;
+}
+
+.blog-pagination-link.active {
+  border-color: var(--color-primary);
+  background: var(--color-primary);
+  color: #fff;
+}
+
+.blog-pagination-direction {
+  gap: 8px;
+  padding: 0 16px;
+}
+
+.blog-pagination-direction:last-child {
+  justify-self: end;
+}
+
+.blog-pagination-ellipsis {
+  color: var(--color-text-light);
+}
+
 /* ブログカード */
 .blog-card {
   background: #fff;
-  border-radius: 12px;
+  border-radius: var(--radius-md);
   overflow: hidden;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -135,7 +201,7 @@
 .blog-card-date {
   font-family: var(--font-en);
   font-size: 0.8rem;
-  color: #999;
+  color: var(--color-text-light);
   font-weight: 500;
 }
 
@@ -260,6 +326,39 @@
   .blog-grid {
     grid-template-columns: 1fr;
     gap: 24px;
+  }
+
+  .blog-results-summary {
+    margin-bottom: 16px;
+    text-align: left;
+  }
+
+  .blog-pagination {
+    grid-template-columns: 44px 1fr 44px;
+    gap: 8px;
+    margin-top: 40px;
+  }
+
+  .blog-pagination-pages {
+    gap: 4px;
+  }
+
+  .blog-pagination-link,
+  .blog-pagination-ellipsis {
+    min-width: 40px;
+    height: 40px;
+  }
+
+  .blog-pagination-direction {
+    width: 44px;
+    min-width: 44px;
+    padding: 0;
+    overflow: hidden;
+    font-size: 0;
+  }
+
+  .blog-pagination-direction span {
+    font-size: 1rem;
   }
 
   .blog-card-content {

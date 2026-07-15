@@ -6,7 +6,7 @@
 
 .article-cta-inner {
   background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);
-  border-radius: 16px;
+  border-radius: var(--radius-md);
   padding: 40px 36px;
   color: #fff;
   text-align: center;
@@ -61,14 +61,15 @@
 }
 
 .article-cta-btn-primary {
-  background: #f84f65;
+  background: var(--color-cta);
   color: #fff;
-  box-shadow: 0 6px 18px rgba(248, 79, 101, 0.35);
+  box-shadow: 0 6px 18px rgba(190, 18, 60, 0.24);
 }
 
 .article-cta-btn-primary:hover {
+  background: var(--color-cta-hover);
   transform: translateY(-2px);
-  box-shadow: 0 10px 24px rgba(248, 79, 101, 0.45);
+  box-shadow: 0 10px 24px rgba(190, 18, 60, 0.3);
   color: #fff;
   opacity: 1;
 }

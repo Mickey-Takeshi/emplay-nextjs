@@ -67,7 +67,7 @@
   font-weight: 700;
   line-height: 1.3;
   margin-bottom: 24px;
-  letter-spacing: 0.02em;
+  letter-spacing: 0;
 }
 
 .hero-description {
@@ -86,19 +86,28 @@
 
 .hero-services {
   display: flex;
-  gap: 12px;
+  gap: 0;
   justify-content: center;
   flex-wrap: wrap;
 }
 
-.hero-service-tag {
+.hero-services li {
+  position: relative;
+  padding: 0 20px;
+  color: rgba(255, 255, 255, 0.72);
   font-size: 0.75rem;
-  font-weight: 500;
-  color: rgba(255, 255, 255, 0.6);
-  padding: 6px 16px;
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  border-radius: 9999px;
-  letter-spacing: 0.05em;
+  font-weight: 600;
+}
+
+.hero-services li + li::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 1px;
+  height: 14px;
+  background: rgba(255, 255, 255, 0.3);
+  transform: translateY(-50%);
 }
 
 /* ========================================
@@ -296,6 +305,7 @@
   display: inline-flex;
   align-items: center;
   gap: 6px;
+  min-height: 44px;
   font-size: 0.8125rem;
   font-weight: 600;
   color: var(--color-primary);
@@ -522,9 +532,9 @@
     padding: 14px 24px;
   }
 
-  .hero-service-tag {
+  .hero-services li {
     font-size: 0.6875rem;
-    padding: 4px 12px;
+    padding: 0 12px;
   }
 
   .service-cards {

@@ -68,29 +68,28 @@ export default function HomeClient({ news, latestPosts }: HomeClientProps) {
         </div>
         <div className={`hero-content ${heroLoaded ? 'hero-loaded' : ''}`}>
           <p className="hero-label hero-animate hero-animate-1">
-            Web集客からDX推進まで、ワンストップで支援
+            中小企業のWeb・AI活用パートナー
           </p>
           <h1 className="hero-title hero-animate hero-animate-2">
-            中小企業の成長を<br />テクノロジーで加速する
+            Web制作・集客・AI活用を、<br />実行と改善まで。
           </h1>
           <p className="hero-description hero-animate hero-animate-3">
-            Web制作・広告運用・CRM導入・AI研修。<br className="pc-only" />
-            戦略設計から実行・運用まで、一貫して伴走します。
+            ホームページ制作、広告運用、CRM導入、AI研修。<br className="pc-only" />
+            課題の整理から制作・導入、継続運用まで一貫して支援します。
           </p>
           <div className="hero-actions hero-animate hero-animate-4">
             <Link href="/service" className="btn btn-primary btn-large">
-              サービスを見る
+              支援内容を見る
             </Link>
             <Link href="/contact" className="btn btn-outline-white btn-large">
-              無料相談する
+              無料相談を申し込む
             </Link>
           </div>
-          <div className="hero-services hero-animate hero-animate-5">
-            <span className="hero-service-tag">HP制作</span>
-            <span className="hero-service-tag">Web広告</span>
-            <span className="hero-service-tag">CRM導入</span>
-            <span className="hero-service-tag">AI研修</span>
-          </div>
+          <ul className="hero-services hero-animate hero-animate-5" aria-label="支援範囲">
+            <li>課題整理</li>
+            <li>制作・導入</li>
+            <li>運用・改善</li>
+          </ul>
         </div>
       </section>
 

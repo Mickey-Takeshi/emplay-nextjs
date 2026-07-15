@@ -114,6 +114,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         />
       </head>
       <body>
+        <a href="#main-content" className="skip-link">メインコンテンツへ移動</a>
         {/* Google Tag Manager (noscript) */}
         <noscript>
           <iframe
@@ -125,7 +126,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         </noscript>
         <ScrollToTop />
         <Header />
-        <div style={{ paddingTop: '72px' }}>{children}</div>
+        <div id="main-content" tabIndex={-1} style={{ paddingTop: '72px' }}>{children}</div>
         <Footer />
       </body>
     </html>
