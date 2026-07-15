@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import ServiceHpClient from './ServiceHpClient'
+import ServiceJsonLd from '@/components/ServiceJsonLd'
 
 export const metadata: Metadata = {
   title: 'ホームページ制作サービス｜SEO・AI検索対策(AIO/LLMO)対応',
@@ -13,5 +14,15 @@ export const metadata: Metadata = {
 }
 
 export default function ServiceHpPage() {
-  return <ServiceHpClient />
+  return (
+    <>
+      <ServiceJsonLd
+        name="ホームページ制作サービス"
+        description="SEOとAI検索対策に対応したホームページ制作から、記事作成、効果測定、継続改善まで支援します。"
+        url="https://emplay.jp/service/hp"
+        serviceType="ホームページ制作・運用支援"
+      />
+      <ServiceHpClient />
+    </>
+  )
 }

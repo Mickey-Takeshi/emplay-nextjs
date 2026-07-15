@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import Breadcrumb from '@/components/Breadcrumb'
 import FaqJsonLd from '@/components/FaqJsonLd'
+import ServiceJsonLd from '@/components/ServiceJsonLd'
 import StickyMobileCTA from '@/components/StickyMobileCTA'
 import '../ServiceDetail.css'
 
@@ -40,6 +41,12 @@ const faqs = [
 export default function ServiceCrmPage() {
   return (
     <main className="service-lp service-lp--crm">
+      <ServiceJsonLd
+        name="CRM導入支援"
+        description="顧客情報の整理、CRMの選定・導入、データ移行、社内定着と運用改善まで支援します。"
+        url="https://emplay.jp/service/crm"
+        serviceType="CRM導入・運用支援"
+      />
       <FaqJsonLd faqs={faqs} />
       {/* パンくずリスト */}
       <Breadcrumb items={[

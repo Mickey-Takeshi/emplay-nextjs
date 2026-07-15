@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import Breadcrumb from '@/components/Breadcrumb'
 import FaqJsonLd from '@/components/FaqJsonLd'
+import ServiceJsonLd from '@/components/ServiceJsonLd'
 import StickyMobileCTA from '@/components/StickyMobileCTA'
 import '../ServiceDetail.css'
 
@@ -40,6 +41,12 @@ const faqs = [
 export default function ServiceAdsPage() {
   return (
     <main className="service-lp service-lp--ads">
+      <ServiceJsonLd
+        name="Web広告運用代行"
+        description="Google、Yahoo!、Meta、LINE、TikTokなどのWeb広告を、戦略設計から運用・効果測定まで支援します。"
+        url="https://emplay.jp/service/ads"
+        serviceType="Web広告運用代行"
+      />
       <FaqJsonLd faqs={faqs} />
       {/* パンくずリスト */}
       <Breadcrumb items={[

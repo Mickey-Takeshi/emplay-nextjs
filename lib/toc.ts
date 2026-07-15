@@ -16,8 +16,21 @@ export function slugifyHeading(text: string): string {
   )
 }
 
+// 同じ見出しが複数ある記事でも、目次と本文で一意のIDを共有する。
+export function createHeadingIdGenerator(): (text: string) => string {
+  const occurrences = new Map<string, number>()
+
+  return (text: string) => {
+    const baseId = slugifyHeading(text)
+    const count = (occurrences.get(baseId) ?? 0) + 1
+    occurrences.set(baseId, count)
+    return count === 1 ? baseId : `${baseId}-${count}`
+  }
+}
+
 export function extractToc(markdown: string): TocItem[] {
   const items: TocItem[] = []
+  const headingId = createHeadingIdGenerator()
   const lines = markdown.split('\n')
   let inCodeBlock = false
   for (const line of lines) {
@@ -30,7 +43,7 @@ export function extractToc(markdown: string): TocItem[] {
     if (m) {
       const level = m[1].length as 2 | 3
       const text = m[2].replace(/`/g, '').replace(/\[([^\]]+)\]\([^)]*\)/g, '$1').trim()
-      items.push({ level, text, id: slugifyHeading(text) })
+      items.push({ level, text, id: headingId(text) })
     }
   }
   return items

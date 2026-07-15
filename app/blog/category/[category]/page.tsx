@@ -1,6 +1,8 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
+import ReactMarkdown from 'react-markdown'
+import remarkGfm from 'remark-gfm'
 import { getPaginatedBlogPostsByCategory, getBlogCategories } from '@/lib/supabase'
 import { getCategorySlug, getCategoryName } from '@/lib/categories'
 import { getCategoryDescription } from '@/lib/categoryDescriptions'
@@ -75,17 +77,48 @@ export default async function BlogCategoryPage({ params, searchParams }: BlogCat
   ])
   const { posts, totalCount, totalPages } = paginatedPosts
   const categoryDescription = getCategoryDescription(categoryName)
+  const pageLabel = currentPage === 1
+    ? `${categoryName}の記事一覧`
+    : `${categoryName}の記事一覧 ${currentPage}ページ目`
+  const pageUrl = currentPage === 1
+    ? `https://emplay.jp/blog/category/${categorySlug}`
+    : `https://emplay.jp/blog/category/${categorySlug}?page=${currentPage}`
+  const categoryStructuredData = {
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    name: pageLabel,
+    description: categoryDescription?.summary || `${categoryName}に関するブログ記事の一覧です。`,
+    url: pageUrl,
+    inLanguage: 'ja-JP',
+    isPartOf: { '@id': 'https://emplay.jp/blog#blog' },
+    mainEntity: {
+      '@type': 'ItemList',
+      numberOfItems: totalCount,
+      itemListElement: posts.map((post, index) => ({
+        '@type': 'ListItem',
+        position: (currentPage - 1) * BLOG_PAGE_SIZE + index + 1,
+        name: post.title,
+        url: `https://emplay.jp/blog/${post.slug}`,
+      })),
+    },
+  }
 
   if (totalPages > 0 && currentPage > totalPages) notFound()
 
   return (
     <main className="blog-page">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(categoryStructuredData) }}
+      />
       {/* ページヘッダー */}
       <header className="page-header-hero" aria-label="ページヘッダー">
         <div className="page-header-bg" aria-hidden="true"></div>
         <div className="page-header-content">
-          <h1 className="page-title-hero">BLOG</h1>
-          <p className="page-title-ja-hero">{categoryName}</p>
+          <h1 className="page-title-hero">{categoryName}</h1>
+          <p className="page-title-ja-hero">
+            {currentPage === 1 ? '記事一覧' : `記事一覧 ${currentPage}ページ目`}
+          </p>
         </div>
       </header>
 
@@ -118,12 +151,12 @@ export default async function BlogCategoryPage({ params, searchParams }: BlogCat
       )}
 
       {/* カテゴリ説明 */}
-      {categoryDescription && (
-        <section className="category-description-section">
+      {categoryDescription && currentPage === 1 && (
+        <section className="category-summary-section" aria-labelledby="category-summary-heading">
           <div className="container">
-            <div className="category-description-box">
-              <h2 className="category-description-title">{categoryName}について</h2>
-              <p className="category-description-text">{categoryDescription.summary}</p>
+            <div className="category-summary">
+              <h2 id="category-summary-heading" className="visually-hidden">{categoryName}カテゴリについて</h2>
+              <p className="category-summary-text">{categoryDescription.summary}</p>
             </div>
           </div>
         </section>
@@ -180,6 +213,23 @@ export default async function BlogCategoryPage({ params, searchParams }: BlogCat
           )}
         </div>
       </section>
+
+      {categoryDescription && currentPage === 1 && (
+        <section className="category-description-section" aria-labelledby="category-guide-heading">
+          <div className="container">
+            <div className="category-description">
+              <h2 id="category-guide-heading" className="category-description-title">
+                {categoryName}の実践ガイド
+              </h2>
+              <div className="category-description-content">
+                <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                  {categoryDescription.description}
+                </ReactMarkdown>
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* コンタクトセクション */}
       <section className="contact-section-page" aria-label="お問い合わせ">

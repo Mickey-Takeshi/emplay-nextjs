@@ -49,17 +49,44 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
     getBlogCategories()
   ])
   const { posts, totalCount, totalPages } = paginatedPosts
+  const pageTitle = currentPage === 1 ? '株式会社EMPLAY ブログ' : `株式会社EMPLAY ブログ ${currentPage}ページ目`
+  const pageUrl = currentPage === 1
+    ? 'https://emplay.jp/blog'
+    : `https://emplay.jp/blog?page=${currentPage}`
+  const blogStructuredData = {
+    '@context': 'https://schema.org',
+    '@type': 'Blog',
+    '@id': `${pageUrl}#blog`,
+    name: pageTitle,
+    description: BLOG_DESCRIPTION,
+    url: pageUrl,
+    inLanguage: 'ja-JP',
+    publisher: { '@id': 'https://emplay.jp/#organization' },
+    blogPost: posts.map((post) => ({
+      '@type': 'BlogPosting',
+      headline: post.title,
+      url: `https://emplay.jp/blog/${post.slug}`,
+      datePublished: post.published_at,
+      dateModified: post.updated_at || post.published_at,
+    })),
+  }
 
   if (totalPages > 0 && currentPage > totalPages) notFound()
 
   return (
     <main className="blog-page">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(blogStructuredData) }}
+      />
       {/* ページヘッダー */}
       <header className="page-header-hero" aria-label="ページヘッダー">
         <div className="page-header-bg" aria-hidden="true"></div>
         <div className="page-header-content">
           <h1 className="page-title-hero">BLOG</h1>
-          <p className="page-title-ja-hero">ブログ</p>
+          <p className="page-title-ja-hero">
+            {currentPage === 1 ? 'ブログ' : `ブログ ${currentPage}ページ目`}
+          </p>
         </div>
       </header>
 

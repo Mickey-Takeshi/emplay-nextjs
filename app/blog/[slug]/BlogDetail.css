@@ -46,6 +46,17 @@
   font-weight: 500;
 }
 
+.blog-dates {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px 20px;
+}
+
+.blog-date-updated {
+  color: var(--color-primary);
+}
+
 /* サムネイル */
 .blog-thumbnail {
   max-width: 960px;

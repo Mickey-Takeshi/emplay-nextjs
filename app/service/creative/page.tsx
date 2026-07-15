@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import Breadcrumb from '@/components/Breadcrumb'
 import FaqJsonLd from '@/components/FaqJsonLd'
+import ServiceJsonLd from '@/components/ServiceJsonLd'
 import StickyMobileCTA from '@/components/StickyMobileCTA'
 import '../ServiceDetail.css'
 
@@ -40,6 +41,12 @@ const faqs = [
 export default function ServiceCreativePage() {
   return (
     <main className="service-lp service-lp--creative">
+      <ServiceJsonLd
+        name="クリエイティブ制作"
+        description="ホームページ、LP、バナー、動画を、戦略設計から公開後の改善までワンストップで支援します。"
+        url="https://emplay.jp/service/creative"
+        serviceType="Webクリエイティブ制作"
+      />
       <FaqJsonLd faqs={faqs} />
       {/* パンくずリスト */}
       <Breadcrumb items={[

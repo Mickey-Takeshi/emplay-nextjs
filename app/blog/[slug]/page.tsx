@@ -5,7 +5,7 @@ import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 import { getBlogPost, getRelatedPosts, getAllBlogSlugs } from '@/lib/supabase'
 import { getCategorySlug } from '@/lib/categories'
-import { extractToc, slugifyHeading } from '@/lib/toc'
+import { createHeadingIdGenerator, extractToc } from '@/lib/toc'
 import Breadcrumb from '@/components/Breadcrumb'
 import ArticleServiceCTA from '@/components/ArticleServiceCTA'
 import StickyMobileCTA from '@/components/StickyMobileCTA'
@@ -78,6 +78,15 @@ function formatDate(dateString: string) {
   })
 }
 
+function dateKey(dateString: string) {
+  return new Intl.DateTimeFormat('en-CA', {
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+    timeZone: 'Asia/Tokyo',
+  }).format(new Date(dateString))
+}
+
 export default async function BlogDetailPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params
   const post = await getBlogPost(slug)
@@ -88,6 +97,9 @@ export default async function BlogDetailPage({ params }: { params: Promise<{ slu
 
   const relatedPosts = await getRelatedPosts(slug, post.category, 4)
   const toc = extractToc(post.content).filter((item) => item.level === 2)
+  const headingId = createHeadingIdGenerator()
+  const modifiedAt = post.updated_at || post.published_at
+  const hasUpdatedDate = dateKey(modifiedAt) !== dateKey(post.published_at)
 
   // 構造化データ（Article + BreadcrumbList）
   const structuredData = {
@@ -97,14 +109,18 @@ export default async function BlogDetailPage({ params }: { params: Promise<{ slu
     description: post.excerpt,
     image: post.thumbnail,
     datePublished: post.published_at,
-    dateModified: post.updated_at,
+    dateModified: modifiedAt,
+    inLanguage: 'ja-JP',
+    articleSection: post.category,
     author: {
       '@type': 'Organization',
+      '@id': 'https://emplay.jp/#organization',
       name: '株式会社EMPLAY',
       url: 'https://emplay.jp'
     },
     publisher: {
       '@type': 'Organization',
+      '@id': 'https://emplay.jp/#organization',
       name: '株式会社EMPLAY',
       logo: {
         '@type': 'ImageObject',
@@ -114,7 +130,12 @@ export default async function BlogDetailPage({ params }: { params: Promise<{ slu
     mainEntityOfPage: {
       '@type': 'WebPage',
       '@id': `https://emplay.jp/blog/${post.slug}`
-    }
+    },
+    isPartOf: {
+      '@type': 'Blog',
+      '@id': 'https://emplay.jp/blog#blog',
+      name: '株式会社EMPLAY ブログ',
+    },
   }
 
   return (
@@ -139,9 +160,16 @@ export default async function BlogDetailPage({ params }: { params: Promise<{ slu
             {post.category}
           </Link>
           <h1 className="blog-title">{post.title}</h1>
-          <time className="blog-date" dateTime={post.published_at}>
-            {formatDate(post.published_at)}
-          </time>
+          <div className="blog-dates" aria-label="記事の日付">
+            <time className="blog-date" dateTime={post.published_at}>
+              公開日 {formatDate(post.published_at)}
+            </time>
+            {hasUpdatedDate && (
+              <time className="blog-date blog-date-updated" dateTime={modifiedAt}>
+                更新日 {formatDate(modifiedAt)}
+              </time>
+            )}
+          </div>
         </div>
       </header>
 
@@ -171,8 +199,8 @@ export default async function BlogDetailPage({ params }: { params: Promise<{ slu
             <ReactMarkdown
               remarkPlugins={[remarkGfm]}
               components={{
-                h2: ({ children }) => <h2 id={slugifyHeading(nodeText(children))}>{children}</h2>,
-                h3: ({ children }) => <h3 id={slugifyHeading(nodeText(children))}>{children}</h3>,
+                h2: ({ children }) => <h2 id={headingId(nodeText(children))}>{children}</h2>,
+                h3: ({ children }) => <h3 id={headingId(nodeText(children))}>{children}</h3>,
               }}
             >
               {post.content}
