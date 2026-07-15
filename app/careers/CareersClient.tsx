@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
 import { submitJobApplication, JobApplicationData } from '@/lib/supabase'
 import Breadcrumb from '@/components/Breadcrumb'
@@ -18,6 +18,11 @@ export default function CareersClient() {
   const [honeypot, setHoneypot] = useState('')
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle')
+  const statusRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    if (submitStatus !== 'idle') statusRef.current?.focus()
+  }, [submitStatus])
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target
@@ -160,7 +165,7 @@ export default function CareersClient() {
           <p className="section-subtitle-center">エントリーフォーム</p>
 
           {submitStatus === 'success' ? (
-            <div className="form-success">
+            <div className="form-success" ref={statusRef} role="status" aria-live="polite" tabIndex={-1}>
               <div className="form-success-icon">✓</div>
               <h3>ご応募ありがとうございます</h3>
               <p>内容を確認の上、担当者よりご連絡いたします。</p>
@@ -173,10 +178,10 @@ export default function CareersClient() {
               </button>
             </div>
           ) : (
-            <form className="careers-form" onSubmit={handleSubmit}>
+            <form className="careers-form" onSubmit={handleSubmit} aria-busy={isSubmitting}>
               <div className="form-group">
                 <label htmlFor="name" className="form-label">
-                  お名前 <span className="required">*</span>
+                  お名前 <span className="required" aria-hidden="true">*</span>
                 </label>
                 <input
                   type="text"
@@ -185,6 +190,8 @@ export default function CareersClient() {
                   value={formData.name}
                   onChange={handleChange}
                   required
+                  autoComplete="name"
+                  maxLength={100}
                   className="form-input"
                   placeholder="山田 太郎"
                 />
@@ -192,7 +199,7 @@ export default function CareersClient() {
 
               <div className="form-group">
                 <label htmlFor="email" className="form-label">
-                  メールアドレス <span className="required">*</span>
+                  メールアドレス <span className="required" aria-hidden="true">*</span>
                 </label>
                 <input
                   type="email"
@@ -201,6 +208,9 @@ export default function CareersClient() {
                   value={formData.email}
                   onChange={handleChange}
                   required
+                  autoComplete="email"
+                  maxLength={254}
+                  spellCheck={false}
                   className="form-input"
                   placeholder="example@email.com"
                 />
@@ -216,6 +226,9 @@ export default function CareersClient() {
                   name="phone"
                   value={formData.phone}
                   onChange={handleChange}
+                  autoComplete="tel"
+                  inputMode="tel"
+                  maxLength={30}
                   className="form-input"
                   placeholder="090-1234-5678"
                 />
@@ -223,7 +236,7 @@ export default function CareersClient() {
 
               <div className="form-group">
                 <label htmlFor="position" className="form-label">
-                  希望職種 <span className="required">*</span>
+                  希望職種 <span className="required" aria-hidden="true">*</span>
                 </label>
                 <select
                   id="position"
@@ -263,7 +276,7 @@ export default function CareersClient() {
 
               <div className="form-group">
                 <label htmlFor="message" className="form-label">
-                  自己PR・志望動機 <span className="required">*</span>
+                  自己PR・志望動機 <span className="required" aria-hidden="true">*</span>
                 </label>
                 <textarea
                   id="message"
@@ -271,6 +284,8 @@ export default function CareersClient() {
                   value={formData.message}
                   onChange={handleChange}
                   required
+                  minLength={20}
+                  maxLength={3000}
                   className="form-textarea"
                   rows={6}
                   placeholder="あなたの強みや、EMPLAYで実現したいことをお聞かせください。"
@@ -292,7 +307,7 @@ export default function CareersClient() {
               </div>
 
               {submitStatus === 'error' && (
-                <div className="form-error">
+                <div className="form-error" ref={statusRef} role="alert" tabIndex={-1}>
                   送信に失敗しました。時間をおいて再度お試しください。
                 </div>
               )}

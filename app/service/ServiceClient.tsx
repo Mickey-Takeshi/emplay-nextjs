@@ -175,7 +175,7 @@ export default function ServiceClient() {
                 </div>
                 <div className="service-catalog-action">
                   {service.external ? (
-                    <a href={service.href} target="_blank" rel="noopener noreferrer" className="service-text-link">
+                    <a href={service.href} target="_blank" rel="noopener noreferrer" className="service-text-link" aria-label={`${service.cta}（新しいタブで開く）`}>
                       {service.cta}<span aria-hidden="true">↗</span>
                     </a>
                   ) : (
@@ -203,7 +203,7 @@ export default function ServiceClient() {
                 <p>{route.description}</p>
                 <div className="service-route-links">
                   {route.links.map((link) => link.external ? (
-                    <a key={link.label} href={link.href} target="_blank" rel="noopener noreferrer">{link.label}<span aria-hidden="true">↗</span></a>
+                    <a key={link.label} href={link.href} target="_blank" rel="noopener noreferrer" aria-label={`${link.label}（新しいタブで開く）`}>{link.label}<span aria-hidden="true">↗</span></a>
                   ) : (
                     <Link key={link.label} href={link.href}>{link.label}<span aria-hidden="true">→</span></Link>
                   ))}
@@ -244,12 +244,24 @@ export default function ServiceClient() {
               const isOpen = openFaq === index
               return (
                 <div className={`service-faq-item ${isOpen ? 'open' : ''}`} key={faq.q}>
-                  <button type="button" onClick={() => setOpenFaq(isOpen ? null : index)} aria-expanded={isOpen}>
+                  <button
+                    type="button"
+                    id={`service-faq-button-${index}`}
+                    onClick={() => setOpenFaq(isOpen ? null : index)}
+                    aria-expanded={isOpen}
+                    aria-controls={`service-faq-answer-${index}`}
+                  >
                     <span className="service-faq-mark">Q</span>
                     <span className="service-faq-question">{faq.q}</span>
                     <span className="service-faq-toggle" aria-hidden="true">{isOpen ? '−' : '＋'}</span>
                   </button>
-                  <div className="service-faq-answer" hidden={!isOpen}>
+                  <div
+                    id={`service-faq-answer-${index}`}
+                    className="service-faq-answer"
+                    role="region"
+                    aria-labelledby={`service-faq-button-${index}`}
+                    hidden={!isOpen}
+                  >
                     <p>{faq.a}</p>
                   </div>
                 </div>

@@ -8,6 +8,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'ホームページ制作サービス｜SEO・AI検索対策(AIO/LLMO)対応 | 株式会社EMPLAY',
     description: 'ホームページ制作会社をお探しの中小企業の方へ。SEO＋AI検索対策(AIO/LLMO)対応で、作って終わりにしないホームページ制作。費用の目安・制作の流れ・記事代行・効果測定で問い合わせ獲得まで伴走します。',
+    url: '/service/hp',
   },
 }
 

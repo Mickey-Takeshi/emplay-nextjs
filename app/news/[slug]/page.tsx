@@ -33,10 +33,14 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   return {
     title: article.title,
     description: `${article.title} - 株式会社EMPLAYからのお知らせです。`,
+    alternates: {
+      canonical: `/news/${article.slug}`,
+    },
     openGraph: {
       title: `${article.title} | 株式会社EMPLAY`,
       description: `${article.title} - 株式会社EMPLAYからのお知らせです。`,
       type: 'article',
+      url: `/news/${article.slug}`,
       publishedTime: article.published_at,
     },
   }
@@ -77,7 +81,7 @@ export default async function NewsDetailPage({ params }: { params: Promise<{ slu
       name: '株式会社EMPLAY',
       logo: {
         '@type': 'ImageObject',
-        url: 'https://emplay.jp/favicon.svg'
+        url: 'https://emplay.jp/logo.png'
       }
     },
     mainEntityOfPage: {
@@ -98,7 +102,7 @@ export default async function NewsDetailPage({ params }: { params: Promise<{ slu
       <header className="page-header-hero" aria-label="ページヘッダー">
         <div className="page-header-bg" aria-hidden="true"></div>
         <div className="page-header-content">
-          <h1 className="page-title-hero">NEWS</h1>
+          <p className="page-title-hero">NEWS</p>
           <p className="page-title-ja-hero">お知らせ</p>
         </div>
       </header>
@@ -116,7 +120,7 @@ export default async function NewsDetailPage({ params }: { params: Promise<{ slu
             <time className="news-article-date" dateTime={article.published_at}>
               {formatDate(article.published_at)}
             </time>
-            <h2 className="news-article-title">{article.title}</h2>
+            <h1 className="news-article-title">{article.title}</h1>
           </header>
 
           <div className="news-article-body">

@@ -8,9 +8,11 @@ import '../ServiceDetail.css'
 export const metadata: Metadata = {
   title: 'Web広告運用代行｜Google・Meta・LINE広告の運用代行',
   description: 'Google、Meta、LINE、TikTokなど主要Web広告の運用代行。戦略設計から日々の最適化・効果測定までワンストップで対応。費用・料金は無料でお見積りします。',
+  alternates: { canonical: '/service/ads' },
   openGraph: {
     title: 'Web広告運用代行 | 株式会社EMPLAY',
     description: 'Google、Meta、LINE、TikTokなど主要Web広告の運用代行。戦略設計から日々の最適化・効果測定までワンストップで対応。費用・料金は無料でお見積りします。',
+    url: '/service/ads',
   },
 }
 

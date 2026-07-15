@@ -49,7 +49,15 @@
   color: var(--color-primary);
 }
 
+.header-menu-open .logo-icon {
+  color: var(--color-primary);
+}
+
 .header-scrolled .logo-text {
+  color: var(--color-text);
+}
+
+.header-menu-open .logo-text {
   color: var(--color-text);
 }
 
@@ -102,7 +110,7 @@
 
 .nav-list {
   display: flex;
-  gap: 32px;
+  gap: 24px;
   align-items: center;
 }
 
@@ -141,6 +149,11 @@
 
 .nav-link.active {
   color: var(--color-primary);
+}
+
+.nav-external-icon {
+  font-size: 0.75em;
+  line-height: 1;
 }
 
 /* CTAボタン型のお問い合わせ */
@@ -202,7 +215,7 @@
 /* レスポンシブ */
 @media (max-width: 900px) {
   .nav-list {
-    gap: 24px;
+    gap: 16px;
   }
 
   .nav-link {
@@ -231,25 +244,30 @@
 
   .nav {
     position: fixed;
-    top: 0;
+    top: 60px;
     right: -100%;
     width: 100%;
-    height: 100vh;
+    height: calc(100dvh - 60px);
     background-color: var(--color-bg);
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: right var(--transition);
+    visibility: hidden;
+    pointer-events: none;
+    transition: right var(--transition), visibility var(--transition);
   }
 
   .nav.open {
     right: 0;
+    visibility: visible;
+    pointer-events: auto;
   }
 
   .nav-list {
     flex-direction: column;
     align-items: center;
     gap: var(--spacing-md);
+    padding: 32px 20px calc(32px + env(safe-area-inset-bottom, 0px));
   }
 
   .nav-link {

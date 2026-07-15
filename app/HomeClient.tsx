@@ -2,12 +2,12 @@
 
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
-import { NewsArticle, BlogPost } from '@/lib/supabase'
+import { NewsArticleSummary, BlogPostSummary } from '@/lib/supabase'
 import FaqJsonLd from '@/components/FaqJsonLd'
 
 interface HomeClientProps {
-  news: NewsArticle[]
-  latestPosts: BlogPost[]
+  news: NewsArticleSummary[]
+  latestPosts: BlogPostSummary[]
 }
 
 const homeFaqs = [
@@ -36,13 +36,6 @@ function formatDate(dateString: string) {
 }
 
 export default function HomeClient({ news, latestPosts }: HomeClientProps) {
-  const [heroLoaded, setHeroLoaded] = useState(false)
-
-  useEffect(() => {
-    const timer = setTimeout(() => setHeroLoaded(true), 100)
-    return () => clearTimeout(timer)
-  }, [])
-
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
@@ -66,18 +59,18 @@ export default function HomeClient({ news, latestPosts }: HomeClientProps) {
         <div className="hero-bg" aria-hidden="true">
           <div className="hero-grid-pattern"></div>
         </div>
-        <div className={`hero-content ${heroLoaded ? 'hero-loaded' : ''}`}>
-          <p className="hero-label hero-animate hero-animate-1">
+        <div className="hero-content">
+          <p className="hero-label">
             中小企業のWeb・AI活用パートナー
           </p>
-          <h1 className="hero-title hero-animate hero-animate-2">
+          <h1 className="hero-title">
             Web制作・集客・AI活用を、<br />実行と改善まで。
           </h1>
-          <p className="hero-description hero-animate hero-animate-3">
+          <p className="hero-description">
             ホームページ制作、広告運用、CRM導入、AI研修。<br className="pc-only" />
             課題の整理から制作・導入、継続運用まで一貫して支援します。
           </p>
-          <div className="hero-actions hero-animate hero-animate-4">
+          <div className="hero-actions">
             <Link href="/service" className="btn btn-primary btn-large">
               支援内容を見る
             </Link>
@@ -85,7 +78,7 @@ export default function HomeClient({ news, latestPosts }: HomeClientProps) {
               無料相談を申し込む
             </Link>
           </div>
-          <ul className="hero-services hero-animate hero-animate-5" aria-label="支援範囲">
+          <ul className="hero-services" aria-label="支援範囲">
             <li>課題整理</li>
             <li>制作・導入</li>
             <li>運用・改善</li>
@@ -109,7 +102,6 @@ export default function HomeClient({ news, latestPosts }: HomeClientProps) {
           <div className="service-cards">
             {/* HP制作 - フィーチャーカード */}
             <div className="service-card service-card-featured animate-on-scroll">
-              <div className="service-card-badge">NEW</div>
               <div className="service-card-icon">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
                   <rect x="3" y="3" width="18" height="18" rx="2" />
@@ -185,7 +177,6 @@ export default function HomeClient({ news, latestPosts }: HomeClientProps) {
 
             {/* EMPLAY AI ACADEMY */}
             <div className="service-card animate-on-scroll">
-              <div className="service-card-badge">NEW</div>
               <div className="service-card-icon service-card-icon-accent">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
                   <path d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
@@ -195,7 +186,7 @@ export default function HomeClient({ news, latestPosts }: HomeClientProps) {
               <p className="service-card-text">
                 全10プログラム、オンライン完結。生成AIで「自走できる」DX中核人材を育てる実践研修。
               </p>
-              <a href="https://academy.emplay.jp/" className="service-card-link" target="_blank" rel="noopener noreferrer">
+              <a href="https://academy.emplay.jp/" className="service-card-link" target="_blank" rel="noopener noreferrer" aria-label="EMPLAY AI ACADEMYの詳細を見る（新しいタブで開く）">
                 詳しく見る
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="16" height="16"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
               </a>
@@ -343,18 +334,20 @@ export default function HomeClient({ news, latestPosts }: HomeClientProps) {
             </div>
             <Link href="/news" className="view-more" aria-label="お知らせ一覧を見る">VIEW MORE →</Link>
           </div>
-          <div className="news-list-home" role="list">
+          <ul className="news-list-home">
             {news.length > 0 ? (
               news.map((article) => (
-                <Link key={article.id} href={`/news/${article.slug}`} className="news-item-home" role="listitem">
-                  <time className="news-date" dateTime={article.published_at}>{new Date(article.published_at).toLocaleDateString('ja-JP', { timeZone: 'Asia/Tokyo' })}</time>
-                  <span className="news-title-home">{article.title}</span>
-                </Link>
+                <li key={article.id}>
+                  <Link href={`/news/${article.slug}`} className="news-item-home">
+                    <time className="news-date" dateTime={article.published_at}>{new Date(article.published_at).toLocaleDateString('ja-JP', { timeZone: 'Asia/Tokyo' })}</time>
+                    <span className="news-title-home">{article.title}</span>
+                  </Link>
+                </li>
               ))
             ) : (
-              <p className="no-news">ニュースはありません</p>
+              <li className="no-news">ニュースはありません</li>
             )}
-          </div>
+          </ul>
         </div>
       </section>
 

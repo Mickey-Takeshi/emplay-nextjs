@@ -3,7 +3,7 @@
 /* ヒーローセクション */
 .lp-hero {
   position: relative;
-  min-height: 80vh;
+  min-height: clamp(520px, 72vh, 680px);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -51,7 +51,7 @@
   font-weight: 800;
   line-height: 1.5;
   margin-bottom: var(--spacing-lg);
-  letter-spacing: -0.02em;
+  letter-spacing: 0;
 }
 
 .lp-hero-text {
@@ -96,7 +96,7 @@
 
 .problem-item {
   background: #fff;
-  border-radius: 12px;
+  border-radius: var(--radius-md);
   padding: 28px 24px;
   display: flex;
   align-items: flex-start;
@@ -137,7 +137,7 @@
 
 .solution-point {
   background: #f8fafc;
-  border-radius: 16px;
+  border-radius: var(--radius-md);
   padding: 36px 32px;
 }
 
@@ -177,7 +177,7 @@
 
 .lp-service-card {
   background: #fff;
-  border-radius: 16px;
+  border-radius: var(--radius-md);
   overflow: hidden;
   display: grid;
   grid-template-columns: 300px 1fr;
@@ -239,7 +239,7 @@
 
 .lp-media-card {
   background: #fff;
-  border-radius: 12px;
+  border-radius: var(--radius-md);
   padding: 28px 24px;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
 }
@@ -292,7 +292,7 @@
   text-align: center;
   padding: 24px 16px;
   background: #f8fafc;
-  border-radius: 12px;
+  border-radius: var(--radius-md);
 }
 
 .lp-operation-icon {
@@ -329,7 +329,7 @@
 
 .lp-crm-service {
   background: #fff;
-  border-radius: 12px;
+  border-radius: var(--radius-md);
   padding: 32px 28px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
 }
@@ -378,122 +378,6 @@
   border-radius: 50%;
 }
 
-/* 研修メニュー */
-.lp-training-menu {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-}
-
-.lp-training-item {
-  background: #fff;
-  border-radius: 12px;
-  padding: 32px 28px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-  position: relative;
-}
-
-.lp-training-badge {
-  position: absolute;
-  top: 16px;
-  right: 16px;
-  background: var(--color-primary);
-  color: #fff;
-  padding: 4px 12px;
-  border-radius: 16px;
-  font-size: 0.75rem;
-  font-weight: 600;
-}
-
-.lp-training-title {
-  font-size: 1.125rem;
-  font-weight: 700;
-  margin-bottom: 8px;
-  color: var(--color-text);
-}
-
-.lp-training-time {
-  font-size: 0.8125rem;
-  color: var(--color-primary);
-  font-weight: 600;
-  margin-bottom: 12px;
-}
-
-.lp-training-text {
-  font-size: 0.875rem;
-  line-height: 1.8;
-  color: var(--color-text-light);
-  margin-bottom: 16px;
-}
-
-.lp-training-topics {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.lp-training-topics li {
-  position: relative;
-  padding-left: 20px;
-  font-size: 0.8125rem;
-  line-height: 1.8;
-  color: var(--color-text-light);
-}
-
-.lp-training-topics li::before {
-  content: '\2713';
-  position: absolute;
-  left: 0;
-  color: var(--color-primary);
-  font-weight: 700;
-}
-
-/* 補助金セクション */
-.lp-subsidy {
-  padding: 80px 0;
-  background: #fff;
-}
-
-.lp-subsidy-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 24px;
-  margin-bottom: 24px;
-}
-
-.lp-subsidy-card {
-  background: linear-gradient(135deg, #f8fafc, #f1f5f9);
-  border-radius: 12px;
-  padding: 28px 24px;
-  border: 1px solid #e2e8f0;
-}
-
-.lp-subsidy-name {
-  font-size: 1.0625rem;
-  font-weight: 700;
-  margin-bottom: 8px;
-  color: var(--color-text);
-}
-
-.lp-subsidy-rate {
-  font-size: 1.25rem;
-  font-weight: 800;
-  color: var(--color-primary);
-  margin-bottom: 12px;
-}
-
-.lp-subsidy-text {
-  font-size: 0.875rem;
-  line-height: 1.8;
-  color: var(--color-text-light);
-}
-
-.lp-subsidy-note {
-  text-align: center;
-  font-size: 0.8125rem;
-  color: var(--color-text-muted);
-}
-
 /* フローセクション */
 .lp-flow {
   padding: 80px 0;
@@ -510,7 +394,7 @@
 
 .lp-flow-step {
   background: #fff;
-  border-radius: 12px;
+  border-radius: var(--radius-md);
   padding: 28px 32px;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
 }
@@ -559,7 +443,7 @@
 
 .pricing-item {
   background: #f8fafc;
-  border-radius: 12px;
+  border-radius: var(--radius-md);
   padding: 28px 24px;
   text-align: center;
   border: 1px solid #e2e8f0;
@@ -600,7 +484,7 @@
 
 .lp-faq-item {
   background: #fff;
-  border-radius: 12px;
+  border-radius: var(--radius-md);
   padding: 24px 28px;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
 }
@@ -701,10 +585,6 @@
     grid-template-columns: 1fr;
   }
 
-  .lp-training-menu {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
   .pricing-table {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -744,14 +624,6 @@
   }
 
   .lp-operation-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .lp-training-menu {
-    grid-template-columns: 1fr;
-  }
-
-  .lp-subsidy-grid {
     grid-template-columns: 1fr;
   }
 
@@ -804,7 +676,6 @@
   .lp-solution,
   .lp-services,
   .lp-operation,
-  .lp-subsidy,
   .lp-flow,
   .lp-pricing,
   .lp-faq,
@@ -914,51 +785,6 @@
 
   .lp-crm-service-list li {
     font-size: 0.8125rem;
-  }
-
-  .lp-training-item {
-    padding: 24px 20px;
-  }
-
-  .lp-training-badge {
-    font-size: 0.6875rem;
-    padding: 3px 10px;
-  }
-
-  .lp-training-title {
-    font-size: 1rem;
-  }
-
-  .lp-training-time {
-    font-size: 0.75rem;
-  }
-
-  .lp-training-text {
-    font-size: 0.8125rem;
-  }
-
-  .lp-training-topics li {
-    font-size: 0.75rem;
-  }
-
-  .lp-subsidy-card {
-    padding: 20px 16px;
-  }
-
-  .lp-subsidy-name {
-    font-size: 0.9375rem;
-  }
-
-  .lp-subsidy-rate {
-    font-size: 1.0625rem;
-  }
-
-  .lp-subsidy-text {
-    font-size: 0.8125rem;
-  }
-
-  .lp-subsidy-note {
-    font-size: 0.75rem;
   }
 
   .lp-flow-steps {

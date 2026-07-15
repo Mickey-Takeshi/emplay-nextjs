@@ -36,7 +36,7 @@ export default function ServiceHpClient() {
     },
     {
       q: '自社でHP運用したい場合は？',
-      a: 'HP制作研修プランをご用意しています。SEO/AIO知識やコンテンツ作成スキルを習得し、自社で運用できる人材を育成します。'
+      a: 'EMPLAY AI ACADEMYでHP制作研修をご用意しています。SEO/AIO知識やコンテンツ作成スキルを習得し、自社で運用できる人材を育成します。'
     }
   ]
 
@@ -320,7 +320,7 @@ export default function ServiceHpClient() {
                 <div className="pricing-amounts">
                   <div className="pricing-amount-row">
                     <span className="pricing-amount-label">初期費用</span>
-                    <span className="pricing-amount-value">&yen;400,000</span>
+                    <span className="pricing-amount-value">&yen;300,000</span>
                   </div>
                   <div className="pricing-amount-row main">
                     <span className="pricing-amount-label">月額</span>
@@ -345,7 +345,7 @@ export default function ServiceHpClient() {
                 <div className="pricing-amounts">
                   <div className="pricing-amount-row">
                     <span className="pricing-amount-label">初期費用</span>
-                    <span className="pricing-amount-value">&yen;400,000</span>
+                    <span className="pricing-amount-value">&yen;300,000</span>
                   </div>
                   <div className="pricing-amount-row main">
                     <span className="pricing-amount-label">月額</span>
@@ -372,7 +372,7 @@ export default function ServiceHpClient() {
                 <div className="pricing-amounts">
                   <div className="pricing-amount-row">
                     <span className="pricing-amount-label">初期費用</span>
-                    <span className="pricing-amount-value">&yen;400,000</span>
+                    <span className="pricing-amount-value">&yen;300,000</span>
                   </div>
                   <div className="pricing-amount-row main">
                     <span className="pricing-amount-label">月額</span>
@@ -400,7 +400,7 @@ export default function ServiceHpClient() {
                 <div className="pricing-amounts">
                   <div className="pricing-amount-row main">
                     <span className="pricing-amount-label">費用</span>
-                    <span className="pricing-amount-value">&yen;300,000<small>/月</small></span>
+                    <span className="pricing-amount-value">要お問い合わせ</span>
                   </div>
                 </div>
                 <ul className="pricing-features-new">
@@ -409,7 +409,9 @@ export default function ServiceHpClient() {
                   <li>コンテンツ作成研修</li>
                   <li>実践ワークショップ</li>
                 </ul>
-                <Link href="/service/training" className="pricing-training-link">研修サービスの詳細はこちら →</Link>
+                <a href="https://academy.emplay.jp/" className="pricing-training-link" target="_blank" rel="noopener noreferrer" aria-label="研修サービスの詳細を見る（新しいタブで開く）">
+                  研修サービスの詳細はこちら ↗
+                </a>
               </div>
             </div>
           </div>
@@ -486,9 +488,12 @@ export default function ServiceHpClient() {
             {faqs.map((faq, index) => (
               <div key={index} className={`faq-item-new ${openFaq === index ? 'open' : ''}`}>
                 <button
+                  type="button"
+                  id={`hp-faq-button-${index}`}
                   className="faq-question-new"
                   onClick={() => toggleFaq(index)}
                   aria-expanded={openFaq === index}
+                  aria-controls={`hp-faq-answer-${index}`}
                 >
                   <span className="faq-question-text-new">{faq.q}</span>
                   <span className="faq-toggle-new">
@@ -501,7 +506,13 @@ export default function ServiceHpClient() {
                     </svg>
                   </span>
                 </button>
-                <div className="faq-answer-new">
+                <div
+                  id={`hp-faq-answer-${index}`}
+                  className="faq-answer-new"
+                  role="region"
+                  aria-labelledby={`hp-faq-button-${index}`}
+                  aria-hidden={openFaq !== index}
+                >
                   <p>{faq.a}</p>
                 </div>
               </div>

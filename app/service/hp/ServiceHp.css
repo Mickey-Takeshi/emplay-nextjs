@@ -21,7 +21,7 @@
   text-align: center;
   color: var(--color-text);
   margin-bottom: 40px;
-  letter-spacing: -0.02em;
+  letter-spacing: 0;
 }
 
 .hp-section-title.light {
@@ -107,7 +107,7 @@
   font-weight: 800;
   line-height: 1.4;
   margin-bottom: 24px;
-  letter-spacing: -0.02em;
+  letter-spacing: 0;
 }
 
 .hp-hero-title-accent {
@@ -162,7 +162,7 @@
 
 .problem-card {
   background: #f8fafc;
-  border-radius: 16px;
+  border-radius: var(--radius-md);
   padding: 32px 24px;
   text-align: center;
   transition: all 0.3s ease;
@@ -171,7 +171,7 @@
 
 .problem-card:hover {
   border-color: var(--color-primary);
-  transform: translateY(-4px);
+  transform: translateY(-2px);
   box-shadow: 0 12px 32px rgba(59, 130, 246, 0.12);
 }
 
@@ -183,7 +183,7 @@
   align-items: center;
   justify-content: center;
   background: linear-gradient(135deg, #eff6ff, #dbeafe);
-  border-radius: 14px;
+  border-radius: var(--radius-md);
 }
 
 .problem-card-icon svg {
@@ -203,7 +203,7 @@
 .problems-solution {
   text-align: center;
   background: linear-gradient(135deg, #eff6ff, #f0fdf4);
-  border-radius: 12px;
+  border-radius: var(--radius-md);
   padding: 24px 32px;
 }
 
@@ -235,7 +235,7 @@
   background: rgba(255, 255, 255, 0.08);
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.15);
-  border-radius: 20px;
+  border-radius: var(--radius-md);
   padding: 40px 32px;
   text-align: center;
   transition: all 0.3s ease;
@@ -290,7 +290,7 @@
 
 .why-now-message {
   background: rgba(255, 255, 255, 0.1);
-  border-radius: 12px;
+  border-radius: var(--radius-md);
   padding: 24px 32px;
   text-align: center;
 }
@@ -321,7 +321,7 @@
 .flow-step-card {
   background: #fff;
   border: 2px solid #e2e8f0;
-  border-radius: 16px;
+  border-radius: var(--radius-md);
   padding: 32px 40px;
   text-align: center;
   min-width: 200px;
@@ -374,7 +374,7 @@
   gap: 16px;
   background: linear-gradient(135deg, #f0f7ff, #eff6ff);
   border: 2px solid var(--color-primary);
-  border-radius: 16px;
+  border-radius: var(--radius-md);
   padding: 24px 40px;
 }
 
@@ -412,14 +412,14 @@
 
 .reason-card {
   background: #fff;
-  border-radius: 20px;
+  border-radius: var(--radius-md);
   overflow: hidden;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
   transition: all 0.3s ease;
 }
 
 .reason-card:hover {
-  transform: translateY(-6px);
+  transform: translateY(-2px);
   box-shadow: 0 16px 40px rgba(0, 0, 0, 0.1);
 }
 
@@ -503,7 +503,7 @@
   justify-content: center;
   gap: 24px;
   background: #f8fafc;
-  border-radius: 12px;
+  border-radius: var(--radius-md);
   padding: 20px;
 }
 
@@ -562,14 +562,14 @@
 .pricing-card-new {
   background: #fff;
   border: 2px solid #e2e8f0;
-  border-radius: 20px;
+  border-radius: var(--radius-md);
   overflow: hidden;
   transition: all 0.3s ease;
   position: relative;
 }
 
 .pricing-card-new:hover {
-  transform: translateY(-6px);
+  transform: translateY(-2px);
   box-shadow: 0 16px 40px rgba(0, 0, 0, 0.1);
 }
 
@@ -661,20 +661,6 @@
 .pricing-amount-value small {
   font-size: 0.75rem;
   font-weight: 400;
-}
-
-.pricing-subsidy-badge {
-  margin-bottom: 16px;
-}
-
-.pricing-subsidy-badge span {
-  display: inline-block;
-  background: linear-gradient(135deg, #22c55e, #16a34a);
-  color: #fff;
-  font-size: 0.6875rem;
-  font-weight: 700;
-  padding: 6px 12px;
-  border-radius: 20px;
 }
 
 .pricing-features-new {
@@ -775,7 +761,7 @@
 .flow-timeline-content {
   flex: 1;
   background: #fff;
-  border-radius: 16px;
+  border-radius: var(--radius-md);
   padding: 24px 28px;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
 }
@@ -807,7 +793,7 @@
 
 .flow-result-box {
   background: #fff;
-  border-radius: 20px;
+  border-radius: var(--radius-md);
   padding: 40px;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
 }
@@ -830,7 +816,7 @@
   text-align: center;
   padding: 24px 20px;
   background: #f8fafc;
-  border-radius: 16px;
+  border-radius: var(--radius-md);
   border: 2px solid transparent;
   transition: all 0.3s ease;
 }
@@ -1197,14 +1183,14 @@
 .hp-aisearch-card {
   background: #fff;
   border: 1px solid var(--color-border);
-  border-radius: 14px;
+  border-radius: var(--radius-md);
   padding: 28px 24px;
   transition: box-shadow var(--transition), transform var(--transition);
 }
 
 .hp-aisearch-card:hover {
   box-shadow: var(--shadow-md);
-  transform: translateY(-4px);
+  transform: translateY(-2px);
 }
 
 .hp-aisearch-tag {

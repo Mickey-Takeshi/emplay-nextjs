@@ -113,9 +113,10 @@
 /* 右カラム：フォーム */
 .contact-form-wrapper {
   background: #fff;
-  border-radius: 16px;
+  border-radius: var(--radius-md);
   padding: 40px;
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-sm);
 }
 
 .form-note {
@@ -125,7 +126,7 @@
 }
 
 .required-mark {
-  color: #EF4444;
+  color: #B4233B;
   margin-left: 2px;
 }
 
@@ -150,6 +151,7 @@
   border: 1px solid var(--color-border);
   border-radius: 8px;
   background-color: #fff;
+  min-height: 48px;
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -281,7 +283,7 @@
 
   .contact-form-wrapper {
     padding: 24px;
-    border-radius: 12px;
+    border-radius: var(--radius-md);
   }
 
   .form-row {

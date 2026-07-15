@@ -8,13 +8,18 @@ export const metadata: Metadata = {
   description:
     '株式会社EMPLAYのプライバシーポリシーです。当社が取得する個人情報の利用目的、管理方法、お問い合わせ窓口についてご案内します。',
   alternates: {
-    canonical: 'https://emplay.jp/privacy',
+    canonical: '/privacy',
+  },
+  openGraph: {
+    title: 'プライバシーポリシー | 株式会社EMPLAY',
+    description: '株式会社EMPLAYのプライバシーポリシーです。当社が取得する個人情報の利用目的、管理方法、お問い合わせ窓口についてご案内します。',
+    url: '/privacy',
   },
 }
 
 export default function PrivacyPage() {
   return (
-    <div className="privacy-page">
+    <main className="privacy-page">
       {/* ページヘッダー */}
       <section className="privacy-header">
         <div className="container">
@@ -98,6 +103,7 @@ export default function PrivacyPage() {
                 href="https://marketingplatform.google.com/about/analytics/terms/jp/"
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label="Googleアナリティクス利用規約（新しいタブで開く）"
               >
                 Googleアナリティクス利用規約
               </a>
@@ -141,6 +147,6 @@ export default function PrivacyPage() {
           <p className="privacy-date">制定日：2026年7月3日</p>
         </div>
       </section>
-    </div>
+    </main>
   )
 }

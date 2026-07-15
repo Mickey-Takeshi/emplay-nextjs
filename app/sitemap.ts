@@ -1,5 +1,5 @@
 import type { MetadataRoute } from 'next'
-import { getBlogPosts, getNews } from '@/lib/supabase'
+import { getBlogPostSummaries, getNewsSummaries } from '@/lib/supabase'
 import { CATEGORY_MAP } from '@/lib/categories'
 
 const BASE_URL = 'https://emplay.jp'
@@ -8,8 +8,8 @@ const BASE_URL = 'https://emplay.jp'
 // (記事追加後は再デプロイで反映される)
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const [posts, news] = await Promise.all([
-    getBlogPosts().catch(() => []),
-    getNews().catch(() => []),
+    getBlogPostSummaries().catch(() => []),
+    getNewsSummaries().catch(() => []),
   ])
 
   // 静的ページ
@@ -21,13 +21,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       { url: `${BASE_URL}/service/creative`, changeFrequency: 'monthly', priority: 0.8 },
       { url: `${BASE_URL}/service/ads`, changeFrequency: 'monthly', priority: 0.8 },
       { url: `${BASE_URL}/service/crm`, changeFrequency: 'monthly', priority: 0.8 },
-      { url: `${BASE_URL}/service/training`, changeFrequency: 'monthly', priority: 0.8 },
       { url: `${BASE_URL}/service/hp`, changeFrequency: 'monthly', priority: 0.9 },
       { url: `${BASE_URL}/blog`, changeFrequency: 'daily', priority: 0.9 },
       { url: `${BASE_URL}/news`, changeFrequency: 'weekly', priority: 0.7 },
       { url: `${BASE_URL}/privacy`, changeFrequency: 'yearly', priority: 0.3 },
     ] satisfies MetadataRoute.Sitemap
-  ).map((page) => ({ ...page, lastModified: new Date() }))
+  )
 
   // カテゴリページ(実際に記事が存在するカテゴリのみ、既知slugに限る)
   const usedCategories = [...new Set(posts.map((p) => p.category))]

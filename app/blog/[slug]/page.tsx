@@ -147,7 +147,7 @@ export default async function BlogDetailPage({ params }: { params: Promise<{ slu
 
       {/* サムネイル画像 */}
       <figure className="blog-thumbnail">
-        <img src={post.thumbnail} alt={post.title} fetchPriority="high" decoding="async" />
+        <img src={post.thumbnail} alt={post.title} fetchPriority="high" decoding="async" width="1200" height="675" />
       </figure>
 
       {/* 記事本文 */}
@@ -214,7 +214,7 @@ export default async function BlogDetailPage({ params }: { params: Promise<{ slu
                   className="related-post-card"
                 >
                   <div className="related-post-thumbnail">
-                    <img src={relatedPost.thumbnail} alt={relatedPost.title} loading="lazy" decoding="async" />
+                    <img src={relatedPost.thumbnail} alt={relatedPost.title} loading="lazy" decoding="async" width="800" height="450" />
                   </div>
                   <div className="related-post-content">
                     <span className="related-post-category">{relatedPost.category}</span>

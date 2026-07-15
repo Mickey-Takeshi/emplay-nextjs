@@ -155,6 +155,8 @@ export default async function BlogCategoryPage({ params, searchParams }: BlogCat
                         loading={index < 3 ? 'eager' : 'lazy'}
                         fetchPriority={index === 0 ? 'high' : undefined}
                         decoding="async"
+                        width="800"
+                        height="500"
                       />
                     </figure>
                     <div className="blog-card-content">

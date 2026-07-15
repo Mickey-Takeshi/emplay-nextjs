@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import './Header.css'
@@ -8,6 +8,8 @@ import './Header.css'
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
+  const menuButtonRef = useRef<HTMLButtonElement>(null)
+  const navRef = useRef<HTMLElement>(null)
   const pathname = usePathname()
 
   useEffect(() => {
@@ -23,14 +25,34 @@ export default function Header() {
     if (!isMenuOpen) return
 
     const previousOverflow = document.body.style.overflow
+    const focusableElements = navRef.current?.querySelectorAll<HTMLElement>('a[href], button:not([disabled])')
+    const firstFocusable = focusableElements?.[0]
+    const lastFocusable = focusableElements?.[focusableElements.length - 1]
+    const focusTimer = window.setTimeout(() => firstFocusable?.focus(), 50)
+
     const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') setIsMenuOpen(false)
+      if (event.key === 'Escape') {
+        setIsMenuOpen(false)
+        menuButtonRef.current?.focus()
+        return
+      }
+
+      if (event.key !== 'Tab' || !firstFocusable || !lastFocusable) return
+
+      if (event.shiftKey && document.activeElement === firstFocusable) {
+        event.preventDefault()
+        lastFocusable.focus()
+      } else if (!event.shiftKey && document.activeElement === lastFocusable) {
+        event.preventDefault()
+        firstFocusable.focus()
+      }
     }
 
     document.body.style.overflow = 'hidden'
     document.addEventListener('keydown', handleKeyDown)
 
     return () => {
+      window.clearTimeout(focusTimer)
       document.body.style.overflow = previousOverflow
       document.removeEventListener('keydown', handleKeyDown)
     }
@@ -41,10 +63,11 @@ export default function Header() {
     { path: '/company', label: 'COMPANY' },
     { path: '/blog', label: 'BLOG' },
     { path: '/news', label: 'NEWS' },
+    { path: 'https://academy.emplay.jp/', label: 'AI ACADEMY', external: true },
   ]
 
   const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen)
+    setIsMenuOpen((current) => !current)
   }
 
   const closeMenu = () => {
@@ -65,6 +88,8 @@ export default function Header() {
         </Link>
 
         <button
+          ref={menuButtonRef}
+          type="button"
           className={`menu-toggle ${isMenuOpen ? 'active' : ''}`}
           onClick={toggleMenu}
           aria-label={isMenuOpen ? 'メニューを閉じる' : 'メニューを開く'}
@@ -76,7 +101,7 @@ export default function Header() {
           <span></span>
         </button>
 
-        <nav id="global-navigation" className={`nav ${isMenuOpen ? 'open' : ''}`} aria-label="メインナビゲーション">
+        <nav ref={navRef} id="global-navigation" className={`nav ${isMenuOpen ? 'open' : ''}`} aria-label="メインナビゲーション">
           <ul className="nav-list">
             {navItems.map((item) => (
               <li key={item.path} className="nav-item">
@@ -86,9 +111,11 @@ export default function Header() {
                     className="nav-link"
                     target="_blank"
                     rel="noopener noreferrer"
+                    aria-label={`${item.label}（新しいタブで開く）`}
                     onClick={closeMenu}
                   >
                     {item.label}
+                    <span className="nav-external-icon" aria-hidden="true">↗</span>
                   </a>
                 ) : (
                   <Link

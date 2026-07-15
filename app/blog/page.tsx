@@ -114,6 +114,8 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
                         loading={index < 3 ? 'eager' : 'lazy'}
                         fetchPriority={index === 0 ? 'high' : undefined}
                         decoding="async"
+                        width="800"
+                        height="500"
                       />
                     </figure>
                     <div className="blog-card-content">

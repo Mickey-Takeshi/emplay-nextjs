@@ -41,6 +41,29 @@ export interface NewsArticle {
   created_at: string
 }
 
+export type NewsArticleSummary = Omit<NewsArticle, 'content'>
+
+const NEWS_LIST_COLUMNS = 'id,title,slug,published_at,created_at'
+
+// 一覧・サイトマップ用に本文を除外して取得
+export async function getBlogPostSummaries(limit?: number): Promise<BlogPostSummary[]> {
+  let query = supabase
+    .from('blog_posts')
+    .select(BLOG_LIST_COLUMNS)
+    .order('published_at', { ascending: false })
+
+  if (limit) query = query.limit(limit)
+
+  const { data, error } = await query
+
+  if (error) {
+    console.error('Error fetching blog post summaries:', error)
+    return []
+  }
+
+  return data as BlogPostSummary[]
+}
+
 // ブログ一覧を取得
 export async function getBlogPosts(limit?: number): Promise<BlogPost[]> {
   let query = supabase
@@ -187,10 +210,10 @@ export async function getBlogCategories(): Promise<string[]> {
 }
 
 // 関連記事を取得
-export async function getRelatedPosts(currentSlug: string, category: string, limit: number = 4): Promise<BlogPost[]> {
+export async function getRelatedPosts(currentSlug: string, category: string, limit: number = 4): Promise<BlogPostSummary[]> {
   const { data, error } = await supabase
     .from('blog_posts')
-    .select('*')
+    .select(BLOG_LIST_COLUMNS)
     .eq('category', category)
     .neq('slug', currentSlug)
     .order('published_at', { ascending: false })
@@ -201,7 +224,26 @@ export async function getRelatedPosts(currentSlug: string, category: string, lim
     return []
   }
 
-  return data as BlogPost[]
+  return data as BlogPostSummary[]
+}
+
+// ニュース一覧用に本文を除外して取得
+export async function getNewsSummaries(limit?: number): Promise<NewsArticleSummary[]> {
+  let query = supabase
+    .from('news')
+    .select(NEWS_LIST_COLUMNS)
+    .order('published_at', { ascending: false })
+
+  if (limit) query = query.limit(limit)
+
+  const { data, error } = await query
+
+  if (error) {
+    console.error('Error fetching news summaries:', error)
+    return []
+  }
+
+  return data as NewsArticleSummary[]
 }
 
 // ニュース一覧を取得

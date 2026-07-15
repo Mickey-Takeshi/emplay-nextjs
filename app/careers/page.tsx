@@ -4,6 +4,7 @@ import CareersClient from './CareersClient'
 export const metadata: Metadata = {
   title: '採用情報',
   description: '株式会社EMPLAYの採用情報です。私たちと一緒に「わくわく」を創りませんか？',
+  alternates: { canonical: '/careers' },
   robots: {
     index: false,
     follow: true,
@@ -11,6 +12,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: '採用情報 | 株式会社EMPLAY',
     description: '株式会社EMPLAYの採用情報です。私たちと一緒に「わくわく」を創りませんか？',
+    url: '/careers',
   },
 }
 

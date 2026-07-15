@@ -20,11 +20,16 @@ export default function ContactClient() {
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle')
   const [errorMessage, setErrorMessage] = useState('')
   const startedRef = useRef(false)
+  const statusRef = useRef<HTMLDivElement>(null)
 
   // フォーム表示イベント（ファネル計測の起点）
   useEffect(() => {
     trackEvent('form_view', { form: 'contact' })
   }, [])
+
+  useEffect(() => {
+    if (submitStatus !== 'idle') statusRef.current?.focus()
+  }, [submitStatus])
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target
@@ -66,15 +71,15 @@ export default function ContactClient() {
   }
 
   return (
-    <div className="contact-page">
+    <main className="contact-page">
       {/* ヒーロー */}
-      <section className="contact-hero">
+      <header className="contact-hero">
         <div className="contact-hero-bg" aria-hidden="true"></div>
         <div className="contact-hero-content">
           <p className="contact-hero-label">CONTACT</p>
           <h1 className="contact-hero-title">お問い合わせ</h1>
         </div>
-      </section>
+      </header>
 
       <Breadcrumb items={[{ label: 'CONTACT' }]} />
 
@@ -148,7 +153,7 @@ export default function ContactClient() {
             {/* 右カラム：フォーム */}
             <div className="contact-form-wrapper">
               {submitStatus === 'success' ? (
-                <div className="submit-success">
+                <div className="submit-success" ref={statusRef} role="status" aria-live="polite" tabIndex={-1}>
                   <div className="success-icon">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                       <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
@@ -168,39 +173,39 @@ export default function ContactClient() {
                   </div>
                 </div>
               ) : (
-                <form className="contact-form" onSubmit={handleSubmit}>
-                  <p className="form-note"><span className="required-mark">*</span> は必須項目です</p>
+                <form className="contact-form" onSubmit={handleSubmit} aria-busy={isSubmitting}>
+                  <p className="form-note" id="contact-required-note"><span className="required-mark" aria-hidden="true">*</span> は必須項目です</p>
 
                   <div className="form-group">
                     <label htmlFor="name" className="form-label">
-                      お名前<span className="required-mark">*</span>
+                      お名前<span className="required-mark" aria-hidden="true">*</span>
                     </label>
-                    <input type="text" id="name" name="name" value={formData.name} onChange={handleChange} required className="form-input" placeholder="山田 太郎" />
+                    <input type="text" id="name" name="name" value={formData.name} onChange={handleChange} required autoComplete="name" maxLength={100} className="form-input" placeholder="山田 太郎" />
                   </div>
 
                   <div className="form-group">
                     <label htmlFor="email" className="form-label">
-                      メールアドレス<span className="required-mark">*</span>
+                      メールアドレス<span className="required-mark" aria-hidden="true">*</span>
                     </label>
-                    <input type="email" id="email" name="email" value={formData.email} onChange={handleChange} required className="form-input" placeholder="example@email.com" />
+                    <input type="email" id="email" name="email" value={formData.email} onChange={handleChange} required autoComplete="email" maxLength={254} spellCheck={false} className="form-input" placeholder="example@email.com" />
                   </div>
 
                   <div className="form-row">
                     <div className="form-group">
                       <label htmlFor="company" className="form-label">会社名</label>
-                      <input type="text" id="company" name="company" value={formData.company} onChange={handleChange} className="form-input" placeholder="株式会社〇〇" />
+                      <input type="text" id="company" name="company" value={formData.company} onChange={handleChange} autoComplete="organization" maxLength={150} className="form-input" placeholder="株式会社〇〇" />
                     </div>
                     <div className="form-group">
                       <label htmlFor="phone" className="form-label">電話番号</label>
-                      <input type="tel" id="phone" name="phone" value={formData.phone} onChange={handleChange} className="form-input" placeholder="03-1234-5678" />
+                      <input type="tel" id="phone" name="phone" value={formData.phone} onChange={handleChange} autoComplete="tel" inputMode="tel" maxLength={30} className="form-input" placeholder="03-1234-5678" />
                     </div>
                   </div>
 
                   <div className="form-group">
                     <label htmlFor="message" className="form-label">
-                      お問い合わせ内容<span className="required-mark">*</span>
+                      お問い合わせ内容<span className="required-mark" aria-hidden="true">*</span>
                     </label>
-                    <textarea id="message" name="message" value={formData.message} onChange={handleChange} required className="form-textarea" rows={5} placeholder="お問い合わせ内容をご記入ください" />
+                    <textarea id="message" name="message" value={formData.message} onChange={handleChange} required minLength={10} maxLength={3000} className="form-textarea" rows={5} placeholder="ご相談内容や現在の課題をご記入ください" />
                   </div>
 
                   {/* ハニーポット */}
@@ -210,7 +215,7 @@ export default function ContactClient() {
                   </div>
 
                   {submitStatus === 'error' && (
-                    <div className="form-error">
+                    <div className="form-error" ref={statusRef} role="alert" tabIndex={-1}>
                       <p>{errorMessage || '送信中にエラーが発生しました。もう一度お試しください。'}</p>
                     </div>
                   )}
@@ -231,6 +236,6 @@ export default function ContactClient() {
           </div>
         </div>
       </section>
-    </div>
+    </main>
   )
 }

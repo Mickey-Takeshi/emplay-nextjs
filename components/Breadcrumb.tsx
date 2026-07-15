@@ -33,19 +33,19 @@ export default function Breadcrumb({ items }: BreadcrumbProps) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
-      <div className="container">
-        <Link href="/">HOME</Link>
+      <ol className="container breadcrumb-list">
+        <li className="breadcrumb-item"><Link href="/">HOME</Link></li>
         {items.map((item, index) => (
-          <span key={index}>
+          <li className="breadcrumb-item" key={`${item.label}-${index}`}>
             <span className="breadcrumb-separator" aria-hidden="true">&gt;</span>
             {item.path ? (
               <Link href={item.path}>{item.label}</Link>
             ) : (
               <span className="breadcrumb-current" aria-current="page">{item.label}</span>
             )}
-          </span>
+          </li>
         ))}
-      </div>
+      </ol>
     </nav>
   )
 }

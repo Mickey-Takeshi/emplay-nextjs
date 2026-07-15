@@ -1,18 +1,11 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import Link from 'next/link'
 import Breadcrumb from '@/components/Breadcrumb'
 import './Company.css'
 
 export default function CompanyClient() {
-  const [heroLoaded, setHeroLoaded] = useState(false)
-
-  useEffect(() => {
-    const timer = setTimeout(() => setHeroLoaded(true), 100)
-    return () => clearTimeout(timer)
-  }, [])
-
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -37,12 +30,12 @@ export default function CompanyClient() {
         <div className="company-hero-bg" aria-hidden="true">
           <div className="company-hero-pattern"></div>
         </div>
-        <div className={`company-hero-content ${heroLoaded ? 'hero-loaded' : ''}`}>
-          <p className="company-hero-label hero-animate hero-animate-1">ABOUT US</p>
-          <h1 className="company-hero-title hero-animate hero-animate-2">
+        <div className="company-hero-content">
+          <p className="company-hero-label">ABOUT US</p>
+          <h1 className="company-hero-title">
             社会にもっと<br />わくわくを創り続ける
           </h1>
-          <p className="company-hero-description hero-animate hero-animate-3">
+          <p className="company-hero-description">
             わくわくの源泉は過去を超える可能性だ。<br />
             課題を再定義して、洗練された解法を求め続ける。
           </p>

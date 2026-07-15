@@ -8,9 +8,11 @@ import '../ServiceDetail.css'
 export const metadata: Metadata = {
   title: 'クリエイティブ制作｜LP・バナー・動画制作',
   description: 'ホームページ、LP、バナー、動画制作。成果につながるWebクリエイティブをワンストップで提供。お見積り・ご相談は無料です。',
+  alternates: { canonical: '/service/creative' },
   openGraph: {
     title: 'クリエイティブ制作 | 株式会社EMPLAY',
     description: 'ホームページ、LP、バナー、動画制作。成果につながるWebクリエイティブをワンストップで提供。お見積り・ご相談は無料です。',
+    url: '/service/creative',
   },
 }
 

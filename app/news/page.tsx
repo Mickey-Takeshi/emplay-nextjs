@@ -1,15 +1,17 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import { getNews } from '@/lib/supabase'
+import { getNewsSummaries } from '@/lib/supabase'
 import Breadcrumb from '@/components/Breadcrumb'
 import './News.css'
 
 export const metadata: Metadata = {
   title: 'お知らせ',
   description: '株式会社EMPLAYからのお知らせ・ニュースを掲載しています。',
+  alternates: { canonical: '/news' },
   openGraph: {
     title: 'お知らせ | 株式会社EMPLAY',
     description: '株式会社EMPLAYからのお知らせ・ニュースを掲載しています。',
+    url: '/news',
   },
 }
 
@@ -24,7 +26,7 @@ function formatDate(dateString: string) {
 }
 
 export default async function NewsPage() {
-  const news = await getNews()
+  const news = await getNewsSummaries()
 
   return (
     <main className="news-page">
@@ -50,21 +52,18 @@ export default async function NewsPage() {
               <p>お知らせはまだありません。</p>
             </div>
           ) : (
-            <div className="news-list" role="list">
+            <ul className="news-list">
               {news.map((article) => (
-                <Link
-                  key={article.id}
-                  href={`/news/${article.slug}`}
-                  className="news-item"
-                  role="listitem"
-                >
-                  <time className="news-item-date" dateTime={article.published_at}>
-                    {formatDate(article.published_at)}
-                  </time>
-                  <span className="news-item-title">{article.title}</span>
-                </Link>
+                <li key={article.id}>
+                  <Link href={`/news/${article.slug}`} className="news-item">
+                    <time className="news-item-date" dateTime={article.published_at}>
+                      {formatDate(article.published_at)}
+                    </time>
+                    <span className="news-item-title">{article.title}</span>
+                  </Link>
+                </li>
               ))}
-            </div>
+            </ul>
           )}
         </div>
       </section>

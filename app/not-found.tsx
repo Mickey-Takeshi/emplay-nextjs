@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import './NotFound.css'
 
 export const metadata: Metadata = {
   title: 'ページが見つかりません',
@@ -13,20 +14,22 @@ export const metadata: Metadata = {
 export default function NotFound() {
   return (
     <main className="not-found-page">
-      <section className="section" style={{ minHeight: '60vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-        <div className="container" style={{ textAlign: 'center' }}>
-          <h1 style={{ fontFamily: 'var(--font-en)', fontSize: '6rem', fontWeight: 700, color: 'var(--color-text-muted)', marginBottom: '1rem' }}>
-            404
-          </h1>
-          <h2 style={{ fontSize: '1.5rem', marginBottom: '1rem' }}>
-            ページが見つかりません
-          </h2>
-          <p style={{ color: 'var(--color-text-light)', marginBottom: '2rem' }}>
+      <section className="not-found-content">
+        <div className="container">
+          <p className="not-found-code">404 ERROR</p>
+          <h1>ページが見つかりません</h1>
+          <p className="not-found-message">
             お探しのページは移動または削除された可能性があります。
           </p>
-          <Link href="/" className="btn btn-primary">
-            トップページへ戻る
-          </Link>
+          <div className="not-found-actions">
+            <Link href="/" className="btn btn-primary">トップページへ戻る</Link>
+            <Link href="/service" className="btn btn-outline">サービスを見る</Link>
+          </div>
+          <nav className="not-found-links" aria-label="関連ページ">
+            <Link href="/blog">ブログ</Link>
+            <Link href="/company">会社概要</Link>
+            <Link href="/contact">お問い合わせ</Link>
+          </nav>
         </div>
       </section>
     </main>

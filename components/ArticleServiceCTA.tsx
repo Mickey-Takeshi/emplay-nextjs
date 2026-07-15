@@ -59,7 +59,7 @@ const CATEGORY_TO_SERVICE: Record<string, string> = {
   'AI活用': 'academy',
   'DX': 'crm',
   'ビジネス': 'crm',
-  // セキュリティ・補助金・助成金 等は総合相談へ(下のdefault)
+  // 個別サービスに該当しないテーマは総合相談へ案内する
 }
 
 export default function ArticleServiceCTA({ category }: { category: string }) {

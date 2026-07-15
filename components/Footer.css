@@ -116,8 +116,8 @@
   padding: 12px 32px;
   font-size: 0.875rem;
   font-weight: 600;
-  color: var(--color-bg-dark);
-  background-color: #fff;
+  color: #fff;
+  background-color: var(--color-cta);
   border-radius: 8px;
   text-decoration: none;
   transition: all 0.3s ease;
@@ -125,10 +125,9 @@
 }
 
 .footer-cta-btn:hover {
-  background-color: var(--color-primary-light);
+  background-color: var(--color-cta-hover);
   color: #fff;
   opacity: 1;
-  transform: translateY(-1px);
 }
 
 /* 下部 */

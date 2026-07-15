@@ -141,6 +141,29 @@
   margin: 40px 0;
 }
 
+.news-article-body table {
+  display: block;
+  width: 100%;
+  overflow-x: auto;
+  border-collapse: collapse;
+  margin: 28px 0;
+  -webkit-overflow-scrolling: touch;
+}
+
+.news-article-body th,
+.news-article-body td {
+  min-width: 140px;
+  padding: 12px 16px;
+  border: 1px solid var(--color-border);
+  text-align: left;
+  vertical-align: top;
+}
+
+.news-article-body th {
+  background: var(--color-bg-gray);
+  font-weight: 700;
+}
+
 /* フッター */
 .news-article-footer {
   padding-top: var(--spacing-lg);

@@ -19,7 +19,8 @@ export default function Footer() {
             </Link>
             <p className="footer-company-name">株式会社EMPLAY</p>
             <address className="footer-address">
-              東京都渋谷区神宮前6丁目23番4号 2階
+              東京都渋谷区神宮前6丁目23番4号<br />
+              桑野ビル2階
             </address>
           </div>
 
@@ -29,10 +30,11 @@ export default function Footer() {
               <h3 className="footer-nav-heading">Service</h3>
               <ul className="footer-nav-list">
                 <li><Link href="/service">サービス一覧</Link></li>
-                <li><Link href="/service/hp">HP制作</Link></li>
-                <li><Link href="/service/ads">広告運用</Link></li>
-                <li><Link href="/service/crm">CRM導入</Link></li>
-                <li><a href="https://academy.emplay.jp/" target="_blank" rel="noopener noreferrer">AI ACADEMY</a></li>
+                <li><Link href="/service/hp">HP制作サービス</Link></li>
+                <li><Link href="/service/creative">クリエイティブ制作</Link></li>
+                <li><Link href="/service/ads">Web広告運用</Link></li>
+                <li><Link href="/service/crm">CRM導入支援</Link></li>
+                <li><a href="https://academy.emplay.jp/" target="_blank" rel="noopener noreferrer" aria-label="AI ACADEMY（新しいタブで開く）">AI ACADEMY ↗</a></li>
               </ul>
             </div>
             <div className="footer-nav-group">
@@ -50,11 +52,11 @@ export default function Footer() {
           {/* お問い合わせCTA */}
           <div className="footer-cta-col">
             <p className="footer-cta-text">
-              サービスに関するご相談、<br />
-              お見積もりはお気軽にどうぞ。
+              Web・AI活用の課題整理から、<br />
+              無料でご相談いただけます。
             </p>
             <Link href="/contact" className="footer-cta-btn">
-              お問い合わせ
+              無料相談を申し込む
             </Link>
           </div>
         </div>

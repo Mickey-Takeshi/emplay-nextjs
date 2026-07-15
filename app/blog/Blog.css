@@ -132,8 +132,8 @@
 }
 
 .blog-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
 }
 
 .blog-card-link {
@@ -156,7 +156,7 @@
 }
 
 .blog-card:hover .blog-card-image img {
-  transform: scale(1.08);
+  transform: scale(1.03);
 }
 
 .blog-card-content {
