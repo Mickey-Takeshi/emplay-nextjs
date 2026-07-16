@@ -71,11 +71,11 @@ export default function HomeClient({ news, latestPosts }: HomeClientProps) {
             課題の整理から制作・導入、継続運用まで一貫して支援します。
           </p>
           <div className="hero-actions">
-            <Link href="/service" className="btn btn-primary btn-large">
-              支援内容を見る
-            </Link>
-            <Link href="/contact" className="btn btn-outline-white btn-large">
+            <Link href="/contact" className="btn btn-cta btn-large">
               無料相談を申し込む
+            </Link>
+            <Link href="/service" className="btn btn-outline-white btn-large">
+              支援内容を見る
             </Link>
           </div>
           <ul className="hero-services" aria-label="支援範囲">

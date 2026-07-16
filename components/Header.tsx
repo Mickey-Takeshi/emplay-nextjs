@@ -135,7 +135,7 @@ export default function Header() {
                 className="nav-cta-btn"
                 onClick={closeMenu}
               >
-                お問い合わせ
+                無料相談
               </Link>
             </li>
           </ul>

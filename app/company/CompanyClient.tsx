@@ -123,6 +123,10 @@ export default function CompanyClient() {
                 <dd>株式会社EMPLAY</dd>
               </div>
               <div className="company-info-item">
+                <dt>代表者</dt>
+                <dd>代表取締役　三木 剛</dd>
+              </div>
+              <div className="company-info-item">
                 <dt>所在地</dt>
                 <dd>
                   <address>

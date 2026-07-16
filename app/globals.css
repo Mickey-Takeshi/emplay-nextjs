@@ -190,6 +190,22 @@ select {
   border: none;
 }
 
+/* コンバージョン用の主ボタン（無料相談など） */
+.btn-cta {
+  background-color: var(--color-cta);
+  color: #fff;
+  border: none;
+  box-shadow: 0 6px 18px rgba(190, 18, 60, 0.28);
+}
+
+.btn-cta:hover {
+  background-color: var(--color-cta-hover);
+  color: #fff;
+  opacity: 1;
+  transform: translateY(-1px);
+  box-shadow: 0 10px 24px rgba(190, 18, 60, 0.34);
+}
+
 .btn-primary:hover {
   background-color: var(--color-primary-dark);
   color: #fff;

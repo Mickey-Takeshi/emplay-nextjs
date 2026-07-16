@@ -22,6 +22,7 @@ export default function Footer() {
               東京都渋谷区神宮前6丁目23番4号<br />
               桑野ビル2階
             </address>
+            <p className="footer-company-meta">代表取締役 三木 剛／2023年12月設立</p>
           </div>
 
           {/* サイトマップ */}
