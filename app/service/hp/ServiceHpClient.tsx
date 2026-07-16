@@ -4,6 +4,7 @@ import { useState } from 'react'
 import Link from 'next/link'
 import Breadcrumb from '@/components/Breadcrumb'
 import FaqJsonLd from '@/components/FaqJsonLd'
+import StickyMobileCTA from '@/components/StickyMobileCTA'
 import './ServiceHp.css'
 
 export default function ServiceHpClient() {
@@ -547,6 +548,7 @@ export default function ServiceHpClient() {
           </Link>
         </div>
       </section>
+      <StickyMobileCTA location="service_hp" />
     </main>
   )
 }

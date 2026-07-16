@@ -9,6 +9,7 @@ import { createHeadingIdGenerator, extractToc } from '@/lib/toc'
 import Breadcrumb from '@/components/Breadcrumb'
 import ArticleServiceCTA from '@/components/ArticleServiceCTA'
 import StickyMobileCTA from '@/components/StickyMobileCTA'
+import ShareButtons from '@/components/ShareButtons'
 import './BlogDetail.css'
 
 // ReactMarkdownの見出しノードからテキストを取り出す(アンカーID生成用)
@@ -223,6 +224,9 @@ export default async function BlogDetailPage({ params }: { params: Promise<{ slu
               </p>
             </div>
           </div>
+
+          {/* SNSシェア */}
+          <ShareButtons slug={post.slug} title={post.title} />
         </div>
       </article>
 

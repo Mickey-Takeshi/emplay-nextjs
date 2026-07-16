@@ -4,6 +4,7 @@ import { useState } from 'react'
 import Link from 'next/link'
 import Breadcrumb from '@/components/Breadcrumb'
 import FaqJsonLd from '@/components/FaqJsonLd'
+import StickyMobileCTA from '@/components/StickyMobileCTA'
 import './Service.css'
 
 interface ServiceDefinition {
@@ -283,6 +284,7 @@ export default function ServiceClient() {
           </div>
         </div>
       </section>
+      <StickyMobileCTA location="service_list" />
     </main>
   )
 }
