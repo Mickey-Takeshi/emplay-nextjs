@@ -9,6 +9,7 @@ export const CATEGORY_MAP: Record<string, string> = {
   'AI活用': 'ai',
   'Web制作': 'web-design',
   'EC・ネットショップ': 'ec',
+  '補助金・助成金': 'subsidy',
   'データ分析': 'data-analytics',
   'セキュリティ': 'security',
   // 表記ゆれの防御的マッピング(DB正規化マイグレーション適用までのフォールバック)
@@ -25,6 +26,7 @@ export const SLUG_TO_NAME: Record<string, string> = {
   'ai': 'AI活用',
   'web-design': 'Web制作',
   'ec': 'EC・ネットショップ',
+  'subsidy': '補助金・助成金',
   'data-analytics': 'データ分析',
   'security': 'セキュリティ',
 }

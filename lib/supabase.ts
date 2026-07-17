@@ -30,6 +30,7 @@ export interface PaginatedBlogPosts {
 }
 
 const BLOG_LIST_COLUMNS = 'id,title,slug,excerpt,thumbnail,category,published_at,created_at,updated_at'
+const BLOG_FETCH_PAGE_SIZE = 100
 
 // ニュース記事の型
 export interface NewsArticle {
@@ -47,21 +48,39 @@ const NEWS_LIST_COLUMNS = 'id,title,slug,published_at,created_at'
 
 // 一覧・サイトマップ用に本文を除外して取得
 export async function getBlogPostSummaries(limit?: number): Promise<BlogPostSummary[]> {
-  let query = supabase
-    .from('blog_posts')
-    .select(BLOG_LIST_COLUMNS)
-    .order('published_at', { ascending: false })
+  if (limit) {
+    const { data, error } = await supabase
+      .from('blog_posts')
+      .select(BLOG_LIST_COLUMNS)
+      .order('published_at', { ascending: false })
+      .limit(limit)
 
-  if (limit) query = query.limit(limit)
+    if (error) {
+      console.error('Error fetching blog post summaries:', error)
+      return []
+    }
 
-  const { data, error } = await query
-
-  if (error) {
-    console.error('Error fetching blog post summaries:', error)
-    return []
+    return data as BlogPostSummary[]
   }
 
-  return data as BlogPostSummary[]
+  const posts: BlogPostSummary[] = []
+  for (let from = 0; ; from += BLOG_FETCH_PAGE_SIZE) {
+    const { data, error } = await supabase
+      .from('blog_posts')
+      .select(BLOG_LIST_COLUMNS)
+      .order('published_at', { ascending: false })
+      .range(from, from + BLOG_FETCH_PAGE_SIZE - 1)
+
+    if (error) {
+      console.error('Error fetching blog post summaries:', error)
+      return []
+    }
+
+    posts.push(...(data as BlogPostSummary[]))
+    if (data.length < BLOG_FETCH_PAGE_SIZE) break
+  }
+
+  return posts
 }
 
 // ブログ一覧を取得
@@ -129,16 +148,24 @@ export async function getBlogPost(slug: string): Promise<BlogPost | null> {
 
 // すべてのブログスラッグを取得（SSG用）
 export async function getAllBlogSlugs(): Promise<string[]> {
-  const { data, error } = await supabase
-    .from('blog_posts')
-    .select('slug')
+  const slugs: string[] = []
+  for (let from = 0; ; from += BLOG_FETCH_PAGE_SIZE) {
+    const { data, error } = await supabase
+      .from('blog_posts')
+      .select('slug')
+      .order('id')
+      .range(from, from + BLOG_FETCH_PAGE_SIZE - 1)
 
-  if (error) {
-    console.error('Error fetching blog slugs:', error)
-    return []
+    if (error) {
+      console.error('Error fetching blog slugs:', error)
+      return []
+    }
+
+    slugs.push(...data.map((post) => post.slug))
+    if (data.length < BLOG_FETCH_PAGE_SIZE) break
   }
 
-  return data.map(post => post.slug)
+  return slugs
 }
 
 // カテゴリ別ブログ一覧を取得

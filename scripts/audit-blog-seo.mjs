@@ -71,9 +71,6 @@ const report = {
   brokenLinks: articleAudits
     .filter((article) => article.brokenLinks.length > 0)
     .map(({ slug, brokenLinks }) => ({ slug, brokenLinks })),
-  forbiddenTopics: posts
-    .filter((post) => /補助金|助成金/.test(`${post.title}\n${post.content}`))
-    .map((post) => post.slug),
   contentLengthRange: {
     min: Math.min(...articleAudits.map((article) => article.contentLength)),
     max: Math.max(...articleAudits.map((article) => article.contentLength)),
@@ -92,6 +89,5 @@ const hasCriticalIssues =
   || report.thinArticles.length > 0
   || report.lowLinkArticles.length > 0
   || report.brokenLinks.length > 0
-  || report.forbiddenTopics.length > 0
 
 if (hasCriticalIssues) process.exitCode = 1

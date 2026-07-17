@@ -25,6 +25,7 @@ const OLD_BLOG_REDIRECTS = [
   { from: 'website-cost-guide', to: 'website-development-cost-guide' },
   { from: 'paperless-office-guide', to: 'paperless-implementation-guide' },
   { from: 'btob-content-marketing-guide', to: 'btob-content-marketing-strategy' },
+  { from: 'shokibo-jizokuka-subsidy-guide', to: 'small-business-subsidy-guide' },
   { from: 'ec-platform-comparison', to: 'ec-platform-comparison-guide' },
   { from: 'ui-ux-design-basics-guide', to: 'landing-page-design-guide' },
   { from: 'ui-ux-design-guide', to: 'landing-page-design-guide' },
