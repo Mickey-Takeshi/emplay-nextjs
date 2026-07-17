@@ -431,6 +431,7 @@
 
 /* 料金セクション */
 .lp-pricing {
+  scroll-margin-top: 88px;
   padding: 80px 0;
   background: #fff;
 }

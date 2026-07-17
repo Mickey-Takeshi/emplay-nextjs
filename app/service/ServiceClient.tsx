@@ -15,6 +15,7 @@ interface ServiceDefinition {
   points: string[]
   href: string
   cta: string
+  pricingHref?: string
   external?: boolean
 }
 
@@ -33,6 +34,7 @@ const services: ServiceDefinition[] = [
     points: ['ホームページ制作', 'SEO・AIO設計', '記事制作・改善運用'],
     href: '/service/hp',
     cta: 'HP制作サービスを見る',
+    pricingHref: '/service/hp#pricing',
   },
   {
     number: '02',
@@ -42,6 +44,7 @@ const services: ServiceDefinition[] = [
     points: ['コーポレートサイト・LP', 'バナー・記事LP', '動画制作'],
     href: '/service/creative',
     cta: 'クリエイティブ制作を見る',
+    pricingHref: '/service/creative#pricing',
   },
   {
     number: '03',
@@ -51,6 +54,7 @@ const services: ServiceDefinition[] = [
     points: ['Google・Yahoo!広告', 'SNS広告', 'LP・クリエイティブ改善'],
     href: '/service/ads',
     cta: 'Web広告運用代行を見る',
+    pricingHref: '/service/ads#pricing',
   },
   {
     number: '04',
@@ -60,6 +64,7 @@ const services: ServiceDefinition[] = [
     points: ['顧客データ整備', 'CRM選定・初期設定', 'メール・LINE配信'],
     href: '/service/crm',
     cta: 'CRM導入支援を見る',
+    pricingHref: '/service/crm#pricing',
   },
   {
     number: '05',
@@ -182,6 +187,11 @@ export default function ServiceClient() {
                   ) : (
                     <Link href={service.href} className="service-text-link">
                       {service.cta}<span aria-hidden="true">→</span>
+                    </Link>
+                  )}
+                  {service.pricingHref && (
+                    <Link href={service.pricingHref} className="service-pricing-link">
+                      料金を見る<span aria-hidden="true">↓</span>
                     </Link>
                   )}
                 </div>

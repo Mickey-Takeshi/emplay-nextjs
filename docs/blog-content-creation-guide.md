@@ -334,6 +334,12 @@ WHERE slug = 'target-slug';
 
 月1回、全記事を以下の基準で確認する。
 
+```bash
+npm run audit:seo
+```
+
+このコマンドは、重複slug/title、3,000字未満、内部リンク3本未満、リンク切れ、編集対象外トピックを検査し、問題がある場合は終了コード1を返す。
+
 - 404・リダイレクト・canonical
 - sitemapとDBのURL差分
 - 年号タイトルと古い料金・制度

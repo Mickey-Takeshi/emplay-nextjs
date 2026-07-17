@@ -20,6 +20,9 @@ export default function ContactClient() {
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle')
   const [errorMessage, setErrorMessage] = useState('')
   const startedRef = useRef(false)
+  const dirtyRef = useRef(false)
+  const submittedRef = useRef(false)
+  const abandonTrackedRef = useRef(false)
   const statusRef = useRef<HTMLDivElement>(null)
 
   // フォーム表示イベント（ファネル計測の起点）
@@ -31,6 +34,24 @@ export default function ContactClient() {
     if (submitStatus !== 'idle') statusRef.current?.focus()
   }, [submitStatus])
 
+  // 入力途中の更新・タブ閉じ・外部遷移による内容消失を防ぐ。
+  useEffect(() => {
+    const handleBeforeUnload = (event: BeforeUnloadEvent) => {
+      if (!dirtyRef.current || submittedRef.current) return
+
+      if (!abandonTrackedRef.current) {
+        abandonTrackedRef.current = true
+        trackEvent('form_abandon', { form: 'contact', reason: 'beforeunload' })
+      }
+
+      event.preventDefault()
+      event.returnValue = ''
+    }
+
+    window.addEventListener('beforeunload', handleBeforeUnload)
+    return () => window.removeEventListener('beforeunload', handleBeforeUnload)
+  }, [])
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target
     // 最初の入力時に1回だけ form_start を送る
@@ -38,7 +59,11 @@ export default function ContactClient() {
       startedRef.current = true
       trackEvent('form_start', { form: 'contact' })
     }
-    setFormData((prev) => ({ ...prev, [name]: value }))
+    setFormData((prev) => {
+      const next = { ...prev, [name]: value }
+      dirtyRef.current = Object.values(next).some((fieldValue) => fieldValue.trim().length > 0)
+      return next
+    })
   }
 
   const handleSubmit = async (e: FormEvent) => {
@@ -49,12 +74,16 @@ export default function ContactClient() {
 
     try {
       if (honeypot) {
+        submittedRef.current = true
+        dirtyRef.current = false
         setSubmitStatus('success')
         setFormData({ name: '', email: '', company: '', phone: '', message: '' })
         return
       }
 
       await submitContact(formData)
+      submittedRef.current = true
+      dirtyRef.current = false
       setSubmitStatus('success')
       trackEvent('form_submit', { form: 'contact' })
       setFormData({ name: '', email: '', company: '', phone: '', message: '' })

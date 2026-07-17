@@ -547,6 +547,7 @@
 
 /* 料金プラン */
 .hp-pricing {
+  scroll-margin-top: 88px;
   padding: 72px 0;
   background: #fff;
 }

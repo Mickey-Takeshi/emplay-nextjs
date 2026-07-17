@@ -306,7 +306,7 @@ export default function ServiceAdsPage() {
       </section>
 
       {/* 料金目安 */}
-      <section className="lp-pricing">
+      <section className="lp-pricing" id="pricing">
         <div className="container">
           <h2 className="lp-section-title">料金体系</h2>
           <p className="lp-section-lead">

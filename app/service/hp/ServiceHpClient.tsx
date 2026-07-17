@@ -307,7 +307,7 @@ export default function ServiceHpClient() {
       </section>
 
       {/* 料金プラン */}
-      <section className="hp-pricing">
+      <section className="hp-pricing" id="pricing">
         <div className="container">
           <p className="hp-section-label">PRICING</p>
           <h2 className="hp-section-title">料金プラン</h2>
