@@ -4,7 +4,7 @@ import { notFound } from 'next/navigation'
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 import { getPaginatedBlogPostsByCategory, getBlogCategories } from '@/lib/supabase'
-import { getCategorySlug, getCategoryName } from '@/lib/categories'
+import { getCategorySlug, SLUG_TO_NAME } from '@/lib/categories'
 import { getCategoryDescription } from '@/lib/categoryDescriptions'
 import { BLOG_PAGE_SIZE, parsePageParam } from '@/lib/pagination'
 import Breadcrumb from '@/components/Breadcrumb'
@@ -31,11 +31,17 @@ interface BlogCategoryPageProps {
   searchParams: Promise<{ page?: string | string[] }>
 }
 
+function getKnownCategoryName(categorySlug: string) {
+  const categoryName = SLUG_TO_NAME[categorySlug]
+  if (!categoryName) notFound()
+  return categoryName
+}
+
 export async function generateMetadata({ params, searchParams }: BlogCategoryPageProps): Promise<Metadata> {
   const { category: categorySlug } = await params
   const { page: pageParam } = await searchParams
   const page = parsePageParam(pageParam)
-  const categoryName = getCategoryName(categorySlug)
+  const categoryName = getKnownCategoryName(categorySlug)
   const categoryDesc = getCategoryDescription(categoryName)
   const description = categoryDesc?.summary || `${categoryName}に関するブログ記事の一覧です。`
   const canonical = page === 1
@@ -70,7 +76,7 @@ export default async function BlogCategoryPage({ params, searchParams }: BlogCat
   const { category: categorySlug } = await params
   const { page: pageParam } = await searchParams
   const currentPage = parsePageParam(pageParam)
-  const categoryName = getCategoryName(categorySlug)
+  const categoryName = getKnownCategoryName(categorySlug)
   const [paginatedPosts, categories] = await Promise.all([
     getPaginatedBlogPostsByCategory(categoryName, currentPage, BLOG_PAGE_SIZE),
     getBlogCategories()
