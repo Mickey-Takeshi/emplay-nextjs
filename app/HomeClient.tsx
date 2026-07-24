@@ -111,7 +111,7 @@ export default function HomeClient({ news, latestPosts }: HomeClientProps) {
               </div>
               <h3 className="service-card-title">HP制作サービス</h3>
               <p className="service-card-text">
-                SEO + AIO対応で「3年後も検索されるHP」を制作。月10本〜の記事作成代行と効果測定で、問い合わせ獲得まで伴走します。
+                SEO + AIO対応で「3年後も検索されるHP」を制作。継続的な記事作成代行と効果測定で、問い合わせ獲得まで伴走します。
               </p>
               <Link href="/service/hp" className="service-card-link">
                 詳しく見る

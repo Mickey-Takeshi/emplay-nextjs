@@ -25,15 +25,15 @@ export default function ServiceHpClient() {
     },
     {
       q: '記事を書く時間がありません',
-      a: '問題ありません。スタンダードプラン以上では、SEO最適化記事を弊社で代行作成します。キーワード選定から公開まですべてお任せください。'
+      a: '問題ありません。SEO・AIO改善プランで、キーワード選定から記事の作成・公開まで弊社が代行します。月2〜3本のスターターから本格運用まで、ご予算に応じてお選びいただけます。'
     },
     {
       q: '成果が出るまでどのくらい？',
       a: '一般的に3〜6ヶ月で効果が現れます。1〜3ヶ月が基盤構築期、4〜6ヶ月が成長期、7ヶ月以降が成果期です。'
     },
     {
-      q: '解約時はどうなりますか？',
-      a: '制作したサイトのデータ一式を納品いたします（別途30万円）。サイトは継続してご利用いただけます。'
+      q: '契約期間の縛りや解約金はありますか？',
+      a: 'ありません。ホームページは買い切りのため、そのまま継続してご利用いただけます。月額の改善プランも最低契約期間がなく、解約金もかかりません。サイトのデータやドメインはお客様の資産です。'
     },
     {
       q: '自社でHP運用したい場合は？',
@@ -61,7 +61,7 @@ export default function ServiceHpClient() {
           </h1>
           <p className="hp-hero-text">
             SEO＋AI検索対策(AIO/LLMO)対応で、3年後も検索・AIに見つかるサイトを。<br />
-            月10本〜の記事作成と効果測定で、中小企業の問い合わせ獲得まで伴走するホームページ制作会社です。
+            継続的なコンテンツ制作と効果測定で、中小企業の問い合わせ獲得まで伴走するホームページ制作会社です。
           </p>
           <div className="hp-hero-features">
             <span className="hp-hero-feature">SEO対策</span>
@@ -174,7 +174,7 @@ export default function ServiceHpClient() {
             <div className="flow-step-card">
               <span className="flow-step-number">02</span>
               <h3>コンテンツ作成</h3>
-              <p>月10〜20本の記事代行</p>
+              <p>SEO/AIO記事の代行</p>
             </div>
             <div className="flow-connector">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -311,112 +311,161 @@ export default function ServiceHpClient() {
         <div className="container">
           <p className="hp-section-label">PRICING</p>
           <h2 className="hp-section-title">料金プラン</h2>
-          <div className="pricing-grid-new">
-            <div className="pricing-card-new">
-              <div className="pricing-card-header-new">
-                <h3 className="pricing-plan-name">ライトプラン</h3>
-                <p className="pricing-plan-desc">HP管理のみ依頼したい方向け</p>
-              </div>
-              <div className="pricing-card-body-new">
-                <div className="pricing-amounts">
-                  <div className="pricing-amount-row">
-                    <span className="pricing-amount-label">初期費用</span>
-                    <span className="pricing-amount-value">&yen;300,000</span>
-                  </div>
-                  <div className="pricing-amount-row main">
-                    <span className="pricing-amount-label">月額</span>
-                    <span className="pricing-amount-value">&yen;10,000</span>
-                  </div>
+
+          {/* ① ホームページ制作費 */}
+          <div className="pricing-group">
+            <h3 className="pricing-group-title">① ホームページ制作費（買い切り）</h3>
+            <p className="pricing-group-desc">
+              ページ数・ご要望に応じた制作費用です。<strong>契約期間の縛り・解約金はありません。</strong>サイトのデータ・ドメインはお客様の資産です。
+            </p>
+            <div className="pricing-grid-new pricing-grid-3">
+              <div className="pricing-card-new">
+                <div className="pricing-card-header-new">
+                  <h4 className="pricing-plan-name">ライト</h4>
+                  <p className="pricing-plan-desc">まずは信頼される会社HPを</p>
                 </div>
-                <ul className="pricing-features-new">
-                  <li>保守管理</li>
-                  <li>軽微な修正対応</li>
-                  <li>セキュリティ更新</li>
-                </ul>
+                <div className="pricing-card-body-new">
+                  <div className="pricing-amounts">
+                    <div className="pricing-amount-row main">
+                      <span className="pricing-amount-label">制作費</span>
+                      <span className="pricing-amount-value">&yen;450,000<small>〜</small></span>
+                    </div>
+                  </div>
+                  <ul className="pricing-features-new">
+                    <li>〜8ページ</li>
+                    <li>スマホ対応・常時SSL</li>
+                    <li>SEO基本設定</li>
+                    <li>お問い合わせフォーム</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div className="pricing-card-new recommended">
+                <div className="pricing-recommend-badge">おすすめ</div>
+                <div className="pricing-card-header-new">
+                  <h4 className="pricing-plan-name">スタンダード</h4>
+                  <p className="pricing-plan-desc">集客できるHPを本格的に</p>
+                </div>
+                <div className="pricing-card-body-new">
+                  <div className="pricing-amounts">
+                    <div className="pricing-amount-row main">
+                      <span className="pricing-amount-label">制作費</span>
+                      <span className="pricing-amount-value">&yen;800,000<small>〜</small></span>
+                    </div>
+                  </div>
+                  <ul className="pricing-features-new">
+                    <li>〜15ページ</li>
+                    <li className="highlight">オリジナルデザイン</li>
+                    <li className="highlight">CMS（自社で更新可）</li>
+                    <li className="highlight">SEO・AIO設計</li>
+                    <li className="highlight">原稿・構成サポート</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div className="pricing-card-new premium">
+                <div className="pricing-premium-badge">大規模</div>
+                <div className="pricing-card-header-new">
+                  <h4 className="pricing-plan-name">プレミアム</h4>
+                  <p className="pricing-plan-desc">多言語・採用・複数LPも</p>
+                </div>
+                <div className="pricing-card-body-new">
+                  <div className="pricing-amounts">
+                    <div className="pricing-amount-row main">
+                      <span className="pricing-amount-label">制作費</span>
+                      <span className="pricing-amount-value">&yen;1,200,000<small>〜</small></span>
+                    </div>
+                  </div>
+                  <ul className="pricing-features-new">
+                    <li>ページ数の上限なし</li>
+                    <li className="highlight">多言語・採用サイト対応</li>
+                    <li className="highlight">複数LP・特設ページ</li>
+                    <li className="highlight">要件定義から伴走</li>
+                    <li className="highlight">高度なSEO・AIO実装</li>
+                  </ul>
+                </div>
               </div>
             </div>
+            <p className="pricing-group-note">制作費の目安は <strong>45〜150万円</strong>（税別）。ご要望をお聞きし個別にお見積りします。</p>
+          </div>
 
-            <div className="pricing-card-new recommended">
-              <div className="pricing-recommend-badge">おすすめ</div>
-              <div className="pricing-card-header-new">
-                <h3 className="pricing-plan-name">スタンダードプラン</h3>
-                <p className="pricing-plan-desc">集客を本気で伸ばしたい方向け</p>
-              </div>
-              <div className="pricing-card-body-new">
-                <div className="pricing-amounts">
-                  <div className="pricing-amount-row">
-                    <span className="pricing-amount-label">初期費用</span>
-                    <span className="pricing-amount-value">&yen;300,000</span>
-                  </div>
-                  <div className="pricing-amount-row main">
-                    <span className="pricing-amount-label">月額</span>
-                    <span className="pricing-amount-value">&yen;50,000〜</span>
-                  </div>
+          {/* ② SEO・AIO改善プラン */}
+          <div className="pricing-group">
+            <h3 className="pricing-group-title">② SEO・AI検索対策（AIO）改善プラン（月額・任意）</h3>
+            <p className="pricing-group-desc">
+              公開後の集客を伸ばす運用プランです。<strong>いつでも解約でき、最低契約期間はありません。</strong>他社で制作された既存サイトにもご利用いただけます。
+            </p>
+            <div className="pricing-grid-new pricing-grid-3">
+              <div className="pricing-card-new">
+                <div className="pricing-card-header-new">
+                  <h4 className="pricing-plan-name">スターター</h4>
+                  <p className="pricing-plan-desc">作った後も検索・AIに強く</p>
                 </div>
-                <ul className="pricing-features-new">
-                  <li>保守管理</li>
-                  <li className="highlight">月10本の記事作成</li>
-                  <li className="highlight">SEO/AIO対策</li>
-                  <li className="highlight">月次レポート</li>
-                  <li className="highlight">定例MTG（月1回）</li>
-                </ul>
+                <div className="pricing-card-body-new">
+                  <div className="pricing-amounts">
+                    <div className="pricing-amount-row main">
+                      <span className="pricing-amount-label">月額</span>
+                      <span className="pricing-amount-value">&yen;100,000</span>
+                    </div>
+                  </div>
+                  <ul className="pricing-features-new">
+                    <li>SEO/AIO記事 月2〜3本</li>
+                    <li>検索順位・AI引用モニタリング</li>
+                    <li>月次改善レポート</li>
+                  </ul>
+                </div>
               </div>
-            </div>
 
-            <div className="pricing-card-new premium">
-              <div className="pricing-premium-badge">本格運用</div>
-              <div className="pricing-card-header-new">
-                <h3 className="pricing-plan-name">プレミアムプラン</h3>
-                <p className="pricing-plan-desc">最速で成果を出したい方向け</p>
-              </div>
-              <div className="pricing-card-body-new">
-                <div className="pricing-amounts">
-                  <div className="pricing-amount-row">
-                    <span className="pricing-amount-label">初期費用</span>
-                    <span className="pricing-amount-value">&yen;300,000</span>
-                  </div>
-                  <div className="pricing-amount-row main">
-                    <span className="pricing-amount-label">月額</span>
-                    <span className="pricing-amount-value">&yen;100,000〜</span>
-                  </div>
+              <div className="pricing-card-new recommended">
+                <div className="pricing-recommend-badge">おすすめ</div>
+                <div className="pricing-card-header-new">
+                  <h4 className="pricing-plan-name">グロース</h4>
+                  <p className="pricing-plan-desc">本格的に問い合わせを増やす</p>
                 </div>
-                <ul className="pricing-features-new">
-                  <li>保守管理</li>
-                  <li className="highlight">月20本の記事作成</li>
-                  <li className="highlight">SEO/AIO対策</li>
-                  <li className="highlight">週次レポート</li>
-                  <li className="highlight">定例MTG（月2回）</li>
-                  <li className="highlight">競合分析レポート</li>
-                  <li className="highlight">優先サポート</li>
-                </ul>
+                <div className="pricing-card-body-new">
+                  <div className="pricing-amounts">
+                    <div className="pricing-amount-row main">
+                      <span className="pricing-amount-label">月額</span>
+                      <span className="pricing-amount-value">&yen;200,000<small>〜</small></span>
+                    </div>
+                  </div>
+                  <ul className="pricing-features-new">
+                    <li className="highlight">SEO/AIO記事 月4〜6本</li>
+                    <li className="highlight">内部改善・リライト</li>
+                    <li className="highlight">定例MTG（月1回）</li>
+                    <li className="highlight">競合モニタリング</li>
+                  </ul>
+                </div>
               </div>
-            </div>
 
-            <div className="pricing-card-new training">
-              <div className="pricing-card-header-new">
-                <h3 className="pricing-plan-name">HP制作研修</h3>
-                <p className="pricing-plan-desc">自社でHP運用できる人材を育成</p>
-              </div>
-              <div className="pricing-card-body-new">
-                <div className="pricing-amounts">
-                  <div className="pricing-amount-row main">
-                    <span className="pricing-amount-label">費用</span>
-                    <span className="pricing-amount-value">要お問い合わせ</span>
-                  </div>
+              <div className="pricing-card-new premium">
+                <div className="pricing-premium-badge">本格運用</div>
+                <div className="pricing-card-header-new">
+                  <h4 className="pricing-plan-name">プレミアム</h4>
+                  <p className="pricing-plan-desc">最速で成果を出したい方へ</p>
                 </div>
-                <ul className="pricing-features-new">
-                  <li>HP制作スキル習得</li>
-                  <li>SEO/AIO知識研修</li>
-                  <li>コンテンツ作成研修</li>
-                  <li>実践ワークショップ</li>
-                </ul>
-                <a href="https://academy.emplay.jp/" className="pricing-training-link" target="_blank" rel="noopener noreferrer" aria-label="研修サービスの詳細を見る（新しいタブで開く）">
-                  研修サービスの詳細はこちら ↗
-                </a>
+                <div className="pricing-card-body-new">
+                  <div className="pricing-amounts">
+                    <div className="pricing-amount-row main">
+                      <span className="pricing-amount-label">月額</span>
+                      <span className="pricing-amount-value">&yen;300,000<small>〜</small></span>
+                    </div>
+                  </div>
+                  <ul className="pricing-features-new">
+                    <li className="highlight">SEO/AIO記事 月8本〜</li>
+                    <li className="highlight">広告・CRMと連携</li>
+                    <li className="highlight">週次レポート</li>
+                    <li className="highlight">優先サポート</li>
+                  </ul>
+                </div>
               </div>
             </div>
           </div>
-          <p className="pricing-note-new">※2年契約 / 解約時データ納品：30万円</p>
+
+          <p className="pricing-note-new">
+            ※価格は税別・目安です。契約期間の縛り・解約金はありません。自社で運用できる人材を育てたい方には{' '}
+            <a href="https://academy.emplay.jp/" target="_blank" rel="noopener noreferrer">EMPLAY AI ACADEMY</a> の研修もご用意しています。
+          </p>
         </div>
       </section>
 
