@@ -5,6 +5,7 @@ import Link from 'next/link'
 import Breadcrumb from '@/components/Breadcrumb'
 import FaqJsonLd from '@/components/FaqJsonLd'
 import StickyMobileCTA from '@/components/StickyMobileCTA'
+import { trackEvent } from '@/lib/analytics'
 import './ServiceHp.css'
 
 export default function ServiceHpClient() {
@@ -459,6 +460,73 @@ export default function ServiceHpClient() {
                   </ul>
                 </div>
               </div>
+            </div>
+          </div>
+
+          {/* 他社との違い（対応範囲の比較） */}
+          <div className="pricing-scope">
+            <h3 className="pricing-group-title">「どこまでやってくれるのか」で比べてください</h3>
+            <p className="pricing-group-desc">
+              SEO会社の多くは<strong>分析・提案まで</strong>で、実装は自社作業。制作会社の多くは<strong>作って終わり</strong>です。
+              EMPLAYは<strong>分析から実装・運用までワンストップ</strong>だから、提案が放置されず成果につながります。
+            </p>
+            <div className="scope-table-wrap">
+              <table className="scope-table">
+                <thead>
+                  <tr>
+                    <th>対応範囲</th>
+                    <th>一般的なSEO会社</th>
+                    <th>一般的な制作会社</th>
+                    <th className="scope-emplay">EMPLAY</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>現状分析・戦略設計</td>
+                    <td>○</td>
+                    <td>△ 別料金が多い</td>
+                    <td className="scope-emplay">○</td>
+                  </tr>
+                  <tr>
+                    <td>SEO/AIO記事の作成</td>
+                    <td>△ 別料金が多い</td>
+                    <td>×</td>
+                    <td className="scope-emplay">○ プランに込み</td>
+                  </tr>
+                  <tr>
+                    <td>サイト本体の改修・実装</td>
+                    <td><strong>× 提案のみが多い</strong></td>
+                    <td>△ 都度見積</td>
+                    <td className="scope-emplay">○ 実装まで対応</td>
+                  </tr>
+                  <tr>
+                    <td>サイト制作からの一貫対応</td>
+                    <td>×</td>
+                    <td>○ 制作のみ</td>
+                    <td className="scope-emplay">○ 制作45万円〜</td>
+                  </tr>
+                  <tr>
+                    <td>費用の目安</td>
+                    <td>月30万円〜</td>
+                    <td>制作費のみ</td>
+                    <td className="scope-emplay"><strong>月10万円〜（要見積）</strong></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p className="scope-note">
+              一般的な法人向けSEOコンサルの相場は月30万円〜。EMPLAYは<strong>分析から実装まで含めて月額10万円〜（要見積）</strong>、
+              サイト制作からなら<strong>初期費用45万円〜</strong>でご提供しています。
+            </p>
+            <div className="scope-cta">
+              <Link
+                href="/contact"
+                className="btn btn-cta btn-large"
+                onClick={() => trackEvent('cta_click', { cta_location: 'hp_scope_table', cta_type: 'contact' })}
+              >
+                無料相談で見積もりを取る
+              </Link>
+              <p className="scope-cta-note">現状サイトの無料診断つき・1営業日以内に返信します</p>
             </div>
           </div>
 

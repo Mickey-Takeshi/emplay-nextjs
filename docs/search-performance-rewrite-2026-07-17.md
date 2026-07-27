@@ -45,3 +45,15 @@
 - 8〜15位で停滞: 不足見出し、一次情報、内部リンクを追加
 - クリック増・問い合わせなし: 記事内CTAとサービス適合性を確認
 - 順位・表示回数とも低下: 検索意図のずれ、重複記事、事実更新を再監査
+
+---
+
+## 追記: 2026-07-28 GSC実測に基づく第2次調整
+
+7/28のSearch Console実測(28日間: 176クリック/3.3万表示/CTR0.5%/平均17.7位)に基づき、以下を実施。**7/17リライトの効果測定と混在しないよう、下記4記事の8/14比較ではこの変更日以降の影響を考慮すること。**
+
+- title/excerpt刷新(CTR改善・クリック型へ): website-development-cost-guide(表示9,257・CTR0.1%が対象の最重要施策)、online-storage-comparison-guide、lp-ab-test-guide、canva-business-guide
+- seo-article-outsourcing-cost: 「SEO会社はどこまで対応してくれる?」対応範囲比較セクション+EMPLAY実装一貫・料金訴求+CV導線を追加
+- service-site-planning → website-development-cost-guide の内部リンク追加(HP系クラスタ13本全てからのリンク網が完成)
+- /service/hp: 対応範囲比較表(SEO会社/制作会社/EMPLAY)+「無料相談で見積もりを取る」CTA(cta_location: hp_scope_table で計測)
+- GSC操作: 404×6・robots.txtブロック×3の「修正を検証」を開始(7/28)
