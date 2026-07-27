@@ -406,9 +406,10 @@ export default function ServiceHpClient() {
                   <div className="pricing-amounts">
                     <div className="pricing-amount-row main">
                       <span className="pricing-amount-label">月額</span>
-                      <span className="pricing-amount-value">&yen;100,000</span>
+                      <span className="pricing-amount-value">&yen;200,000</span>
                     </div>
                   </div>
+                  <p className="pricing-equiv">個別に依頼した場合の目安：月25万円〜相当</p>
                   <ul className="pricing-features-new">
                     <li>SEO/AIO記事 月2〜3本</li>
                     <li>検索順位・AI引用モニタリング</li>
@@ -427,9 +428,10 @@ export default function ServiceHpClient() {
                   <div className="pricing-amounts">
                     <div className="pricing-amount-row main">
                       <span className="pricing-amount-label">月額</span>
-                      <span className="pricing-amount-value">&yen;200,000<small>〜</small></span>
+                      <span className="pricing-amount-value">&yen;300,000<small>〜</small></span>
                     </div>
                   </div>
+                  <p className="pricing-equiv">個別に依頼した場合の目安：月40万円〜相当</p>
                   <ul className="pricing-features-new">
                     <li className="highlight">SEO/AIO記事 月4〜6本</li>
                     <li className="highlight">内部改善・リライト</li>
@@ -449,9 +451,10 @@ export default function ServiceHpClient() {
                   <div className="pricing-amounts">
                     <div className="pricing-amount-row main">
                       <span className="pricing-amount-label">月額</span>
-                      <span className="pricing-amount-value">&yen;300,000<small>〜</small></span>
+                      <span className="pricing-amount-value">&yen;450,000<small>〜</small></span>
                     </div>
                   </div>
+                  <p className="pricing-equiv">個別に依頼した場合の目安：月60万円〜相当</p>
                   <ul className="pricing-features-new">
                     <li className="highlight">SEO/AIO記事 月8本〜</li>
                     <li className="highlight">広告・CRMと連携</li>
@@ -509,14 +512,15 @@ export default function ServiceHpClient() {
                     <td>費用の目安</td>
                     <td>月30万円〜</td>
                     <td>制作費のみ</td>
-                    <td className="scope-emplay"><strong>月10万円〜（要見積）</strong></td>
+                    <td className="scope-emplay"><strong>月20万円〜（要見積）</strong></td>
                   </tr>
                 </tbody>
               </table>
             </div>
             <p className="scope-note">
-              一般的な法人向けSEOコンサルの相場は月30万円〜。EMPLAYは<strong>分析から実装まで含めて月額10万円〜（要見積）</strong>、
-              サイト制作からなら<strong>初期費用45万円〜</strong>でご提供しています。
+              分析（月10万円〜）・記事作成（1本5〜10万円）・サイト改修を個別に依頼すると、<strong>合計で月35万円を超える</strong>ことも珍しくありません。
+              EMPLAYはこれらを一括で<strong>月額20万円〜（要見積）</strong>、サイト制作からなら<strong>初期費用45万円〜</strong>。
+              相場より抑えながら、提案で終わらず実装まで完結します。
             </p>
             <div className="scope-cta">
               <Link
