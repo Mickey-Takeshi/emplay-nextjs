@@ -105,7 +105,7 @@ export default function ArticleServiceCTA({ category }: { category: string }) {
             </TrackedLink>
           )}
         </div>
-        <p className="article-cta-note">初回相談は無料・通常1営業日以内にご返信します</p>
+        <p className="article-cta-note">初回相談は無料・SEO/AIO無料診断レポートつき・通常1営業日以内にご返信します</p>
       </div>
     </aside>
   )

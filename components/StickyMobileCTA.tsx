@@ -10,7 +10,7 @@ export default function StickyMobileCTA({ location = 'unknown' }: { location?: s
     <div className="sticky-mobile-cta" role="complementary" aria-label="お問い合わせ">
       <div className="sticky-mobile-cta-text">
         <span className="sticky-mobile-cta-lead">まずは無料でご相談</span>
-        <span className="sticky-mobile-cta-sub">初回相談無料・1営業日以内に返信</span>
+        <span className="sticky-mobile-cta-sub">無料診断レポートつき・1営業日以内に返信</span>
       </div>
       <Link
         href="/contact"

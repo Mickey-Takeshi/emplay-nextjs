@@ -121,6 +121,7 @@ export default function ContactClient() {
               <h2 className="contact-info-heading">お気軽にご相談ください</h2>
               <p className="contact-info-text">
                 サービスに関するご質問、お見積り依頼など、お気軽にお問い合わせください。
+                ご希望の方には、現状サイトの<strong>SEO/AIO無料診断レポート</strong>をお渡ししています。
               </p>
 
               <div className="contact-info-items">
@@ -155,6 +156,18 @@ export default function ContactClient() {
                   <div>
                     <h3>相談無料</h3>
                     <p>初回相談は無料です</p>
+                  </div>
+                </div>
+                <div className="contact-info-item">
+                  <div className="contact-info-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                      <path d="M9 17v-2a2 2 0 012-2h2a2 2 0 012 2v2m-8 4h10a2 2 0 002-2V7a2 2 0 00-2-2h-3l-2-2H9L7 5H5a2 2 0 00-2 2v12a2 2 0 002 2h2z"/>
+                      <path d="M9 13h6M9 9h4"/>
+                    </svg>
+                  </div>
+                  <div>
+                    <h3>SEO/AIO無料診断</h3>
+                    <p>現状サイトの診断レポートを無料でお渡しします</p>
                   </div>
                 </div>
               </div>
