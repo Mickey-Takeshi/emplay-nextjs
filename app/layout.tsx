@@ -53,6 +53,16 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
   },
+  // 各検索サービスの所有権確認タグ。環境変数を設定するだけで出力される
+  // （Vercelの環境変数に入れて再デプロイすれば有効化。未設定なら出力されない）
+  verification: {
+    google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION,
+    other: {
+      ...(process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION
+        ? { 'msvalidate.01': process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION }
+        : {}),
+    },
+  },
   icons: {
     icon: '/favicon.svg',
     apple: '/apple-touch-icon.png',
