@@ -114,10 +114,13 @@
 | U-2 中間CV(資料DL・無料診断) | 配布資料PDF・診断コンテンツの中身 |
 | S-6 sameAs(SNS)・Googleビジネスプロフィール | 公式SNS URLの提供 |
 | U-11 GA4/GTMの公開設定 | GA4測定IDとGTM編集・公開権限 |
+| **Bing Webmaster Tools登録** | **Microsoftアカウントでのログイン作業(ユーザー側)。手順は[検索サービス連携ガイド](search-engine-integrations.md)§2。GSCインポートなら5分・タグ設置不要。登録後はBing側の検索クエリ・順位データが分析可能になる。IndexNowは登録なしで稼働済みのため、これは「分析データ取得」のための作業** |
 
 ## 5. 運用TODO(推奨)
 
-1. GA4測定IDとGTM権限の取得後、[GA4/GTMイベント計測仕様](ga4-gtm-event-spec-2026-07.md)に沿ってタグを公開
-2. 2026-08-14以降: 7/17リライト8記事のクリック・表示回数・CTR・平均掲載順位を同じ28日間で比較
-3. 月1回`npm run audit:seo`を実行し、重複・薄い記事・内部リンク切れを確認
-4. eclore返信下書きをレビュー後に送信。以降はGmail「要対応」ラベルを毎営業日確認
+1. **Bing Webmaster Toolsへ登録**(未実施・ユーザー作業)。[手順](search-engine-integrations.md#2-bing-webmaster-tools-登録手順要ログイン所要5分)。手動確認を選んだ場合は`msvalidate.01`の値をVercel環境変数`NEXT_PUBLIC_BING_SITE_VERIFICATION`に設定して再デプロイ(コード変更不要)
+2. GA4測定IDとGTM権限の取得後、[GA4/GTMイベント計測仕様](ga4-gtm-event-spec-2026-07.md)に沿ってタグを公開
+3. 記事の追加・リライトをデプロイした**後**に`npm run indexnow:recent`を実行(Bing系への更新通知)
+4. 2026-08-14以降: 7/17リライト8記事のクリック・表示回数・CTR・平均掲載順位を同じ28日間で比較
+5. 月1回`npm run audit:seo`を実行し、重複・薄い記事・内部リンク切れを確認
+6. eclore返信下書きをレビュー後に送信。以降はGmail「要対応」ラベルを毎営業日確認
