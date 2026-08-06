@@ -5,9 +5,16 @@ const ALLOWED_ORIGINS = [
   'https://emplay.jp',
   'https://www.emplay.jp',
   'https://emplay-nextjs.vercel.app',
+  'https://academy.emplay.jp',  // EMPLAY AI ACADEMY（研修サイト）
   'http://localhost:5173',  // 開発環境
   'http://localhost:3000',
 ]
+
+// 問い合わせ元サイト（DBのsource列・通知メールの表示に使う）
+const SOURCE_META: Record<string, { label: string; subjectTag: string; heading: string }> = {
+  hp:      { label: 'emplay.jp（コーポレートサイト）', subjectTag: '', heading: 'ホームページからお問い合わせがありました' },
+  academy: { label: 'academy.emplay.jp（EMPLAY AI ACADEMY）', subjectTag: '【AI ACADEMY】', heading: 'EMPLAY AI ACADEMY からお問い合わせがありました' },
+}
 
 // オリジンに基づいてCORSヘッダーを生成
 function getCorsHeaders(origin: string | null) {
@@ -37,7 +44,7 @@ function validateInput(data: unknown): { valid: boolean; error?: string; data?: 
     return { valid: false, error: 'Invalid request body' }
   }
 
-  const { name, email, company, phone, message } = data as Record<string, unknown>
+  const { name, email, company, phone, message, source } = data as Record<string, unknown>
 
   // 必須フィールドのチェック
   if (!name || typeof name !== 'string' || name.trim().length === 0) {
@@ -81,6 +88,8 @@ function validateInput(data: unknown): { valid: boolean; error?: string; data?: 
       company: company && typeof company === 'string' ? company.trim() : undefined,
       phone: phone && typeof phone === 'string' ? phone.trim() : undefined,
       message: message.trim(),
+      // 未知の値は 'hp' に倒す（DBのsource列はホワイトリストのみ）
+      source: typeof source === 'string' && source in SOURCE_META ? source : 'hp',
     }
   }
 }
@@ -123,6 +132,7 @@ interface ContactData {
   company?: string
   phone?: string
   message: string
+  source: string
 }
 
 // ===== 問い合わせ自動判定 =====
@@ -158,6 +168,8 @@ const STRONG_LEAD_PHRASES = [
   '制作をお願い', '作ってほしい', 'ご相談は可能', '相談は可能', '相談したい', '相談させて',
   '対応可能でしょうか', '対応いただけますか', 'ご対応いただけ', '料金を知りたい', '費用を知りたい',
   '料金表', '費用感を知り', '発注を検討', '導入を検討', '検討しております', 'お願いしたく',
+  // 研修（ACADEMY）の受講意向。送り手＝申込者にしか出ない言い回しに限定する
+  '受講したい', '受講を希望', '受講希望', '受講を検討', '受講させて', '申し込みたい',
 ]
 // 単独では見込みと断定できない曖昧語（営業が顧客の悩みを代弁する時にも出る）
 const WEAK_LEAD_PHRASES = ['作りたい', 'リニューアルしたい', '新規制作', '費用感', '見積を']
@@ -224,6 +236,10 @@ function classifyInquiry(data: ContactData): Classification {
     // 短く要点だけ＝発注者に多い（ただし日程提示・誘導URL・営業ピッチが無いこと）
     if (msg.length < 300 && urlCount === 0 && !outboundUrl && !meetingSlots && pitchHits.length === 0) {
       lead += 2; reasons.push('短文でURL・営業色なし（発注者に多い形式）')
+    }
+    // ACADEMYの申し込みフォームは受講目的の構造化フォーム＝営業の流入が構造的に少ない
+    if (data.source === 'academy') {
+      lead += 2; reasons.push('研修サイト（AI ACADEMY）の申し込みフォーム経由')
     }
 
     const score = lead - sales
@@ -323,6 +339,7 @@ Deno.serve(async (req) => {
           company: contactData.company || null,
           phone: contactData.phone || null,
           message: contactData.message,
+          source: contactData.source,
           classification: classification.level,
           lead_score: classification.score,
           classification_reasons: classification.reasons.join(' / '),
@@ -344,6 +361,7 @@ Deno.serve(async (req) => {
 
     // 判定結果に応じた件名タグと本文バナー
     const meta = LEVEL_META[classification.level]
+    const sourceMeta = SOURCE_META[contactData.source] || SOURCE_META.hp
     const safeReasons = escapeHtml(classification.reasons.join(' / '))
     const banner = `
           <div style="border-left: 6px solid ${meta.color}; background: ${meta.bg}; padding: 12px 16px; margin-bottom: 16px; border-radius: 4px;">
@@ -366,11 +384,15 @@ Deno.serve(async (req) => {
       await transport.sendMail({
         from: `お問い合わせ通知 <${GMAIL_USER}>`,
         to: NOTIFICATION_EMAIL,
-        subject: `${meta.tag}【お問い合わせ】${safeCompany !== '未入力' ? safeCompany : safeName}様より`,
+        subject: `${meta.tag}【お問い合わせ】${sourceMeta.subjectTag}${safeCompany !== '未入力' ? safeCompany : safeName}様より`,
         html: `
           ${banner}
-          <h2>ホームページからお問い合わせがありました</h2>
+          <h2>${sourceMeta.heading}</h2>
           <table style="border-collapse: collapse; width: 100%; max-width: 600px;">
+            <tr>
+              <th style="border: 1px solid #ddd; padding: 12px; background-color: #f5f5f5; text-align: left; width: 30%;">送信元サイト</th>
+              <td style="border: 1px solid #ddd; padding: 12px;">${sourceMeta.label}</td>
+            </tr>
             <tr>
               <th style="border: 1px solid #ddd; padding: 12px; background-color: #f5f5f5; text-align: left; width: 30%;">お名前</th>
               <td style="border: 1px solid #ddd; padding: 12px;">${safeName}</td>
@@ -393,7 +415,7 @@ Deno.serve(async (req) => {
             </tr>
           </table>
           <p style="margin-top: 20px; color: #666; font-size: 12px;">
-            このメールはEMPLAYホームページのお問い合わせフォームから自動送信されています。
+            このメールは ${sourceMeta.label} のお問い合わせフォームから自動送信されています。
           </p>
         `,
       })
