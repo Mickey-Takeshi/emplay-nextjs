@@ -366,3 +366,6 @@
     width: 100%;
   }
 }
+
+/* モバイルは軽量派生を読む（原寸1536px超の配信を避ける） */
+@media(max-width:768px){.careers-page .page-header-bg{background-image:url('/images/renewal/careers-sm.webp')}}

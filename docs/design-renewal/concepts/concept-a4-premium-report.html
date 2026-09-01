@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>EMPLAY TOP Concept A4 - Premium Report</title>
+  <link rel="stylesheet" href="visual-common.css">
+  <style>
+    :root { --navy:#081c33; --navy-deep:#071424; --red:#c9362c; --blue:#1b5797; --warm:#f2eee7; }
+    .hero { min-height:800px; }
+    .hero-media img { object-position:center; }
+    .hero-overlay { background:rgba(6,18,34,.16); }
+    .hero h1 { max-width:720px; font-size:56px; }
+    .hero .eyebrow { color:#a9dce8; }
+    .report-strip { background:#fff; border-bottom:1px solid var(--line); }
+    .report-strip .wrap { display:grid; grid-template-columns:1.4fr repeat(3,.7fr); }
+    .report-strip div { min-height:118px; padding:26px 24px; display:flex; flex-direction:column; justify-content:center; border-right:1px solid var(--line); }
+    .report-strip div:first-child { border-left:1px solid var(--line); }
+    .report-strip strong { font-size:18px; line-height:1.55; }
+    .report-strip b { color:var(--red); font-size:10px; letter-spacing:.12em; }
+    .report-strip span { margin-top:8px; color:var(--muted); font-size:11px; line-height:1.6; }
+    .brand-spread { display:grid; grid-template-columns:1fr 1fr; gap:16px; align-items:stretch; }
+    .brand-copy { padding:72px; background:var(--warm); display:flex; flex-direction:column; justify-content:center; }
+    .brand-copy h2 { margin-top:15px; font-family:"Yu Mincho","Hiragino Mincho ProN",serif; font-size:41px; line-height:1.55; }
+    .brand-copy p { margin-top:22px; color:#5e625f; font-size:14px; line-height:2; }
+    .brand-images { display:grid; grid-template-columns:1fr 1fr; grid-template-rows:1fr 1fr; gap:16px; min-height:620px; }
+    .brand-images figure:first-child { grid-row:span 2; }
+    .portfolio-grid { display:grid; grid-template-columns:1.2fr .8fr .8fr; grid-template-rows:360px 320px; gap:12px; }
+    .portfolio-item { position:relative; overflow:hidden; }
+    .portfolio-item:first-child { grid-row:span 2; }
+    .portfolio-item:last-child { grid-column:span 2; }
+    .portfolio-item::after { content:""; position:absolute; inset:0; background:rgba(5,18,33,.38); }
+    .portfolio-copy { position:absolute; z-index:2; inset:auto 24px 24px; color:#fff; }
+    .portfolio-copy b { color:#a9dce8; font-size:10px; letter-spacing:.12em; }
+    .portfolio-copy h3 { margin-top:7px; font-size:21px; line-height:1.4; }
+    .portfolio-copy p { margin-top:7px; max-width:430px; color:rgba(255,255,255,.72); font-size:11px; line-height:1.7; }
+    .report-feature { display:grid; grid-template-columns:.92fr 1.08fr; min-height:580px; background:var(--navy-deep); color:#fff; }
+    .report-feature-copy { padding:76px; display:flex; flex-direction:column; justify-content:center; }
+    .report-feature-copy .kicker { color:#9bdce5; }
+    .report-feature-copy h2 { margin-top:15px; font-family:"Yu Mincho","Hiragino Mincho ProN",serif; font-size:38px; line-height:1.55; }
+    .report-feature-copy p { margin-top:20px; color:rgba(255,255,255,.68); font-size:14px; line-height:1.95; }
+    .report-feature figure img { object-fit:cover; }
+    .academy-copy { background:#813329; }
+    .contact { background:var(--warm); }
+    @media(max-width:700px){
+      .hero{min-height:740px}.hero h1{font-size:34px}.hero-overlay{background:rgba(5,18,33,.55)}.report-strip .wrap{grid-template-columns:1fr}.report-strip div{min-height:0;border-left:1px solid var(--line);border-bottom:1px solid var(--line)}.brand-spread,.report-feature{grid-template-columns:1fr}.brand-copy{padding:52px 24px}.brand-copy h2{font-size:30px}.brand-images{min-height:560px;grid-template-columns:1fr 1fr}.portfolio-grid{display:block}.portfolio-item{min-height:340px;border-bottom:6px solid #fff}.report-feature-copy{padding:50px 24px}.report-feature-copy h2{font-size:30px}.report-feature figure{min-height:340px}
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header"><div class="header-inner"><a class="brand"><span class="brand-mark">▶▶</span>EMPLAY</a><nav class="nav"><a>SERVICE</a><a>STRENGTHS</a><a>COMPANY</a><a>AI ACADEMY ↗</a><a class="nav-cta">無料相談</a></nav></div></header>
+  <main>
+    <section class="hero"><div class="hero-media"><img src="../assets/premium-system.webp" alt="複雑な事業課題を整理して成果につなげるビジュアル"></div><div class="hero-overlay"></div><div class="wrap hero-content"><p class="eyebrow">Corporate Digital Partner</p><h1>Web制作・集客・AI活用を、<br>実行と改善まで。</h1><p class="hero-copy">事業の課題を読み解き、必要な専門領域をつなぎ、成果が続く仕組みとして実装します。</p><div class="hero-actions"><a class="button button-primary">無料相談を申し込む</a><a class="button button-ghost">支援内容を見る →</a></div></div></section>
+    <section class="report-strip"><div class="wrap"><div><strong>中小企業のWeb・AI活用を、<br>一つのチームで支援。</strong></div><div><b>ACCESS</b><span>全国オンライン対応</span></div><div><b>CONSULTATION</b><span>初回相談無料</span></div><div><b>DELIVERY</b><span>制作から運用まで一貫</span></div></div></section>
+
+    <section class="section"><div class="wide-wrap brand-spread"><div class="brand-copy"><p class="kicker">Our Role</p><h2>複雑な課題を、<br>実行できる一手へ。</h2><p>必要なのは施策の数ではなく、事業の目的に合う順番と役割です。EMPLAYは、Web制作・集客・顧客管理・AI活用を横断し、無理なく改善を続けられる形に整えます。</p></div><div class="brand-images"><figure><img src="../../../public/images/hero-company.webp" alt="業務設計の様子"></figure><figure><img src="../../../public/images/hero-service-creative.webp" alt="デザイン制作物"></figure><figure><img src="../../../public/images/hero-service-ads.webp" alt="広告データ分析"></figure></div></div></section>
+
+    <section class="section section-paper"><div class="wide-wrap"><div class="wrap section-heading-row"><div><p class="kicker">Service Portfolio</p><h2 class="heading">専門領域を組み合わせ、<br>事業全体を前に進める。</h2></div><p class="lead">すべてを同時に導入する必要はありません。優先順位の高い領域から選択できます。</p></div><div class="portfolio-grid"><article class="portfolio-item"><img src="../../../public/images/hero-service.webp" alt="HP制作サービス"><div class="portfolio-copy"><b>01 / HP PRODUCTION</b><h3>HP制作サービス</h3><p>検索と問い合わせの受け皿になる企業サイトを、初期費用30万円から。</p></div></article><article class="portfolio-item"><img src="../../../public/images/hero-service-creative.webp" alt="クリエイティブ制作"><div class="portfolio-copy"><b>02 / CREATIVE</b><h3>クリエイティブ制作</h3></div></article><article class="portfolio-item"><img src="../../../public/images/hero-service-ads.webp" alt="Web広告運用"><div class="portfolio-copy"><b>03 / ADVERTISING</b><h3>Web広告運用代行</h3></div></article><article class="portfolio-item"><img src="../../../public/images/hero-service-crm.webp" alt="CRM導入支援"><div class="portfolio-copy"><b>04 / CRM</b><h3>CRM導入支援</h3></div></article><article class="portfolio-item"><img src="../../../public/images/hero-training.webp" alt="EMPLAY AI ACADEMY"><div class="portfolio-copy"><b>05 / AI TRAINING</b><h3>EMPLAY AI ACADEMY</h3><p>生成AIを日々の業務で使い、自走できる人材と組織を育てます。</p></div></article></div></div></section>
+
+    <section class="report-feature"><div class="report-feature-copy"><p class="kicker">Why EMPLAY</p><h2>成果が続く仕組みまで、<br>一緒につくる。</h2><p>ワンストップ対応、中小企業に合わせた優先順位、現場で使えるAI活用。制作や導入をゴールにせず、社内で改善を続けられる状態を目指します。</p></div><figure><img src="../assets/editorial-collage.webp" alt="複数の専門領域を横断する支援イメージ"></figure></section>
+
+    <section class="section"><div class="wrap"><p class="kicker">How We Work</p><h2 class="heading">相談から改善までの進め方</h2><div class="process"><article><b>STEP 01</b><h3>課題整理</h3><p>現状、目標、優先順位を確認します。</p></article><article><b>STEP 02</b><h3>設計・提案</h3><p>必要な支援と進行計画を具体化します。</p></article><article><b>STEP 03</b><h3>制作・導入</h3><p>関係者と連携しながら実行します。</p></article><article><b>STEP 04</b><h3>運用・改善</h3><p>効果を確認し、次の施策へつなげます。</p></article></div></div></section>
+
+    <section class="academy"><figure><img src="../assets/human-editorial.webp" alt="生成AIを業務で活用するチームのイラスト"></figure><div class="academy-copy"><p class="kicker" style="color:#ffd1bc">EMPLAY AI ACADEMY</p><h2>学ぶだけで終わらない、<br>生成AI実践研修。</h2><p>自社の業務を題材に、使い方・考え方・改善方法まで身につけるオンラインプログラムです。</p><a class="button button-light">研修サービスを見る ↗</a></div></section>
+    <section class="contact"><div class="wrap"><div><h2>次の一手を、<br>一緒に設計します。</h2><p>要件が決まっていない段階から、初回無料でご相談いただけます。</p></div><a class="button button-primary">無料相談を申し込む →</a></div></section>
+  </main>
+  <footer class="footer"><div class="wrap"><span class="brand"><span class="brand-mark">▶▶</span>EMPLAY</span><small>社会にもっとわくわくを創り続ける</small></div></footer>
+</body>
+</html>

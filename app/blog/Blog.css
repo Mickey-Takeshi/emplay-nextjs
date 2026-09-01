@@ -345,8 +345,8 @@
 
   .blog-pagination-link,
   .blog-pagination-ellipsis {
-    min-width: 40px;
-    height: 40px;
+    min-width: var(--tap-min);
+    height: var(--tap-min);
   }
 
   .blog-pagination-direction {

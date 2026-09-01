@@ -1,9 +1,12 @@
 'use client'
 
-import Image from 'next/image'
 import Link from 'next/link'
 import { NewsArticleSummary } from '@/lib/supabase'
 import FaqJsonLd from '@/components/FaqJsonLd'
+
+// 画像のモバイル派生（幅960px）。unoptimized運用のためsrcsetは自前で組み立てる。
+const sm = (src: string) => src.replace(/\.webp$/, '-sm.webp')
+const SRCSET = (src: string) => `${sm(src)} 960w, ${src} 1536w`
 
 interface HomeClientProps {
   news: NewsArticleSummary[]
@@ -17,7 +20,7 @@ const homeFaqs = [
 ]
 
 const services = [
-  { no: '01', label: 'HP PRODUCTION', title: 'HP制作サービス', text: 'SEO・AIOを見据え、問い合わせにつながる企業サイトを初期費用30万円から制作します。', href: '/service/hp', image: '/images/renewal/service-hp.webp', alt: 'ホームページを構成するレイヤーの図解' },
+  { no: '01', label: 'HP PRODUCTION', title: 'HP制作サービス', text: 'SEO・AIOを見据え、問い合わせにつながる企業サイトを初期費用45万円から制作します。', href: '/service/hp', image: '/images/renewal/service-hp.webp', alt: 'ホームページを構成するレイヤーの図解' },
   { no: '02', label: 'CREATIVE', title: 'クリエイティブ制作', text: 'Web、LP、バナー、動画で事業の価値を伝えます。', href: '/service/creative', image: '/images/renewal/service-creative.webp', alt: '制作机上のクリエイティブ工程の図解' },
   { no: '03', label: 'ADVERTISING', title: 'Web広告運用代行', text: 'データに基づき集客効率を改善します。', href: '/service/ads', image: '/images/renewal/service-ads.webp', alt: '広告流入を成果へつなげるファネルの図解' },
   { no: '04', label: 'CRM', title: 'CRM導入支援', text: '顧客情報と継続コミュニケーションを整えます。', href: '/service/crm', image: '/images/renewal/service-crm.webp', alt: '顧客接点をつなぐCRM導線の図解' },
@@ -29,7 +32,7 @@ export default function HomeClient({ news }: HomeClientProps) {
     <>
       <FaqJsonLd faqs={homeFaqs} />
       <section className="renewal-hero" aria-label="メインビジュアル">
-        <div className="renewal-hero-media"><Image src="/images/renewal/home-hero.webp" alt="Web制作・集客・CRM・AI活用をつなぐ事業基盤の図解" fill priority sizes="100vw" /></div>
+        <div className="renewal-hero-media"><img src="/images/renewal/home-hero.webp" srcSet={SRCSET("/images/renewal/home-hero.webp")} sizes="100vw" alt="Web制作・集客・CRM・AI活用をつなぐ事業基盤の図解" fetchPriority="high" decoding="async" style={{position:'absolute',inset:0,width:'100%',height:'100%'}} /></div>
         <div className="renewal-hero-wash" aria-hidden="true" />
         <div className="container renewal-hero-content">
           <p className="renewal-eyebrow">Web, Marketing & AI Partner</p>
@@ -40,21 +43,21 @@ export default function HomeClient({ news }: HomeClientProps) {
       </section>
 
       <div className="renewal-visual-rail" aria-label="支援領域のイメージ">
-        {services.slice(0, 4).map((service) => <figure key={service.no}><Image src={service.image} alt={service.alt} width={1536} height={1024} /></figure>)}
+        {services.slice(0, 4).map((service) => <figure key={service.no}><img src={service.image} srcSet={SRCSET(service.image)} sizes="(max-width: 768px) 100vw, 50vw" alt={service.alt} width={1536} height={1024} loading="lazy" decoding="async" /></figure>)}
       </div>
 
-      <section className="renewal-section renewal-paper"><div className="container renewal-role"><div><p className="renewal-kicker">Our Role</p><h2>必要な施策を、<br />ひとつの実行計画へ。</h2><p>制作会社、広告代理店、システム会社を個別に探す前に、事業の課題と優先順位を整理します。</p><p className="renewal-note">窓口を分けず、Web・集客・顧客管理・人材育成を横断して支援。施策同士がつながることで、改善を続けやすくします。</p></div><figure><Image src="/images/renewal/ecosystem.webp" alt="5つの専門領域を円環状につないだ支援体制の図解" width={1536} height={1024} /></figure></div></section>
+      <section className="renewal-section renewal-paper"><div className="container renewal-role"><div><p className="renewal-kicker">Our Role</p><h2>必要な施策を、<br />ひとつの実行計画へ。</h2><p>制作会社、広告代理店、システム会社を個別に探す前に、事業の課題と優先順位を整理します。</p><p className="renewal-note">窓口を分けず、Web・集客・顧客管理・人材育成を横断して支援。施策同士がつながることで、改善を続けやすくします。</p></div><figure><img src="/images/renewal/ecosystem.webp" srcSet={SRCSET("/images/renewal/ecosystem.webp")} sizes="(max-width: 768px) 100vw, 50vw" alt="5つの専門領域を円環状につないだ支援体制の図解" width={1536} height={1024} loading="lazy" decoding="async" /></figure></div></section>
 
       <section className="renewal-section"><div className="renewal-wide"><div className="container renewal-heading-row"><div><p className="renewal-kicker">Services</p><h2>5つの専門領域を、<br />必要な分だけ。</h2></div><p>各領域を単独でご相談いただくことも、複数を組み合わせて進めることもできます。</p></div><div className="renewal-service-grid">{services.map((service) => {
-        const content = <><Image src={service.image} alt={service.alt} width={1536} height={1024} /><div className="renewal-service-copy"><b>{service.no} / {service.label}</b><h3>{service.title}</h3><p>{service.text}</p></div></>
+        const content = <><img src={service.image} srcSet={SRCSET(service.image)} sizes="(max-width: 768px) 100vw, 50vw" alt={service.alt} width={1536} height={1024} loading="lazy" decoding="async" /><div className="renewal-service-copy"><b>{service.no} / {service.label}</b><h3>{service.title}</h3><p>{service.text}</p></div></>
         return service.external ? <a key={service.no} className="renewal-service" href={service.href} target="_blank" rel="noopener noreferrer">{content}</a> : <Link key={service.no} className="renewal-service" href={service.href}>{content}</Link>
       })}</div></div></section>
 
       <section className="renewal-section renewal-paper"><div className="container"><p className="renewal-kicker">Why EMPLAY</p><h2 className="renewal-heading">成果が続く仕組みまで、<br />一緒につくる。</h2><div className="renewal-facts"><article><b>01</b><h3>ワンストップ対応</h3><p>制作、広告、CRM、AI研修まで窓口を一本化します。</p></article><article><b>02</b><h3>中小企業に伴走</h3><p>予算と体制に合わせ、実行できる優先順位を設計します。</p></article><article><b>03</b><h3>AI活用の実践知</h3><p>新しい技術を、現場で継続利用できる業務へ落とし込みます。</p></article></div></div></section>
 
-      <section className="renewal-process"><figure><Image src="/images/renewal/process.webp" alt="課題整理から改善までの4段階を上る図解" width={1536} height={1024} /></figure><div><p className="renewal-kicker">How We Work</p><h2>課題整理から改善まで、<br />迷わず進める4段階。</h2><p>現状と目標を確認し、必要な支援を選び、制作・導入後も効果を見ながら改善します。</p><ol><li><b>01</b>課題整理</li><li><b>02</b>設計・提案</li><li><b>03</b>制作・導入</li><li><b>04</b>運用・改善</li></ol></div></section>
+      <section className="renewal-process"><figure><img src="/images/renewal/process.webp" srcSet={SRCSET("/images/renewal/process.webp")} sizes="(max-width: 768px) 100vw, 50vw" alt="課題整理から改善までの4段階を上る図解" width={1536} height={1024} loading="lazy" decoding="async" /></figure><div><p className="renewal-kicker">How We Work</p><h2>課題整理から改善まで、<br />迷わず進める4段階。</h2><p>現状と目標を確認し、必要な支援を選び、制作・導入後も効果を見ながら改善します。</p><ol><li><b>01</b>課題整理</li><li><b>02</b>設計・提案</li><li><b>03</b>制作・導入</li><li><b>04</b>運用・改善</li></ol></div></section>
 
-      <section className="renewal-academy"><figure><Image src="/images/renewal/service-academy.webp" alt="実務で生成AIを学ぶ円形ワークショップの図解" width={1536} height={1024} /></figure><div><p className="renewal-kicker">EMPLAY AI ACADEMY</p><h2>生成AIを、<br />現場で使える力へ。</h2><p>自社の業務課題を題材に、使い方・考え方・改善方法まで身につけるオンライン実践研修です。</p><a className="btn renewal-light-btn" href="https://academy.emplay.jp/" target="_blank" rel="noopener noreferrer">研修サービスを見る ↗</a></div></section>
+      <section className="renewal-academy"><figure><img src="/images/renewal/service-academy.webp" srcSet={SRCSET("/images/renewal/service-academy.webp")} sizes="(max-width: 768px) 100vw, 50vw" alt="実務で生成AIを学ぶ円形ワークショップの図解" width={1536} height={1024} loading="lazy" decoding="async" /></figure><div><p className="renewal-kicker">EMPLAY AI ACADEMY</p><h2>生成AIを、<br />現場で使える力へ。</h2><p>自社の業務課題を題材に、使い方・考え方・改善方法まで身につけるオンライン実践研修です。</p><a className="btn renewal-light-btn" href="https://academy.emplay.jp/" target="_blank" rel="noopener noreferrer">研修サービスを見る ↗</a></div></section>
 
       <section className="renewal-section"><div className="container renewal-heading-row"><div><p className="renewal-kicker">FAQ</p><h2>よくあるご質問</h2></div></div><div className="container renewal-faq">{homeFaqs.map((faq) => <article key={faq.q}><h3>{faq.q}</h3><p>{faq.a}</p></article>)}</div></section>
 

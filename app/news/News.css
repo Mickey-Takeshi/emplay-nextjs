@@ -192,3 +192,6 @@
     grid-column: 2;
   }
 }
+
+/* モバイルは軽量派生を読む（原寸1536px超の配信を避ける） */
+@media(max-width:768px){.news-detail-page .page-header-bg{background-image:url('/images/renewal/news-sm.webp')}}

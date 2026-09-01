@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>EMPLAY TOP Concept A1 - Editorial Mosaic</title>
+  <link rel="stylesheet" href="visual-common.css">
+  <style>
+    .hero { background: #fff; }
+    .hero-overlay { right: auto; width: 55%; background: rgba(255,255,255,.93); }
+    .hero .eyebrow { color: var(--blue); }
+    .hero-media img { object-position: center; }
+    .hero h1 { max-width: 720px; color: var(--ink); font-size: 55px; }
+    .hero-copy { max-width: 610px; color: var(--muted); }
+    .hero .button-ghost { color: var(--navy); border-color: rgba(8,35,63,.38); background: rgba(255,255,255,.8); }
+    .visual-rail { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); background: #f7f9fb; }
+    .visual-rail figure { border-right-color: var(--line); background: #f7f9fb; }
+    .visual-rail img { object-fit: contain; }
+    .editorial-intro { display: grid; grid-template-columns: .75fr 1.25fr; gap: 70px; align-items: center; }
+    .editorial-art { height: 520px; overflow: hidden; background: #f7f7f5; }
+    .editorial-art img { object-fit: contain; }
+    .editorial-note { margin-top: 32px; padding-left: 22px; border-left: 3px solid var(--red); color: var(--muted); font-size: 13px; line-height: 1.9; }
+    .service-photo-grid { grid-auto-rows: 380px; }
+    .service-photo { background: #f5f8fb; border: 1px solid var(--line); }
+    .service-photo::after { display: none; }
+    .service-photo img { object-fit: contain; object-position: center; }
+    .service-photo-copy { inset: auto 0 0; padding: 18px 24px 20px; background: rgba(6,22,40,.95); }
+    .service-photo:nth-child(1) { grid-column: span 7; }
+    .service-photo:nth-child(2) { grid-column: span 5; }
+    .service-photo:nth-child(3), .service-photo:nth-child(4), .service-photo:nth-child(5) { grid-column: span 4; }
+    .service-photo:nth-child(1), .service-photo:nth-child(5) { min-height: 420px; }
+    .approach-visual { display: grid; grid-template-columns: 1fr .92fr; min-height: 520px; }
+    .approach-visual figure { background: #fff; }
+    .approach-visual figure img { object-fit: contain; }
+    .approach-copy { padding: 72px; display: flex; flex-direction: column; justify-content: center; background: var(--navy); color: #fff; }
+    .approach-copy .kicker { color: #79deeb; }
+    .approach-copy h2 { margin-top: 14px; font-size: 35px; line-height: 1.45; }
+    .approach-copy p { margin-top: 18px; color: rgba(255,255,255,.7); font-size: 14px; line-height: 1.9; }
+    .approach-copy .process-mini { margin-top: 30px; display: grid; grid-template-columns: 1fr 1fr; border-top: 1px solid rgba(255,255,255,.22); }
+    .approach-copy .process-mini span { padding: 16px 0; border-bottom: 1px solid rgba(255,255,255,.22); font-size: 12px; }
+    .academy > figure { background: #f7f9fb; }
+    .academy > figure img { object-fit: contain; }
+    @media(max-width:700px){
+      .hero-overlay{width:100%;background:rgba(255,255,255,.89)}.hero-media img{object-position:62% center}.hero h1{font-size:34px}.editorial-intro,.approach-visual{grid-template-columns:1fr;gap:0}.editorial-intro{gap:34px}.editorial-art{height:330px}.service-photo,.service-photo:nth-child(1),.service-photo:nth-child(5){min-height:400px}.approach-visual figure{min-height:330px}.approach-copy{padding:46px 24px}.approach-copy h2{font-size:28px}
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header light"><div class="header-inner"><a class="brand"><span class="brand-mark">▶▶</span>EMPLAY</a><nav class="nav"><a>SERVICE</a><a>STRENGTHS</a><a>COMPANY</a><a>AI ACADEMY ↗</a><a class="nav-cta">無料相談</a></nav></div></header>
+  <main>
+    <section class="hero">
+      <div class="hero-media"><img src="../assets/a1-varied/hero.webp" alt="Web制作・集客・CRM・AI活用を横断して支援する事業基盤の図解"></div><div class="hero-overlay"></div>
+      <div class="wrap hero-content"><p class="eyebrow">Web, Marketing & AI Partner</p><h1>Web制作・集客・AI活用を、<br>実行と改善まで。</h1><p class="hero-copy">ホームページ制作、広告運用、CRM導入、AI研修。課題の整理から制作・導入、継続運用まで一貫して支援します。</p><div class="hero-actions"><a class="button button-primary">無料相談を申し込む</a><a class="button button-ghost">支援内容を見る →</a></div></div>
+    </section>
+    <div class="visual-rail"><figure><img src="../assets/a1-varied/hp.webp" alt="企業サイトを構成するレイヤーの図解"></figure><figure><img src="../assets/a1-varied/ads.webp" alt="広告流入を成果へつなげるファネルの図解"></figure><figure><img src="../assets/a1-varied/creative.webp" alt="制作机上のクリエイティブ工程の図解"></figure><figure><img src="../assets/a1-varied/academy.webp" alt="AI研修の円形ワークショップの図解"></figure></div>
+
+    <section class="section section-paper"><div class="wrap editorial-intro"><div><p class="kicker">Our Role</p><h2 class="heading">必要な施策を、<br>ひとつの実行計画へ。</h2><p class="lead">制作会社、広告代理店、システム会社を個別に探す前に、事業の課題と優先順位を整理します。</p><p class="editorial-note">窓口を分けず、Web・集客・顧客管理・人材育成を横断して支援。施策同士がつながることで、改善を続けやすくします。</p></div><figure class="editorial-art"><img src="../assets/a1-varied/ecosystem.webp" alt="5つの専門領域を円環状につないだ支援体制の図解"></figure></div></section>
+
+    <section class="section"><div class="wide-wrap"><div class="wrap section-heading-row"><div><p class="kicker">Services</p><h2 class="heading">5つの専門領域を、<br>必要な分だけ。</h2></div><p class="lead">各領域を単独でご相談いただくことも、複数を組み合わせて進めることもできます。</p></div><div class="service-photo-grid"><article class="service-photo"><img src="../assets/a1-varied/hp.webp" alt="ホームページを構成するレイヤーの図解"><div class="service-photo-copy"><b>01 / HP PRODUCTION</b><h3>HP制作サービス</h3><p>SEO・AIOを見据え、問い合わせにつながる企業サイトを初期費用30万円から制作します。</p></div></article><article class="service-photo"><img src="../assets/a1-varied/creative.webp" alt="制作机上のクリエイティブ工程の図解"><div class="service-photo-copy"><b>02 / CREATIVE</b><h3>クリエイティブ制作</h3><p>Web、LP、バナー、動画で事業の価値を伝えます。</p></div></article><article class="service-photo"><img src="../assets/a1-varied/ads.webp" alt="広告流入を成果へつなげるファネルの図解"><div class="service-photo-copy"><b>03 / ADVERTISING</b><h3>Web広告運用代行</h3><p>データに基づき集客効率を改善します。</p></div></article><article class="service-photo"><img src="../assets/a1-varied/crm.webp" alt="顧客接点をつなぐCRM導線の図解"><div class="service-photo-copy"><b>04 / CRM</b><h3>CRM導入支援</h3><p>顧客情報と継続コミュニケーションを整えます。</p></div></article><article class="service-photo"><img src="../assets/a1-varied/academy.webp" alt="EMPLAY AI ACADEMYの円形ワークショップの図解"><div class="service-photo-copy"><b>05 / AI TRAINING</b><h3>EMPLAY AI ACADEMY</h3><p>生成AIを実務で使い、自走できる人材を育てます。</p></div></article></div></div></section>
+
+    <section class="section section-paper"><div class="wrap"><p class="kicker">Why EMPLAY</p><h2 class="heading">成果が続く仕組みまで、<br>一緒につくる。</h2><div class="facts"><article class="fact"><b>01</b><h3>ワンストップ対応</h3><p>制作、広告、CRM、AI研修まで窓口を一本化します。</p></article><article class="fact"><b>02</b><h3>中小企業に伴走</h3><p>予算と体制に合わせ、実行できる優先順位を設計します。</p></article><article class="fact"><b>03</b><h3>AI活用の実践知</h3><p>新しい技術を、現場で継続利用できる業務へ落とし込みます。</p></article></div></div></section>
+
+    <section class="approach-visual"><figure><img src="../assets/a1-varied/process.webp" alt="4つの段差を上りながら課題整理から改善へ進む図解"></figure><div class="approach-copy"><p class="kicker">How We Work</p><h2>課題整理から改善まで、<br>迷わず進める4段階。</h2><p>現状と目標を確認し、必要な支援を選び、制作・導入後も効果を見ながら改善します。</p><div class="process-mini"><span>01　課題整理</span><span>02　設計・提案</span><span>03　制作・導入</span><span>04　運用・改善</span></div></div></section>
+
+    <section class="academy"><figure><img src="../assets/a1-varied/academy.webp" alt="実務で生成AIを学ぶ円形ワークショップの図解"></figure><div class="academy-copy"><p class="kicker">EMPLAY AI ACADEMY</p><h2>生成AIを、<br>現場で使える力へ。</h2><p>自社の業務課題を題材に、使い方・考え方・改善方法まで身につけるオンライン実践研修です。</p><a class="button button-light">研修サービスを見る ↗</a></div></section>
+    <section class="contact"><div class="wrap"><div><h2>何から始めるべきか、<br>一緒に整理します。</h2><p>方向性が決まっていない段階でもお問い合わせください。</p></div><a class="button button-primary">無料相談を申し込む →</a></div></section>
+  </main>
+  <footer class="footer"><div class="wrap"><span class="brand"><span class="brand-mark">▶▶</span>EMPLAY</span><small>株式会社EMPLAY / 東京都渋谷区</small></div></footer>
+</body>
+</html>

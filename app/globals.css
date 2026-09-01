@@ -412,7 +412,7 @@ select {
   display: flex;
   align-items: center;
   gap: var(--spacing-sm);
-  font-size: var(--text-2xs);
+  font-size: var(--text-xs);
   flex-wrap: wrap;
 }
 
@@ -453,7 +453,6 @@ select {
   }
 
   .breadcrumb-list {
-    font-size: var(--text-xs);
     gap: 10px;
   }
 
@@ -624,5 +623,40 @@ select {
   .btn-dark {
     padding: 10px 20px;
     font-size: 0.75rem;
+  }
+}
+
+/* タップ領域の確保（タッチ端末のみ適用。マウス環境ではレイアウトを変えない）
+   ガイドラインの最小44pxを下回るリンク・ボタンに当てる。--tap-min を参照する。 */
+@media (hover: none) and (pointer: coarse) {
+  .nav-link,
+  .logo,
+  .footer-logo,
+  .menu-toggle,
+  .renewal-heading-row > a,
+  .service-hero-actions a,
+  .breadcrumb-item a,
+  .footer-nav-list a,
+  .site-map-category-list a,
+  .site-map-primary-list a,
+  .blog-pagination-link,
+  .category-link {
+    min-height: var(--tap-min);
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .footer-nav-list a,
+  .site-map-category-list a,
+  .site-map-primary-list a {
+    /* 行間を詰めたまま当たり判定だけ広げる */
+    padding-block: 6px;
+  }
+
+  .menu-toggle,
+  .blog-pagination-link {
+    min-width: var(--tap-min);
+    min-height: var(--tap-min);
+    justify-content: center;
   }
 }

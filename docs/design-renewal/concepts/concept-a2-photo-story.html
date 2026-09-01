@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>EMPLAY TOP Concept A2 - Visual Story</title>
+  <link rel="stylesheet" href="visual-common.css">
+  <style>
+    :root { --red:#d83b34; --blue:#0b67b2; --cyan:#76d7df; }
+    .hero { min-height: 780px; }
+    .hero-overlay { background: rgba(5,23,40,.66); }
+    .hero-media img { object-position: center 45%; }
+    .hero h1 { max-width: 920px; }
+    .hero .eyebrow { color: #9ce9ef; }
+    .story-opening { display: grid; grid-template-columns: 1fr 1fr; align-items: stretch; }
+    .story-opening-copy { padding: 90px max(64px, calc((100vw - 1180px)/2)); background: #fff; }
+    .story-opening-copy blockquote { margin-top: 22px; font-size: 32px; line-height: 1.55; font-weight: 900; }
+    .story-opening-copy p:last-child { margin-top: 22px; color: var(--muted); font-size: 14px; line-height: 2; }
+    .story-opening figure { min-height: 500px; }
+    .story-services { border-top: 1px solid var(--line); }
+    .story-service { display: grid; grid-template-columns: 1fr 1fr; min-height: 480px; border-bottom: 1px solid var(--line); }
+    .story-service:nth-child(even) figure { order: 2; }
+    .story-service-copy { padding: 70px max(58px, calc((100vw - 1180px)/2)); display: flex; flex-direction: column; justify-content: center; background: #fff; }
+    .story-service:nth-child(even) .story-service-copy { background: #f2f5f7; }
+    .story-service b { color: var(--blue); font-size: 11px; letter-spacing: .12em; }
+    .story-service h3 { margin-top: 18px; font-size: 34px; line-height: 1.4; }
+    .story-service p { margin-top: 16px; color: var(--muted); font-size: 14px; line-height: 1.9; }
+    .story-service a { margin-top: 25px; color: var(--blue); font-size: 13px; font-weight: 900; }
+    .human-band { display: grid; grid-template-columns: 1.15fr .85fr; min-height: 580px; background: #f4f0e9; }
+    .human-band figure img { object-fit: contain; }
+    .human-band-copy { padding: 72px; display: flex; flex-direction: column; justify-content: center; }
+    .human-band-copy h2 { margin-top: 14px; font-size: 36px; line-height: 1.45; }
+    .human-band-copy p { margin-top: 20px; color: var(--muted); font-size: 14px; line-height: 2; }
+    .contact { background: #e8f4f5; }
+    @media(max-width:700px){
+      .story-opening,.story-service,.human-band{grid-template-columns:1fr}.story-opening-copy{padding:66px 18px}.story-opening-copy blockquote{font-size:26px}.story-opening figure{min-height:340px}.story-service{min-height:0}.story-service:nth-child(even) figure{order:0}.story-service figure{min-height:320px}.story-service-copy{padding:48px 24px}.story-service h3{font-size:28px}.human-band figure{min-height:360px}.human-band-copy{padding:48px 24px}.human-band-copy h2{font-size:28px}
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header"><div class="header-inner"><a class="brand"><span class="brand-mark">▶▶</span>EMPLAY</a><nav class="nav"><a>SERVICE</a><a>STRENGTHS</a><a>COMPANY</a><a>AI ACADEMY ↗</a><a class="nav-cta">無料相談</a></nav></div></header>
+  <main>
+    <section class="hero"><div class="hero-media"><img src="../../../public/images/hero-careers.webp" alt="チームで話し合うプロジェクトメンバー"></div><div class="hero-overlay"></div><div class="wrap hero-content"><p class="eyebrow">A Team Behind Your Growth</p><h1>Web制作・集客・AI活用を、<br>実行と改善まで。</h1><p class="hero-copy">ツールや制作物だけではなく、実際に使う人と現場を見ながら、成果につながる状態まで支援します。</p><div class="hero-actions"><a class="button button-primary">無料相談を申し込む</a><a class="button button-ghost">私たちの支援を見る →</a></div></div></section>
+    <div class="visual-rail"><figure><img src="../../../public/images/card-creative.webp" alt="Web制作環境"></figure><figure><img src="../../../public/images/card-ads.webp" alt="広告分析"></figure><figure><img src="../../../public/images/hero-service-crm.webp" alt="CRM設計"></figure><figure><img src="../../../public/images/card-academy.webp" alt="研修の対話"></figure></div>
+
+    <section class="story-opening"><div class="story-opening-copy"><p class="kicker">Our Role</p><blockquote>施策を並べるのではなく、<br>人と事業が動く順番をつくる。</blockquote><p>Web、広告、CRM、AI研修を横断し、限られた予算と体制でも実行を続けられる計画へ落とし込みます。</p></div><figure><img src="../assets/human-editorial.webp" alt="中小企業のチームと専門家が一緒に考えるイラスト"></figure></section>
+
+    <section class="section"><div class="wrap section-heading-row"><div><p class="kicker">Services</p><h2 class="heading">現場の変化が見える、<br>5つの支援。</h2></div><p class="lead">支援内容を、そこで働く人や実際の業務風景と一緒に紹介する写真中心のデザインです。</p></div></section>
+    <section class="story-services">
+      <article class="story-service"><figure><img src="../../../public/images/hero-hp.webp" alt="HP制作を進めるオフィス"></figure><div class="story-service-copy"><b>01 / HP PRODUCTION</b><h3>HP制作サービス</h3><p>企業の信頼をつくり、検索と問い合わせの受け皿になるサイトを初期費用30万円から制作します。</p><a>サービスを見る →</a></div></article>
+      <article class="story-service"><figure><img src="../../../public/images/hero-service-creative.webp" alt="デザインとクリエイティブ制作"></figure><div class="story-service-copy"><b>02 / CREATIVE</b><h3>クリエイティブ制作</h3><p>Web、LP、バナー、動画など、事業の価値が相手に伝わる表現を設計します。</p><a>サービスを見る →</a></div></article>
+      <article class="story-service"><figure><img src="../../../public/images/hero-service-ads.webp" alt="Web広告のデータ分析"></figure><div class="story-service-copy"><b>03 / ADVERTISING</b><h3>Web広告運用代行</h3><p>Google・Yahoo!・SNS広告を運用し、数字から仮説を立てて継続的に改善します。</p><a>サービスを見る →</a></div></article>
+      <article class="story-service"><figure><img src="../../../public/images/hero-service-crm.webp" alt="顧客コミュニケーションの設計"></figure><div class="story-service-copy"><b>04 / CRM</b><h3>CRM導入支援</h3><p>顧客情報の一元管理からメール・LINE配信まで、運用できる状態へ整えます。</p><a>サービスを見る →</a></div></article>
+      <article class="story-service"><figure><img src="../../../public/images/hero-training.webp" alt="AI研修を行うチーム"></figure><div class="story-service-copy"><b>05 / AI TRAINING</b><h3>EMPLAY AI ACADEMY</h3><p>自社の業務を題材に、生成AIを使って改善を続けられる人材を育てます。</p><a>研修サービスを見る ↗</a></div></article>
+    </section>
+
+    <section class="section section-dark"><div class="wrap"><p class="kicker">Why EMPLAY</p><h2 class="heading">つくって終わらせない、<br>3つの支援原則。</h2><div class="facts" style="margin-top:46px;border-color:rgba(255,255,255,.22)"><article class="fact" style="border-color:rgba(255,255,255,.22)"><b style="color:#8de7ef">01</b><h3>全体を見て考える</h3><p style="color:rgba(255,255,255,.66)">施策を事業の流れとして設計します。</p></article><article class="fact" style="border-color:rgba(255,255,255,.22)"><b style="color:#8de7ef">02</b><h3>小さく始めて改善する</h3><p style="color:rgba(255,255,255,.66)">優先度の高い施策から成果を確かめます。</p></article><article class="fact"><b style="color:#8de7ef">03</b><h3>社内に力を残す</h3><p style="color:rgba(255,255,255,.66)">運用方法と判断基準を共有します。</p></article></div></div></section>
+
+    <section class="human-band"><figure><img src="../assets/process-axonometric.webp" alt="課題整理から運用改善までの流れ"></figure><div class="human-band-copy"><p class="kicker">How We Work</p><h2>相談から改善まで、<br>同じチームで進める。</h2><p>課題整理、設計・提案、制作・導入、運用・改善。担当領域が変わっても、目的と優先順位を共有しながら進行します。</p></div></section>
+    <section class="contact"><div class="wrap"><div><h2>話すことから、<br>次の一手を見つけます。</h2><p>初回相談は無料。まだ要件がまとまっていなくても大丈夫です。</p></div><a class="button button-primary">無料相談を申し込む →</a></div></section>
+  </main>
+  <footer class="footer"><div class="wrap"><span class="brand"><span class="brand-mark">▶▶</span>EMPLAY</span><small>Web / Marketing / CRM / AI Training</small></div></footer>
+</body>
+</html>
