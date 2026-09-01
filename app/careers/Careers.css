@@ -1,180 +1,227 @@
-/* Careers Page Specific Styles */
+.careers-page .page-header-hero {
+  min-height: 560px;
+  height: auto;
+  align-items: center;
+  margin-top: -72px;
+  padding: 152px max(24px, calc((100vw - var(--container-width)) / 2 + 24px)) 80px;
+  border-bottom: 1px solid var(--color-border);
+}
 
-/* メッセージセクション */
-.careers-message-section {
-  padding: 80px 0;
+.careers-page .page-header-bg {
+  background-color: #f7f9fb;
+  background-image: url('/images/renewal/careers.webp');
+  background-position: right center;
+  background-repeat: no-repeat;
+  background-size: auto 100%;
+}
+
+.careers-page .page-header-bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  width: 58%;
+  background: rgba(255, 255, 255, 0.94);
+}
+
+.careers-page .page-header-content {
+  width: min(520px, 48vw);
+  padding: 0;
+  color: var(--color-text);
+}
+
+.careers-page .page-title-hero {
+  margin: 0 0 12px;
+  color: var(--color-primary-dark);
+  font-size: clamp(3rem, 6vw, 5.75rem);
+  font-weight: 800;
+  line-height: 0.95;
+  letter-spacing: 0;
+}
+
+.careers-page .page-title-ja-hero {
+  color: var(--color-primary);
+  font-size: 0.875rem;
+  font-weight: 700;
+}
+
+.careers-message-section,
+.careers-positions-section,
+.careers-form-section {
+  padding: 104px 0;
+}
+
+.careers-message-section,
+.careers-form-section {
   background: #fff;
 }
 
+.careers-positions-section {
+  background: var(--color-bg-gray);
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.careers-page .section-title-center {
+  margin-bottom: 6px;
+  color: var(--color-primary-dark);
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  line-height: 1.1;
+  letter-spacing: 0;
+}
+
+.careers-page .section-subtitle-center {
+  margin-bottom: 48px;
+  color: var(--color-primary);
+  font-size: 0.8125rem;
+  font-weight: 700;
+}
+
 .careers-message-content {
-  max-width: 700px;
+  max-width: 760px;
   margin: 0 auto;
-  text-align: center;
 }
 
 .careers-message-content p {
+  margin-bottom: 20px;
+  color: var(--color-text-light);
   font-size: 1rem;
-  line-height: 2;
-  color: var(--color-text);
-  margin-bottom: var(--spacing-md);
-}
-
-/* 募集職種セクション */
-.careers-positions-section {
-  padding: 80px 0;
-  background: var(--color-bg-gray);
+  line-height: 2.1;
+  text-align: left;
 }
 
 .positions-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 24px;
-  max-width: 1000px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  max-width: 1040px;
   margin: 0 auto;
+  border-top: 1px solid var(--color-primary-dark);
+  border-left: 1px solid var(--color-border);
 }
 
 .position-card {
+  min-height: 340px;
+  padding: 36px;
   background: #fff;
-  padding: 32px;
-  border-radius: var(--radius-md);
-  border: 1px solid var(--color-border);
-  box-shadow: var(--shadow-sm);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.position-card:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-md);
+  border-right: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
 }
 
 .position-title {
-  font-size: 1.25rem;
-  font-weight: 700;
-  color: var(--color-text);
   margin-bottom: 8px;
+  color: var(--color-primary-dark);
+  font-size: 1.375rem;
+  font-weight: 700;
 }
 
 .position-type {
-  font-size: 0.8rem;
-  color: var(--color-primary);
-  font-weight: 600;
-  margin-bottom: 16px;
-  padding: 4px 12px;
-  background: rgba(37, 99, 235, 0.1);
-  border-radius: 20px;
   display: inline-block;
+  margin-bottom: 22px;
+  color: var(--color-primary);
+  font-size: 0.75rem;
+  font-weight: 700;
 }
 
 .position-description {
-  font-size: 0.9rem;
-  line-height: 1.8;
+  margin-bottom: 20px;
   color: var(--color-text-light);
-  margin-bottom: 16px;
-}
-
-.position-requirements {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.85;
 }
 
 .position-requirements li {
-  font-size: 0.85rem;
-  color: var(--color-text);
-  padding-left: 20px;
   position: relative;
   margin-bottom: 8px;
-  line-height: 1.6;
+  padding-left: 18px;
+  color: var(--color-text);
+  font-size: 0.85rem;
+  line-height: 1.7;
 }
 
 .position-requirements li::before {
   content: '';
   position: absolute;
+  top: 0.72em;
   left: 0;
-  top: 8px;
   width: 6px;
-  height: 6px;
+  height: 2px;
   background: var(--color-primary);
-  border-radius: 50%;
-}
-
-/* 応募フォームセクション */
-.careers-form-section {
-  padding: 80px 0;
-  background: #fff;
 }
 
 .careers-form {
-  max-width: 600px;
+  max-width: 720px;
   margin: 0 auto;
+  padding: 48px;
+  background: var(--color-bg-gray);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
 }
 
-.form-group {
+.careers-page .form-group {
   margin-bottom: 24px;
 }
 
-.form-label {
+.careers-page .form-label {
   display: block;
-  font-size: 0.9rem;
-  font-weight: 600;
-  color: var(--color-text);
   margin-bottom: 8px;
+  color: var(--color-text);
+  font-size: 0.875rem;
+  font-weight: 700;
 }
 
-.required {
-  color: #e11d48;
+.careers-page .required {
   margin-left: 4px;
+  color: var(--color-cta);
 }
 
-.form-input,
-.form-select,
-.form-textarea {
+.careers-page .form-input,
+.careers-page .form-select,
+.careers-page .form-textarea {
   width: 100%;
-  padding: 14px 16px;
-  font-size: 1rem;
-  border: 1px solid #e5e7eb;
-  border-radius: 8px;
+  min-height: 52px;
+  padding: 13px 16px;
+  color: var(--color-text);
   background: #fff;
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
-  font-family: inherit;
+  border: 1px solid #cbd3dd;
+  border-radius: 5px;
+  font-size: 1rem;
+  transition: border-color var(--transition), box-shadow var(--transition);
 }
 
-.form-input:focus,
-.form-select:focus,
-.form-textarea:focus {
+.careers-page .form-input:focus,
+.careers-page .form-select:focus,
+.careers-page .form-textarea:focus {
   outline: none;
   border-color: var(--color-primary);
-  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+  box-shadow: 0 0 0 3px rgba(19, 88, 216, 0.12);
 }
 
-.form-input::placeholder,
-.form-textarea::placeholder {
-  color: #9ca3af;
+.careers-page .form-input::placeholder,
+.careers-page .form-textarea::placeholder {
+  color: #8a94a3;
 }
 
-.form-select {
+.careers-page .form-select {
   appearance: none;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%236b7280' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+  padding-right: 44px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%235A6677' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: right 16px center;
-  padding-right: 40px;
-  cursor: pointer;
 }
 
-.form-textarea {
+.careers-page .form-textarea {
+  min-height: 170px;
   resize: vertical;
-  min-height: 150px;
 }
 
 .form-submit {
-  text-align: center;
   margin-top: 32px;
+  text-align: center;
 }
 
 .form-submit .form-consent {
-  font-size: 0.8125rem;
+  margin-bottom: 16px;
   color: var(--color-text-light);
-  margin-bottom: var(--spacing-sm);
+  font-size: 0.8125rem;
 }
 
 .form-submit .form-consent a {
@@ -183,107 +230,139 @@
   text-underline-offset: 3px;
 }
 
-.btn-large {
-  padding: 16px 48px;
-  font-size: 1rem;
-}
-
-.form-error {
-  background: #fef2f2;
-  color: #dc2626;
-  padding: 16px;
-  border-radius: 8px;
-  font-size: 0.9rem;
+.careers-page .form-error {
   margin-bottom: 24px;
+  padding: 14px 16px;
+  color: #b4233b;
+  background: #fff3f5;
+  border: 1px solid #f0b9c3;
+  border-radius: 5px;
+  font-size: 0.875rem;
   text-align: center;
 }
 
 .form-success {
-  max-width: 500px;
+  max-width: 620px;
   margin: 0 auto;
+  padding: 56px 24px;
   text-align: center;
-  padding: 60px 20px;
+  background: var(--color-bg-gray);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
 }
 
 .form-success-icon {
-  width: 80px;
-  height: 80px;
-  background: linear-gradient(135deg, var(--color-primary), #3b82f6);
-  color: #fff;
-  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 2rem;
+  width: 64px;
+  height: 64px;
   margin: 0 auto 24px;
+  color: #fff;
+  background: var(--color-accent);
+  border-radius: 50%;
+  font-size: 1.5rem;
 }
 
 .form-success h3 {
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: var(--color-text);
   margin-bottom: 12px;
+  color: var(--color-primary-dark);
+  font-size: 1.5rem;
 }
 
 .form-success p {
-  font-size: 1rem;
+  margin-bottom: 28px;
   color: var(--color-text-light);
-  margin-bottom: 32px;
 }
 
-/* レスポンシブ */
 @media (max-width: 768px) {
+  .careers-page .page-header-hero {
+    min-height: 440px;
+    padding: 132px 24px 56px;
+  }
+
+  .careers-page .page-header-bg {
+    background-position: 68% center;
+  }
+
+  .careers-page .page-header-bg::after {
+    width: 68%;
+    background: rgba(255, 255, 255, 0.9);
+  }
+
+  .careers-page .page-header-content {
+    width: 58vw;
+  }
+
+  .careers-message-section,
+  .careers-positions-section,
+  .careers-form-section {
+    padding: 72px 0;
+  }
+
   .positions-grid {
     grid-template-columns: 1fr;
   }
 
   .position-card {
-    padding: 24px;
+    min-height: 0;
   }
 }
 
 @media (max-width: 540px) {
+  .careers-page .page-header-hero {
+    min-height: 430px;
+    padding: 116px 16px 48px;
+    align-items: flex-end;
+  }
+
+  .careers-page .page-header-bg {
+    background-position: 62% center;
+    background-size: auto 82%;
+  }
+
+  .careers-page .page-header-bg::after {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.7);
+  }
+
+  .careers-page .page-header-content {
+    width: 100%;
+  }
+
+  .careers-page .page-title-hero {
+    font-size: 3.25rem;
+  }
+
   .careers-message-section,
   .careers-positions-section,
   .careers-form-section {
-    padding: 60px 0;
+    padding: 56px 0;
+  }
+
+  .careers-page .section-subtitle-center {
+    margin-bottom: 36px;
   }
 
   .careers-message-content p {
     font-size: 0.9375rem;
-    text-align: left;
   }
 
-  .position-title {
-    font-size: 1.125rem;
+  .position-card {
+    padding: 28px 24px;
   }
 
-  .form-input,
-  .form-select,
-  .form-textarea {
-    padding: 12px 14px;
-    font-size: 16px; /* iOS zoom prevention */
+  .careers-form {
+    padding: 28px 20px;
   }
 
-  .btn-large {
+  .careers-page .form-input,
+  .careers-page .form-select,
+  .careers-page .form-textarea {
+    font-size: 16px;
+  }
+
+  .careers-page .btn-large {
     width: 100%;
-    padding: 14px 24px;
-  }
-}
-
-
-/* 採用ヘッダー背景画像 */
-.careers-page .page-header-bg {
-  background:
-    linear-gradient(135deg, rgba(15, 23, 42, 0.88) 0%, rgba(30, 58, 138, 0.82) 100%),
-    url('/images/hero-careers.webp') center / cover no-repeat;
-}
-
-/* モバイルLCP: 軽量なヒーロー画像に出し分け */
-@media (max-width: 768px) {
-  .careers-page .page-header-bg {
-    background:
-      linear-gradient(135deg, rgba(15, 23, 42, 0.88) 0%, rgba(30, 58, 138, 0.82) 100%),
-      url('/images/hero-careers-sm.webp') center / cover no-repeat;
   }
 }

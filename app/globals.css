@@ -7,51 +7,109 @@
   padding: 0;
 }
 
+/* =========================================================
+   デザイントークン — このサイトで使う値の唯一の正
+   設計方針: docs/design-renewal/site-wide-design-system-2026-09-01.md
+   運用ルール: ここに無い値をCSSへ直接書かない。必要ならまずトークンを足す。
+   ========================================================= */
 :root {
-  /* カラーパレット */
-  --color-primary: #1E40AF;
-  --color-primary-dark: #1E3A8A;
-  --color-primary-light: #3B82F6;
-  --color-primary-subtle: #EFF6FF;
-  --color-accent: #0D9488;
-  --color-accent-light: #CCFBF1;
-  --color-cta: #DB294F;
-  --color-cta-hover: #BE123C;
-  --color-text: #111827;
-  --color-text-light: #4B5563;
-  --color-text-muted: #6B7280;
-  --color-bg: #ffffff;
-  --color-bg-gray: #F9FAFB;
-  --color-bg-warm: #FAFAF9;
-  --color-bg-dark: #0F172A;
-  --color-border: #E5E7EB;
+  /* --- ブランドカラー --- */
+  --color-primary: #1358D8;         /* 情報アクセント・リンク */
+  --color-primary-dark: #08233F;    /* 濃色セクション（ネイビー） */
+  --color-primary-light: #377BE8;   /* フォーカスリング */
+  --color-primary-subtle: #F2F6FB;  /* primaryの薄い面 */
+  --color-cyan: #37BFD0;            /* 補助アクセント（白背景で使う） */
+  --color-cyan-on-dark: #79DEEB;    /* 補助アクセント（濃色背景で可読性を確保した明度） */
+  --color-cta: #DF2F4F;             /* 主要CTAのみに使う */
+  --color-academy: #0B5053;         /* EMPLAY AI ACADEMY帯の識別色 */
+  --color-success: #0A6F68;         /* 送信完了など成功状態 */
+  --color-accent: var(--color-success);  /* 非推奨エイリアス。新規利用は--color-successへ */
+  --color-cta-hover: #C52243;
 
-  /* 角丸 */
-  --radius-sm: 4px;
-  --radius-md: 8px;
-  --radius-lg: 12px;
+  /* --- テキスト --- */
+  --color-text: #0C1729;
+  --color-text-light: #5A6677;
+  --color-text-muted: #738093;
 
-  /* フォント */
+  /* --- 面（サーフェス） --- */
+  --color-bg: #FFFFFF;
+  --color-bg-gray: #F3F6F8;         /* 薄背景セクション */
+  --color-bg-subtle: #F7F9FB;       /* 画像の下地などのごく薄い面 */
+  --color-bg-band: #EEF2F5;         /* 問い合わせバンド */
+  --color-bg-dark: #061628;         /* 最も濃い面 */
+  --color-border: #D8DEE6;
+
+  /* --- 濃色面の上に乗せる色 --- */
+  --color-on-dark: #FFFFFF;
+  --color-on-dark-muted: rgba(255, 255, 255, 0.7);
+  --color-on-dark-faint: rgba(255, 255, 255, 0.64);
+  --color-on-dark-border: rgba(255, 255, 255, 0.2);
+
+  /* --- オーバーレイ・半透明 --- */
+  --overlay-hero: rgba(255, 255, 255, 0.93);
+  --overlay-header: rgba(255, 255, 255, 0.94);
+  --overlay-header-scrolled: rgba(255, 255, 255, 0.98);
+  --overlay-caption: rgba(6, 22, 40, 0.96);
+  --color-border-header: rgba(12, 23, 41, 0.14);
+
+  /* --- タイプスケール ---
+     px固定。ルートfont-sizeに依存させないことで、モバイルで文字が
+     過度に小さくなる問題（最小9px台）を構造的に防ぐ。
+     見出しはclamp()で画面幅に追従するため、@mediaでの上書きは不要。 */
+  --text-2xs: 11px;                      /* 英語ラベル・eyebrow */
+  --text-xs: 12px;                       /* 注記・メタ情報 */
+  --text-sm: 13px;                       /* 補足本文 */
+  --text-base: 14px;                     /* 本文・リード文 */
+  --text-md: 15px;                       /* やや大きい本文 */
+  --text-lg: 17px;                       /* 小見出し */
+  --text-xl: 21px;                       /* 見出し */
+  --text-2xl: clamp(23px, 2.4vw, 29px);  /* 中見出し */
+  --text-3xl: clamp(27px, 3.1vw, 37px);  /* セクション見出し */
+  --text-4xl: clamp(33px, 4.2vw, 51px);  /* ページ見出し・ヒーロー */
+
+  /* --- 行間・字間 --- */
+  --leading-tight: 1.4;
+  --leading-heading: 1.45;
+  --leading-body: 1.85;
+  --leading-relaxed: 2;
+  --tracking-label: 0.16em;              /* 英語ラベル */
+  --tracking-wide: 0.08em;
+
+  /* --- フォント --- */
   --font-en: 'Inter', sans-serif;
   --font-ja: 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', sans-serif;
 
-  /* スペーシング */
+  /* --- 余白 --- */
   --spacing-xs: 8px;
   --spacing-sm: 16px;
   --spacing-md: 24px;
   --spacing-lg: 48px;
   --spacing-xl: 80px;
+  --section-py: 92px;                    /* セクションの基本上下余白 */
 
-  /* コンテナ幅 */
-  --container-width: 1140px;
+  /* --- レイアウト --- */
+  --container-width: 1180px;             /* 本文幅 */
+  --container-wide: 1320px;              /* ビジュアルを含む領域 */
+  --container-header: 1280px;
+  --header-height: 72px;
 
-  /* トランジション */
-  --transition: 0.3s ease;
+  /* --- 角丸（大きな角丸は使わない方針） --- */
+  --radius-xs: 4px;                      /* 入力欄 */
+  --radius-sm: 5px;                      /* ボタン */
+  --radius-md: 8px;                      /* カード */
+  --radius-full: 999px;
 
-  /* シャドウ */
+  /* --- 影 --- */
   --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08);
   --shadow-md: 0 4px 20px rgba(0, 0, 0, 0.08);
-  --shadow-lg: 0 8px 30px rgba(0, 0, 0, 0.12);
+  --shadow-header: 0 2px 14px rgba(6, 22, 40, 0.05);
+
+  /* --- モーション --- */
+  --transition: 0.3s ease;
+  --transition-fast: 0.2s ease;
+
+  /* --- アクセシビリティ --- */
+  --tap-min: 44px;                       /* タップ領域の最小サイズ */
 }
 
 html {
@@ -63,7 +121,7 @@ body {
   font-family: var(--font-ja);
   color: var(--color-text);
   background-color: var(--color-bg);
-  line-height: 1.8;
+  line-height: 1.85;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -179,7 +237,7 @@ select {
   padding: 12px 32px;
   font-size: 0.875rem;
   font-weight: 600;
-  border-radius: 8px;
+  border-radius: 5px;
   transition: all var(--transition);
   text-decoration: none;
 }
@@ -195,7 +253,7 @@ select {
   background-color: var(--color-cta);
   color: #fff;
   border: none;
-  box-shadow: 0 6px 18px rgba(190, 18, 60, 0.28);
+  box-shadow: none;
 }
 
 .btn-cta:hover {
@@ -215,8 +273,8 @@ select {
 }
 
 .btn-outline {
-  border: 2px solid var(--color-primary);
-  color: var(--color-primary);
+  border: 1px solid rgba(8, 35, 63, 0.38);
+  color: var(--color-primary-dark);
   background: transparent;
 }
 
@@ -233,7 +291,7 @@ select {
   padding: 12px 28px;
   font-size: 0.8125rem;
   text-decoration: none;
-  border-radius: 8px;
+  border-radius: 5px;
   transition: all var(--transition);
 }
 
@@ -247,11 +305,11 @@ select {
   display: inline-block;
   background: transparent;
   color: #fff;
-  border: 2px solid rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.8);
   padding: 12px 32px;
   font-size: 0.8125rem;
   text-decoration: none;
-  border-radius: 8px;
+  border-radius: 5px;
   transition: all var(--transition);
 }
 
@@ -281,7 +339,7 @@ select {
 .page-header-bg {
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, #0F172A 0%, #1E3A8A 100%);
+  background: #fff;
 }
 
 .page-header-content {
@@ -342,7 +400,10 @@ select {
 
 /* 共通パンくずリスト */
 .breadcrumb {
-  padding: var(--spacing-md) 0;
+  min-height: 52px;
+  padding: 0;
+  display: flex;
+  align-items: center;
   background: #fff;
   border-bottom: 1px solid var(--color-border);
 }
@@ -351,7 +412,7 @@ select {
   display: flex;
   align-items: center;
   gap: var(--spacing-sm);
-  font-size: 0.75rem;
+  font-size: var(--text-2xs);
   flex-wrap: wrap;
 }
 
@@ -374,7 +435,7 @@ select {
 }
 
 .breadcrumb-separator {
-  color: var(--color-text-muted);
+  color: var(--color-border);
 }
 
 .breadcrumb-current {
@@ -386,8 +447,13 @@ select {
 }
 
 @media (max-width: 768px) {
+  :root {
+    --section-py: 66px;
+    --header-height: 60px;
+  }
+
   .breadcrumb-list {
-    font-size: 0.7rem;
+    font-size: var(--text-xs);
     gap: 10px;
   }
 
@@ -490,9 +556,10 @@ select {
 }
 
 /* レスポンシブ */
-@media (max-width: 840px) {
+@media (max-width: 1024px) {
   :root {
     --spacing-xl: 60px;
+    --section-py: 78px;
   }
 
   .section-title {
@@ -512,10 +579,6 @@ select {
   :root {
     --spacing-xl: 48px;
     --spacing-lg: 32px;
-  }
-
-  html {
-    font-size: 15px;
   }
 
   .section-title {

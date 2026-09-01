@@ -61,7 +61,8 @@ export default function ServiceCreativePage() {
           <span className="lp-hero-label">CREATIVE PRODUCTION</span>
           <h1 className="lp-hero-title">
             「作って終わり」ではない。<br />
-            成果につながるクリエイティブ制作
+            成果につながる<br />
+            クリエイティブ制作
           </h1>
           <p className="lp-hero-text">
             ホームページ、ランディングページ、バナー、動画。<br />

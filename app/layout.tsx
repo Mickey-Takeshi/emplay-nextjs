@@ -148,7 +148,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         </noscript>
         <ScrollToTop />
         <Header />
-        <div id="main-content" tabIndex={-1} style={{ paddingTop: '72px' }}>{children}</div>
+        <div id="main-content" tabIndex={-1} style={{ paddingTop: 'var(--header-height)' }}>{children}</div>
         <Footer />
       </body>
     </html>

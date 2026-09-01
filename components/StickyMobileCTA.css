@@ -41,7 +41,7 @@
   }
 
   .sticky-mobile-cta-sub {
-    font-size: 0.6875rem;
+    font-size: var(--text-xs);
     color: var(--color-text-light, #6b7280);
   }
 

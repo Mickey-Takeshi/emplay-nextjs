@@ -329,7 +329,7 @@ export default function ServiceHpClient() {
                   <div className="pricing-amounts">
                     <div className="pricing-amount-row main">
                       <span className="pricing-amount-label">制作費</span>
-                      <span className="pricing-amount-value">&yen;450,000<small>〜</small></span>
+                      <span className="pricing-amount-value">&yen;300,000<small>〜</small></span>
                     </div>
                   </div>
                   <ul className="pricing-features-new">
@@ -387,7 +387,7 @@ export default function ServiceHpClient() {
                 </div>
               </div>
             </div>
-            <p className="pricing-group-note">制作費の目安は <strong>45〜150万円</strong>（税別）。ご要望をお聞きし個別にお見積りします。</p>
+            <p className="pricing-group-note">制作費の目安は <strong>30〜150万円</strong>（税別）。ご要望をお聞きし個別にお見積りします。</p>
           </div>
 
           {/* ② SEO・AIO改善プラン */}
@@ -506,7 +506,7 @@ export default function ServiceHpClient() {
                     <td>サイト制作からの一貫対応</td>
                     <td>×</td>
                     <td>○ 制作のみ</td>
-                    <td className="scope-emplay">○ 制作45万円〜</td>
+                    <td className="scope-emplay">○ 制作30万円〜</td>
                   </tr>
                   <tr>
                     <td>費用の目安</td>
@@ -519,7 +519,7 @@ export default function ServiceHpClient() {
             </div>
             <p className="scope-note">
               分析（月10万円〜）・記事作成（1本5〜10万円）・サイト改修を個別に依頼すると、<strong>合計で月35万円を超える</strong>ことも珍しくありません。
-              EMPLAYはこれらを一括で<strong>月額20万円〜（要見積）</strong>、サイト制作からなら<strong>初期費用45万円〜</strong>。
+              EMPLAYはこれらを一括で<strong>月額20万円〜（要見積）</strong>、サイト制作からなら<strong>初期費用30万円〜</strong>。
               相場より抑えながら、提案で終わらず実装まで完結します。
             </p>
             <div className="scope-cta">
