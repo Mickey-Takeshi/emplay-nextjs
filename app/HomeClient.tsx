@@ -4,9 +4,10 @@ import Link from 'next/link'
 import { NewsArticleSummary } from '@/lib/supabase'
 import FaqJsonLd from '@/components/FaqJsonLd'
 
-// 画像のモバイル派生（幅960px）。unoptimized運用のためsrcsetは自前で組み立てる。
+// unoptimized運用のため、生成済みのモバイル派生をsrcsetで配信する。
 const sm = (src: string) => src.replace(/\.webp$/, '-sm.webp')
-const SRCSET = (src: string) => `${sm(src)} 960w, ${src} 1536w`
+const SRCSET = (src: string, desktopWidth = 1536, mobileWidth = 960) =>
+  `${sm(src)} ${mobileWidth}w, ${src} ${desktopWidth}w`
 
 interface HomeClientProps {
   news: NewsArticleSummary[]
@@ -20,11 +21,11 @@ const homeFaqs = [
 ]
 
 const services = [
-  { no: '01', label: 'HP PRODUCTION', title: 'HP制作サービス', text: 'SEO・AIOを見据え、問い合わせにつながる企業サイトを初期費用45万円から制作します。', href: '/service/hp', image: '/images/renewal/service-hp.webp', alt: 'ホームページを構成するレイヤーの図解' },
-  { no: '02', label: 'CREATIVE', title: 'クリエイティブ制作', text: 'Web、LP、バナー、動画で事業の価値を伝えます。', href: '/service/creative', image: '/images/renewal/service-creative.webp', alt: '制作机上のクリエイティブ工程の図解' },
-  { no: '03', label: 'ADVERTISING', title: 'Web広告運用代行', text: 'データに基づき集客効率を改善します。', href: '/service/ads', image: '/images/renewal/service-ads.webp', alt: '広告流入を成果へつなげるファネルの図解' },
-  { no: '04', label: 'CRM', title: 'CRM導入支援', text: '顧客情報と継続コミュニケーションを整えます。', href: '/service/crm', image: '/images/renewal/service-crm.webp', alt: '顧客接点をつなぐCRM導線の図解' },
-  { no: '05', label: 'AI TRAINING', title: 'EMPLAY AI ACADEMY', text: '生成AIを実務で使い、自走できる人材を育てます。', href: 'https://academy.emplay.jp/', image: '/images/renewal/service-academy.webp', alt: '生成AIを学ぶ円形ワークショップの図解', external: true },
+  { no: '01', label: 'HP PRODUCTION', title: 'HP制作サービス', text: 'SEO・AIOを見据え、問い合わせにつながる企業サイトを初期費用45万円から制作します。', href: '/service/hp', image: '/images/renewal/service-hp.webp', cardImage: '/images/renewal/service-hp.webp', cardImageWidth: 1536, cardImageHeight: 1024, alt: 'ホームページを構成するレイヤーの図解' },
+  { no: '02', label: 'CREATIVE', title: 'クリエイティブ制作', text: 'Web、LP、バナー、動画で事業の価値を伝えます。', href: '/service/creative', image: '/images/renewal/service-creative.webp', cardImage: '/images/renewal/service-creative.webp', cardImageWidth: 1536, cardImageHeight: 1024, alt: '制作机上のクリエイティブ工程の図解' },
+  { no: '03', label: 'ADVERTISING', title: 'Web広告運用代行', text: 'データに基づき集客効率を改善します。', href: '/service/ads', image: '/images/renewal/service-ads.webp', cardImage: '/images/renewal/service-ads-square.webp', cardImageWidth: 1100, cardImageHeight: 1050, alt: '広告流入を成果へつなげるファネルの図解' },
+  { no: '04', label: 'CRM', title: 'CRM導入支援', text: '顧客情報と継続コミュニケーションを整えます。', href: '/service/crm', image: '/images/renewal/service-crm.webp', cardImage: '/images/renewal/service-crm-square.webp', cardImageWidth: 1100, cardImageHeight: 1050, alt: '顧客接点をつなぐCRM導線の図解' },
+  { no: '05', label: 'AI TRAINING', title: 'EMPLAY AI ACADEMY', text: '生成AIを実務で使い、自走できる人材を育てます。', href: 'https://academy.emplay.jp/', image: '/images/renewal/service-academy.webp', cardImage: '/images/renewal/service-academy-square.webp', cardImageWidth: 1100, cardImageHeight: 1050, alt: '生成AIを学ぶ円形ワークショップの図解', external: true },
 ]
 
 export default function HomeClient({ news }: HomeClientProps) {
@@ -32,7 +33,7 @@ export default function HomeClient({ news }: HomeClientProps) {
     <>
       <FaqJsonLd faqs={homeFaqs} />
       <section className="renewal-hero" aria-label="メインビジュアル">
-        <div className="renewal-hero-media"><img src="/images/renewal/home-hero.webp" srcSet={SRCSET("/images/renewal/home-hero.webp")} sizes="100vw" alt="Web制作・集客・CRM・AI活用をつなぐ事業基盤の図解" fetchPriority="high" decoding="async" style={{position:'absolute',inset:0,width:'100%',height:'100%'}} /></div>
+        <div className="renewal-hero-media"><img src="/images/renewal/home-hero-wide.webp" srcSet={SRCSET("/images/renewal/home-hero-wide.webp", 2400, 1200)} sizes="100vw" alt="Web制作・集客・CRM・AI活用をつなぐ事業基盤の図解" fetchPriority="high" decoding="async" style={{position:'absolute',inset:0,width:'100%',height:'100%'}} /></div>
         <div className="renewal-hero-wash" aria-hidden="true" />
         <div className="container renewal-hero-content">
           <p className="renewal-eyebrow">Web, Marketing & AI Partner</p>
@@ -46,10 +47,10 @@ export default function HomeClient({ news }: HomeClientProps) {
         {services.slice(0, 4).map((service) => <figure key={service.no}><img src={service.image} srcSet={SRCSET(service.image)} sizes="(max-width: 768px) 100vw, 50vw" alt={service.alt} width={1536} height={1024} loading="lazy" decoding="async" /></figure>)}
       </div>
 
-      <section className="renewal-section renewal-paper"><div className="container renewal-role"><div><p className="renewal-kicker">Our Role</p><h2>必要な施策を、<br />ひとつの実行計画へ。</h2><p>制作会社、広告代理店、システム会社を個別に探す前に、事業の課題と優先順位を整理します。</p><p className="renewal-note">窓口を分けず、Web・集客・顧客管理・人材育成を横断して支援。施策同士がつながることで、改善を続けやすくします。</p></div><figure><img src="/images/renewal/ecosystem.webp" srcSet={SRCSET("/images/renewal/ecosystem.webp")} sizes="(max-width: 768px) 100vw, 50vw" alt="5つの専門領域を円環状につないだ支援体制の図解" width={1536} height={1024} loading="lazy" decoding="async" /></figure></div></section>
+      <section className="renewal-section renewal-paper"><div className="container renewal-role"><div><p className="renewal-kicker">Our Role</p><h2>必要な施策を、<br />ひとつの実行計画へ。</h2><p>制作会社、広告代理店、システム会社を個別に探す前に、事業の課題と優先順位を整理します。</p><p className="renewal-note">窓口を分けず、Web・集客・顧客管理・人材育成を横断して支援。施策同士がつながることで、改善を続けやすくします。</p></div><figure><img src="/images/renewal/ecosystem-tall.webp" srcSet={SRCSET("/images/renewal/ecosystem-tall.webp", 1200)} sizes="(max-width: 768px) 100vw, 50vw" alt="5つの専門領域を円環状につないだ支援体制の図解" width={1200} height={1040} loading="lazy" decoding="async" /></figure></div></section>
 
       <section className="renewal-section"><div className="renewal-wide"><div className="container renewal-heading-row"><div><p className="renewal-kicker">Services</p><h2>5つの専門領域を、<br />必要な分だけ。</h2></div><p>各領域を単独でご相談いただくことも、複数を組み合わせて進めることもできます。</p></div><div className="renewal-service-grid">{services.map((service) => {
-        const content = <><img src={service.image} srcSet={SRCSET(service.image)} sizes="(max-width: 768px) 100vw, 50vw" alt={service.alt} width={1536} height={1024} loading="lazy" decoding="async" /><div className="renewal-service-copy"><b>{service.no} / {service.label}</b><h3>{service.title}</h3><p>{service.text}</p></div></>
+        const content = <><img src={service.cardImage} srcSet={SRCSET(service.cardImage, service.cardImageWidth)} sizes="(max-width: 768px) 100vw, 50vw" alt={service.alt} width={service.cardImageWidth} height={service.cardImageHeight} loading="lazy" decoding="async" /><div className="renewal-service-copy"><b>{service.no} / {service.label}</b><h3>{service.title}</h3><p>{service.text}</p></div></>
         return service.external ? <a key={service.no} className="renewal-service" href={service.href} target="_blank" rel="noopener noreferrer">{content}</a> : <Link key={service.no} className="renewal-service" href={service.href}>{content}</Link>
       })}</div></div></section>
 
