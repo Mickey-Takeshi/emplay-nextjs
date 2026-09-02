@@ -21,11 +21,11 @@ const homeFaqs = [
 ]
 
 const services = [
-  { no: '01', label: 'HP PRODUCTION', title: 'HP制作サービス', text: 'SEO・AIOを見据え、問い合わせにつながる企業サイトを初期費用45万円から制作します。', href: '/service/hp', image: '/images/renewal/service-hp.webp', cardImage: '/images/renewal/service-hp.webp', cardImageWidth: 1536, cardImageHeight: 1024, alt: 'ホームページを構成するレイヤーの図解' },
-  { no: '02', label: 'CREATIVE', title: 'クリエイティブ制作', text: 'Web、LP、バナー、動画で事業の価値を伝えます。', href: '/service/creative', image: '/images/renewal/service-creative.webp', cardImage: '/images/renewal/service-creative.webp', cardImageWidth: 1536, cardImageHeight: 1024, alt: '制作机上のクリエイティブ工程の図解' },
-  { no: '03', label: 'ADVERTISING', title: 'Web広告運用代行', text: 'データに基づき集客効率を改善します。', href: '/service/ads', image: '/images/renewal/service-ads.webp', cardImage: '/images/renewal/service-ads-square.webp', cardImageWidth: 1100, cardImageHeight: 1050, alt: '広告流入を成果へつなげるファネルの図解' },
-  { no: '04', label: 'CRM', title: 'CRM導入支援', text: '顧客情報と継続コミュニケーションを整えます。', href: '/service/crm', image: '/images/renewal/service-crm.webp', cardImage: '/images/renewal/service-crm-square.webp', cardImageWidth: 1100, cardImageHeight: 1050, alt: '顧客接点をつなぐCRM導線の図解' },
-  { no: '05', label: 'AI TRAINING', title: 'EMPLAY AI ACADEMY', text: '生成AIを実務で使い、自走できる人材を育てます。', href: 'https://academy.emplay.jp/', image: '/images/renewal/service-academy.webp', cardImage: '/images/renewal/service-academy-square.webp', cardImageWidth: 1100, cardImageHeight: 1050, alt: '生成AIを学ぶ円形ワークショップの図解', external: true },
+  { no: '01', label: 'HP PRODUCTION', title: 'HP制作サービス', text: 'SEO・AIOを見据え、問い合わせにつながる企業サイトを初期費用45万円から制作します。', href: '/service/hp', cardImage: '/images/renewal/service-hp.webp', cardImageWidth: 1536, cardImageHeight: 1024, alt: 'ホームページを構成するレイヤーの図解' },
+  { no: '02', label: 'CREATIVE', title: 'クリエイティブ制作', text: 'Web、LP、バナー、動画で事業の価値を伝えます。', href: '/service/creative', cardImage: '/images/renewal/service-creative.webp', cardImageWidth: 1536, cardImageHeight: 1024, alt: '制作机上のクリエイティブ工程の図解' },
+  { no: '03', label: 'ADVERTISING', title: 'Web広告運用代行', text: 'データに基づき集客効率を改善します。', href: '/service/ads', cardImage: '/images/renewal/service-ads-square.webp', cardImageWidth: 1100, cardImageHeight: 1050, alt: '広告流入を成果へつなげるファネルの図解' },
+  { no: '04', label: 'CRM', title: 'CRM導入支援', text: '顧客情報と継続コミュニケーションを整えます。', href: '/service/crm', cardImage: '/images/renewal/service-crm-square.webp', cardImageWidth: 1100, cardImageHeight: 1050, alt: '顧客接点をつなぐCRM導線の図解' },
+  { no: '05', label: 'AI TRAINING', title: 'EMPLAY AI ACADEMY', text: '生成AIを実務で使い、自走できる人材を育てます。', href: 'https://academy.emplay.jp/', cardImage: '/images/renewal/service-academy-square.webp', cardImageWidth: 1100, cardImageHeight: 1050, alt: '生成AIを学ぶ円形ワークショップの図解', external: true },
 ]
 
 export default function HomeClient({ news }: HomeClientProps) {
@@ -37,15 +37,11 @@ export default function HomeClient({ news }: HomeClientProps) {
         <div className="renewal-hero-wash" aria-hidden="true" />
         <div className="container renewal-hero-content">
           <p className="renewal-eyebrow">Web, Marketing & AI Partner</p>
-          <h1>Web制作・集客・AI活用を、<br />実行と改善まで。</h1>
+          <h1>Web制作・集客・<br className="renewal-mobile-break" />AI活用を、<br className="renewal-desktop-break" />実行と<br className="renewal-mobile-break" />改善まで。</h1>
           <p>ホームページ制作、広告運用、CRM導入、AI研修。課題の整理から制作・導入、継続運用まで一貫して支援します。</p>
           <div className="renewal-actions"><Link href="/contact" className="btn btn-cta">無料相談を申し込む</Link><Link href="/service" className="btn btn-outline">支援内容を見る →</Link></div>
         </div>
       </section>
-
-      <div className="renewal-visual-rail" aria-label="支援領域のイメージ">
-        {services.slice(0, 4).map((service) => <figure key={service.no}><img src={service.image} srcSet={SRCSET(service.image)} sizes="(max-width: 768px) 100vw, 50vw" alt={service.alt} width={1536} height={1024} loading="lazy" decoding="async" /></figure>)}
-      </div>
 
       <section className="renewal-section renewal-paper"><div className="container renewal-role"><div><p className="renewal-kicker">Our Role</p><h2>必要な施策を、<br />ひとつの実行計画へ。</h2><p>制作会社、広告代理店、システム会社を個別に探す前に、事業の課題と優先順位を整理します。</p><p className="renewal-note">窓口を分けず、Web・集客・顧客管理・人材育成を横断して支援。施策同士がつながることで、改善を続けやすくします。</p></div><figure><img src="/images/renewal/ecosystem-tall.webp" srcSet={SRCSET("/images/renewal/ecosystem-tall.webp", 1200)} sizes="(max-width: 768px) 100vw, 50vw" alt="5つの専門領域を円環状につないだ支援体制の図解" width={1200} height={1040} loading="lazy" decoding="async" /></figure></div></section>
 

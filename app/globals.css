@@ -57,21 +57,21 @@
      過度に小さくなる問題（最小9px台）を構造的に防ぐ。
      見出しはclamp()で画面幅に追従するため、@mediaでの上書きは不要。 */
   --text-2xs: 11px;                      /* 英語ラベル・eyebrow */
-  --text-xs: 12px;                       /* 注記・メタ情報 */
-  --text-sm: 13px;                       /* 補足本文 */
-  --text-base: 14px;                     /* 本文・リード文 */
-  --text-md: 15px;                       /* やや大きい本文 */
-  --text-lg: 17px;                       /* 小見出し */
-  --text-xl: 21px;                       /* 見出し */
+  --text-xs: 13px;                       /* 注記・メタ情報 */
+  --text-sm: 14px;                       /* 補足本文 */
+  --text-base: 15px;                     /* 本文・リード文 */
+  --text-md: 16px;                       /* やや大きい本文 */
+  --text-lg: 18px;                       /* 小見出し */
+  --text-xl: 22px;                       /* 見出し */
   --text-2xl: clamp(23px, 2.4vw, 29px);  /* 中見出し */
   --text-3xl: clamp(27px, 3.1vw, 37px);  /* セクション見出し */
   --text-4xl: clamp(33px, 4.2vw, 51px);  /* ページ見出し・ヒーロー */
 
   /* --- 行間・字間 --- */
-  --leading-tight: 1.4;
-  --leading-heading: 1.45;
-  --leading-body: 1.85;
-  --leading-relaxed: 2;
+  --leading-tight: 1.35;
+  --leading-heading: 1.4;
+  --leading-body: 1.78;
+  --leading-relaxed: 1.88;
   --tracking-label: 0.16em;              /* 英語ラベル */
   --tracking-wide: 0.08em;
 
@@ -85,11 +85,11 @@
   --spacing-md: 24px;
   --spacing-lg: 48px;
   --spacing-xl: 80px;
-  --section-py: 92px;                    /* セクションの基本上下余白 */
+  --section-py: 88px;                    /* セクションの基本上下余白 */
 
   /* --- レイアウト --- */
   --container-width: 1180px;             /* 本文幅 */
-  --container-wide: 1320px;              /* ビジュアルを含む領域 */
+  --container-wide: 1280px;              /* ビジュアルを含む領域 */
   --container-header: 1280px;
   --header-height: 72px;
 
@@ -121,7 +121,7 @@ body {
   font-family: var(--font-ja);
   color: var(--color-text);
   background-color: var(--color-bg);
-  line-height: 1.85;
+  line-height: var(--leading-body);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -448,7 +448,7 @@ select {
 
 @media (max-width: 768px) {
   :root {
-    --section-py: 66px;
+    --section-py: 64px;
     --header-height: 60px;
   }
 
@@ -555,10 +555,10 @@ select {
 }
 
 /* レスポンシブ */
-@media (max-width: 1024px) {
+@media (min-width: 769px) and (max-width: 1024px) {
   :root {
     --spacing-xl: 60px;
-    --section-py: 78px;
+    --section-py: 72px;
   }
 
   .section-title {

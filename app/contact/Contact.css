@@ -51,14 +51,14 @@
 }
 
 .contact-main {
-  padding: 104px 0;
+  padding: var(--section-py) 0;
   background: #fff;
 }
 
 .contact-grid {
   display: grid;
   grid-template-columns: minmax(0, 0.82fr) minmax(0, 1.18fr);
-  gap: 80px;
+  gap: 64px;
   align-items: start;
 }
 
@@ -73,7 +73,7 @@
   margin-bottom: 40px;
   color: var(--color-text-light);
   font-size: 0.9375rem;
-  line-height: 1.95;
+  line-height: var(--leading-body);
 }
 
 .contact-info-items {
@@ -378,7 +378,7 @@
   }
 
   .contact-main {
-    padding: 72px 0;
+    padding: var(--section-py) 0;
   }
 
   .contact-info-items {

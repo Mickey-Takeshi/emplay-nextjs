@@ -47,7 +47,7 @@
 .careers-message-section,
 .careers-positions-section,
 .careers-form-section {
-  padding: 104px 0;
+  padding: var(--section-py) 0;
 }
 
 .careers-message-section,
@@ -85,7 +85,7 @@
   margin-bottom: 20px;
   color: var(--color-text-light);
   font-size: 1rem;
-  line-height: 2.1;
+  line-height: var(--leading-relaxed);
   text-align: left;
 }
 
@@ -125,7 +125,7 @@
   margin-bottom: 20px;
   color: var(--color-text-light);
   font-size: 0.9rem;
-  line-height: 1.85;
+  line-height: var(--leading-body);
 }
 
 .position-requirements li {
@@ -297,7 +297,7 @@
   .careers-message-section,
   .careers-positions-section,
   .careers-form-section {
-    padding: 72px 0;
+    padding: var(--section-py) 0;
   }
 
   .positions-grid {

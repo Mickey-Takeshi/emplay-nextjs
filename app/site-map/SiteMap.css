@@ -31,7 +31,7 @@
 }
 
 .site-map-section {
-  padding: 88px 0;
+  padding: var(--section-py) 0;
 }
 
 .site-map-section h2 {

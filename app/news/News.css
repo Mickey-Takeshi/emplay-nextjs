@@ -50,7 +50,7 @@
 }
 
 .news-list-section {
-  padding: 96px 0 112px;
+  padding: var(--section-py) 0 96px;
   background: #fff;
 }
 
@@ -130,7 +130,7 @@
   }
 
   .news-list-section {
-    padding: 72px 0 88px;
+    padding: var(--section-py) 0 80px;
   }
 }
 
