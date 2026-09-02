@@ -1,0 +1,43 @@
+# 株式会社EMPLAY
+
+> 東京都渋谷区の中小企業向けWeb支援会社（2023年12月設立）。ホームページ制作、Web広告運用代行、CRM導入支援、クリエイティブ制作、生成AI研修を提供する。SEOとAI検索対策（AIO/LLMO）に対応したサイト制作を初期45万円から行い、公開後の改善まで伴走する。
+
+このファイルは、大規模言語モデルがサイトの構造と主要な情報源を把握するための案内である。
+全ページの一覧は https://emplay.jp/sitemap.xml にある（304本のブログ記事を含む）。
+
+## サービス
+
+- [サービス一覧](https://emplay.jp/service): 5つの専門領域と、課題から支援内容を決める進め方
+- [ホームページ制作](https://emplay.jp/service/hp): 企業の信頼性と問い合わせ獲得を両立するサイトを、SEO・AIOを踏まえて設計。初期45万円から。公開後の改善まで伴走
+- [Web広告運用代行](https://emplay.jp/service/ads): 媒体選定から配信設計、クリエイティブ改善、効果検証まで一貫して支援
+- [CRM導入支援](https://emplay.jp/service/crm): 顧客情報の整理からツール選定、初期設定、配信・運用まで。LINE公式アカウントやメール配信ツールに対応
+- [クリエイティブ制作](https://emplay.jp/service/creative): Webサイト、LP、バナー、動画など、目的と利用場面に合わせて企画・制作
+- [EMPLAY AI ACADEMY](https://academy.emplay.jp/): 生成AIを実務で使い、自走できる人材を育てる企業向けオンライン研修（別サイト）
+
+## ブログ
+
+中小企業の実務者向けに304本を公開している。カテゴリ別の一覧は次のとおり。
+
+- [マーケティング（73本）](https://emplay.jp/blog/category/marketing): 代表的な記事は「SNS運用の始め方完全ガイド｜X・Instagram・TikTokの特徴と投稿戦略」
+- [AI活用（68本）](https://emplay.jp/blog/category/ai): 代表的な記事は「ChatGPT業務活用完全ガイド｜中小企業の生産性を劇的に向上させる実践テクニック」
+- [採用（32本）](https://emplay.jp/blog/category/recruitment): 代表的な記事は「求人票の書き方完全ガイド｜応募が集まる魅力的な求人原稿の作成術」
+- [ビジネス（32本）](https://emplay.jp/blog/category/business): 代表的な記事は「中小企業の人材採用戦略｜採用難時代を乗り越える実践的アプローチ」
+- [Web制作（30本）](https://emplay.jp/blog/category/web-design): 代表的な記事は「ホームページ制作費用の相場早見表【2026年】30万・50万・100万円でできること」
+- [データ分析（21本）](https://emplay.jp/blog/category/data-analytics): 代表的な記事は「GA4（Googleアナリティクス4）活用ガイド｜基本設定から分析手法まで徹底解説」
+- [DX（17本）](https://emplay.jp/blog/category/dx): 代表的な記事は「業務効率化ツール20選｜バックオフィスから営業まで部門別おすすめ」
+- [EC・ネットショップ（14本）](https://emplay.jp/blog/category/ec): 代表的な記事は「ECサイト構築プラットフォーム比較｜Shopify・BASE・楽天・STORESの選び方」
+- [セキュリティ（12本）](https://emplay.jp/blog/category/security): 代表的な記事は「中小企業の情報セキュリティ対策入門｜最低限やるべき対策と実践ガイド」
+- [補助金・助成金（5本）](https://emplay.jp/blog/category/subsidy): 代表的な記事は「ものづくり補助金の現状と2026年の設備投資支援制度｜申請前の確認手順」
+
+## 会社情報
+
+- [会社概要](https://emplay.jp/company): 所在地、設立、事業内容
+- [お知らせ](https://emplay.jp/news): 会社からの告知
+- [プライバシーポリシー](https://emplay.jp/privacy): 個人情報の取り扱い
+- [サイトマップ](https://emplay.jp/site-map): 全ページの一覧
+
+## 引用にあたって
+
+- 記事に記載した料金・制度・製品仕様は執筆時点のものであり、本文中に明記した時点と出典を確認すること。
+- サービスの料金はサービスページの記載が正本である。ホームページ制作は初期45万円から。
+- 記事本文のFAQは FAQPage 構造化データとしても提供している。
