@@ -3,9 +3,27 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import Breadcrumb from '@/components/Breadcrumb'
+import ServiceRelatedPosts from '@/components/ServiceRelatedPosts'
 import FaqJsonLd from '@/components/FaqJsonLd'
 import StickyMobileCTA from '@/components/StickyMobileCTA'
 import './Service.css'
+
+// issue #5: サービスページからブログへの導線。記事を読んだうえで、このページの判断を助けるものを選んでいる。
+const RELATED_POSTS = [
+  { slug: 'smb-web-marketing-strategy-50man', anchor: '月50万円の予算配分と、着手する施策の優先順位', relation: '限られた予算をどの施策へ配分し、どこから始めるかの判断材料' },
+  { slug: 'btob-content-marketing-strategy', anchor: '問い合わせから商談化までを設計するBtoBの施策と指標', relation: 'リード獲得後に商談へつなぐ導線とKPIの置き方が分かる' },
+  { slug: 'branded-search-growth', anchor: 'AI検索時代に社名で指名検索されるための8つの打ち手', relation: '発信・PR・SNSを横断して認知を積む優先順位が分かる' },
+  { slug: 'generative-ai-training-guide', anchor: '生成AI研修の費用相場と、カリキュラムの比較軸', relation: '研修を発注する前に、費用と内容を比べる基準が持てる' },
+  { slug: 'sme-dx-promotion-guide', anchor: '中小企業のDXを、課題整理から定着まで進める5ステップ', relation: '社内体制の作り方と、つまずきやすい5つの失敗が分かる' },
+  { slug: 'business-efficiency-tools-guide', anchor: '部門別に選ぶ業務効率化ツール20選と定着のコツ', relation: 'どの業務から手を付けるか、ツールの当たりをつけられる' },
+]
+
+const RELATED_CATEGORIES = [
+  { path: '/blog/category/marketing', label: 'マーケティング（Web集客）の記事一覧' },
+  { path: '/blog/category/ai', label: 'AI活用の記事一覧' },
+  { path: '/blog/category/dx', label: 'DX・業務改善の記事一覧' },
+]
+
 
 // unoptimized運用のため、生成済みのモバイル派生をsrcsetで配信する。
 const sm = (src: string) => src.replace(/\.webp$/, '-sm.webp')
@@ -63,7 +81,9 @@ export default function ServiceClient() {
       const isOpen = openFaq === index
       return <article key={faq.q} className={isOpen?'open':''}><button id={questionId} type="button" onClick={()=>setOpenFaq(isOpen?null:index)} aria-expanded={isOpen} aria-controls={answerId}><span>{faq.q}</span><b aria-hidden="true">{isOpen?'−':'＋'}</b></button><div id={answerId} role="region" aria-labelledby={questionId} hidden={!isOpen}><p>{faq.a}</p></div></article>
     })}</div></div></section>
-    <section className="service-contact"><div className="container"><div><h2>何から始めるべきか、<br />一緒に整理します。</h2><p>方向性が決まっていない段階でもお問い合わせください。</p></div><Link href="/contact" className="btn btn-cta">無料相談を申し込む →</Link></div></section>
+    <ServiceRelatedPosts lead="HP制作・広告・CRM・クリエイティブ・AI研修のどれから始めるかを決めるための記事です。" posts={RELATED_POSTS} categories={RELATED_CATEGORIES} />
+
+      <section className="service-contact"><div className="container"><div><h2>何から始めるべきか、<br />一緒に整理します。</h2><p>方向性が決まっていない段階でもお問い合わせください。</p></div><Link href="/contact" className="btn btn-cta">無料相談を申し込む →</Link></div></section>
     <StickyMobileCTA />
   </main>
 }

@@ -1,10 +1,27 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import Breadcrumb from '@/components/Breadcrumb'
+import ServiceRelatedPosts from '@/components/ServiceRelatedPosts'
 import FaqJsonLd from '@/components/FaqJsonLd'
 import ServiceJsonLd from '@/components/ServiceJsonLd'
 import StickyMobileCTA from '@/components/StickyMobileCTA'
 import '../ServiceDetail.css'
+
+// issue #5: サービスページからブログへの導線。記事を読んだうえで、このページの判断を助けるものを選んでいる。
+const RELATED_POSTS = [
+  { slug: 'ad-management-outsourcing-cost', anchor: '広告運用代行の費用相場｜手数料20%に何が含まれるか', relation: '本ページの料金体系を、他社相場と比べて妥当か検証できる' },
+  { slug: 'listing-ads-inhouse-vs-agency', anchor: 'リスティング広告は自社運用か代行か、判断基準を比較', relation: 'そもそも外注すべきかを、予算と社内工数から判断できる' },
+  { slug: 'web-ads-budget-planning', anchor: '売上目標から逆算するWeb広告の予算の決め方と配分例', relation: '相談前に、いくら広告費を用意すべきか自社で試算できる' },
+  { slug: 'web-ads-types-comparison', anchor: '目的・予算別に見るWeb広告の種類と媒体の選び方', relation: 'どの媒体に出すかの提案を、根拠込みで理解できるようになる' },
+  { slug: 'roas-improvement-strategies', anchor: '費用対効果が合わないときのROAS診断と改善手順', relation: '今の運用の費用対効果が悪い原因を、依頼前に切り分けられる' },
+  { slug: 'google-ads-conversion-setup', anchor: 'Google広告のコンバージョン計測を正しく設定する手順', relation: '初期設定費に含まれる計測タグ設定の中身と重要性が分かる' },
+]
+
+const RELATED_CATEGORIES = [
+  { path: '/blog/category/marketing', label: 'マーケティングの記事一覧' },
+  { path: '/blog/category/data-analytics', label: 'データ分析の記事一覧' },
+]
+
 
 export const metadata: Metadata = {
   title: 'Web広告運用代行｜Google・Meta・LINE広告の運用代行',
@@ -371,6 +388,8 @@ export default function ServiceAdsPage() {
       </section>
 
       {/* CTA */}
+      <ServiceRelatedPosts lead="手数料の相場、自社運用との比較、広告費の決め方など、依頼を決める前の判断材料です。" posts={RELATED_POSTS} categories={RELATED_CATEGORIES} />
+
       <section className="lp-cta">
         <div className="container">
           <div className="lp-cta-content">

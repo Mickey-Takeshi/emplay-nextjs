@@ -1,10 +1,27 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import Breadcrumb from '@/components/Breadcrumb'
+import ServiceRelatedPosts from '@/components/ServiceRelatedPosts'
 import FaqJsonLd from '@/components/FaqJsonLd'
 import ServiceJsonLd from '@/components/ServiceJsonLd'
 import StickyMobileCTA from '@/components/StickyMobileCTA'
 import '../ServiceDetail.css'
+
+// issue #5: サービスページからブログへの導線。記事を読んだうえで、このページの判断を助けるものを選んでいる。
+const RELATED_POSTS = [
+  { slug: 'crm-implementation-cost-guide', anchor: 'CRM導入費用の内訳と、見落としがちな隠れコスト', relation: '料金目安の裏側にある初期・月額・移行教育費の相場がわかります' },
+  { slug: 'crm-comparison-guide', anchor: '主要CRM6サービスを料金・機能・向き不向きで比較', relation: 'FAQで触れるツール選定の判断軸を、6製品の実データで確かめられます' },
+  { slug: 'excel-customer-management-guide', anchor: 'エクセル顧客管理の限界サインとCRM移行のタイミング', relation: '今移行すべきか、まだエクセルで足りるかを自社で判断できます' },
+  { slug: 'sfa-crm-difference-guide', anchor: 'SFA・CRM・MAの守備範囲の違いと選び分けの基準', relation: '顧客管理だけで足りるか、営業支援まで要るかを見極められます' },
+  { slug: 'business-standardization-guide', anchor: '担当者交代で業務が止まる属人化を解消する5ステップ', relation: '顧客情報を個人の記憶から組織の資産へ移す進め方がわかります' },
+  { slug: 'line-official-account-guide', anchor: 'LINE公式アカウントの作成から配信運用までの手順', relation: '本ページが扱うLINE配信を、導入前に具体像として把握できます' },
+]
+
+const RELATED_CATEGORIES = [
+  { path: '/blog/category/business', label: 'ビジネスの記事一覧' },
+  { path: '/blog/category/dx', label: 'DXの記事一覧' },
+]
+
 
 export const metadata: Metadata = {
   title: 'CRM導入支援｜顧客管理の効率化・売上向上',
@@ -340,6 +357,8 @@ export default function ServiceCrmPage() {
       </section>
 
       {/* CTA */}
+      <ServiceRelatedPosts lead="費用の内訳、ツールの選び分け、移行のタイミングなど、導入を決める前の判断材料です。" posts={RELATED_POSTS} categories={RELATED_CATEGORIES} />
+
       <section className="lp-cta">
         <div className="container">
           <div className="lp-cta-content">

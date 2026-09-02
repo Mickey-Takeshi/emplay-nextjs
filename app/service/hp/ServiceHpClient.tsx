@@ -3,10 +3,28 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import Breadcrumb from '@/components/Breadcrumb'
+import ServiceRelatedPosts from '@/components/ServiceRelatedPosts'
 import FaqJsonLd from '@/components/FaqJsonLd'
 import StickyMobileCTA from '@/components/StickyMobileCTA'
 import { trackEvent } from '@/lib/analytics'
 import './ServiceHp.css'
+
+// issue #5: サービスページからブログへの導線。記事を読んだうえで、このページの判断を助けるものを選んでいる。
+const RELATED_POSTS = [
+  { slug: 'website-development-cost-guide', anchor: 'ホームページ制作費用の相場と見積書の読み方', relation: '予算30万・50万・100万円でできることの違いが分かる' },
+  { slug: 'web-production-company-selection', anchor: '失敗しないホームページ制作会社の選び方と比較基準', relation: 'デザイン型・マーケ型など会社の得意分野を見分けられる' },
+  { slug: 'website-rfp-template', anchor: '要件定義書とRFPの書き方｜発注条件をそろえる手順', relation: 'ヒアリング前に社内で決める項目と比較基準が整理できる' },
+  { slug: 'website-lease-contract-risks', anchor: 'ホームページのリース契約が危険な理由と契約前の確認点', relation: '契約期間の縛りや所有権を発注前に確認する視点が持てる' },
+  { slug: 'website-renewal-seo-migration', anchor: 'リニューアルでSEO順位を落とさないURL移行手順', relation: '既存サイトの検索評価を落とさず移行する手順が分かる' },
+  { slug: 'website-maintenance-cost-guide', anchor: '公開後にかかるホームページ保守費用の相場と対応範囲', relation: '制作費とは別にかかる維持費の目安と自社対応の線引き' },
+]
+
+const RELATED_CATEGORIES = [
+  { path: '/blog/category/web-design', label: 'Web制作の記事一覧（費用・制作会社選び・リニューアル）' },
+  { path: '/blog/category/recruitment', label: '採用の記事一覧（採用サイト・求人票・採用広報）' },
+  { path: '/blog/category/ec', label: 'EC・ネットショップの記事一覧（構築・出店・売上改善）' },
+]
+
 
 export default function ServiceHpClient() {
   const [openFaq, setOpenFaq] = useState<number | null>(null)
@@ -644,6 +662,8 @@ export default function ServiceHpClient() {
       </section>
 
       {/* CTA */}
+      <ServiceRelatedPosts lead="費用の内訳、発注先の比べ方、公開後の維持費まで、依頼を決める前に確認しておきたい論点をまとめています。" posts={RELATED_POSTS} categories={RELATED_CATEGORIES} />
+
       <section className="hp-cta">
         <div className="container">
           <div className="cta-content-new">

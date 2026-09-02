@@ -1,10 +1,27 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import Breadcrumb from '@/components/Breadcrumb'
+import ServiceRelatedPosts from '@/components/ServiceRelatedPosts'
 import FaqJsonLd from '@/components/FaqJsonLd'
 import ServiceJsonLd from '@/components/ServiceJsonLd'
 import StickyMobileCTA from '@/components/StickyMobileCTA'
 import '../ServiceDetail.css'
+
+// issue #5: サービスページからブログへの導線。記事を読んだうえで、このページの判断を助けるものを選んでいる。
+const RELATED_POSTS = [
+  { slug: 'landing-page-design-guide', anchor: '成果が出るLPの構成とファーストビュー設計の考え方', relation: '構成案の良し悪しを、提案を受ける前に判断できるようになります' },
+  { slug: 'lp-improvement-checklist-50', anchor: '問い合わせが増えないLPを、どこから直すかの優先順位', relation: '作り直す前に、既存ページの改善余地を自分で点検できます' },
+  { slug: 'banner-ad-design-guide', anchor: 'クリックされるバナーの構成・配色と外注費用の目安', relation: '何パターン作るべきか、内製と外注のどちらが得かが分かります' },
+  { slug: 'video-ad-production-cost', anchor: '動画制作費が決まる4要素と、見積もりを比べる観点', relation: '10万円〜の内訳と、外注・内製の分かれ目が分かります' },
+  { slug: 'lp-ab-test-guide', anchor: 'ABテストの必要サンプル数と、判定を誤らせる失敗例', relation: '公開後の改善を、感覚ではなく数字で判断する手順が分かります' },
+  { slug: 'short-video-marketing', anchor: 'リール・TikTok・Shortsの使い分けと1本の3媒体展開', relation: 'どのSNS向けに何本作るかを、発注前に設計できます' },
+]
+
+const RELATED_CATEGORIES = [
+  { path: '/blog/category/web-design', label: 'Web制作の記事一覧' },
+  { path: '/blog/category/marketing', label: 'マーケティングの記事一覧' },
+]
+
 
 export const metadata: Metadata = {
   title: 'クリエイティブ制作｜LP・バナー・動画制作',
@@ -397,6 +414,8 @@ export default function ServiceCreativePage() {
       </section>
 
       {/* CTA */}
+      <ServiceRelatedPosts lead="構成の考え方、費用の目安、内製と外注の分かれ目など、発注前に押さえておきたい点をまとめています。" posts={RELATED_POSTS} categories={RELATED_CATEGORIES} />
+
       <section className="lp-cta">
         <div className="container">
           <div className="lp-cta-content">
