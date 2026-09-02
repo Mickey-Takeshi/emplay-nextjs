@@ -47,6 +47,10 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     }
   }
 
+  // og:image は記事ごとに生成したタイトルカード（issue #8）。
+  // 一覧カードで使うサムネイル写真は共用のため、SNSやSERPでは記事を識別できないため分けている。
+  const ogImage = `/images/og/${post.slug}.webp`
+
   return {
     // 記事ページはサフィックス（ | 株式会社EMPLAY）を付けない。
     // 12字を消費して日本語SERPの表示上限(約30〜32字)を全記事が超えていたため(issue #3)。
@@ -63,13 +67,13 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       url: `/blog/${post.slug}`,
       publishedTime: post.published_at,
       modifiedTime: post.updated_at,
-      images: [post.thumbnail],
+      images: [ogImage],
     },
     twitter: {
       card: 'summary_large_image',
       title: post.title,
       description: post.excerpt,
-      images: [post.thumbnail],
+      images: [ogImage],
     },
   }
 }
