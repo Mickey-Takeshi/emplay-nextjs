@@ -6,7 +6,9 @@ import remarkGfm from 'remark-gfm'
 import { getBlogPost, getRelatedPosts, getAllBlogSlugs } from '@/lib/supabase'
 import { getCategorySlug } from '@/lib/categories'
 import { createHeadingIdGenerator, extractToc } from '@/lib/toc'
+import { extractFaq } from '@/lib/faq'
 import Breadcrumb from '@/components/Breadcrumb'
+import FaqJsonLd from '@/components/FaqJsonLd'
 import ArticleServiceCTA from '@/components/ArticleServiceCTA'
 import StickyMobileCTA from '@/components/StickyMobileCTA'
 import ShareButtons from '@/components/ShareButtons'
@@ -98,6 +100,7 @@ export default async function BlogDetailPage({ params }: { params: Promise<{ slu
 
   const relatedPosts = await getRelatedPosts(slug, post.category, 4)
   const toc = extractToc(post.content).filter((item) => item.level === 2)
+  const faqs = extractFaq(post.content)
   const headingId = createHeadingIdGenerator()
   const modifiedAt = post.updated_at || post.published_at
   const hasUpdatedDate = dateKey(modifiedAt) !== dateKey(post.published_at)
@@ -146,6 +149,9 @@ export default async function BlogDetailPage({ params }: { params: Promise<{ slu
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
       />
+
+      {/* 本文のFAQ節をそのまま構造化データにする(本文と不一致にならないよう同じ文言を使う) */}
+      {faqs.length > 0 && <FaqJsonLd faqs={faqs} />}
 
       {/* パンくずリスト */}
       <Breadcrumb items={[
