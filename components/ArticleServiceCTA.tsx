@@ -47,24 +47,39 @@ const SERVICES: Record<string, Service> = {
     label: 'AI ACADEMYを見る',
     external: true,
   },
+  // 個別サービスに寄せられないテーマの受け皿。総合窓口なので効能を断定しない。
+  overview: {
+    key: 'overview',
+    name: 'サービス一覧',
+    desc: '集客・DX・コンテンツ制作まで、中小企業の成長をワンストップで支援します。',
+    href: '/service',
+    label: 'サービス一覧を見る',
+  },
 }
 
-// カテゴリ(日本語名) → 最も関連するサービス
-const CATEGORY_TO_SERVICE: Record<string, string> = {
-  'マーケティング': 'ads',
-  'データ分析': 'ads',
-  'Web制作': 'hp',
-  'EC・ネットショップ': 'hp',
-  '採用': 'hp',
-  'AI活用': 'academy',
-  'DX': 'crm',
-  'ビジネス': 'crm',
-  // 個別サービスに該当しないテーマは総合相談へ案内する
+// カテゴリ(日本語名) → 記事末に出すサービス。
+// internal は必ず自サイト内のページを指す(外部リンクだけになると内部リンクが積み上がらないため)。
+const CATEGORY_TO_SERVICE: Record<string, { internal: string; external?: string }> = {
+  'マーケティング': { internal: 'ads' },
+  'データ分析': { internal: 'ads' },
+  'Web制作': { internal: 'hp' },
+  'EC・ネットショップ': { internal: 'hp' },
+  '採用': { internal: 'hp' },
+  // 研修の実体は外部のACADEMYだが、内部リンクとしてサービス一覧も併記する
+  'AI活用': { internal: 'overview', external: 'academy' },
+  'DX': { internal: 'crm' },
+  'ビジネス': { internal: 'crm' },
+  // 自社に個別サービスが無いテーマ。総合窓口へ案内し、提供していない支援を示唆しない。
+  'セキュリティ': { internal: 'overview' },
+  '補助金・助成金': { internal: 'overview' },
 }
 
 export default function ArticleServiceCTA({ category }: { category: string }) {
-  const serviceKey = CATEGORY_TO_SERVICE[category]
-  const service = serviceKey ? SERVICES[serviceKey] : null
+  const mapping = CATEGORY_TO_SERVICE[category] ?? { internal: 'overview' }
+  const service = SERVICES[mapping.internal]
+  const extra = mapping.external ? SERVICES[mapping.external] : null
+  // 説明文は、具体的な提供物がある場合はそちらを紹介する
+  const featured = extra ?? service
 
   return (
     <aside className="article-cta" aria-label="関連サービスのご案内">
@@ -73,13 +88,13 @@ export default function ArticleServiceCTA({ category }: { category: string }) {
         <h2 className="article-cta-heading">
           {category}のお悩み、<br className="sp-only" />EMPLAYにご相談ください
         </h2>
-        {service ? (
+        {featured.key === 'overview' ? (
           <p className="article-cta-text">
-            <strong>{service.name}</strong>で御社の課題解決を支援します。{service.desc}
+            {featured.desc}まずはお気軽にご相談ください。
           </p>
         ) : (
           <p className="article-cta-text">
-            集客・DX・コンテンツ制作まで、中小企業の成長をワンストップで支援します。まずはお気軽にご相談ください。
+            <strong>{featured.name}</strong>で御社の課題解決を支援します。{featured.desc}
           </p>
         )}
         <div className="article-cta-actions">
@@ -92,18 +107,27 @@ export default function ArticleServiceCTA({ category }: { category: string }) {
           >
             無料で相談する
           </TrackedLink>
-          {service && (
+          {extra && (
             <TrackedLink
-              href={service.href}
+              href={extra.href}
               className="article-cta-btn article-cta-btn-secondary"
-              external={service.external}
+              external={extra.external}
               event="cta_click"
-              eventParams={{ cta_location: 'article_end', cta_type: 'service', service: service.key, article_category: category }}
-              ariaLabel={service.label}
+              eventParams={{ cta_location: 'article_end', cta_type: 'service', service: extra.key, article_category: category }}
+              ariaLabel={extra.label}
             >
-              {service.label}
+              {extra.label}
             </TrackedLink>
           )}
+          <TrackedLink
+            href={service.href}
+            className="article-cta-btn article-cta-btn-secondary"
+            event="cta_click"
+            eventParams={{ cta_location: 'article_end', cta_type: 'service', service: service.key, article_category: category }}
+            ariaLabel={service.label}
+          >
+            {service.label}
+          </TrackedLink>
         </div>
         <p className="article-cta-note">初回相談は無料・SEO/AIO無料診断レポートつき・通常1営業日以内にご返信します</p>
       </div>
