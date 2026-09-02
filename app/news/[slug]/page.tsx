@@ -31,7 +31,8 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   }
 
   return {
-    title: article.title,
+    // 記事ページはサフィックスを付けない（issue #3）
+    title: { absolute: article.title },
     description: `${article.title} - 株式会社EMPLAYからのお知らせです。`,
     alternates: {
       canonical: `/news/${article.slug}`,
@@ -102,8 +103,8 @@ export default async function NewsDetailPage({ params }: { params: Promise<{ slu
       <header className="page-header-hero" aria-label="ページヘッダー">
         <div className="page-header-bg" aria-hidden="true"></div>
         <div className="page-header-content">
-          <p className="page-title-hero">NEWS</p>
-          <p className="page-title-ja-hero">お知らせ</p>
+          <p className="page-hero-label">News</p>
+          <p className="page-hero-title">お知らせ</p>
         </div>
       </header>
 

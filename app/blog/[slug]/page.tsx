@@ -48,7 +48,10 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   }
 
   return {
-    title: post.title,
+    // 記事ページはサフィックス（ | 株式会社EMPLAY）を付けない。
+    // 12字を消費して日本語SERPの表示上限(約30〜32字)を全記事が超えていたため(issue #3)。
+    // ブランド名は og:site_name / Organization構造化データ / パンくず / 画面上のヘッダに残る。
+    title: { absolute: post.title },
     description: post.excerpt,
     alternates: {
       canonical: `/blog/${post.slug}`,
