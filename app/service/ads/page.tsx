@@ -9,12 +9,12 @@ import '../ServiceDetail.css'
 
 // issue #5: サービスページからブログへの導線。記事を読んだうえで、このページの判断を助けるものを選んでいる。
 const RELATED_POSTS = [
+  { slug: 'chatgpt-ads-guide', anchor: 'ChatGPT広告の仕組み・料金・日本での出稿手順', relation: '会話の文脈を使う広告の特徴と、自社で出稿する際の準備が分かる' },
   { slug: 'ad-management-outsourcing-cost', anchor: '広告運用代行の費用相場｜手数料20%に何が含まれるか', relation: '本ページの料金体系を、他社相場と比べて妥当か検証できる' },
   { slug: 'listing-ads-inhouse-vs-agency', anchor: 'リスティング広告は自社運用か代行か、判断基準を比較', relation: 'そもそも外注すべきかを、予算と社内工数から判断できる' },
   { slug: 'web-ads-budget-planning', anchor: '売上目標から逆算するWeb広告の予算の決め方と配分例', relation: '相談前に、いくら広告費を用意すべきか自社で試算できる' },
   { slug: 'web-ads-types-comparison', anchor: '目的・予算別に見るWeb広告の種類と媒体の選び方', relation: 'どの媒体に出すかの提案を、根拠込みで理解できるようになる' },
   { slug: 'roas-improvement-strategies', anchor: '費用対効果が合わないときのROAS診断と改善手順', relation: '今の運用の費用対効果が悪い原因を、依頼前に切り分けられる' },
-  { slug: 'google-ads-conversion-setup', anchor: 'Google広告のコンバージョン計測を正しく設定する手順', relation: '初期設定費に含まれる計測タグ設定の中身と重要性が分かる' },
 ]
 
 const RELATED_CATEGORIES = [
@@ -24,12 +24,12 @@ const RELATED_CATEGORIES = [
 
 
 export const metadata: Metadata = {
-  title: 'Web広告運用代行｜Google・Meta・LINE広告の運用代行',
-  description: 'Google、Meta、LINE、TikTokなど主要Web広告の運用代行。戦略設計から日々の最適化・効果測定までワンストップで対応。費用・料金は無料でお見積りします。',
+  title: 'Web広告運用代行｜ChatGPT・Google・Meta広告に対応',
+  description: 'ChatGPT、Google、Meta、LINEなどのWeb広告運用を支援。商材、目的、予算、計測環境を確認し、必要な運用内容を個別にご提案します。',
   alternates: { canonical: '/service/ads' },
   openGraph: {
-    title: 'Web広告運用代行 | 株式会社EMPLAY',
-    description: 'Google、Meta、LINE、TikTokなど主要Web広告の運用代行。戦略設計から日々の最適化・効果測定までワンストップで対応。費用・料金は無料でお見積りします。',
+    title: 'Web広告運用代行｜ChatGPT広告対応 | 株式会社EMPLAY',
+    description: 'ChatGPT、Google、Meta、LINEなどのWeb広告運用を支援。商材、目的、予算、計測環境を確認し、必要な運用内容を個別にご提案します。',
     url: '/service/ads',
   },
 }
@@ -50,6 +50,14 @@ const faqs = [
     a: '御社名義のアカウントを作成するため、契約終了後もアカウントは御社のものとしてお使いいただけます。',
   },
   {
+    q: 'ChatGPT広告は日本から出稿できますか？',
+    a: '2026年9月8日時点で、日本に所在し、請求を受ける法人はOpenAI Ads Managerのセルフサービスを利用できます。ただし、アカウント認証と広告審査があり、業種や広告内容によって掲載できない場合があります。',
+  },
+  {
+    q: 'ChatGPT広告だけでも依頼できますか？',
+    a: 'ChatGPT広告単体の出稿・運用についてもご相談いただけます。商材、予算、ランディングページ、計測環境を確認し、対応可否、支援範囲、費用をご案内します。',
+  },
+  {
     q: '他社で運用中のアカウントを引き継げますか？',
     a: 'はい、可能です。現状の広告パフォーマンスを分析した上で、改善提案を行いながら運用を引き継ぎます。',
   },
@@ -60,7 +68,7 @@ export default function ServiceAdsPage() {
     <main className="service-lp service-lp--ads">
       <ServiceJsonLd
         name="Web広告運用代行"
-        description="Google、Yahoo!、Meta、LINE、TikTokなどのWeb広告を、戦略設計から運用・効果測定まで支援します。"
+        description="ChatGPT、Google、Yahoo!、Meta、LINE、TikTokなどのWeb広告を、戦略設計から運用・効果測定まで支援します。"
         url="https://emplay.jp/service/ads"
         serviceType="Web広告運用代行"
       />
@@ -81,7 +89,7 @@ export default function ServiceAdsPage() {
             成果にこだわるWeb広告運用
           </h1>
           <p className="lp-hero-text">
-            Google、Yahoo!、Meta、LINE、TikTokなど主要Web広告を一括運用。<br />
+            ChatGPT、Google、Yahoo!、Meta、LINE、TikTokなど主要Web広告を一括運用。<br />
             戦略設計から日々の最適化、効果測定まで、広告運用のすべてをお任せください。
           </p>
           <Link href="/contact" className="btn btn-primary btn-large">無料相談を申し込む</Link>
@@ -197,6 +205,17 @@ export default function ServiceAdsPage() {
         <div className="container">
           <h2 className="lp-section-title">取り扱い広告媒体</h2>
           <div className="lp-media-grid">
+            <div className="lp-media-card lp-media-card--featured">
+              <h3 className="lp-media-name">ChatGPT広告</h3>
+              <p className="lp-media-desc">
+                ChatGPTで情報を比較・検討している利用者へ、会話の文脈に関連する広告を回答とは別の枠で表示します。出稿可否の確認から配信設計、計測、改善までご相談いただけます。
+              </p>
+              <ul className="lp-media-types">
+                <li>CPM・CPC・oCPC配信</li>
+                <li>コンテキストヒント設計</li>
+                <li><a href="#chatgpt-ads">運用内容を見る</a></li>
+              </ul>
+            </div>
             <div className="lp-media-card">
               <h3 className="lp-media-name">Google広告</h3>
               <p className="lp-media-desc">
@@ -260,6 +279,43 @@ export default function ServiceAdsPage() {
                 <li>オーディエンスターゲティング</li>
               </ul>
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="lp-solution lp-chatgpt-ads" id="chatgpt-ads">
+        <div className="container">
+          <h2 className="lp-section-title">ChatGPT広告の運用代行</h2>
+          <p className="lp-section-lead">
+            検索語だけではなく、利用者が会話で示す目的や検討条件を踏まえて広告を設計します。<br />
+            広告はChatGPTの回答と分離され、出稿によって回答内の推奨を購入するものではありません。
+          </p>
+          <div className="solution-points">
+            <div className="solution-point">
+              <span className="solution-point-num">01</span>
+              <h3 className="solution-point-title">掲載可否を事前確認</h3>
+              <p className="solution-point-text">商材、訴求、ランディングページを確認し、OpenAIの広告ポリシーと審査要件に沿って準備します。</p>
+            </div>
+            <div className="solution-point">
+              <span className="solution-point-num">02</span>
+              <h3 className="solution-point-title">会話文脈から配信設計</h3>
+              <p className="solution-point-text">商品が役立つ利用場面ごとに広告グループとコンテキストヒントを整理し、広告文・画像・LPの訴求をそろえます。</p>
+            </div>
+            <div className="solution-point">
+              <span className="solution-point-num">03</span>
+              <h3 className="solution-point-title">成果計測を準備</h3>
+              <p className="solution-point-text">UTM、OpenAI Pixelなどを使い、クリック後の問い合わせや購入まで確認できる計測環境を設計します。</p>
+            </div>
+            <div className="solution-point">
+              <span className="solution-point-num">04</span>
+              <h3 className="solution-point-title">配信後も継続改善</h3>
+              <p className="solution-point-text">表示、クリック、コンバージョン、商談・売上の順に課題を切り分け、予算、訴求、LPを改善します。</p>
+            </div>
+          </div>
+          <p className="lp-chatgpt-ads-note">Conversions API、広告画像、LPの制作・改善は、必要な範囲を確認して別途お見積りします。</p>
+          <div className="lp-chatgpt-ads-actions">
+            <Link href="/contact" className="btn btn-primary btn-large">ChatGPT広告について無料相談する</Link>
+            <Link href="/blog/chatgpt-ads-guide" className="btn btn-outline-white btn-large">仕組みと出稿手順を確認する</Link>
           </div>
         </div>
       </section>
@@ -351,6 +407,7 @@ export default function ServiceAdsPage() {
               <p className="pricing-note">広告との連携設計込み</p>
             </div>
           </div>
+          <p className="pricing-note">ChatGPT広告も上記を基準とし、アカウント状況と計測・制作範囲を確認して個別にお見積りします。</p>
         </div>
       </section>
 
@@ -375,6 +432,18 @@ export default function ServiceAdsPage() {
               <h3 className="lp-faq-question">広告アカウントは誰のものになりますか？</h3>
               <p className="lp-faq-answer">
                 御社名義のアカウントを作成するため、契約終了後もアカウントは御社のものとしてお使いいただけます。
+              </p>
+            </div>
+            <div className="lp-faq-item">
+              <h3 className="lp-faq-question">ChatGPT広告は日本から出稿できますか？</h3>
+              <p className="lp-faq-answer">
+                2026年9月8日時点で、日本に所在し、請求を受ける法人はOpenAI Ads Managerのセルフサービスを利用できます。ただし、アカウント認証と広告審査があり、業種や広告内容によって掲載できない場合があります。
+              </p>
+            </div>
+            <div className="lp-faq-item">
+              <h3 className="lp-faq-question">ChatGPT広告だけでも依頼できますか？</h3>
+              <p className="lp-faq-answer">
+                ChatGPT広告単体の出稿・運用についてもご相談いただけます。商材、予算、ランディングページ、計測環境を確認し、対応可否、支援範囲、費用をご案内します。
               </p>
             </div>
             <div className="lp-faq-item">
