@@ -12,6 +12,7 @@ import FaqJsonLd from '@/components/FaqJsonLd'
 import ArticleServiceCTA from '@/components/ArticleServiceCTA'
 import StickyMobileCTA from '@/components/StickyMobileCTA'
 import ShareButtons from '@/components/ShareButtons'
+import ChatGPTAdPreview from '@/components/ChatGPTAdPreview'
 import './BlogDetail.css'
 
 // ReactMarkdownの見出しノードからテキストを取り出す(アンカーID生成用)
@@ -215,6 +216,9 @@ export default async function BlogDetailPage({ params }: { params: Promise<{ slu
               components={{
                 h2: ({ children }) => <h2 id={headingId(nodeText(children))}>{children}</h2>,
                 h3: ({ children }) => <h3 id={headingId(nodeText(children))}>{children}</h3>,
+                p: ({ children }) => nodeText(children) === '[[CHATGPT_AD_PREVIEW]]'
+                  ? <ChatGPTAdPreview showHeading={false} />
+                  : <p>{children}</p>,
               }}
             >
               {post.content}

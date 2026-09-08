@@ -5,6 +5,7 @@ import ServiceRelatedPosts from '@/components/ServiceRelatedPosts'
 import FaqJsonLd from '@/components/FaqJsonLd'
 import ServiceJsonLd from '@/components/ServiceJsonLd'
 import StickyMobileCTA from '@/components/StickyMobileCTA'
+import ChatGPTAdPreview from '@/components/ChatGPTAdPreview'
 import '../ServiceDetail.css'
 
 // issue #5: サービスページからブログへの導線。記事を読んだうえで、このページの判断を助けるものを選んでいる。
@@ -290,6 +291,7 @@ export default function ServiceAdsPage() {
             検索語だけではなく、利用者が会話で示す目的や検討条件を踏まえて広告を設計します。<br />
             広告はChatGPTの回答と分離され、出稿によって回答内の推奨を購入するものではありません。
           </p>
+          <ChatGPTAdPreview />
           <div className="solution-points">
             <div className="solution-point">
               <span className="solution-point-num">01</span>
