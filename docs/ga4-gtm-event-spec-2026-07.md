@@ -8,10 +8,14 @@ GTMコンテナ: `GTM-TG7GTN4B`
 
 - サイトへのGTMコンテナ設置: 完了
 - dataLayerイベント実装: 完了
-- 公開GTMコンテナのタグ: **0件**（2026-07-17実測、`tags: []`）
-- GA4へのイベント送信: 未開始
+- 公開GTMコンテナ: **バージョン2（ライブ）**（2026-10-26 16:22公開）
+- Googleタグ: `G-5YQRWCQSC1`
+- 公開内容: **8タグ / 7カスタムイベントトリガー / 11カスタムdataLayer変数**
+- GA4 DebugView受信: `cta_click`、`lead_form_view`、`lead_form_start`、`lead_form_abandon`を確認済み
+- GA4カスタムディメンション: `inquiry_topic`、`landing_variant`、`acquisition_source`をイベントスコープで登録済み
+- `generate_lead`のキーイベント指定: 初回の実問い合わせイベント受信後に実施（検証目的の偽問い合わせは送信しない）
 
-GTM管理画面でGA4測定IDを設定し、タグを公開するまでは、サイトがpushしているイベントはGA4に保存されない。
+公開後にGoogle配信中の`gtm.js?id=GTM-TG7GTN4B`を取得し、測定ID、7イベント名、広告流入3属性が含まれることを確認した。Tag Assistantでは`lead_form_view`、`lead_form_start`、`lead_form_abandon`、`cta_click`、`share`の発火と属性値を確認し、このうちフォーム3イベントと`cta_click`はGA4 DebugViewでの受信も確認した。`generate_lead`と`lead_form_error`は実問い合わせ・意図的な障害を発生させず、タグ設定と実装経路のみ確認した。
 
 ## 2. dataLayerイベント
 
@@ -25,9 +29,9 @@ GTM管理画面でGA4測定IDを設定し、タグを公開するまでは、サ
 | `cta_click` | 記事末・サービスページ・モバイル追従CTAクリック | `cta_location`, `cta_type`, `article_category`, `service`, `inquiry_topic`, `landing_variant`, `acquisition_source` |
 | `article_share` | 記事シェアボタンのクリック | `network`, `slug` |
 
-## 3. GTM設定手順
+## 3. GTM公開設定
 
-1. 「Googleタグ」を作成し、GA4測定ID（`G-XXXXXXXXXX`）を設定する。トリガーはAll Pages。
+1. 「Googleタグ」にGA4測定ID（`G-5YQRWCQSC1`）を設定する。トリガーはInitialization - All Pages。
 2. dataLayer変数を作成する: `form`, `reason`, `cta_location`, `cta_type`, `article_category`, `service`, `network`, `slug`, `inquiry_topic`, `landing_variant`, `acquisition_source`。
 3. 各dataLayerイベント名と同名のカスタムイベントトリガーを作成する。
 4. GA4イベントタグを以下の対応で作成する。
@@ -42,11 +46,11 @@ GTM管理画面でGA4測定IDを設定し、タグを公開するまでは、サ
 | `cta_click` | `cta_click` | `cta_location`, `cta_type`, `article_category`, `service`, `inquiry_topic`, `landing_variant`, `acquisition_source` |
 | `article_share` | `share` | `method={{DLV - network}}`, `content_id={{DLV - slug}}` |
 
-5. GTMプレビューモードで各イベントの発火を確認する。
-6. コンテナを公開する。
-7. GA4のDebugViewとリアルタイムで受信を確認する。
-8. GA4管理画面で`generate_lead`をキーイベントに設定する。
-9. GA4管理画面で`inquiry_topic`、`landing_variant`、`acquisition_source`をイベントスコープのカスタムディメンションとして登録する。
+5. GTMプレビューモードで5イベントの発火を確認する（完了）。`generate_lead`と`lead_form_error`は設定・実装経路のみ確認する。
+6. コンテナを公開する（バージョン2、完了）。
+7. GA4 DebugViewでフォーム3イベントと`cta_click`の受信を確認する（完了）。通常レポートへの反映には時間差がある。
+8. GA4管理画面で`generate_lead`をキーイベントに設定する（初回の実イベント受信後）。
+9. GA4管理画面で`inquiry_topic`、`landing_variant`、`acquisition_source`をイベントスコープのカスタムディメンションとして登録する（完了）。
 
 ## 4. 重複計測の防止
 
