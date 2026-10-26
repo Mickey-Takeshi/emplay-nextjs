@@ -21,7 +21,7 @@ GTM管理画面でGA4測定IDを設定し、タグを公開するまでは、サ
 | `form_start` | 最初の入力 | `form`, `inquiry_topic`, `landing_variant`, `acquisition_source` |
 | `form_submit` | Supabaseへの保存成功 | `form`, `inquiry_topic`, `landing_variant`, `acquisition_source` |
 | `form_error` | 送信失敗 | `form`, `inquiry_topic`, `landing_variant`, `acquisition_source` |
-| `form_abandon` | 入力内容を残したままページ離脱 | `form`, `reason`, `inquiry_topic`, `landing_variant`, `acquisition_source` |
+| `form_abandon` | 入力内容を残したままページ離脱が確定 | `form`, `reason`（`pagehide` / `route_change`）, `inquiry_topic`, `landing_variant`, `acquisition_source` |
 | `cta_click` | 記事末・サービスページ・モバイル追従CTAクリック | `cta_location`, `cta_type`, `article_category`, `service`, `inquiry_topic`, `landing_variant`, `acquisition_source` |
 | `article_share` | 記事シェアボタンのクリック | `network`, `slug` |
 

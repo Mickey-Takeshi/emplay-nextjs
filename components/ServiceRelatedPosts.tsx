@@ -1,4 +1,4 @@
-import Link from 'next/link'
+import ContextualContactLink from './ContextualContactLink'
 import './ServiceRelatedPosts.css'
 
 export type RelatedPost = {
@@ -39,13 +39,13 @@ export default function ServiceRelatedPosts({
         <ul className="service-related-list">
           {posts.map((post) => (
             <li key={post.slug}>
-              <Link href={`/blog/${post.slug}`} className="service-related-item">
+              <ContextualContactLink href={`/blog/${post.slug}`} className="service-related-item">
                 <span className="service-related-title">{post.anchor}</span>
                 <span className="service-related-relation">{post.relation}</span>
                 <span className="service-related-arrow" aria-hidden="true">
                   →
                 </span>
-              </Link>
+              </ContextualContactLink>
             </li>
           ))}
         </ul>
@@ -53,9 +53,9 @@ export default function ServiceRelatedPosts({
         {categories.length > 0 && (
           <p className="service-related-categories">
             {categories.map((category) => (
-              <Link key={category.path} href={category.path}>
+              <ContextualContactLink key={category.path} href={category.path}>
                 {category.label}
-              </Link>
+              </ContextualContactLink>
             ))}
           </p>
         )}
