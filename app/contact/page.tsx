@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import ContactClient from './ContactClient'
+import { parseContactContext, type QueryValue } from '@/lib/inquiry-context'
 
 export const metadata: Metadata = {
   title: 'お問い合わせ',
@@ -17,6 +18,15 @@ export const metadata: Metadata = {
   },
 }
 
-export default function ContactPage() {
-  return <ContactClient />
+interface ContactPageProps {
+  searchParams: Promise<{
+    topic?: QueryValue
+    intent?: QueryValue
+    source?: QueryValue
+  }>
+}
+
+export default async function ContactPage({ searchParams }: ContactPageProps) {
+  const context = parseContactContext(await searchParams)
+  return <ContactClient context={context} />
 }

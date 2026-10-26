@@ -21,6 +21,8 @@ const primaryLinks = [
   { href: '/company', label: '会社概要' },
   { href: '/service', label: 'サービス一覧' },
   { href: '/service/hp', label: 'HP制作サービス' },
+  { href: '/service/hp/renewal', label: 'ホームページリニューアル' },
+  { href: '/service/hp/wordpress-renewal', label: 'WordPressサイトの見直し' },
   { href: '/service/creative', label: 'クリエイティブ制作' },
   { href: '/service/ads', label: 'Web広告運用' },
   { href: '/service/crm', label: 'CRM導入支援' },

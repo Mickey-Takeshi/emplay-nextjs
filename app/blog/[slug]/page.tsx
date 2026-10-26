@@ -248,7 +248,7 @@ export default async function BlogDetailPage({ params }: { params: Promise<{ slu
       </article>
 
       {/* 記事→サービスCTA（カテゴリ連動） */}
-      <ArticleServiceCTA category={post.category} />
+      <ArticleServiceCTA category={post.category} slug={post.slug} />
 
       {/* 関連記事セクション */}
       {relatedPosts.length > 0 && (

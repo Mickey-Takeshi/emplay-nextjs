@@ -1,4 +1,6 @@
+import { Suspense } from 'react'
 import Link from 'next/link'
+import ContextualContactLink from './ContextualContactLink'
 import './Footer.css'
 
 export default function Footer() {
@@ -57,9 +59,11 @@ export default function Footer() {
               Web・AI活用の課題整理から、<br />
               無料でご相談いただけます。
             </p>
-            <Link href="/contact" className="footer-cta-btn">
-              無料相談を申し込む
-            </Link>
+            <Suspense fallback={<Link href="/contact" className="footer-cta-btn">無料相談を申し込む</Link>}>
+              <ContextualContactLink className="footer-cta-btn">
+                無料相談を申し込む
+              </ContextualContactLink>
+            </Suspense>
           </div>
         </div>
 

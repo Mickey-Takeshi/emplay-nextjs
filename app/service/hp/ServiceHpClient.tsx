@@ -7,6 +7,7 @@ import ServiceRelatedPosts from '@/components/ServiceRelatedPosts'
 import FaqJsonLd from '@/components/FaqJsonLd'
 import StickyMobileCTA from '@/components/StickyMobileCTA'
 import { trackEvent } from '@/lib/analytics'
+import { buildContextHref, inquiryEventParams, type InquiryContext } from '@/lib/inquiry-context'
 import './ServiceHp.css'
 
 // issue #5: サービスページからブログへの導線。記事を読んだうえで、このページの判断を助けるものを選んでいる。
@@ -26,8 +27,10 @@ const RELATED_CATEGORIES = [
 ]
 
 
-export default function ServiceHpClient() {
+export default function ServiceHpClient({ inquiryContext = {} }: { inquiryContext?: InquiryContext }) {
   const [openFaq, setOpenFaq] = useState<number | null>(null)
+  const contactHref = buildContextHref('/contact', inquiryContext)
+  const attributionParams = inquiryEventParams(inquiryContext)
 
   const toggleFaq = (index: number) => {
     setOpenFaq(openFaq === index ? null : index)
@@ -88,7 +91,13 @@ export default function ServiceHpClient() {
             <span className="hp-hero-feature">記事代行</span>
             <span className="hp-hero-feature">効果測定</span>
           </div>
-          <Link href="/contact" className="btn btn-primary btn-large hp-hero-cta">無料相談を申し込む</Link>
+          <Link
+            href={contactHref}
+            className="btn btn-primary btn-large hp-hero-cta"
+            onClick={() => trackEvent('cta_click', { ...attributionParams, cta_location: 'hp_hero', cta_type: 'contact' })}
+          >
+            無料相談を申し込む
+          </Link>
         </div>
       </header>
 
@@ -214,6 +223,34 @@ export default function ServiceHpClient() {
               </svg>
             </div>
             <p><strong>目指すゴール：</strong>検索上位表示 → アクセス増加 → 問い合わせ獲得</p>
+          </div>
+        </div>
+      </section>
+
+      <section className="hp-renewal-routes" aria-labelledby="hp-renewal-routes-heading">
+        <div className="container">
+          <p className="hp-section-label">RENEWAL SUPPORT</p>
+          <h2 id="hp-renewal-routes-heading" className="hp-section-title">現在の課題から、相談内容を選べます</h2>
+          <p className="hp-section-subtitle">目的に合うページで、確認項目と支援範囲をご案内します。</p>
+          <div className="hp-renewal-routes-grid">
+            <Link
+              href="/service/hp/renewal"
+              onClick={() => trackEvent('cta_click', { cta_location: 'hp_renewal_routes', cta_type: 'service', service: 'hp_renewal' })}
+            >
+              <span>企業サイトの刷新</span>
+              <h3>ホームページリニューアル</h3>
+              <p>構成、デザイン、更新体制、問い合わせ導線をまとめて見直したい方へ。</p>
+              <strong>詳しく見る →</strong>
+            </Link>
+            <Link
+              href="/service/hp/wordpress-renewal"
+              onClick={() => trackEvent('cta_click', { cta_location: 'hp_renewal_routes', cta_type: 'service', service: 'wordpress_renewal' })}
+            >
+              <span>更新・保守の不安</span>
+              <h3>WordPressサイトの見直し</h3>
+              <p>放置した更新、管理体制、セキュリティ、再構築の判断を整理したい方へ。</p>
+              <strong>詳しく見る →</strong>
+            </Link>
           </div>
         </div>
       </section>
@@ -542,9 +579,13 @@ export default function ServiceHpClient() {
             </p>
             <div className="scope-cta">
               <Link
-                href="/contact"
+                href={contactHref}
                 className="btn btn-cta btn-large"
-                onClick={() => trackEvent('cta_click', { cta_location: 'hp_scope_table', cta_type: 'contact' })}
+                onClick={() => trackEvent('cta_click', {
+                  ...attributionParams,
+                  cta_location: 'hp_scope_table',
+                  cta_type: 'contact',
+                })}
               >
                 無料相談で見積もりを取る
               </Link>
@@ -672,7 +713,13 @@ export default function ServiceHpClient() {
               HPリニューアル、SEO/AIO対策、他社比較など<br className="pc-only" />
               お気軽にご相談ください。
             </p>
-            <Link href="/contact" className="btn btn-primary btn-large cta-button-new">無料相談を申し込む</Link>
+            <Link
+              href={contactHref}
+              className="btn btn-primary btn-large cta-button-new"
+              onClick={() => trackEvent('cta_click', { ...attributionParams, cta_location: 'hp_final', cta_type: 'contact' })}
+            >
+              無料相談を申し込む
+            </Link>
           </div>
         </div>
       </section>
@@ -680,7 +727,11 @@ export default function ServiceHpClient() {
       {/* コンタクトセクション */}
       <section className="contact-section-page">
         <div className="container">
-          <Link href="/contact" className="contact-box">
+          <Link
+            href={contactHref}
+            className="contact-box"
+            onClick={() => trackEvent('cta_click', { ...attributionParams, cta_location: 'hp_contact_box', cta_type: 'contact' })}
+          >
             <div className="contact-box-content">
               <h2 className="contact-box-title">CONTACT</h2>
               <p className="contact-box-text">お問い合わせはこちらから</p>
@@ -689,7 +740,11 @@ export default function ServiceHpClient() {
           </Link>
         </div>
       </section>
-      <StickyMobileCTA location="service_hp" />
+      <StickyMobileCTA
+        location="service_hp"
+        href={contactHref}
+        eventParams={attributionParams}
+      />
     </main>
   )
 }

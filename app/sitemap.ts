@@ -4,6 +4,7 @@ import { CATEGORY_MAP } from '@/lib/categories'
 
 const BASE_URL = 'https://emplay.jp'
 const STATIC_LAST_MODIFIED = new Date('2026-07-15T00:00:00+09:00')
+const RENEWAL_LAST_MODIFIED = new Date('2026-10-26T00:00:00+09:00')
 
 // ビルド時にSupabaseから記事一覧を取得してsitemapを生成する
 // (記事追加後は再デプロイで反映される)
@@ -23,6 +24,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       { url: `${BASE_URL}/service/ads`, lastModified: STATIC_LAST_MODIFIED, changeFrequency: 'monthly', priority: 0.8 },
       { url: `${BASE_URL}/service/crm`, lastModified: STATIC_LAST_MODIFIED, changeFrequency: 'monthly', priority: 0.8 },
       { url: `${BASE_URL}/service/hp`, lastModified: STATIC_LAST_MODIFIED, changeFrequency: 'monthly', priority: 0.9 },
+      { url: `${BASE_URL}/service/hp/renewal`, lastModified: RENEWAL_LAST_MODIFIED, changeFrequency: 'monthly', priority: 0.8 },
+      { url: `${BASE_URL}/service/hp/wordpress-renewal`, lastModified: RENEWAL_LAST_MODIFIED, changeFrequency: 'monthly', priority: 0.8 },
       { url: `${BASE_URL}/blog`, lastModified: STATIC_LAST_MODIFIED, changeFrequency: 'daily', priority: 0.9 },
       { url: `${BASE_URL}/news`, lastModified: STATIC_LAST_MODIFIED, changeFrequency: 'weekly', priority: 0.7 },
       { url: `${BASE_URL}/privacy`, lastModified: STATIC_LAST_MODIFIED, changeFrequency: 'yearly', priority: 0.3 },
