@@ -13,9 +13,9 @@ GTMコンテナ: `GTM-TG7GTN4B`
 - 公開内容: **8タグ / 7カスタムイベントトリガー / 11カスタムdataLayer変数**
 - GA4 DebugView受信: `cta_click`、`lead_form_view`、`lead_form_start`、`lead_form_abandon`を確認済み
 - GA4カスタムディメンション: `inquiry_topic`、`landing_variant`、`acquisition_source`をイベントスコープで登録済み
-- `generate_lead`のキーイベント指定: 初回の実問い合わせイベント受信後に実施（検証目的の偽問い合わせは送信しない）
+- `generate_lead`のキーイベント指定: 受信前に事前登録済み（デフォルト金額なし / イベントごとに1回）
 
-公開後にGoogle配信中の`gtm.js?id=GTM-TG7GTN4B`を取得し、測定ID、7イベント名、広告流入3属性が含まれることを確認した。Tag Assistantでは`lead_form_view`、`lead_form_start`、`lead_form_abandon`、`cta_click`、`share`の発火と属性値を確認し、このうちフォーム3イベントと`cta_click`はGA4 DebugViewでの受信も確認した。`generate_lead`と`lead_form_error`は実問い合わせ・意図的な障害を発生させず、タグ設定と実装経路のみ確認した。
+公開後にGoogle配信中の`gtm.js?id=GTM-TG7GTN4B`を取得し、測定ID、7イベント名、広告流入3属性が含まれることを確認した。Tag Assistantでは`lead_form_view`、`lead_form_start`、`lead_form_abandon`、`cta_click`、`share`の発火と属性値を確認し、このうちフォーム3イベントと`cta_click`はGA4 DebugViewでの受信も確認した。`generate_lead`はGA4へキーイベントとして事前登録済みだが、実問い合わせを発生させず発火は未検証とした。`lead_form_error`も意図的な障害を発生させず、タグ設定と実装経路のみ確認した。
 
 ## 2. dataLayerイベント
 
@@ -49,7 +49,7 @@ GTMコンテナ: `GTM-TG7GTN4B`
 5. GTMプレビューモードで5イベントの発火を確認する（完了）。`generate_lead`と`lead_form_error`は設定・実装経路のみ確認する。
 6. コンテナを公開する（バージョン2、完了）。
 7. GA4 DebugViewでフォーム3イベントと`cta_click`の受信を確認する（完了）。通常レポートへの反映には時間差がある。
-8. GA4管理画面で`generate_lead`をキーイベントに設定する（初回の実イベント受信後）。
+8. GA4管理画面で`generate_lead`を「コードを使用して作成」し、キーイベントとして事前登録する（完了）。デフォルト金額は設定せず、カウント方法は「イベントごとに1回」とする。
 9. GA4管理画面で`inquiry_topic`、`landing_variant`、`acquisition_source`をイベントスコープのカスタムディメンションとして登録する（完了）。
 
 ## 4. 重複計測の防止

@@ -4,7 +4,7 @@
 
 このドキュメントは2026-07-03〜07-17に実施したサイト改善・コンテンツ制作の全記録である。
 
-**2026-10-26追補:** `GTM-TG7GTN4B`のバージョン2を公開し、Googleタグ`G-5YQRWCQSC1`と問い合わせファネル・CTA・記事シェアの送信設定を本番化した。GA4 DebugViewでは`cta_click`とフォーム3イベントの受信を確認し、広告流入3属性（`inquiry_topic`、`landing_variant`、`acquisition_source`）をイベントスコープのカスタムディメンションとして登録済み。詳細は[GA4/GTMイベント計測仕様](ga4-gtm-event-spec-2026-07.md)を参照。
+**2026-10-26追補:** `GTM-TG7GTN4B`のバージョン2を公開し、Googleタグ`G-5YQRWCQSC1`と問い合わせファネル・CTA・記事シェアの送信設定を本番化した。GA4 DebugViewでは`cta_click`とフォーム3イベントの受信を確認し、広告流入3属性（`inquiry_topic`、`landing_variant`、`acquisition_source`）をイベントスコープのカスタムディメンションとして登録した。`generate_lead`もキーイベントとして事前登録済み。詳細は[GA4/GTMイベント計測仕様](ga4-gtm-event-spec-2026-07.md)を参照。
 
 ---
 
@@ -15,7 +15,7 @@
 | ブログ記事数 | 118本 | **294本**(+176) |
 | sitemap内URL | 143 | **317**（ブログ294本・カテゴリ10ページを含む） |
 | 問い合わせフォーム | 動作するが営業に埋没 | 自動判定(lead/review/sales)+Gmail自動仕分け稼働 |
-| GA4/GTM計測 | 未整備 | dataLayer実装済み。7/17時点では公開待ち、**10/26にGTMバージョン2を公開し、GA4 DebugView受信とカスタムディメンション3件を確認済み** |
+| GA4/GTM計測 | 未整備 | dataLayer実装済み。7/17時点では公開待ち、**10/26にGTMバージョン2、GA4受信確認、カスタムディメンション3件、`generate_lead`キーイベント登録まで完了** |
 | OGP画像 | 404(存在せず) | ブランドOG画像配信中 |
 | GSCインデックスエラー | 404×6 / robotsブロック×3 / 重複×1 | 全て解消策デプロイ済み(301/robots/www正規化) |
 | 会社の実在情報 | 代表者記載なし | 代表者・設立をCompany/フッターに明記 |
@@ -120,8 +120,7 @@
 ## 5. 運用TODO(推奨)
 
 1. **Bing Webmaster Toolsへ登録**(未実施・ユーザー作業)。[手順](search-engine-integrations.md#2-bing-webmaster-tools-登録手順要ログイン所要5分)。手動確認を選んだ場合は`msvalidate.01`の値をVercel環境変数`NEXT_PUBLIC_BING_SITE_VERIFICATION`に設定して再デプロイ(コード変更不要)
-2. 初回の実問い合わせ後、GA4のイベント一覧に現れた`generate_lead`をキーイベントに指定（GTMバージョン2とカスタムディメンション3件は2026-10-26設定済み）
-3. 記事の追加・リライトをデプロイした**後**に`npm run indexnow:recent`を実行(Bing系への更新通知)
-4. 2026-08-14以降: 7/17リライト8記事のクリック・表示回数・CTR・平均掲載順位を同じ28日間で比較
-5. 月1回`npm run audit:seo`を実行し、重複・薄い記事・内部リンク切れを確認
-6. eclore返信下書きをレビュー後に送信。以降はGmail「要対応」ラベルを毎営業日確認
+2. 記事の追加・リライトをデプロイした**後**に`npm run indexnow:recent`を実行(Bing系への更新通知)
+3. 2026-08-14以降: 7/17リライト8記事のクリック・表示回数・CTR・平均掲載順位を同じ28日間で比較
+4. 月1回`npm run audit:seo`を実行し、重複・薄い記事・内部リンク切れを確認
+5. eclore返信下書きをレビュー後に送信。以降はGmail「要対応」ラベルを毎営業日確認
