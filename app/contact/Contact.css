@@ -185,6 +185,31 @@
   border-radius: var(--radius-md);
 }
 
+.contact-context {
+  margin-bottom: 24px;
+  padding: 18px 20px;
+  background: #fff;
+  border-top: 3px solid var(--color-primary);
+  border-right: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+  border-left: 1px solid var(--color-border);
+  border-radius: var(--radius-xs);
+}
+
+.contact-context .contact-context-label {
+  margin: 0 0 5px;
+  color: var(--color-primary-dark);
+  font-size: 0.875rem;
+  font-weight: 700;
+}
+
+.contact-context p:last-child {
+  margin: 0;
+  color: var(--color-text-light);
+  font-size: 0.8125rem;
+  line-height: 1.7;
+}
+
 .contact-page .form-note {
   margin-bottom: 24px;
   color: var(--color-text-muted);

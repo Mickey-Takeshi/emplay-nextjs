@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import ServiceHpClient from './ServiceHpClient'
 import ServiceJsonLd from '@/components/ServiceJsonLd'
+import { parseContactContext, type QueryValue } from '@/lib/inquiry-context'
 
 export const metadata: Metadata = {
   title: 'ホームページ制作サービス｜SEO・AI検索対策(AIO/LLMO)対応',
@@ -13,7 +14,17 @@ export const metadata: Metadata = {
   },
 }
 
-export default function ServiceHpPage() {
+interface ServiceHpPageProps {
+  searchParams: Promise<{
+    topic?: QueryValue
+    intent?: QueryValue
+    source?: QueryValue
+  }>
+}
+
+export default async function ServiceHpPage({ searchParams }: ServiceHpPageProps) {
+  const inquiryContext = parseContactContext(await searchParams)
+
   return (
     <>
       <ServiceJsonLd
@@ -22,7 +33,7 @@ export default function ServiceHpPage() {
         url="https://emplay.jp/service/hp"
         serviceType="ホームページ制作・運用支援"
       />
-      <ServiceHpClient />
+      <ServiceHpClient inquiryContext={inquiryContext} />
     </>
   )
 }

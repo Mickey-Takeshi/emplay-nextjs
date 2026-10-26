@@ -4,10 +4,82 @@ import { useState, useEffect, useRef, FormEvent } from 'react'
 import Link from 'next/link'
 import { submitContact, ContactFormData } from '@/lib/supabase'
 import { trackEvent } from '@/lib/analytics'
+import { inquiryEventParams, type InquiryContext } from '@/lib/inquiry-context'
 import Breadcrumb from '@/components/Breadcrumb'
 import './Contact.css'
 
-export default function ContactClient() {
+interface ContactContent {
+  heroTitle: string
+  heading: string
+  description: React.ReactNode
+  benefitTitle: string
+  benefitText: string
+  contextLabel?: string
+  contextText?: string
+  placeholder: string
+  submitLabel: string
+}
+
+const DEFAULT_CONTENT: ContactContent = {
+  heroTitle: 'お問い合わせ',
+  heading: 'お気軽にご相談ください',
+  description: (
+    <>
+      サービスに関するご質問、お見積り依頼など、お気軽にお問い合わせください。
+      ご希望の方には、現状サイトの<strong>SEO/AIO無料診断レポート</strong>をお渡ししています。
+    </>
+  ),
+  benefitTitle: 'SEO/AIO無料診断',
+  benefitText: '現状サイトの診断レポートを無料でお渡しします',
+  placeholder: 'ご相談内容や現在の課題をご記入ください',
+  submitLabel: '無料相談を送信する',
+}
+
+const getContactContent = (context: InquiryContext): ContactContent => {
+  if (context.inquiryTopic === 'wordpress-renewal') {
+    return {
+      heroTitle: 'WordPressサイトのご相談',
+      heading: '現在の状態から一緒に整理します',
+      description: (
+        <>
+          更新状況、管理者、サーバ、バックアップなど、分かる範囲をお聞かせください。
+          改修・再構築・保守運用のどこから着手すべきかを整理します。
+        </>
+      ),
+      benefitTitle: '保守運用も相談可能',
+      benefitText: '契約時は緊急対応や継続監視を含む範囲をご案内します',
+      contextLabel: '相談テーマ：WordPressサイトの見直し',
+      contextText: '現状確認、改修・再構築、保守運用についてのご相談として受け付けます。',
+      placeholder: '例：更新できていない期間、現在困っていること、管理会社やサーバの状況など',
+      submitLabel: 'WordPressの相談を送信する',
+    }
+  }
+
+  if (context.inquiryTopic === 'hp-renewal') {
+    return {
+      heroTitle: 'ホームページ刷新のご相談',
+      heading: '目的と優先順位から一緒に整理します',
+      description: (
+        <>
+          現在のサイト、リニューアルしたい背景、問い合わせや更新体制の課題をお聞かせください。
+          必要な制作範囲と進め方をご案内します。
+        </>
+      ),
+      benefitTitle: '現状サイトを確認',
+      benefitText: '構成・導線・更新体制の主な論点を整理します',
+      contextLabel: '相談テーマ：ホームページリニューアル',
+      contextText: '構成、デザイン、更新体制、問い合わせ導線についてのご相談として受け付けます。',
+      placeholder: '例：リニューアルの目的、現在困っていること、希望時期や必要な機能など',
+      submitLabel: 'リニューアル相談を送信する',
+    }
+  }
+
+  return DEFAULT_CONTENT
+}
+
+export default function ContactClient({ context }: { context: InquiryContext }) {
+  const content = getContactContent(context)
+  const attributionParams = inquiryEventParams(context)
   const [formData, setFormData] = useState<ContactFormData>({
     name: '',
     email: '',
@@ -27,8 +99,8 @@ export default function ContactClient() {
 
   // フォーム表示イベント（ファネル計測の起点）
   useEffect(() => {
-    trackEvent('form_view', { form: 'contact' })
-  }, [])
+    trackEvent('form_view', { form: 'contact', ...inquiryEventParams(context) })
+  }, [context.acquisitionSource, context.inquiryTopic, context.landingVariant])
 
   useEffect(() => {
     if (submitStatus !== 'idle') statusRef.current?.focus()
@@ -41,7 +113,11 @@ export default function ContactClient() {
 
       if (!abandonTrackedRef.current) {
         abandonTrackedRef.current = true
-        trackEvent('form_abandon', { form: 'contact', reason: 'beforeunload' })
+        trackEvent('form_abandon', {
+          form: 'contact',
+          reason: 'beforeunload',
+          ...inquiryEventParams(context),
+        })
       }
 
       event.preventDefault()
@@ -50,14 +126,14 @@ export default function ContactClient() {
 
     window.addEventListener('beforeunload', handleBeforeUnload)
     return () => window.removeEventListener('beforeunload', handleBeforeUnload)
-  }, [])
+  }, [context.acquisitionSource, context.inquiryTopic, context.landingVariant])
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target
     // 最初の入力時に1回だけ form_start を送る
     if (!startedRef.current) {
       startedRef.current = true
-      trackEvent('form_start', { form: 'contact' })
+      trackEvent('form_start', { form: 'contact', ...attributionParams })
     }
     setFormData((prev) => {
       const next = { ...prev, [name]: value }
@@ -81,15 +157,21 @@ export default function ContactClient() {
         return
       }
 
-      await submitContact(formData)
+      await submitContact({
+        ...formData,
+        source: 'hp',
+        acquisition_source: context.acquisitionSource,
+        inquiry_topic: context.inquiryTopic,
+        landing_variant: context.landingVariant,
+      })
       submittedRef.current = true
       dirtyRef.current = false
       setSubmitStatus('success')
-      trackEvent('form_submit', { form: 'contact' })
+      trackEvent('form_submit', { form: 'contact', ...attributionParams })
       setFormData({ name: '', email: '', company: '', phone: '', message: '' })
     } catch (error) {
       setSubmitStatus('error')
-      trackEvent('form_error', { form: 'contact' })
+      trackEvent('form_error', { form: 'contact', ...attributionParams })
       console.error('Contact form submission failed:', error)
       setErrorMessage(
         '送信に失敗しました。時間をおいて再度お試しいただくか、解決しない場合はお手数ですがメールにてご連絡ください。'
@@ -106,11 +188,11 @@ export default function ContactClient() {
         <div className="contact-hero-bg" aria-hidden="true"></div>
         <div className="contact-hero-content">
           <p className="contact-hero-label">CONTACT</p>
-          <h1 className="contact-hero-title">お問い合わせ</h1>
+          <h1 className="contact-hero-title">{content.heroTitle}</h1>
         </div>
       </header>
 
-      <Breadcrumb items={[{ label: 'CONTACT' }]} />
+      <Breadcrumb items={[{ label: content.heroTitle }]} />
 
       {/* 2カラムレイアウト */}
       <section className="contact-main">
@@ -118,10 +200,9 @@ export default function ContactClient() {
           <div className="contact-grid">
             {/* 左カラム：情報 */}
             <div className="contact-info">
-              <h2 className="contact-info-heading">お気軽にご相談ください</h2>
+              <h2 className="contact-info-heading">{content.heading}</h2>
               <p className="contact-info-text">
-                サービスに関するご質問、お見積り依頼など、お気軽にお問い合わせください。
-                ご希望の方には、現状サイトの<strong>SEO/AIO無料診断レポート</strong>をお渡ししています。
+                {content.description}
               </p>
 
               <div className="contact-info-items">
@@ -166,8 +247,8 @@ export default function ContactClient() {
                     </svg>
                   </div>
                   <div>
-                    <h3>SEO/AIO無料診断</h3>
-                    <p>現状サイトの診断レポートを無料でお渡しします</p>
+                    <h3>{content.benefitTitle}</h3>
+                    <p>{content.benefitText}</p>
                   </div>
                 </div>
               </div>
@@ -216,6 +297,12 @@ export default function ContactClient() {
                 </div>
               ) : (
                 <form className="contact-form" onSubmit={handleSubmit} aria-busy={isSubmitting}>
+                  {content.contextLabel && (
+                    <div className="contact-context" role="note">
+                      <p className="contact-context-label">{content.contextLabel}</p>
+                      <p>{content.contextText}</p>
+                    </div>
+                  )}
                   <p className="form-note" id="contact-required-note"><span className="required-mark" aria-hidden="true">*</span> は必須項目です</p>
 
                   <div className="form-group">
@@ -247,7 +334,7 @@ export default function ContactClient() {
                     <label htmlFor="message" className="form-label">
                       お問い合わせ内容<span className="required-mark" aria-hidden="true">*</span>
                     </label>
-                    <textarea id="message" name="message" value={formData.message} onChange={handleChange} required minLength={10} maxLength={3000} className="form-textarea" rows={5} placeholder="ご相談内容や現在の課題をご記入ください" />
+                    <textarea id="message" name="message" value={formData.message} onChange={handleChange} required minLength={10} maxLength={3000} className="form-textarea" rows={5} placeholder={content.placeholder} />
                   </div>
 
                   {/* ハニーポット */}
@@ -269,7 +356,7 @@ export default function ContactClient() {
                     </p>
                     <p className="form-actions-note">初回相談は無料・通常1営業日以内に返信／無理な営業はいたしません</p>
                     <button type="submit" className="btn btn-primary btn-large form-submit-btn" disabled={isSubmitting}>
-                      {isSubmitting ? '送信中...' : '無料相談を送信する'}
+                      {isSubmitting ? '送信中...' : content.submitLabel}
                     </button>
                   </div>
                 </form>

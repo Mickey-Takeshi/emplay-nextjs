@@ -16,6 +16,20 @@ const SOURCE_META: Record<string, { label: string; subjectTag: string; heading: 
   academy: { label: 'academy.emplay.jp（EMPLAY AI ACADEMY）', subjectTag: '【AI ACADEMY】', heading: 'EMPLAY AI ACADEMY からお問い合わせがありました' },
 }
 
+const INQUIRY_VARIANTS: Record<string, readonly string[]> = {
+  'hp-renewal': ['partner', 'legacy', 'conversion'],
+  'wordpress-renewal': ['security', 'maintenance'],
+}
+
+const INQUIRY_TOPIC_LABELS: Record<string, string> = {
+  'hp-renewal': 'ホームページリニューアル',
+  'wordpress-renewal': 'WordPressサイトの見直し',
+}
+
+function isInquiryTopic(value: unknown): value is keyof typeof INQUIRY_VARIANTS {
+  return value === 'hp-renewal' || value === 'wordpress-renewal'
+}
+
 // オリジンに基づいてCORSヘッダーを生成
 function getCorsHeaders(origin: string | null) {
   const allowedOrigin = origin && ALLOWED_ORIGINS.includes(origin) ? origin : ALLOWED_ORIGINS[0]
@@ -44,7 +58,17 @@ function validateInput(data: unknown): { valid: boolean; error?: string; data?: 
     return { valid: false, error: 'Invalid request body' }
   }
 
-  const { name, email, company, phone, message, source } = data as Record<string, unknown>
+  const {
+    name,
+    email,
+    company,
+    phone,
+    message,
+    source,
+    acquisition_source: acquisitionSource,
+    inquiry_topic: inquiryTopic,
+    landing_variant: landingVariant,
+  } = data as Record<string, unknown>
 
   // 必須フィールドのチェック
   if (!name || typeof name !== 'string' || name.trim().length === 0) {
@@ -80,6 +104,13 @@ function validateInput(data: unknown): { valid: boolean; error?: string; data?: 
     return { valid: false, error: 'Message is too long (max 5000 characters)' }
   }
 
+  const validInquiryTopic = isInquiryTopic(inquiryTopic) ? inquiryTopic : undefined
+  const validLandingVariant = validInquiryTopic
+    && typeof landingVariant === 'string'
+    && INQUIRY_VARIANTS[validInquiryTopic].includes(landingVariant)
+    ? landingVariant
+    : undefined
+
   return {
     valid: true,
     data: {
@@ -89,7 +120,12 @@ function validateInput(data: unknown): { valid: boolean; error?: string; data?: 
       phone: phone && typeof phone === 'string' ? phone.trim() : undefined,
       message: message.trim(),
       // 未知の値は 'hp' に倒す（DBのsource列はホワイトリストのみ）
-      source: typeof source === 'string' && source in SOURCE_META ? source : 'hp',
+      source: source === 'academy' ? source : 'hp',
+      acquisitionSource: validInquiryTopic && acquisitionSource === 'chatgpt-ads'
+        ? acquisitionSource
+        : undefined,
+      inquiryTopic: validInquiryTopic,
+      landingVariant: validLandingVariant,
     }
   }
 }
@@ -133,6 +169,9 @@ interface ContactData {
   phone?: string
   message: string
   source: string
+  acquisitionSource?: string
+  inquiryTopic?: string
+  landingVariant?: string
 }
 
 // ===== 問い合わせ自動判定 =====
@@ -340,6 +379,9 @@ Deno.serve(async (req) => {
           phone: contactData.phone || null,
           message: contactData.message,
           source: contactData.source,
+          acquisition_source: contactData.acquisitionSource || null,
+          inquiry_topic: contactData.inquiryTopic || null,
+          landing_variant: contactData.landingVariant || null,
           classification: classification.level,
           lead_score: classification.score,
           classification_reasons: classification.reasons.join(' / '),
@@ -358,6 +400,15 @@ Deno.serve(async (req) => {
     const safeCompany = contactData.company ? escapeHtml(contactData.company) : '未入力'
     const safePhone = contactData.phone ? escapeHtml(contactData.phone) : '未入力'
     const safeMessage = escapeHtml(contactData.message)
+    const safeAcquisitionSource = contactData.acquisitionSource
+      ? escapeHtml(contactData.acquisitionSource)
+      : '未設定'
+    const safeInquiryTopic = contactData.inquiryTopic
+      ? escapeHtml(INQUIRY_TOPIC_LABELS[contactData.inquiryTopic] || contactData.inquiryTopic)
+      : '未設定'
+    const safeLandingVariant = contactData.landingVariant
+      ? escapeHtml(contactData.landingVariant)
+      : '未設定'
 
     // 判定結果に応じた件名タグと本文バナー
     const meta = LEVEL_META[classification.level]
@@ -392,6 +443,14 @@ Deno.serve(async (req) => {
             <tr>
               <th style="border: 1px solid #ddd; padding: 12px; background-color: #f5f5f5; text-align: left; width: 30%;">送信元サイト</th>
               <td style="border: 1px solid #ddd; padding: 12px;">${sourceMeta.label}</td>
+            </tr>
+            <tr>
+              <th style="border: 1px solid #ddd; padding: 12px; background-color: #f5f5f5; text-align: left;">相談テーマ</th>
+              <td style="border: 1px solid #ddd; padding: 12px;">${safeInquiryTopic}</td>
+            </tr>
+            <tr>
+              <th style="border: 1px solid #ddd; padding: 12px; background-color: #f5f5f5; text-align: left;">流入情報</th>
+              <td style="border: 1px solid #ddd; padding: 12px;">${safeAcquisitionSource} / ${safeLandingVariant}</td>
             </tr>
             <tr>
               <th style="border: 1px solid #ddd; padding: 12px; background-color: #f5f5f5; text-align: left; width: 30%;">お名前</th>

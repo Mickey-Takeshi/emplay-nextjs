@@ -14,3 +14,72 @@
 
 /* モバイルは軽量派生を読む（原寸1536px超の配信を避ける） */
 @media(max-width:768px){.hp-hero-background{background-image:url('/images/renewal/service-hp-sm.webp')}.hp-flow::before{background-image:url('/images/renewal/process-sm.webp')}}
+
+.hp-renewal-routes {
+  padding: var(--section-py) 0;
+  background: #fff;
+}
+
+.hp-renewal-routes-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin-top: 38px;
+  border-top: 1px solid var(--color-border);
+  border-left: 1px solid var(--color-border);
+}
+
+.hp-renewal-routes-grid > a {
+  min-width: 0;
+  padding: 30px;
+  border-right: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+  color: var(--color-text);
+  text-decoration: none;
+  transition: background-color var(--transition-fast);
+}
+
+.hp-renewal-routes-grid > a:hover {
+  background: var(--color-primary-subtle);
+  opacity: 1;
+}
+
+.hp-renewal-routes-grid span {
+  color: var(--color-primary);
+  font-size: var(--text-2xs);
+  font-weight: 800;
+}
+
+.hp-renewal-routes-grid h3 {
+  margin-top: 12px;
+  font-size: var(--text-xl);
+  line-height: var(--leading-heading);
+}
+
+.hp-renewal-routes-grid p {
+  margin-top: 10px;
+  color: var(--color-text-light);
+  font-size: var(--text-sm);
+  line-height: var(--leading-body);
+}
+
+.hp-renewal-routes-grid strong {
+  display: inline-block;
+  margin-top: 18px;
+  color: var(--color-primary-dark);
+  font-size: var(--text-sm);
+}
+
+@media(max-width:700px) {
+  .hp-renewal-routes {
+    padding: 64px 0;
+  }
+
+  .hp-renewal-routes-grid {
+    grid-template-columns: 1fr;
+    border-left: 0;
+  }
+
+  .hp-renewal-routes-grid > a {
+    border-right: 0;
+  }
+}

@@ -25,6 +25,13 @@ const SERVICES: Record<string, Service> = {
     href: '/service/hp',
     label: 'HP制作サービスを見る',
   },
+  wordpressRenewal: {
+    key: 'wordpress_renewal',
+    name: 'WordPressサイトの見直し',
+    desc: '更新状況や管理体制を確認し、改修・再構築・保守運用の適切な進め方を整理します。',
+    href: '/service/hp/wordpress-renewal',
+    label: 'WordPress見直しサービスを見る',
+  },
   crm: {
     key: 'crm',
     name: 'CRM導入支援',
@@ -74,8 +81,11 @@ const CATEGORY_TO_SERVICE: Record<string, { internal: string; external?: string 
   '補助金・助成金': { internal: 'overview' },
 }
 
-export default function ArticleServiceCTA({ category }: { category: string }) {
-  const mapping = CATEGORY_TO_SERVICE[category] ?? { internal: 'overview' }
+export default function ArticleServiceCTA({ category, slug }: { category: string; slug?: string }) {
+  const isWordPressSecurityArticle = slug === 'wordpress-security-hardening'
+  const mapping: { internal: string; external?: string } = isWordPressSecurityArticle
+    ? { internal: 'wordpressRenewal' }
+    : CATEGORY_TO_SERVICE[category] ?? { internal: 'overview' }
   const service = SERVICES[mapping.internal]
   const extra = mapping.external ? SERVICES[mapping.external] : null
   // 説明文は、具体的な提供物がある場合はそちらを紹介する
@@ -99,7 +109,7 @@ export default function ArticleServiceCTA({ category }: { category: string }) {
         )}
         <div className="article-cta-actions">
           <TrackedLink
-            href="/contact"
+            href={isWordPressSecurityArticle ? '/contact?topic=wordpress-renewal&intent=security' : '/contact'}
             className="article-cta-btn article-cta-btn-primary"
             event="cta_click"
             eventParams={{ cta_location: 'article_end', cta_type: 'contact', article_category: category }}
@@ -129,7 +139,11 @@ export default function ArticleServiceCTA({ category }: { category: string }) {
             {service.label}
           </TrackedLink>
         </div>
-        <p className="article-cta-note">初回相談は無料・SEO/AIO無料診断レポートつき・通常1営業日以内にご返信します</p>
+        <p className="article-cta-note">
+          {isWordPressSecurityArticle
+            ? '初回相談は無料・現在の更新状況や管理体制から確認します・通常1営業日以内にご返信します'
+            : '初回相談は無料・SEO/AIO無料診断レポートつき・通常1営業日以内にご返信します'}
+        </p>
       </div>
     </aside>
   )

@@ -331,6 +331,10 @@ export interface ContactFormData {
   company?: string
   phone?: string
   message: string
+  source?: 'hp' | 'academy'
+  acquisition_source?: 'chatgpt-ads'
+  inquiry_topic?: 'hp-renewal' | 'wordpress-renewal'
+  landing_variant?: 'partner' | 'legacy' | 'conversion' | 'security' | 'maintenance'
 }
 
 // お問い合わせを送信（Edge Function経由）

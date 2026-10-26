@@ -1,8 +1,9 @@
 'use client'
 
-import { useState, useEffect, useRef } from 'react'
+import { Suspense, useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+import ContextualContactLink from './ContextualContactLink'
 import './Header.css'
 
 export default function Header() {
@@ -130,13 +131,11 @@ export default function Header() {
               </li>
             ))}
             <li className="nav-item nav-item-cta">
-              <Link
-                href="/contact"
-                className="nav-cta-btn"
-                onClick={closeMenu}
-              >
-                無料相談
-              </Link>
+              <Suspense fallback={<Link href="/contact" className="nav-cta-btn" onClick={closeMenu}>無料相談</Link>}>
+                <ContextualContactLink className="nav-cta-btn" onClick={closeMenu}>
+                  無料相談
+                </ContextualContactLink>
+              </Suspense>
             </li>
           </ul>
         </nav>
