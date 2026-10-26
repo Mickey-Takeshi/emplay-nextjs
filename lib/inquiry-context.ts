@@ -79,18 +79,24 @@ export function parseRouteInquiryContext(
 }
 
 export function buildContextHref(
-  pathname: string,
+  href: string,
   context: InquiryContext,
   hash?: string
 ): string {
-  const query = new URLSearchParams()
+  const hashIndex = href.indexOf('#')
+  const hrefWithoutHash = hashIndex >= 0 ? href.slice(0, hashIndex) : href
+  const inlineHash = hashIndex >= 0 ? href.slice(hashIndex + 1) : undefined
+  const queryIndex = hrefWithoutHash.indexOf('?')
+  const pathname = queryIndex >= 0 ? hrefWithoutHash.slice(0, queryIndex) : hrefWithoutHash
+  const query = new URLSearchParams(queryIndex >= 0 ? hrefWithoutHash.slice(queryIndex + 1) : '')
 
-  if (context.inquiryTopic) query.set('topic', context.inquiryTopic)
-  if (context.landingVariant) query.set('intent', context.landingVariant)
-  if (context.acquisitionSource) query.set('source', context.acquisitionSource)
+  if (context.inquiryTopic && !query.has('topic')) query.set('topic', context.inquiryTopic)
+  if (context.landingVariant && !query.has('intent')) query.set('intent', context.landingVariant)
+  if (context.acquisitionSource && !query.has('source')) query.set('source', context.acquisitionSource)
 
   const suffix = query.size > 0 ? `?${query.toString()}` : ''
-  return `${pathname}${suffix}${hash ? `#${hash}` : ''}`
+  const resolvedHash = hash ?? inlineHash
+  return `${pathname}${suffix}${resolvedHash ? `#${resolvedHash}` : ''}`
 }
 
 export function inquiryEventParams(context: InquiryContext): Record<string, string | undefined> {

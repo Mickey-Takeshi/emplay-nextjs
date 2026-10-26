@@ -106,26 +106,34 @@ export default function ContactClient({ context }: { context: InquiryContext }) 
     if (submitStatus !== 'idle') statusRef.current?.focus()
   }, [submitStatus])
 
-  // 入力途中の更新・タブ閉じ・外部遷移による内容消失を防ぐ。
+  // beforeunloadは確認表示だけに使い、離脱確定後またはSPA遷移時にだけ計測する。
   useEffect(() => {
+    const trackAbandon = (reason: 'pagehide' | 'route_change') => {
+      if (!dirtyRef.current || submittedRef.current || abandonTrackedRef.current) return
+
+      abandonTrackedRef.current = true
+      trackEvent('form_abandon', {
+        form: 'contact',
+        reason,
+        ...inquiryEventParams(context),
+      })
+    }
+
     const handleBeforeUnload = (event: BeforeUnloadEvent) => {
       if (!dirtyRef.current || submittedRef.current) return
-
-      if (!abandonTrackedRef.current) {
-        abandonTrackedRef.current = true
-        trackEvent('form_abandon', {
-          form: 'contact',
-          reason: 'beforeunload',
-          ...inquiryEventParams(context),
-        })
-      }
 
       event.preventDefault()
       event.returnValue = ''
     }
+    const handlePageHide = () => trackAbandon('pagehide')
 
     window.addEventListener('beforeunload', handleBeforeUnload)
-    return () => window.removeEventListener('beforeunload', handleBeforeUnload)
+    window.addEventListener('pagehide', handlePageHide)
+    return () => {
+      window.removeEventListener('beforeunload', handleBeforeUnload)
+      window.removeEventListener('pagehide', handlePageHide)
+      trackAbandon('route_change')
+    }
   }, [context.acquisitionSource, context.inquiryTopic, context.landingVariant])
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {

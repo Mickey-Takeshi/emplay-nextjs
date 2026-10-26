@@ -1,7 +1,6 @@
 'use client'
 
-import Link from 'next/link'
-import { trackEvent } from '@/lib/analytics'
+import ContextualContactLink from './ContextualContactLink'
 import './StickyMobileCTA.css'
 
 interface StickyMobileCTAProps {
@@ -26,17 +25,18 @@ export default function StickyMobileCTA({
         <span className="sticky-mobile-cta-lead">{lead}</span>
         <span className="sticky-mobile-cta-sub">{sub}</span>
       </div>
-      <Link
+      <ContextualContactLink
         href={href}
         className="sticky-mobile-cta-btn"
-        onClick={() => trackEvent('cta_click', {
+        eventName="cta_click"
+        eventParams={{
           ...eventParams,
           cta_location: location,
           cta_type: 'sticky_mobile',
-        })}
+        }}
       >
         無料相談
-      </Link>
+      </ContextualContactLink>
     </div>
   )
 }

@@ -13,6 +13,7 @@ import ArticleServiceCTA from '@/components/ArticleServiceCTA'
 import StickyMobileCTA from '@/components/StickyMobileCTA'
 import ShareButtons from '@/components/ShareButtons'
 import ChatGPTAdPreview from '@/components/ChatGPTAdPreview'
+import ContextualContactLink from '@/components/ContextualContactLink'
 import './BlogDetail.css'
 
 // ReactMarkdownの見出しノードからテキストを取り出す(アンカーID生成用)
@@ -257,7 +258,7 @@ export default async function BlogDetailPage({ params }: { params: Promise<{ slu
             <h2 className="related-posts-title">あわせて読みたい</h2>
             <div className="related-posts-grid">
               {relatedPosts.map((relatedPost) => (
-                <Link
+                <ContextualContactLink
                   href={`/blog/${relatedPost.slug}`}
                   key={relatedPost.id}
                   className="related-post-card"
@@ -269,7 +270,7 @@ export default async function BlogDetailPage({ params }: { params: Promise<{ slu
                     <span className="related-post-category">{relatedPost.category}</span>
                     <h3 className="related-post-title">{relatedPost.title}</h3>
                   </div>
-                </Link>
+                </ContextualContactLink>
               ))}
             </div>
           </div>

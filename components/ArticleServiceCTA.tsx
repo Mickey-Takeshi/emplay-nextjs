@@ -1,4 +1,5 @@
 import TrackedLink from './TrackedLink'
+import ContextualContactLink from './ContextualContactLink'
 import './ArticleServiceCTA.css'
 
 type Service = {
@@ -108,15 +109,15 @@ export default function ArticleServiceCTA({ category, slug }: { category: string
           </p>
         )}
         <div className="article-cta-actions">
-          <TrackedLink
+          <ContextualContactLink
             href={isWordPressSecurityArticle ? '/contact?topic=wordpress-renewal&intent=security' : '/contact'}
             className="article-cta-btn article-cta-btn-primary"
-            event="cta_click"
+            eventName="cta_click"
             eventParams={{ cta_location: 'article_end', cta_type: 'contact', article_category: category }}
             ariaLabel="無料相談ページへ"
           >
             無料で相談する
-          </TrackedLink>
+          </ContextualContactLink>
           {extra && (
             <TrackedLink
               href={extra.href}
@@ -129,15 +130,15 @@ export default function ArticleServiceCTA({ category, slug }: { category: string
               {extra.label}
             </TrackedLink>
           )}
-          <TrackedLink
+          <ContextualContactLink
             href={service.href}
             className="article-cta-btn article-cta-btn-secondary"
-            event="cta_click"
+            eventName="cta_click"
             eventParams={{ cta_location: 'article_end', cta_type: 'service', service: service.key, article_category: category }}
             ariaLabel={service.label}
           >
             {service.label}
-          </TrackedLink>
+          </ContextualContactLink>
         </div>
         <p className="article-cta-note">
           {isWordPressSecurityArticle
