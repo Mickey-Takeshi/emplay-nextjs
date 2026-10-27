@@ -72,6 +72,25 @@
   text-underline-offset: 3px;
 }
 
+.privacy-consent-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  margin-top: 20px;
+  padding: 20px;
+  border: 1px solid var(--color-border);
+}
+
+.privacy-consent-status {
+  margin: 0;
+  font-weight: 600;
+}
+
+.privacy-consent-button {
+  flex: 0 0 auto;
+}
+
 .privacy-date {
   margin-top: 72px;
   padding-top: 24px;
@@ -101,5 +120,14 @@
 
   .privacy-section {
     margin-bottom: 40px;
+  }
+
+  .privacy-consent-controls {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .privacy-consent-button {
+    width: 100%;
   }
 }

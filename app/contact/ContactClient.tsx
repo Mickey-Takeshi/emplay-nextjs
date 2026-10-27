@@ -4,6 +4,7 @@ import { useState, useEffect, useRef, FormEvent } from 'react'
 import Link from 'next/link'
 import { submitContact, ContactFormData } from '@/lib/supabase'
 import { trackEvent } from '@/lib/analytics'
+import { trackOpenAILead } from '@/lib/openai-pixel'
 import { inquiryEventParams, type InquiryContext } from '@/lib/inquiry-context'
 import Breadcrumb from '@/components/Breadcrumb'
 import './Contact.css'
@@ -93,6 +94,7 @@ export default function ContactClient({ context }: { context: InquiryContext }) 
   const [errorMessage, setErrorMessage] = useState('')
   const startedRef = useRef(false)
   const dirtyRef = useRef(false)
+  const submittingRef = useRef(false)
   const submittedRef = useRef(false)
   const abandonTrackedRef = useRef(false)
   const statusRef = useRef<HTMLDivElement>(null)
@@ -152,6 +154,9 @@ export default function ContactClient({ context }: { context: InquiryContext }) 
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault()
+    if (submittingRef.current || submittedRef.current) return
+
+    submittingRef.current = true
     setIsSubmitting(true)
     setSubmitStatus('idle')
     setErrorMessage('')
@@ -176,6 +181,7 @@ export default function ContactClient({ context }: { context: InquiryContext }) 
       dirtyRef.current = false
       setSubmitStatus('success')
       trackEvent('form_submit', { form: 'contact', ...attributionParams })
+      trackOpenAILead()
       setFormData({ name: '', email: '', company: '', phone: '', message: '' })
     } catch (error) {
       setSubmitStatus('error')
@@ -185,6 +191,7 @@ export default function ContactClient({ context }: { context: InquiryContext }) 
         '送信に失敗しました。時間をおいて再度お試しいただくか、解決しない場合はお手数ですがメールにてご連絡ください。'
       )
     } finally {
+      submittingRef.current = false
       setIsSubmitting(false)
     }
   }

@@ -119,6 +119,12 @@ export default function RootLayout({
   return (
     <html lang="ja" className={`${inter.variable} ${notoSansJP.variable}`}>
       <head>
+        {/* OpenAI Measurement Pixel */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(w,d,s,u,p){if(!w.oaiq){var q=function(){q.q.push(arguments)};q.q=[];w.oaiq=q;var js=d.createElement(s);js.async=true;js.src=u;var f=d.getElementsByTagName(s)[0];f.parentNode.insertBefore(js,f)}try{if(w.localStorage.getItem('openai_measurement_consent')==='denied')w.oaiq('consent',false)}catch(e){}w.oaiq('init',{pixelId:p})})(window,document,'script','https://bzrcdn.openai.com/sdk/oaiq.min.js','4bdquFAYaxPcb9b65GEkSP');`,
+          }}
+        />
         {/* Google Tag Manager */}
         <script
           dangerouslySetInnerHTML={{

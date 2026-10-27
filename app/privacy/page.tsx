@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import Breadcrumb from '@/components/Breadcrumb'
+import OpenAIMeasurementConsent from './OpenAIMeasurementConsent'
 import './Privacy.css'
 
 export const metadata: Metadata = {
@@ -92,7 +93,7 @@ export default function PrivacyPage() {
           </div>
 
           <div className="privacy-section">
-            <h2>6. アクセス解析ツールについて</h2>
+            <h2>6. アクセス解析・広告効果測定ツールについて</h2>
             <p>
               当社ウェブサイトでは、Googleによるアクセス解析ツール「Googleアナリティクス」を利用しています。
               Googleアナリティクスはトラフィックデータの収集のためにCookieを使用しています。
@@ -109,6 +110,25 @@ export default function PrivacyPage() {
               </a>
               をご確認ください。
             </p>
+            <p>
+              また、ChatGPT広告の効果測定のため、OpenAIの「Measurement Pixel」を利用しています。
+              このツールは、閲覧ページ、ブラウザ情報、IPアドレス、広告クリックに関する識別子等を取得し、
+              Cookie（<code>__oppref</code>、<code>__obref</code>）を使用することがあります。
+              当社は、お問い合わせフォームに入力された氏名、メールアドレス、電話番号等をMeasurement Pixelへ手動で送信せず、
+              Automatic Advanced Matchingも無効にしています。
+              下のボタンから今後の広告効果測定を停止できます。停止すると、Measurement Pixelが保存したCookieも削除されます。
+              詳しくは
+              <a
+                href="https://developers.openai.com/ads/measurement-pixel"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="OpenAI Measurement Pixelの説明（新しいタブで開く）"
+              >
+                OpenAI Measurement Pixelの説明
+              </a>
+              をご確認ください。
+            </p>
+            <OpenAIMeasurementConsent />
           </div>
 
           <div className="privacy-section">
@@ -144,7 +164,10 @@ export default function PrivacyPage() {
             </p>
           </div>
 
-          <p className="privacy-date">制定日：2026年7月3日</p>
+          <p className="privacy-date">
+            制定日：2026年7月3日<br />
+            最終改定日：2026年10月27日
+          </p>
         </div>
       </section>
     </main>
