@@ -66,6 +66,7 @@ SPA遷移ではdataLayerの値が次のイベントにも残るため、共通�
 - 送信失敗時に`lead_form_error`が1回
 - 未送信離脱時に`lead_form_abandon`が最大1回
 - CTAクリックに`cta_location`と`cta_type`が付与される
-- ChatGPT広告の5訴求を`landing_variant`で分けて確認できる
-- パラメータなしの通常流入には`acquisition_source=chatgpt-ads`を付けない
+- ChatGPT広告とGoogle広告を`acquisition_source`（`chatgpt-ads` / `google-ads`）で分けて確認できる
+- 広告の各訴求を`landing_variant`で分けて確認できる
+- パラメータなしの通常流入には`acquisition_source`を付けない
 - 個人情報（氏名、メール、電話、問い合わせ本文）をdataLayer・GA4へ送信しない

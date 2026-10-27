@@ -82,9 +82,17 @@ const CATEGORY_TO_SERVICE: Record<string, { internal: string; external?: string 
   '補助金・助成金': { internal: 'overview' },
 }
 
+const WORDPRESS_ARTICLE_INTENTS: Record<string, 'security' | 'maintenance'> = {
+  'wordpress-security-hardening': 'security',
+  'wordpress-maintenance-outsourcing-guide': 'maintenance',
+  'website-management-handover-guide': 'maintenance',
+  'wordpress-repair-or-rebuild': 'security',
+}
+
 export default function ArticleServiceCTA({ category, slug }: { category: string; slug?: string }) {
-  const isWordPressSecurityArticle = slug === 'wordpress-security-hardening'
-  const mapping: { internal: string; external?: string } = isWordPressSecurityArticle
+  const wordpressIntent = slug ? WORDPRESS_ARTICLE_INTENTS[slug] : undefined
+  const isWordPressArticle = Boolean(wordpressIntent)
+  const mapping: { internal: string; external?: string } = isWordPressArticle
     ? { internal: 'wordpressRenewal' }
     : CATEGORY_TO_SERVICE[category] ?? { internal: 'overview' }
   const service = SERVICES[mapping.internal]
@@ -110,7 +118,9 @@ export default function ArticleServiceCTA({ category, slug }: { category: string
         )}
         <div className="article-cta-actions">
           <ContextualContactLink
-            href={isWordPressSecurityArticle ? '/contact?topic=wordpress-renewal&intent=security' : '/contact'}
+            href={wordpressIntent
+              ? `/contact?topic=wordpress-renewal&intent=${wordpressIntent}`
+              : '/contact'}
             className="article-cta-btn article-cta-btn-primary"
             eventName="cta_click"
             eventParams={{ cta_location: 'article_end', cta_type: 'contact', article_category: category }}
@@ -131,7 +141,9 @@ export default function ArticleServiceCTA({ category, slug }: { category: string
             </TrackedLink>
           )}
           <ContextualContactLink
-            href={service.href}
+            href={wordpressIntent
+              ? `${service.href}?intent=${wordpressIntent}`
+              : service.href}
             className="article-cta-btn article-cta-btn-secondary"
             eventName="cta_click"
             eventParams={{ cta_location: 'article_end', cta_type: 'service', service: service.key, article_category: category }}
@@ -141,7 +153,7 @@ export default function ArticleServiceCTA({ category, slug }: { category: string
           </ContextualContactLink>
         </div>
         <p className="article-cta-note">
-          {isWordPressSecurityArticle
+          {isWordPressArticle
             ? '初回相談は無料・現在の更新状況や管理体制から確認します・通常1営業日以内にご返信します'
             : '初回相談は無料・SEO/AIO無料診断レポートつき・通常1営業日以内にご返信します'}
         </p>

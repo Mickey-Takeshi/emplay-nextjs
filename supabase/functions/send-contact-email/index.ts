@@ -26,6 +26,8 @@ const INQUIRY_TOPIC_LABELS: Record<string, string> = {
   'wordpress-renewal': 'WordPressサイトの見直し',
 }
 
+const ACQUISITION_SOURCES = ['chatgpt-ads', 'google-ads'] as const
+
 function isInquiryTopic(value: unknown): value is keyof typeof INQUIRY_VARIANTS {
   return value === 'hp-renewal' || value === 'wordpress-renewal'
 }
@@ -121,7 +123,9 @@ function validateInput(data: unknown): { valid: boolean; error?: string; data?: 
       message: message.trim(),
       // 未知の値は 'hp' に倒す（DBのsource列はホワイトリストのみ）
       source: source === 'academy' ? source : 'hp',
-      acquisitionSource: validInquiryTopic && acquisitionSource === 'chatgpt-ads'
+      acquisitionSource: validInquiryTopic
+        && typeof acquisitionSource === 'string'
+        && ACQUISITION_SOURCES.includes(acquisitionSource as typeof ACQUISITION_SOURCES[number])
         ? acquisitionSource
         : undefined,
       inquiryTopic: validInquiryTopic,

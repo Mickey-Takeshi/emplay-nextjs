@@ -21,15 +21,19 @@ export default function OpenAIMeasurementConsent() {
     <div className="privacy-consent-controls">
       <p className="privacy-consent-status" role="status" aria-live="polite">
         現在の設定：
-        {consent === 'loading' ? '確認中' : consent === 'denied' ? '広告効果測定を停止中' : '広告効果測定を許可中'}
+        {consent === 'loading'
+          ? '確認中'
+          : consent === 'denied'
+            ? 'ChatGPT広告の効果測定を停止中'
+            : 'ChatGPT広告の効果測定を許可中'}
       </p>
       {consent !== 'denied' ? (
         <button type="button" className="btn btn-outline privacy-consent-button" onClick={() => updateConsent(false)}>
-          広告効果測定を停止する
+          ChatGPT広告の効果測定を停止する
         </button>
       ) : (
         <button type="button" className="btn btn-outline privacy-consent-button" onClick={() => updateConsent(true)}>
-          広告効果測定を再び許可する
+          ChatGPT広告の効果測定を再び許可する
         </button>
       )}
     </div>
