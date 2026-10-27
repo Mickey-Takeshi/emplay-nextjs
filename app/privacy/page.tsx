@@ -111,6 +111,21 @@ export default function PrivacyPage() {
               をご確認ください。
             </p>
             <p>
+              Google広告の効果測定では、Googleアナリティクスで計測したお問い合わせ完了等のイベントを
+              Google広告へ連携することがあります。この連携にはCookieや広告クリックに関する識別子等が
+              利用されますが、お問い合わせフォームに入力された氏名、メールアドレス、電話番号、本文は
+              広告効果測定のイベントに含めません。詳しくは
+              <a
+                href="https://policies.google.com/technologies/ads?hl=ja"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Googleの広告に関するポリシー（新しいタブで開く）"
+              >
+                Googleの広告に関するポリシー
+              </a>
+              をご確認ください。
+            </p>
+            <p>
               また、ChatGPT広告の効果測定のため、OpenAIの「Measurement Pixel」を利用しています。
               このツールは、閲覧ページ、ブラウザ情報、IPアドレス、広告クリックに関する識別子等を取得し、
               Cookie（<code>__oppref</code>、<code>__obref</code>）を使用することがあります。

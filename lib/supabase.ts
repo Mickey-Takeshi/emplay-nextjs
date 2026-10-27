@@ -332,7 +332,7 @@ export interface ContactFormData {
   phone?: string
   message: string
   source?: 'hp' | 'academy'
-  acquisition_source?: 'chatgpt-ads'
+  acquisition_source?: 'chatgpt-ads' | 'google-ads'
   inquiry_topic?: 'hp-renewal' | 'wordpress-renewal'
   landing_variant?: 'partner' | 'legacy' | 'conversion' | 'security' | 'maintenance'
 }

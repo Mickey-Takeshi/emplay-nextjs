@@ -7,7 +7,7 @@ export type LandingVariant =
   | 'security'
   | 'maintenance'
 
-export type AcquisitionSource = 'chatgpt-ads'
+export type AcquisitionSource = 'chatgpt-ads' | 'google-ads'
 
 export type QueryValue = string | string[] | undefined
 
@@ -28,6 +28,9 @@ const firstValue = (value: QueryValue): string | undefined =>
 const isTopic = (value: string | undefined): value is InquiryTopic =>
   value === 'hp-renewal' || value === 'wordpress-renewal'
 
+const isAcquisitionSource = (value: string | undefined): value is AcquisitionSource =>
+  value === 'chatgpt-ads' || value === 'google-ads'
+
 const isVariantForTopic = (
   topic: InquiryTopic,
   value: string | undefined
@@ -44,7 +47,7 @@ export function parseLandingContext(
   return {
     inquiryTopic: topic,
     ...(isVariantForTopic(topic, intent) ? { landingVariant: intent } : {}),
-    ...(source === 'chatgpt-ads' ? { acquisitionSource: source } : {}),
+    ...(isAcquisitionSource(source) ? { acquisitionSource: source } : {}),
   }
 }
 
