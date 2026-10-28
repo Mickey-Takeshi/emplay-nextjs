@@ -12,14 +12,19 @@ declare global {
 
 export function trackEvent(event: string, params: EventParams = {}): void {
   if (typeof window === 'undefined') return
-  window.dataLayer = window.dataLayer || []
-  window.dataLayer.push({
-    // GTM keeps prior data-layer values across SPA navigation. Clear attribution
-    // before every event so an organic event cannot inherit an earlier ad variant.
-    inquiry_topic: undefined,
-    landing_variant: undefined,
-    acquisition_source: undefined,
-    event,
-    ...params,
-  })
+  try {
+    window.dataLayer = window.dataLayer || []
+    window.dataLayer.push({
+      // GTM keeps prior data-layer values across SPA navigation. Clear attribution
+      // before every event so an organic event cannot inherit an earlier ad variant.
+      inquiry_topic: undefined,
+      landing_variant: undefined,
+      acquisition_source: undefined,
+      event,
+      ...params,
+    })
+  } catch {
+    // Analytics must not interrupt a saved inquiry or another measurement provider.
+    console.warn('Analytics event could not be sent.')
+  }
 }
