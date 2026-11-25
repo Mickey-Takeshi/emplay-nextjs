@@ -436,9 +436,11 @@ Deno.serve(async (req) => {
     })
 
     try {
-      await transport.sendMail({
+      const delivery = await transport.sendMail({
         from: `お問い合わせ通知 <${GMAIL_USER}>`,
         to: NOTIFICATION_EMAIL,
+        // 非営業・要確認は本人にも直接配信し、グループ宛の送信済み控えに埋もれさせない。
+        cc: classification.level === 'sales' ? undefined : GMAIL_USER,
         subject: `${meta.tag}【お問い合わせ】${sourceMeta.subjectTag}${safeCompany !== '未入力' ? safeCompany : safeName}様より`,
         html: `
           ${banner}
@@ -481,6 +483,16 @@ Deno.serve(async (req) => {
             このメールは ${sourceMeta.label} のお問い合わせフォームから自動送信されています。
           </p>
         `,
+      })
+      const primaryAccepted = delivery.accepted.some((address: string) =>
+        address.toLowerCase() === GMAIL_USER.trim().toLowerCase()
+      )
+      if (classification.level !== 'sales' && !primaryAccepted) {
+        throw new Error('Primary inquiry notification recipient was not accepted')
+      }
+      console.info('Contact notification delivery', {
+        classification: classification.level,
+        primaryAccepted,
       })
     } catch (emailError) {
       console.error('SMTP send error:', emailError)
